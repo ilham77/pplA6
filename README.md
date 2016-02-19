@@ -1,5 +1,10 @@
-# PPL Kelompok A6: Proyek Freelancer
-Proyek Perangkat Lunak Kelompok A6: UILancer
+# PPL 2016 Kelompok A6: UILancer
+Proyek Perangkat Lunak 2016 Kelompok A6: UILancer
 
-Oleh Kelompok A6 (Gibran - Anto - Luthfi - Rani - Alvan - Ilham)
-Let's do this
+Kelompok A6:  
+Kurnianto Trilaksono -  
+Muhammad Gibran -  
+Rani Utami -  
+Muhammad Luthfi -  
+Alvan Juwanda -  
+Ilham Akbar - 1306463635  
