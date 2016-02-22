@@ -2,7 +2,7 @@
 Proyek Perangkat Lunak 2016 Kelompok A6: UILancer
 
 Kelompok A6:  
-Kurnianto Trilaksono -  
+Kurnianto Trilaksono - 1306464524
 Muhammad Gibran -  
 Rani Utami  - 1306382070  
 Muhammad Luthfi - 1306386825  
