@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/infoAccount', function () {
+    return view('infoAccount');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
