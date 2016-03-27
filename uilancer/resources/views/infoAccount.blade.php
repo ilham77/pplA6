@@ -241,22 +241,48 @@
 </div>
 
 <!-- Container (Why UILancer Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>Why UILancer?</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
+<div id="services" class="container-fluid">
+  <div class="row">
     <div class="col-sm-6">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>Apa itu Official Account?</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </div>
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Apa itu Official Account?</h3>
+          <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
+        </div>
+        <div class="panel-body">
+          <p>Akun resmi UILancer</p>
+          <p>Email resmi @uilancer.com</p>
+          <p>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</p>
+          <p>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</p>
+          <p>Job Manager untuk mengelola pelamar pekerjaan</p>
+          <p>Melihat profil pelamar</p>
+          <p>Halaman Profil dan Dashboard untuk Anda</p>
+          <p>Testimoni dan rating freelancer</p>
+          <p>Testimoni dapat ditampilkan di halaman depan UILancer</p>
+        </div>
+        <div class="panel-footer">
+          <p>Untuk mendapatkan Official Account, Anda dapat kontak kami dengan email ke:</p>
+          <a href="#">info@uilancer.com</a>
+        </div>
+      </div> 
+    </div> 
     <div class="col-sm-6">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>Saya hanya ingin mencari freelancer...</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Saya hanya ingin mencari freelancer...</h3>
+          <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer tanpa Official Account, tetapi Anda tidak akan mendapati semua keuntung yang didapati Official Account.</p>
+        </div>
+        <div class="panel-body">
+          <p>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</p>
+          <p>Melihat profil pelamar</p>
+          <p>Testimoni dan rating freelancer</p>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-lg">Post Lowongan Pekerjaan Anda!</button>
+        </div>
+      </div> 
     </div>
-  </div>
+  </div> 
 </div>
 
 <!-- Container (menu Section) -->
