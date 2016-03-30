@@ -134,7 +134,7 @@
       background-color: #fff;
       z-index: 9999;
       border: 0;
-      font-size: 12px !important;
+      font-size: 14px !important;
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
@@ -146,10 +146,17 @@
   .navbar-nav li a:hover, .navbar-nav li.active a {
       color: #fff !important;
       background-color: #333399 !important;
+	  min-height: 70px;
+      max-height: 100px;
   }
   .navbar-default .navbar-toggle {
       border-color: transparent;
       color: #000066 !important;
+  }
+  .navbar-brand {
+	  min-height: 70px;
+      max-height: 100px;
+	  width: 200px;
   }
   footer .glyphicon {
       font-size: 20px;
@@ -211,11 +218,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <img src="logo2.png" alt="Logo" width="150" height="30" class="navbar-brand" href="#home">
+      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About Us</a></li>
+        <li><a href="./about">About Us</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
