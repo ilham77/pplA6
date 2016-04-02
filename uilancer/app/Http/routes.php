@@ -11,10 +11,18 @@
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+Route::get('/', function () 
+{
+	return View::make('home');
+});
 
+Route::get('sso-login','Controller@login');
+Route::get('logout','Controller@logout');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -25,7 +33,8 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
+/*
 Route::group(['middleware' => ['web']], function () {
     //
 });
+*/
