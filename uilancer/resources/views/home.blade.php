@@ -5,11 +5,19 @@
   <title>UILancer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--link rel="stylesheet" href="assets/css/style.css"
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>-->
+  <!-- -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
   <style>
   body {
       font: 400 15px Lato, sans-serif;
@@ -31,10 +39,13 @@
       margin-bottom: 30px;
   }  
   .jumbotron {
-      background-color: #f4511e;
+      background-color: #333399;
       color: #fff;
       padding: 100px 25px;
       font-family: Montserrat, sans-serif;
+  }
+  .jumbotron a{
+	  color: #fff
   }
   .container-fluid {
       padding: 60px 50px;
@@ -123,7 +134,7 @@
       background-color: #fff;
       z-index: 9999;
       border: 0;
-      font-size: 12px !important;
+      font-size: 14px !important;
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
@@ -133,17 +144,24 @@
       color: #000066 !important;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-      color: #000066 !important;
-      background-color: #fff !important;
+      color: #fff !important;
+      background-color: #333399 !important;
+	  min-height: 70px;
+      max-height: 100px;
   }
   .navbar-default .navbar-toggle {
       border-color: transparent;
       color: #000066 !important;
   }
+  .navbar-brand {
+	  min-height: 70px;
+      max-height: 100px;
+	  width: 200px;
+  }
   footer .glyphicon {
       font-size: 20px;
       margin-bottom: 20px;
-      color: #f4511e;
+      color: #333399;
   }
   .slideanim {visibility:hidden;}
   .slide {
@@ -200,11 +218,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <img src="logo2fix.png" alt="Logo" width="100" height="50" class="navbar-brand" href="#home">
+      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About Us</a></li>
+        <li><a href="./about">About Us</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
@@ -246,7 +264,7 @@
   <br>
   <form>
 	<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-	<a href="#akunofficial">Belum punya akun official?</a>
+	<a href="#akunofficial">Don't have official account?</a>
   </form>
 </div>
 
@@ -334,26 +352,26 @@
   <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="paris.jpg" alt="CDC" width="400" height="300">
+        <img src="1.png" alt="CDC" width="400" height="300">
         <p><strong>CDC</strong></p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="newyork.jpg" alt="ABC" width="400" height="300">
+        <img src="2.png" alt="ABC" width="400" height="300">
         <p><strong>ABC</strong></p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src="sanfran.jpg" alt="DEF" width="400" height="300">
+        <img src="3.png" alt="DEF" width="400" height="300">
         <p><strong>DEF</strong></p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Container (menu Section) -->
+<!-- Container (menu Section) 
 <div id="menu" class="container-fluid text-center bg-grey">
   <a href="#home">Home</a><br>
   <a href="#">How It Works</a></br>
@@ -361,12 +379,76 @@
   <a href="#">FAQ</a><br>
   <a href="#">Help</a><br>
 </div>
+-->
+
+<div id="menu" class="container-fluid text-center bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <h3> UILancer </h3>
+                <ul>
+                    <li> <a href="#"> Home </a> </li>
+                    <li> <a href="#"> How It Works </a> </li>
+                    <li> <a href="#"> Search Job </a> </li>
+                    <li> <a href="#"> Search Workers </a> </li>
+                </ul>
+            </div>
+            <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <h3> About </h3>
+                <ul>
+                    <li> <a href="#"> About Us </a> </li>
+                    <li> <a href="#"> Testimoni </a> </li>
+                    <li> <a href="#"> Partner </a> </li>
+                    <li> <a href="#"> Info Akun Official </a> </li>
+                </ul>
+            </div>
+				<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <h3> Get In Touch </h3>
+                <ul>
+                    <li> <a href="#"> Join Partner </a> </li>
+                    <li> <a href="#"> Contact Us </a> </li>
+                    <li> <a href="#"> Help </a> </li>
+                    <li> <a href="#"> FAQ </a> </li>
+                </ul>
+            </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                <h3> Lorem Ipsum </h3>
+                <ul>
+                    <li> <a href="#"> Lorem Ipsum </a> </li>
+                    <li> <a href="#"> Lorem Ipsum </a> </li>
+                    <li> <a href="#"> Lorem Ipsum </a> </li>
+                    <li> <a href="#"> Lorem Ipsum </a> </li>
+                </ul>
+            </div>
+			<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                <h3> Lorem Ipsum </h3>
+                <ul>
+                    <li>
+                        <div class="input-append newsletter-box text-center">
+                            <input type="text" class="full text-center" placeholder="Email ">
+                            <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="social">
+                    <li> <a href="#"> facebook <i class=" fa fa-facebook">   </i> </a> </li>
+                    <li> <a href="#"> twitter <i class="fa fa-twitter">   </i> </a> </li>
+                    <li> <a href="#"> gplus <i class="fa fa-google-plus">   </i> </a> </li>
+                    <li> <a href="#"> pinterest<i class="fa fa-pinterest">   </i> </a> </li>
+                    <li> <a href="#"> youtube<i class="fa fa-youtube">   </i> </a> </li>
+                </ul>
+            </div>
+        </div>
+        <!--/.row--> 
+    </div>
+	<!--/.container--> 
+</div>
 
 <footer class="container-fluid text-center">
   <a href="#home" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br>
-  <img src="logo.jpg" alt="UILancer" width="100" height="50">
+  <img src="logo2.png" alt="UILancer" width="200" height="50">
   <p>UILancer is marketplace for service blablabla</p>
   <a href="#">(+62) 813-681-999</a></br>
   <a href="#">ask@uilancer.com</a><br>
