@@ -242,7 +242,7 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-			<button type="button" class="btn btn-danger">UI</button>
+			<a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
 			<button type="button" class="btn btn-danger">Non UI</button><br>
         </div>
         <div class="modal-footer">
