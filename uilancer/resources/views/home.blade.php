@@ -46,8 +46,13 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
+<<<<<<< HEAD
           <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
           <button type="button" class="btn btn-danger">Non UI</button><br>
+=======
+			<a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
+			<a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+>>>>>>> origin/home-blade
         </div>
         <!--
         <div class="modal-footer">
