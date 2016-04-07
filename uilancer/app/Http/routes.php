@@ -23,6 +23,7 @@ Route::get('/', function ()
 
 Route::get('sso-login','Controller@login');
 Route::get('logout','Controller@logout');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
