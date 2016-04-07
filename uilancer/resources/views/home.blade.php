@@ -243,7 +243,7 @@
         </div>
         <div class="modal-body">
 			<a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-			<button type="button" class="btn btn-danger">Non UI</button><br>
+			<a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
