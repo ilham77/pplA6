@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -46,25 +46,16 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-<<<<<<< HEAD
           <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <button type="button" class="btn btn-danger">Non UI</button><br>
-=======
-			<a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-			<a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
->>>>>>> origin/home-blade
+          <div class="divider"></div>
+          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
-        <!--
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-        -->
       </div>
       
     </div>
 </div>
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
   <h1>Find Freelancer</h1> 
   <p>What kind of service are you looking for ?</p> 
   <form class="form-inline">
@@ -75,7 +66,7 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="#akunofficial">Don't have official account?</a>
+  <a href="./akunofficial">Don't have official account?</a>
   </form>
 </div>
 
@@ -88,35 +79,35 @@
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-off logo-small"></span>
       <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Kami memberikan layanan yang terbaik</p>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart logo-small"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <span class="glyphicon glyphicon-refresh logo-small"></span>
+      <h4>UPDATE</h4>
+      <p>Informasi lowongan yang kami berikan selalu diperbarui</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-lock logo-small"></span>
       <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Semua pekerjaan yang diberikan dikerjakan dengan tuntas</p>
     </div>
   </div>
   <br><br>
   <div class="row slideanim">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf logo-small"></span>
-      <h4>GREEN</h4>
+      <span class="glyphicon glyphicon-check logo-small"></span>
+      <h4>CHECK</h4>
       <p>Lorem ipsum dolor sit amet..</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-certificate logo-small"></span>
       <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Terpercaya dan aman dengan informasi yang kami berikan</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Dikerjakan oleh tim dengan kerja keras</p>
     </div>
   </div>
 </div>
@@ -164,19 +155,19 @@
     <div class="col-sm-4">
       <div class="thumbnail">
         <img src="1.png" alt="CDC" width="400" height="300">
-        <p><strong>CDC</strong></p>
+        <p><strong>Partner</strong></p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
         <img src="2.png" alt="ABC" width="400" height="300">
-        <p><strong>ABC</strong></p>
+        <p><strong>Partner</strong></p>
       </div>
     </div>
     <div class="col-sm-4">
       <div class="thumbnail">
         <img src="3.png" alt="DEF" width="400" height="300">
-        <p><strong>DEF</strong></p>
+        <p><strong>Partner</strong></p>
       </div>
     </div>
   </div>
@@ -187,13 +178,11 @@
 <div class="row">
     <div class="col-sm-8">
       <h2>About Us</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>UILancer is marketplace for service blablabla</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
+      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
+      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
+      <span class="glyphicon glyphicon-level-up logo"></span>
     </div>
   </div>
 </div>
@@ -203,11 +192,10 @@
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
-       
       <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>    
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">

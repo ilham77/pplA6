@@ -18,10 +18,12 @@ h4 {
     margin-bottom: 30px;
 }  
 .jumbotron {
-    background-color: #333399;
+    background-image: url('bgr1.jpg');
     color: #fff;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
+    min-height: 650px;
+    margin-top: 60px;
 }
 .jumbotron a{
    color: #fff
@@ -33,11 +35,11 @@ h4 {
     background-color: #f6f6f6;
 }
 .logo-small {
-    color: #f4511e;
+    color: #d43f3a;
     font-size: 50px;
 }
 .logo {
-    color: #f4511e;
+    color: #d43f3a;
     font-size: 200px;
 }
 .thumbnail {
@@ -52,13 +54,13 @@ h4 {
 }
 .carousel-control.right, .carousel-control.left {
     background-image: none;
-    color: #f4511e;
+    color: #d43f3a;
 }
 .carousel-indicators li {
-    border-color: #f4511e;
+    border-color: #d43f3a;
 }
 .carousel-indicators li.active {
-    background-color: #f4511e;
+    background-color: #d43f3a;
 }
 .item h4 {
     font-size: 19px;
@@ -113,11 +115,15 @@ h4 {
     background-color: #fff;
     z-index: 9999;
     border: 0;
-    font-size: 14px !important;
-    line-height: 1.42857143 !important;
+    font-size: 16px !important;
+    line-height: 0.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
-    font-family: Roboto, sans-serif;
+    font-family: Oswald, sans-serif;
+}
+.navbar ul li a {
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 .navbar li a, .navbar .navbar-brand {
     color: #000066 !important;
@@ -125,8 +131,6 @@ h4 {
 .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #fff !important;
     background-color: #333399 !important;
-    min-height: 70px;
-    max-height: 100px;
 }
 .navbar-default .navbar-toggle {
     border-color: transparent;
@@ -137,11 +141,20 @@ h4 {
     max-height: 100px;
     width: 200px;
 }
+.divider{
+    width:20px;
+    height:auto;
+    display:inline-block;
+}
 #myModal {
     top: 15%;
 }
 .modal-title {
     text-align: center;
+}
+.modal-body{
+    text-align: center;
+    line-height: 3px;
 }
 .modal-dialog{
     height: 30%;
