@@ -73,7 +73,7 @@ h4 {
     font-style: normal;
 }
 .panel {
-    border: 1px solid #f4511e; 
+    border: 1px solid #00004d; 
     border-radius:0 !important;
     transition: box-shadow 0.5s;
 }
@@ -81,13 +81,13 @@ h4 {
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
 }
 .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
+    border: 1px solid #00004d;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #00004d;
 }
 .panel-heading {
     color: #fff !important;
-    background-color: #f4511e !important;
+    background-color: #000066 !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -107,7 +107,7 @@ h4 {
 }
 .panel-footer .btn {
     margin: 15px 0;
-    background-color: #f4511e;
+    background-color: #00004d;
     color: #fff;
 }
 .navbar {
@@ -175,10 +175,10 @@ footer .glyphicon {
 .slideanim {visibility:hidden;}
 .slide {
     animation-name: slide;
-    -webkit-animation-name: slide;	
-    animation-duration: 1s;	
+    -webkit-animation-name: slide;  
+    animation-duration: 1s; 
     -webkit-animation-duration: 1s;
-    visibility: visible;			
+    visibility: visible;      
 }
 @keyframes slide {
     0% {
@@ -188,7 +188,7 @@ footer .glyphicon {
     100% {
       opacity: 1;
       -webkit-transform: translateY(0%);
-    }	
+    } 
 }
 @-webkit-keyframes slide {
     0% {
