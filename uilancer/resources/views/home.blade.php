@@ -66,7 +66,7 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="./akunofficial">Don't have official account?</a>
+  <a href="infoAccount">Don't have official account?</a>
   </form>
 </div>
 
