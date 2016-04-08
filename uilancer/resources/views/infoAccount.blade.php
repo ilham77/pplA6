@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>UILancer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -23,11 +22,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
+    <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">About Us</a></li>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
@@ -47,11 +46,9 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-			<button type="button" class="btn btn-danger">UI</button>
-			<button type="button" class="btn btn-danger">Non UI</button><br>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
+          <div class="divider"></div>
+          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
       
@@ -59,11 +56,9 @@
 </div>
 
 <div class="jumbotron text-center">
-  <h1>UILancer</h1> 
-  <p>taglinetagline</p> <!-- insert tagline here! -->
+  <h1>UILancer Official Account</h1> 
 </div>
 
-<!-- Container (Why UILancer Section) -->
 <div id="services" class="container-fluid">
   <div class="row">
     <div class="col-sm-6">
@@ -108,25 +103,48 @@
   </div> 
 </div>
 
-<!-- Container (menu Section) -->
-<div id="menu" class="container-fluid text-center bg-grey">
-  <a href="#home">Home</a><br>
-  <a href="#">How It Works</a></br>
-  <a href="#">Browse</a></br>
-  <a href="#">FAQ</a><br>
-  <a href="#">Help</a><br>
+<!-- Container (About Us Section) -->
+<div id="about" class="container-fluid bg-grey">
+<div class="row">
+    <div class="col-sm-8">
+      <h2>About Us</h2><br>
+      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
+      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-level-up logo"></span>
+    </div>
+  </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <a href="#home" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br>
-  <img src="logo2.png" alt="UILancer" width="200" height="50">
-  <p>UILancer is marketplace for service blablabla</p>
-  <a href="#">(+62) 813-681-999</a></br>
-  <a href="#">ask@uilancer.com</a><br>
-  <p>Made By <a href="" title="UILancer">PPL A6</a></p>		
-</footer>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+    </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
 
 <script>
 $(document).ready(function(){
