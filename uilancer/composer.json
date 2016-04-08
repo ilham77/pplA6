@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "ristek/sso": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -39,14 +40,13 @@
             "php artisan clear-compiled",
             "php artisan optimize"
         ],
-        "pre-update-cmd": [
-            "php artisan clear-compiled"
-        ],
         "post-update-cmd": [
+            "php artisan clear-compiled",
             "php artisan optimize"
         ]
     },
     "config": {
         "preferred-install": "dist"
     }
+
 }
