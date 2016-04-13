@@ -117,9 +117,9 @@ h4 {
     border: 0;
     font-size: 16px !important;
     line-height: 0.42857143 !important;
-    letter-spacing: 4px;
+    letter-spacing: 1px;
     border-radius: 0;
-    font-family: Oswald, sans-serif;
+    font-family: Lato, sans-serif;
 }
 .navbar ul li a {
     margin-top: 10px;
