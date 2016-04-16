@@ -22,13 +22,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-    <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+      <a href="./"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#testimoni">Testimoni</a></li>
-        <li><a href="#partner">Partner</a></li>
+        <li><a href="./">About Us</a></li>
+        <li><a href="./">Testimoni</a></li>
+        <li><a href="./">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
       </ul>
     </div>
@@ -145,6 +145,11 @@
     </div>
   </div>
 </div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <p>Copyright &copy; 2016. UILancer</p>
+</footer>
 
 <script>
 $(document).ready(function(){
