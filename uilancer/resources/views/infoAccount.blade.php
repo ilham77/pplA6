@@ -4,14 +4,14 @@
   <title>UILancer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -22,15 +22,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-    <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+      <a href="./"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-      <!---->
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#testimoni">Testimoni</a></li>
-        <li><a href="#partner">Partner</a></li>
-      
+        <li><a href="./">About Us</a></li>
+        <li><a href="./">Testimoni</a></li>
+        <li><a href="./">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
       </ul>
     </div>
@@ -57,122 +55,52 @@
     </div>
 </div>
 
-<div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
-  <h1>Find Freelancer</h1> 
-  <p>What kind of service are you looking for ?</p> 
-  <form class="form-inline">
-    <input type="text" class="form-control" size="50" placeholder="Example: website, etc " required>
-    <button type="button" class="btn btn-danger">Search</button><br>
-  </form>
-  <br>
-  <br>
-  <form>
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="infoAccount">Don't have official account?</a>
-  </form>
+<div class="jumbotron text-center">
+  <h1>UILancer Official Account</h1> 
 </div>
 
-<!-- Container (Why UILancer Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>Why UILancer?</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Kami memberikan layanan yang terbaik</p>
+<div id="services" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Apa itu Official Account?</h3>
+          <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
+        </div>
+        <div class="panel-body">
+          <p>Akun resmi UILancer</p>
+          <p>Email resmi @uilancer.com</p>
+          <p>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</p>
+          <p>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</p>
+          <p>Job Manager untuk mengelola pelamar pekerjaan</p>
+          <p>Melihat profil pelamar</p>
+          <p>Halaman Profil dan Dashboard untuk Anda</p>
+          <p>Testimoni dan rating freelancer</p>
+          <p>Testimoni dapat ditampilkan di halaman depan UILancer</p>
+        </div>
+        <div class="panel-footer">
+          <p>Untuk mendapatkan Official Account, Anda dapat kontak kami dengan email ke:</p>
+          <a href="#">info@uilancer.com</a>
+        </div>
+      </div> 
+    </div> 
+    <div class="col-sm-6">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Saya hanya ingin mencari freelancer...</h3>
+          <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer tanpa Official Account, tetapi Anda tidak akan mendapati semua keuntung yang didapati Official Account.</p>
+        </div>
+        <div class="panel-body">
+          <p>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</p>
+          <p>Melihat profil pelamar</p>
+          <p>Testimoni dan rating freelancer</p>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-lg">Post Lowongan Pekerjaan Anda!</button>
+        </div>
+      </div> 
     </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-refresh logo-small"></span>
-      <h4>UPDATE</h4>
-      <p>Informasi lowongan yang kami berikan selalu diperbarui</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Semua pekerjaan yang diberikan dikerjakan dengan tuntas</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-check logo-small"></span>
-      <h4>CHECK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Terpercaya dan aman dengan informasi yang kami berikan</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Dikerjakan oleh tim dengan kerja keras</p>
-    </div>
-  </div>
-</div>
-
-<!-- Container (Testimoni Section) -->
-<div id="testimoni" class="container-fluid text-center bg-grey">
-  <h2>What our customers say</h2>
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Michael Roe, Vice President, Comment Box</span></h4>
-      </div>
-      <div class="item">
-        <h4>"One word... WOW!!"<br><span style="font-style:normal;">John Doe, Salesman, Rep Inc</span></h4>
-      </div>
-      <div class="item">
-        <h4>"Could I... BE any more happy with this website?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div><br>
-</div>
-
-<!-- Container (Partner Section) -->
-<div id="partner" class="container-fluid text-center">  
-  <h2>Partner</h2><br>
-  <div class="row text-center slideanim">
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="1.png" alt="CDC" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="2.png" alt="ABC" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="3.png" alt="DEF" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-  </div>
+  </div> 
 </div>
 
 <!-- Container (About Us Section) -->

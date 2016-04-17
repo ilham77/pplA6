@@ -21,8 +21,17 @@ Route::get('/', function ()
 	return View::make('home');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('sso-login','Controller@login');
 Route::get('logout','Controller@logout');
+
+Route::get('/infoAccount', function () {
+    return view('infoAccount');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
