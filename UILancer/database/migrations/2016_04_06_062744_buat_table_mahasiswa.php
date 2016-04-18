@@ -13,14 +13,13 @@ class BuatTableMahasiswa extends Migration
     public function up()
     {
         Schema::create('mahasiswa', function(Blueprint $table){
-           $table->primary('npm');
+           $table->increments('id');
            $table->string('npm');
            $table->string('username');
            $table->string('name');
            $table->string('org_code');
            $table->string('faculty');
            $table->string('educational_program');
-            
         });
     }
 
@@ -34,3 +33,5 @@ class BuatTableMahasiswa extends Migration
         Schema::drop('mahasiwa');
     }
 }
+
+//migrate gabungin sama alvan

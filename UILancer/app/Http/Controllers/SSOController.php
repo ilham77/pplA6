@@ -30,24 +30,21 @@ class Controller extends BaseController
              SSO::Authenticate();
              $user=SSO::getUser();
              if((!DB::table('mahasiswa')->where('npm','=',$user->npm)->get())){ 
-               $newUser = new User();
-               User::insert($user->name,$user->$email,$user->password,$user->npm,$user->username,$user->org_code, $user->role);
+
+               $newUser = User::insert($user->name,$user->$email,$user->password,$user->npm,$user->username,$user->org_code, $user->role);
+                Auth::login($newUser->id);
                 return view('home')->with('npm', $user->npm);
+             } else {
+               $user = User::get($user->npm);
+               Auth::login($user->id);
+               return view('home')->with('npm', $npm);
              }
-         } else
-           DB::table('mahasiswa')->where('npm','=',$user->npm)->update([
-                    ['isLogged' => true]
-                ]);
-         
-         //Auth::login(4);
-          return view('home')->with('npm', $npm);
+         }
      }
     
     public function logout(){
-         DB::table('mahasiswa')->where('npm','=',$user->npm)->update([
-                    ['isLogged' => false]
-                ]);
-        return redirect ('/');
+        Auth::logout();
+        return redirect('/');
     }
 }
 

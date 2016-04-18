@@ -1,3 +1,10 @@
+<?php
+$isLogged=false;
+if(Auth::check()){
+$isLogged=true;
+}
+$isLogged=false;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +38,12 @@
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
       
-        <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+        <li data-toggle="modal" data-target="#myModal"><a href="#">               @if($isLogged)
+            <p>Welcome, {{$name}}</p>
+            @else
+            <p>Login</p>
+            @endif
+            </a></li></a></li>
       </ul>
     </div>
   </div>
@@ -57,123 +69,50 @@
     </div>
 </div>
 
-<div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
-  <h1>Find Freelancer</h1> 
-  <p>What kind of service are you looking for ?</p> 
-  <form class="form-inline">
-    <input type="text" class="form-control" size="50" placeholder="Example: website, etc " required>
-    <button type="button" class="btn btn-danger">Search</button><br>
-  </form>
-  <br>
-  <br>
-  <form>
-  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="infoAccount">Don't have official account?</a>
-  </form>
-</div>
-
-<!-- Container (Why UILancer Section) -->
-<div id="services" class="container-fluid text-center">
-  <h2>Why UILancer?</h2>
-  <h4>What we offer</h4>
-  <br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
-      <p>Kami memberikan layanan yang terbaik</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-refresh logo-small"></span>
-      <h4>UPDATE</h4>
-      <p>Informasi lowongan yang kami berikan selalu diperbarui</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Semua pekerjaan yang diberikan dikerjakan dengan tuntas</p>
-    </div>
-  </div>
-  <br><br>
-  <div class="row slideanim">
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-check logo-small"></span>
-      <h4>CHECK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate logo-small"></span>
-      <h4>CERTIFIED</h4>
-      <p>Terpercaya dan aman dengan informasi yang kami berikan</p>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Dikerjakan oleh tim dengan kerja keras</p>
-    </div>
-  </div>
-</div>
-
-<!-- Container (Testimoni Section) -->
-<div id="testimoni" class="container-fluid text-center bg-grey">
-  <h2>What our customers say</h2>
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Michael Roe, Vice President, Comment Box</span></h4>
-      </div>
-      <div class="item">
-        <h4>"One word... WOW!!"<br><span style="font-style:normal;">John Doe, Salesman, Rep Inc</span></h4>
-      </div>
-      <div class="item">
-        <h4>"Could I... BE any more happy with this website?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
-      </div>
+<!-- DETAIL PEKERJAAN -->
+    
+    <div class="container-fluid text-center bg-white">
+        <br/>
+        <h1><p id="judul_pekerjaan">Membuat Website HTML5</p></h1>
+        <p><span>oleh <a href=#>chan.ek</a></span>
+            <span>Dibuat tanggal: 25 Maret 2016 17:09:09</span> 
+            <span>Jumlah Pelamar: 25</span>
+            <span>Status: Mencari</span></p>
+        <hr/>
+        <div id="deskripsi" class="container text-left bg-grey">
+            <h1>Deskripsi:</h1>
+            <p>
+            Membuat website statis company profile PT. MAJUMUNDUR Tbk<br/>
+                
+            Fitur yang harus dibuat:<br/>
+                
+                    <li>mengepost artikel</li>
+                    <li>login/logout</li>
+                    <li>comment section</li>
+                    <br/>
+            Nilai plus untuk implementasi jQuery
+            </p>
+        </div>
+         <div id="skill tag" class="container text-left bg-grey" >
+             <span>Skill yang dibutuhkan:</span>
+             <span class="mb-5 mr-5 label label-default label-flat">PHP</span>
+             <span class="mb-5 mr-5 label label-default label-flat">HTML5</span>
+        </div>
+        <div id="durasi-kerja" class="container text-left bg-grey" >
+             <span>Durasi:</span>
+            <span>7 - 14 Minggu</span>
+        </div>
+        <div id="range-honor" class="container  text-left bg-grey" >
+             <span>Range honor:</span>
+            <span>Rp 2.000.000 - Rp 3.000.000</span>
+        </div>
+        <div class="container text-right bg-grey">
+        <p>
+            <a class="btn btn-lg btn-success mt-20 font2" href="#">APPLY</a>
+        </p>
+        </div>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div><br>
-</div>
-
-<!-- Container (Partner Section) -->
-<div id="partner" class="container-fluid text-center">  
-  <h2>Partner</h2><br>
-  <div class="row text-center slideanim">
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="1.png" alt="CDC" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="2.png" alt="ABC" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="thumbnail">
-        <img src="3.png" alt="DEF" width="400" height="300">
-        <p><strong>Partner</strong></p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Container (About Us Section) -->
 <div id="about" class="container-fluid bg-grey">
