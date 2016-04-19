@@ -20,6 +20,10 @@ Route::get('/', function ()
 {
 	return View::make('home');
 });
+Route::get('/edit', function () 
+{
+	return View::make('edit');
+});
 
 Route::get('/login', function () {
     return view('login');

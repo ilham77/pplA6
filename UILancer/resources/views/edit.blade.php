@@ -1,7 +1,3 @@
-<?php
-$isLogged=false;
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,11 +226,9 @@ $isLogged=false;
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">
-            @if($isLogged)
-            <p>Welcome, {{$name}}</p>
-            @else
+           
             <p>Login</p>
-            @endif
+          
             </a></li>
       </ul>
     </div>
@@ -252,12 +246,8 @@ $isLogged=false;
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-        @if($isLogged)
-        <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
-        @else
 		<a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
         <button type="button" class="btn btn-danger">Non UI</button>
-        @endif
         <br>
         </div>
         <div class="modal-footer">
@@ -270,8 +260,22 @@ $isLogged=false;
 
 <!-- EDIT PROFILE -->
     
-    <div class="container row">
-        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col">
+    <div id="container" class="container bg-grey">
+        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
+            <p>
+            <h1>Edit Profile</h1>
+            <form>
+            Nama    : <input type="text" class="form-control" name="name">
+            Email   : <input type="email" class="form-control" name="email"> 
+            Deskripsi   : <input type="text" class="form-control" name="name">
+            Email   : <input type="email" class="form-control" name="email"> 
+            Nama    : <input type="text" class="form-control" name="name">
+            Email   : <input type="email" class="form-control" name="email"> 
+            
+            </form>
+            </p>
+        
+        </div>
     </div>
 
 <div id="menu" class="container-fluid text-center bg-grey">
