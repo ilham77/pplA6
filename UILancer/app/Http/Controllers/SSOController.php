@@ -14,9 +14,10 @@ class SSOController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
  
      public function login(){
-         SSO::Authenticate();
-         $user=SSO::getUser();
+          SSO::Authenticate();
+        $user=SSO::getUser();
          if(SSO::check()){
+            
              if((!DB::table('users')->where('npm','=',$user->npm)->get())){ 
                $newUser = User::insert($user->name,"",$user->npm,$user->org_code,$user->username, $user->faculty, $user->role);
                 \Auth::loginUsingId($newUser->id);
@@ -26,7 +27,9 @@ class SSOController extends BaseController
                \Auth::loginUsingId($user->id);
                return view('home')->with('npm', $user->npm);
              }
-         SSO::logout();
+         } else {
+            //SSO::logout();
+           //  return view('home')->with('npm', $user->npm);
          }
      }
     
