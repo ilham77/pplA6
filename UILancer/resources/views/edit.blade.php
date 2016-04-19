@@ -260,7 +260,7 @@
 
 <!-- EDIT PROFILE -->
     
-    <div id="container" class="container bg-grey">
+    <div id="container" class="container-fluid bg-grey">
         <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
             <p>
             <h1>Edit Profile</h1>
