@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateSkillTagTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('skillTag', function (Blueprint $table) {
+            $table->increments('id',true);
+            $table->integer('pekerjaan_id')->unsigned();
+            $table->string('skill');
+            $table->timestamps();
+        });
+
+        Schema::table('skillTag',function($table){
+            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('skillTag');
+    }
+}
