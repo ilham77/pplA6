@@ -32,6 +32,10 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
+Route::get('/bukapekerjaan', function () {
+	return view('postlowongan');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
