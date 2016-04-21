@@ -53,7 +53,7 @@
           <h4 class="modal-title">Logout</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('logout')}}"  class="btn btn-danger">Logout</a>
+          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
         </div>
       </div>
             @else
