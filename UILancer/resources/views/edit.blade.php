@@ -1,3 +1,4 @@
+<?php $avatar="";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,19 +262,45 @@
 <!-- EDIT PROFILE -->
     
     <div id="container" class="container-fluid bg-grey">
-        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
+        <div id="content" class="container col-md-4 col-xs-2 col-lg-4 col text-left">
             <p>
             <h1>Edit Profile</h1>
-            <form>
-            Nama    : <input type="text" class="form-control" name="name">
-            Email   : <input type="email" class="form-control" name="email"> 
-            Deskripsi   : <input type="text" class="form-control" name="name">
-            Email   : <input type="email" class="form-control" name="email"> 
-            Nama    : <input type="text" class="form-control" name="name">
-            Email   : <input type="email" class="form-control" name="email"> 
+            {{csrf_field()}}
+            {!! Form::open(array('url' => '/edit', 'class'=>'form-horizontal','files'=>true)) !!}
             
-            </form>
-            </p>
+            <div class="col-md-offset-1 col-md-1 text-left">
+			@if($avatar=="")
+            <img src="http://placehold.it/200x200" alt="">
+			@else
+			<img src="{{URL::to('/engine/userimage').'/'.$avatar}}" width="200px" height="200px" alt="">	
+			@endif
+            </div>
+            <br/>
+          {!! Form::file('image') !!}<span>Max. 10 MB</span> 
+            
+            <br/>
+            <span>
+                <label for="nama" class="control-label">Nama</label>            </span>
+                <input id="nama" type="text" class="form-control" required>
+            <span>
+                <label for="email" class="control-label">Email</label></span>
+                <input id="email" type="email" class="form-control" required autocomplete placeholder="example@mail.com">
+             <label for="password1" class="control-label">  Password Baru</label></span>
+                <input id="password1" type="password" class="form-control">
+            <span>
+                <label for="password2" class="control-label">Konfirmasi Password</label></span>
+                <input id="password2" type="password" class="form-control">
+            <span>
+                 <span>
+                <label id="deskripsi" class="control-label">Deskripsi</label>            
+            </span>
+            <textarea for="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control" required placeholder="Deskripsikan diri anda..."></textarea>
+             <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label> 
+            {!! Form::file('image') !!}
+            <br/>
+            {!! Form::submit('Simpan', array('class'=>'btn btn-success')) !!}
+            {!! Form::close()!!}
+                <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
         
         </div>
     </div>
