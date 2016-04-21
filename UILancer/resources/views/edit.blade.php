@@ -13,12 +13,22 @@
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>-->
   <!-- -->
+    
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script>
+    $(function() {
+        $( "#skills" ).autocomplete({
+            source: 'search.php'
+        });
+    });
+    </script>
   <style>
   body {
       font: 400 15px Lato, sans-serif;
@@ -297,28 +307,67 @@
           {!! Form::file('image') !!}<span>Max. 10 MB</span> 
             <br/>
             <span>
-                <label for="nama" class="control-label">Nama</label>            </span>
-                <input id="nama" type="text" class="form-control" required>
-            <span>
-                <label for="email" class="control-label">Email</label></span>
-                <input id="email" type="email" class="form-control" required autocomplete placeholder="example@mail.com">
-             <label for="password1" class="control-label">  Password Baru</label></span>
-                <input id="password1" type="password" class="form-control">
-            <span>
-                <label for="password2" class="control-label">Konfirmasi Password</label></span>
-                <input id="password2" type="password" class="form-control">
-            <span>
-                 <span>
-                <label id="deskripsi" class="control-label">Deskripsi</label>            
+                <label for="nama" class="control-label">Nama</label>
             </span>
+                <input id="nama" type="text" class="form-control" required>
+            
+            <span>
+                <label for="email" class="control-label">Email</label>
+            </span>
+                <input id="email" type="email" class="form-control" required placeholder="example@mail.com">  
+           
+            <span>
+            <label for="tempat" class="control-label">Tempat Kelahiran</label>
+            </span>
+            <input id="tempat" type="text" class="form-control" required autocomplete>
+            
+            <span>
+            <label for="tanggal" class="control-label">Tanggal Lahir</label>
+            </span>
+            <input id="tempat" type="date" class="form-control" required autocomplete>
+            
+            <span>
+            <label for="linkedin" class="control-label">Linkedin</label>
+            </span>
+            <input id="linkedin" type="text" class="form-control" autocomplete placeholder="http://linkedin.com/12345-example">
+            
+            <span>
+            <label for="web" class="control-label">Website pribadi</label>
+            </span>
+            <input id="web" type="text" class="form-control" autocomplete placeholder="http://www.example.com">
+            <span>
+            <label for="pekerjaan" class="control-label">Pekerjaan</label>
+            </span>
+            <input id="pekerjaan" type="text" class="form-control"  required>
+            
+            <span>
+            <label for="skills" class="control-label">Skills: </label>
+            <input id="skills" type="text" class="form-control" required placeholder="contoh: PHP, HTML5, dll. (max. 25)">
+            </span>
+            
+            <span>
+            <label for="password1" class="control-label">  Password Baru</label>
+            </span>
+            <input id="password1" type="password" class="form-control">
+            
+            <span>
+            <label for="password2" class="control-label">Konfirmasi Password</label>
+            </span>
+            <input id="password2" type="password" class="form-control">
+            
+            <span>
+            <label id="deskripsi" class="control-label">Deskripsi</label>            
+            </span>
+                
             <textarea for="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control" required placeholder="Deskripsikan diri anda..."></textarea>
              <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label> 
             {!! Form::file('image') !!}
             <br/>
             {!! Form::submit('Simpan', array('class'=>'btn btn-success')) !!}
-            {!! Form::close()!!}
-                <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
+            <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
         
+            {!! Form::close()!!}
+                
         </div>
     </div>
     </div>
