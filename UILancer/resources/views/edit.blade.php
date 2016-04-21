@@ -260,15 +260,33 @@
 </div>
 
 <!-- EDIT PROFILE -->
-    
-    <div id="container" class="container-fluid bg-grey">
-        <div id="content" class="container col-md-4 col-xs-2 col-lg-4 col text-left">
+    <div id="body" class="container-fluid">
+    <div id="sidebar" class="container-fluid col-md-3 col-xs-1 col-lg-3">
+        <DL>
+        <DT>Menu
+            <DD><a href="#">Daftar Pekerjaan</a><br></DD>
+            <DD><a href="#">Cari Pekerjaan</a><br></DD>
+            <DD><a href="#">Buka Pekerjaan</a><br></DD>
+            <DD><a href="#">On Going Job</a><br></DD>
+        </DT><br>
+        <DT>Riwayat
+                <DD><a href="#">Pembukaan Job</a></DD>
+                <DD><a href="#">Apply Job</a></DD>
+        </DT>
+        <hr  style="height:1px;border:none;color:#333;background-color:#333;"/>
+       
+        <a href="#">Setting</a><br>
+        <a href="#">FAQ & Help</a><br>
+        </DT>
+    </div>
+    <div id="container" class="col-md-9 col-xs-4 col-lg-9 container-fluid bg-grey">
+        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
             <p>
             <h1>Edit Profile</h1>
             {{csrf_field()}}
             {!! Form::open(array('url' => '/edit', 'class'=>'form-horizontal','files'=>true)) !!}
             
-            <div class="col-md-offset-1 col-md-1 text-left">
+            <div>
 			@if($avatar=="")
             <img src="http://placehold.it/200x200" alt="">
 			@else
@@ -277,7 +295,6 @@
             </div>
             <br/>
           {!! Form::file('image') !!}<span>Max. 10 MB</span> 
-            
             <br/>
             <span>
                 <label for="nama" class="control-label">Nama</label>            </span>
@@ -304,7 +321,7 @@
         
         </div>
     </div>
-
+    </div>
 <div id="menu" class="container-fluid text-center bg-grey">
     <div class="container">
         <div class="row">
