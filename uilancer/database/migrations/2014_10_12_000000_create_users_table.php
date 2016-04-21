@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('faculty');
             $table->string('educational_program');
             $table->string('role');
+            $table->string('avatar');
+            $table->string('deskripsi');
+            $table->string('ketertarikan');
+            $table->string('linkedin');
+            $table->string('skill_tag');
             $table->rememberToken();
             $table->timestamps();
         });

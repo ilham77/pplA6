@@ -15,7 +15,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','npm','username','org_code','role',
+        'name', 'email', 'password','npm','username','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'skill_tag'
     ];
 
     /**
@@ -24,18 +24,18 @@ protected $table = 'users';
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'id',
+        'password', 'remember_token', 'id', 'avatar'
     ];
     
-    public static function insert($name, $email, $npm, $username, $org_code, $faculty, $role){
+    public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
      $user = new User();
      $user->name = $name;
-     $user->email = $email;
      $user->npm = $npm; 
      $user->username = $username;
      $user->org_code = $org_code;
      $user->faculty=$faculty;
      $user->role = $role;
+     $user->educational_program = $educational_program;
      $user->save();   
      return $user;
     }
