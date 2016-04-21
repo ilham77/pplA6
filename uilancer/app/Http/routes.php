@@ -25,6 +25,11 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
 Route::get('sso-login','Controller@login');
 Route::get('logout','Controller@logout');
 
