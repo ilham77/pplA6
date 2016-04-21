@@ -38,6 +38,7 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
+<<<<<<< search-insert-detail-pekerjaan
 //Routing yang berhubungan dengan pekerjaan
 Route::post('/addPekerjaan',['uses' => 'PekerjaanController@insertPekerjaan']);
 Route::get('/insertPekerjaan', function () {
@@ -53,6 +54,12 @@ Route::get('/listPekerjaan','PekerjaanController@index');
 Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 
 
+=======
+Route::get('/bukapekerjaan', function () {
+	return view('postlowongan');
+});
+
+>>>>>>> frontend/form buka lowongan
 /*
 |--------------------------------------------------------------------------
 | Application Routes
