@@ -15,7 +15,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','npm','username','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'skill_tag'
+        'name', 'email','npm','username', 'password','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar'
     ];
 
     /**
@@ -24,7 +24,7 @@ protected $table = 'users';
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'id', 'avatar'
+        'password', 'remember_token', 'id'
     ];
     
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
@@ -44,5 +44,11 @@ protected $table = 'users';
     public static function get($npm){
     $user = User::find($npm);
     return $user;
+    }
+    
+    public static function setPassword($password){
+     $password = Hash::make('secret');
+     $user->password = $password;
+     $user->save();   
     }
 }
