@@ -32,6 +32,10 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
