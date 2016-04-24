@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', ['as' => 'home', function () 
+Route::get('/', ['as' => 'home', function ()
 {
 	return View::make('home');
 }]);
@@ -38,7 +38,6 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
-<<<<<<< search-insert-detail-pekerjaan
 //Routing yang berhubungan dengan pekerjaan
 Route::post('/addPekerjaan',['uses' => 'PekerjaanController@insertPekerjaan']);
 Route::get('/insertPekerjaan', function () {
@@ -53,13 +52,6 @@ Route::get('/search-dashboard', function () {
 Route::get('/listPekerjaan','PekerjaanController@index');
 Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 
-
-=======
-Route::get('/bukapekerjaan', function () {
-	return view('postlowongan');
-});
-
->>>>>>> frontend/form buka lowongan
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -70,8 +62,13 @@ Route::get('/bukapekerjaan', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/*
+
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    Route::get('/bukalowongan', function () {
+		return view('postlowongan');
+	});
+	Route::post('addlowongan', 'PekerjaanController@insert');
+
 });
-*/
+

@@ -178,6 +178,12 @@ footer .glyphicon {
     margin-bottom: 20px;
     color: #333399;
 }
+
+#error {
+    background-color: #ffb3b3;
+    color: black;
+}
+
 .slideanim {visibility:hidden;}
 .slide {
     animation-name: slide;

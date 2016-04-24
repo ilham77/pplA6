@@ -92,8 +92,28 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'judul' => [
+            'required'  => 'Judul pekerjaan harus diisi!',
+            'alpha_num' => 'Judul pekerjaan hanya boleh terdiri atas huruf dan angka!',
+            'max'       => 'Judul pekerjaan tidak boleh lebih dari :max karakter!',
+        ],
+        'deskripsi' => [
+            'required'  => 'Deskripsi pekerjaan harus diisi!',
+        ],
+        'budget' => [
+            'required'  => 'Harap beri budget/honor untuk lowongan Anda!',
+            'numeric'   => 'Budget/honor hanya dapat diisi dalam angka (dalam Rp.)!'
+        ],
+        'estimasi' => [
+            'required'  => 'Harap beri estimasi ukuran pekerjaan dalam minggu!',
+        ],
+        'deadline' => [
+            'required'  => 'Beri tanggal deadline anda mencari freelancer untuk pekerjaan ini!',
+            'date'      => 'Deadline pencarian hanya dapat diisi dalam format mm/dd/yyyy!',
+            'after'     => 'Tanggal deadline hanya bisa diisi tanggal setelah hari ini!',
+        ],
+        'skill' => [
+            'required'  => 'Harap tulis skill-skill yang diperlukan untuk pekerjaan ini (harap tulis dalam 1 kata per skill)!',
         ],
     ],
 

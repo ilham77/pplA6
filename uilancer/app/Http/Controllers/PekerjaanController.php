@@ -27,17 +27,34 @@ class PekerjaanController extends Controller
 
     public function insertPekerjaan(Request $request)
     {
-        $pekerjaan = new pekerjaan;
-        $pekerjaan->judul_pekerjaan = $request->judul_pekerjaan;
-        $pekerjaan->deskripsi_pekerjaan = $request->deskripsi_pekerjaan;
-        $pekerjaan->isDone = 0;
-        $pekerjaan->isTaken = 0;
-        $pekerjaan->isVerified = $request->verifikasi;
-        $pekerjaan->isClosed = 0;
+        $this->validate($request, [
+
+                'judul_pekerjaan'       => 'required|alpha_num|max:255',
+                'deskripsi_pekerjaan'   => 'required',
+                'startHonor'            => 'required|numeric',
+                'endHonor'              => 'required|numeric',
+                'durasi'                => 'required|numeric',
+                'endDate'               => 'required|date|after:now',
+                'skill'                 => 'required',
+
+            ]);
+
+        $pekerjaan = new Pekerjaan;
+
+        $pekerjaan->judul_pekerjaan       = $request->judul_pekerjaan;
+        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsi_pekerjaan;
         $pekerjaan->startHonor = $request->startHonor;
         $pekerjaan->endHonor = $request->endHonor;
-        $pekerjaan->endDate = $request->endDate;
         $pekerjaan->durasi = $request->durasi;
+        $pekerjaan->endDate = $request->endDate;
+
+        /* Disini perlu ada validasi terhadap jenis user
+           Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
+        $pekerjaan->isVerified  = 1;
+
+        $pekerjaan->isDone      = 0;
+        $pekerjaan->isTaken     = 0;
+        $pekerjaan->isClosed    = 0;
 
         $pekerjaan->save();
 
@@ -49,9 +66,7 @@ class PekerjaanController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-
-
-        return redirect('/insertPekerjaan');
+        return back();
     }
 
     public function searchPekerjaan(Request $request)
