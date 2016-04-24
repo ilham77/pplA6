@@ -107,7 +107,8 @@
 	                <!-- Menu User -->
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<span class="glyphicon glyphicon-user">User</span>
+							<span class="glyphicon glyphicon-user"></span>
+							<span style="font-family: Lato, sans-serif;">User</span>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
@@ -126,6 +127,7 @@
 	<!-- Sidebar -->	
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<ul class="nav menu">
+			<p style="height: 8px;"></p>
 			<li class="active"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
