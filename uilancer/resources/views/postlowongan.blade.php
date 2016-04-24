@@ -91,7 +91,7 @@
           </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-defautl center-block btn-lg">Buka Lowongan!</button>
+        <button type="submit" class="btn btn-success center-block btn-lg">Buka Lowongan!</button>
       </form>
 
       @if (count($errors))
