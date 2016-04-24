@@ -60,39 +60,54 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <form action="addlowongan" method="POST" role="form">
+        {{ csrf_field() }}
         <div class="form-group">
           <label for="judul">Judul Pekerjaan</label>
-          <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..."></input>
+          <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
         </div>
         <div class="form-group">
           <label for="deskripsi">Deskripsi Pekerjaan</label>
-          <textarea class="form-control" name="deskripsi" placeholder="Deskripsi pekerjaan..."></textarea>
+          <textarea class="form-control" name="deskripsi" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
         </div>
         <div class="form-group">
           <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-          <input type="text" class="form-control" name="skilltag" placeholder="skill1;skill2;etc..."></input>
+          <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
         </div>
         <div class="form-inline">
           <div class="form-group">
             <label for="budget">Budget</label>
-            <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)"></input>
+            <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
           </div>
           <div class="form-group">
             <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-            <input type="number" class="form-control" name="estimasi" min="1"></input>
+            <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
           </div>
         </div>
         <br>
         <div class="form-inline">
           <div class="form-group">
             <label for="waktututup">Deadline pencarian:</label>
-            <input type="date" class="form-control" name="tanggaltutup"></input>
-            <input type="time" class="form-control" name="jamtutup"></input>
+            <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
           </div>
         </div>
         <br>
         <button type="submit" class="btn btn-defautl center-block btn-lg">Buka Lowongan!</button>
       </form>
+
+      @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+            
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+      @endif
+
     </div>
   </div> 
 </div>
@@ -116,6 +131,8 @@
 </footer>
 
 <script>
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("deadline")[0].setAttribute('min', today);
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#home']").on('click', function(event) {

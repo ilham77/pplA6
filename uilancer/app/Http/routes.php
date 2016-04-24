@@ -32,9 +32,6 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
-Route::get('/bukapekerjaan', function () {
-	return view('postlowongan');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +43,13 @@ Route::get('/bukapekerjaan', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/*
+
 Route::group(['middleware' => ['web']], function () {
-    //
+    
+    Route::get('/bukalowongan', function () {
+		return view('postlowongan');
+	});
+	Route::post('addlowongan', 'PekerjaanController@insert');
+
 });
-*/
+
