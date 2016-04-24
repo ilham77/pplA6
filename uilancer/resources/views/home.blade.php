@@ -60,7 +60,7 @@
 <div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
   <h1>Find Freelancer</h1> 
   <p>What kind of service are you looking for ?</p> 
-  <form action="/uilancer/public/searchPekerjaan" method="POST" class="form-inline">
+  <form action="/pplA6/uilancer/public/searchPekerjaan" method="POST" class="form-inline">
     {{ csrf_field() }}<input type="text" name="kunci" class="form-control" size="50" placeholder="Example: website, etc " required>
     <button type="submit" class="btn btn-danger">Search</button><br>
   </form>

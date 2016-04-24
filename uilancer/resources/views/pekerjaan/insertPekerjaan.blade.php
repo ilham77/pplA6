@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Form untuk menginput pekerjaan</h1>
-<form action="/uilancer/public/addPekerjaan" method="POST" class="form-horizontal">
+<form action="/pplA6/uilancer/public/addPekerjaan" method="POST" class="form-horizontal">
    {{ csrf_field() }}
    Judul Pekerjaan &nbsp : <input type="text" name="judul_pekerjaan"><br>
    Deksripsi Pekerjaan  &nbsp : <input type="text" name="deskripsi_pekerjaan"><br>
