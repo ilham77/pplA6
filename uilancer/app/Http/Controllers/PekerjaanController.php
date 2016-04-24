@@ -60,4 +60,16 @@ class PekerjaanController extends Controller
 
         return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
     }
+
+    public function searchPekerjaanFromDashboard(Request $request)
+    {
+
+        $hasil = Pekerjaan::where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
+        ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
+        ->get();
+
+        $hasil = $hasil->where('isVerified',1);
+
+        return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+    }
 }

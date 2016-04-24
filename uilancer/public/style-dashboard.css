@@ -1,0 +1,247 @@
+body {
+	background: #f1f4f7;
+	padding-top: 50px;
+	color: #5f6468;
+}
+
+a, a:hover, a:focus {
+	color: #003366;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 40px;
+	color: #003366;
+}
+
+.page-header {
+	margin-top: 20px;
+}
+
+.navbar-header .navbar-brand {
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.navbar-header .navbar-brand span {
+	color: #30a5ff;
+}
+
+.navbar {
+	border: 0;
+	margin-bottom: 0;
+    background-color: #fff;
+    z-index: 9999;
+    border: 0;
+    color: #000;
+    font-size: 16px !important;
+    line-height: 0.42857143 !important;
+    letter-spacing: 1px;
+    border-radius: 0;
+    font-family: Lato, sans-serif;
+}
+
+.navbar-brand {
+    min-height: 70px;
+    max-height: 100px;
+    width: 200px;
+}
+
+.user-menu {
+	display: inline-block;
+	margin-top: 28px;
+	margin-right: 50px;
+	float: right;
+	list-style: none;
+	padding: 0;
+}
+
+.user-menu a {
+	color: #003366;
+}
+
+.user-menu a:hover, .user-menu a:focus {
+	text-decoration: none;
+}
+
+.sidebar {
+	display: block;
+	background-color: #fff;
+	padding: 0;
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.sidebar {
+		display: block;
+  		position: fixed;
+		top: 70px;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto; 
+		background-color: #fff;
+		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
+	}
+	.navbar-header {
+		width: 100%;
+	}
+}
+
+.sidebar ul.nav a:hover, 
+.sidebar ul.nav li.parent ul li a:hover {
+	text-decoration: none;
+	background-color: #e9ecf2;
+}
+
+.sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active,
+.sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover,
+.sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
+	color: #fff;
+	/*background-color: #30a5ff;*/
+	background-color: #003366;
+}*/
+
+.sidebar ul.nav ul,
+.sidebar ul.nav ul li {
+	list-style: none;
+	list-style-type: none;
+}
+
+.sidebar ul.nav ul.children {
+	width: auto;
+	padding: 0;
+	margin: 0;
+	background: #f9f9f9;
+}
+
+.sidebar ul.nav ul.children li a {
+	height: 40px;
+	background: #f9f9f9;
+	color: #003366!important;
+}
+
+.sidebar ul.nav li.current a {
+	background-color: #30a5ff;
+	color: #fff!important;
+}
+
+.sidebar ul.nav li.parent ul li a {
+	border: none;
+	display: block;
+	padding-left: 30px;
+	line-height: 40px;
+}
+
+.sidebar span.glyphicon {
+	margin-right: 10px;
+}
+
+.sidebar .glyph, .user-menu .glyph {
+	height: 16px;
+	width: 16px;
+	margin: 0 10px 0 0;
+	stroke-width: 3px;
+}
+
+.user-menu .glyph {
+	stroke-width: 4px;
+}
+
+ul.msg_list li {
+  background: #f7f7f7;
+  padding: 5px;
+  display: flex;
+  margin: 6px 6px 0;
+  width: 96% !important;
+}
+
+ul.msg_list li:last-child {
+  margin-bottom: 6px;
+  padding: 10px;
+}
+
+ul.msg_list li a {
+  padding: 3px 5px !important;
+}
+
+ul.msg_list li a .image img {
+  border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  float: left;
+  margin-right: 10px;
+  width: 10%;
+}
+
+ul.msg_list li a .time {
+  font-size: 11px;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+  right: 35px;
+}
+
+ul.msg_list li a .message {
+  display: block !important;
+  font-size: 11px;
+}
+
+.dropdown-menu.msg_list {
+  width: 300px !important;
+}
+
+.dropdown-menu.msg_list span {
+  white-space: normal;
+}
+
+.dropdown-menu {
+  border: medium none;
+  box-shadow: none;
+  display: none;
+  float: left;
+  font-size: 14px;
+  left: 0;
+  list-style: none outside none;
+  padding: 0;
+  position: absolute;
+  text-shadow: none;
+  top: 100%;
+  z-index: 1000;
+  border: 1px solid #D9DEE4;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.dropdown-menu>li>a {
+  color: #5A738E;
+}
+
+.navbar-nav .open .dropdown-menu {
+  position: absolute;
+  background: #fff;
+  margin-top: 0;
+  border: 1px solid #D9DEE4;
+  -webkit-box-shadow: none;
+}
+
+.info-number .badge {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 12px;
+  padding: 2px 6px;
+  position: absolute;
+  right: -12px;
+  top: 8px;
+  background-color: #cc0033;
+}
+
+#notifikasi {
+	padding-left: 20px;
+}

@@ -156,66 +156,50 @@
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
     <div class="row">
       <div class="col-lg-12">
-        <div id="form" class="container-fluid">
-  <h1 class="text-left">Cari Lowongan Kerja</h1>
-  <div class="row">
-    <div class="col-md-8">
-      <form action="/pplA6/uilancer/public/searchPekerjaanFromDashboard" method="POST">
-        <div class="form-group">
-          <input type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>
+        <div id="table" class="container-fluid">
+  <h1 class="text-center">Hasil Pencarian</h1>
+  <br>
+  Pekerjaan dengan kata kunci "{{ $kunci }}"  
+    <table style="width:100%" class="table table-bordered">
+      <div class="table-responsive">
+        <thead>
+      <tr>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Deskripsi Pekerjaan</b></center></td>    
+        <td><center><b>Status</center></b></td>
+        <td><center><b>Progress</center></b></td>
+      </tr>
+        </thead>
+      @if(count($pekerjaans))
+        @foreach($pekerjaans as $pekerjaan)
+            <tr>
+              <td><center><a href="/pplA6/uilancer/public/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
+              <td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
+              <td><center>
+              @if($pekerjaan->isTaken)
+                Sudah Diambil
+              @else
+                Lowong
+              @endif
+              </center></td>
+              <td><center>
+              @if($pekerjaan->isDone)
+                Udah Kelar
+              @else
+                Belom Kelar
+              @endif
+              </center></td>
+            </tr>
+        @endforeach
+      @else
+        <h2>Tidak ada pekerjaan</h2>
+      @endif
+       </div>
+    </table>
+        <div align="center">
+            <button type="submit"  class="btn btn-defautl">Cari lagi</button>
         </div>
-        <hr style="border: 1 none;">
-        <h3 class="text-left">Filter</h3>
-              <div class="form-group row">
-                <label for="pencariPekerja" class="col-md-3 control-label">Pencari Pekerja</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="pencari" placeholder="Nama">
-                </div>
-              </div>
-                <div class="form-group row">
-                    <label for="rangeHonor" class="col-md-3 control-label" >Range Honor</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                        <div class="col-md-1" style="width:45px;">
-                            to
-                        </div>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" id="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                </div>
-              <div class="form-group row">
-                <label for="durasiPekerjaan" class="col-md-3 control-label">Durasi Pekerjaan</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="durasi" placeholder="Dalam pekan">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="statusPekerjaan" class="col-md-3 control-label">Status</label>
-                <div class="col-md-8">
-                  <select class="form-control" name="status">
-                    <option>Done</option>
-                    <option>Lowong</option>
-                    <option>Tutup</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                    <label for="rangePembuatanThread" class="col-md-3 control-label" >Waktu Pembuatan Thread</label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                        <div class="col-md-1" style="width:45px;">
-                            to
-                        </div>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" id="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                </div>
-              <br>
-
-            <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari Lowongan!</button>
-          </form>
+</div>
     </div>
   </div> 
 </div>
