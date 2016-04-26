@@ -16,14 +16,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', function () 
+Route::get('/', ['as' => 'home', function () 
 {
 	return View::make('home');
-});
+}]);
 
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+Route::get('/detail', function () {
+    return view('detail');
+});
+
 
 Route::get('sso-login','Controller@login');
 Route::get('logout','Controller@logout');
@@ -44,9 +50,7 @@ Route::get('/search-dashboard', function () {
 
 
 Route::get('/listPekerjaan','PekerjaanController@index');
-Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
-Route::post('/searchPekerjaanFromDashboard',['uses' => 'PekerjaanController@searchPekerjaanFromDashboard']);
 
 
 /*

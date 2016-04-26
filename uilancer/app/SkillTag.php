@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SkillTag extends Model
 {
     //
-    protected $table = 'skillTag';
+    protected $table = 'skillTag_pekerjaan';
 
     public function pekerjaan()
     {

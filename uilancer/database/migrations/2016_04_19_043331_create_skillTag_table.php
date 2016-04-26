@@ -12,14 +12,14 @@ class CreateSkillTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('skillTag', function (Blueprint $table) {
+        Schema::create('skillTag_pekerjaan', function (Blueprint $table) {
             $table->increments('id',true);
             $table->integer('pekerjaan_id')->unsigned();
             $table->string('skill');
             $table->timestamps();
         });
 
-        Schema::table('skillTag',function($table){
+        Schema::table('skillTag_pekerjaan',function($table){
             $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
         });
     }

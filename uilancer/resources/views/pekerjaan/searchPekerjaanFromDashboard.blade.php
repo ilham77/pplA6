@@ -127,7 +127,7 @@
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="/pplA6/uilancer/public/search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li  class="active"><a href="/search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -162,7 +162,8 @@
   Pekerjaan dengan kata kunci "{{ $kunci }}"  
     <table style="width:100%" class="table table-bordered">
       <div class="table-responsive">
-        <thead>
+      @if(count($pekerjaans))
+       <thead>
       <tr>
         <td><center><b>Judul Pekerjaan</b></center></td>
         <td><center><b>Deskripsi Pekerjaan</b></center></td>    
@@ -170,10 +171,9 @@
         <td><center><b>Progress</center></b></td>
       </tr>
         </thead>
-      @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
             <tr>
-              <td><center><a href="/pplA6/uilancer/public/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
+              <td><center><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
               <td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
               <td><center>
               @if($pekerjaan->isTaken)
@@ -197,7 +197,7 @@
        </div>
     </table>
         <div align="center">
-            <button type="submit"  class="btn btn-defautl">Cari lagi</button>
+            <form action = "search-dashboard"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>
     </div>

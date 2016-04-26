@@ -61,18 +61,18 @@
   Pekerjaan dengan kata kunci "{{ $kunci }}"	
 		<table style="width:100%" class="table table-bordered">
 			<div class="table-responsive">
-				<thead>
-		  <tr>
-		    <td><center><b>Judul Pekerjaan</b></center></td>
-		    <td><center><b>Deskripsi Pekerjaan</b></center></td>		
-		    <td><center><b>Status</center></b></td>
-		    <td><center><b>Progress</center></b></td>
-		  </tr>
-		  	</thead>
 			@if(count($pekerjaans))
+      <thead>
+            <tr>
+              <td><center><b>Judul Pekerjaan</b></center></td>
+              <td><center><b>Deskripsi Pekerjaan</b></center></td>    
+              <td><center><b>Status</center></b></td>
+              <td><center><b>Progress</center></b></td>
+            </tr>
+        </thead>
 				@foreach($pekerjaans as $pekerjaan)
 						<tr>
-							<td><center><a href="/pplA6/uilancer/public/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
+							<td><center><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
 							<td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
 							<td><center>
 							@if($pekerjaan->isTaken)
@@ -96,7 +96,7 @@
 			 </div>
 		</table>
         <div align="center">
-            <button type="submit"  class="btn btn-defautl">Cari lagi</button>
+            <form action="{{URL::route('home')}}"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>
 

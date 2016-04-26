@@ -15,7 +15,7 @@
 	@if(count($pekerjaans))
 		@foreach($pekerjaans as $pekerjaan)
 				<tr>
-					<td><center><a href="/pplA6/uilancer/public/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
+					<td><center><a href="/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
 					<td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
 					<td><center>
 					@if($pekerjaan->isTaken)

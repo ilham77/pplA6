@@ -34,6 +34,11 @@ class PekerjaanController extends Controller
         $pekerjaan->isTaken = 0;
         $pekerjaan->isVerified = $request->verifikasi;
         $pekerjaan->isClosed = 0;
+        $pekerjaan->startHonor = $request->startHonor;
+        $pekerjaan->endHonor = $request->endHonor;
+        $pekerjaan->endDate = $request->endDate;
+        $pekerjaan->durasi = $request->durasi;
+
         $pekerjaan->save();
 
         $arrSkill = explode(",", $request->skill_tag);
@@ -51,25 +56,17 @@ class PekerjaanController extends Controller
 
     public function searchPekerjaan(Request $request)
     {
+        $hasil2 = SkillTag::where('skill','LIKE','%'.$request->kunci.'%')->get();
 
         $hasil = Pekerjaan::where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
-        ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
+        ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')->orWhereIn('id',$hasil2->pluck('pekerjaan_id'))
         ->get();
 
         $hasil = $hasil->where('isVerified',1);
 
-        return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
-    }
-
-    public function searchPekerjaanFromDashboard(Request $request)
-    {
-
-        $hasil = Pekerjaan::where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
-        ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
-        ->get();
-
-        $hasil = $hasil->where('isVerified',1);
-
-        return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+        if($request->flag == "nonDash")
+            return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+        else
+            return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
     }
 }
