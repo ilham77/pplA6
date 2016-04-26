@@ -29,8 +29,11 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('sso-login','Controller@login');
-Route::get('logout','Controller@logout');
+Route::get('sso-login','SSOController@login');
+Route::get('logout','SSOController@logout');
+Route::get('/detail', function() {
+    return view('detail');
+});
 
 Route::get('/infoAccount', function () {
     return view('infoAccount');
