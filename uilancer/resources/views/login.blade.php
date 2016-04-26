@@ -15,6 +15,11 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   
   <style>
+    body img{
+      width: 100%; /* Set width to 100% */
+      height: 100%;
+      margin: auto;
+    }
     .row{
         padding-top: 10%; 
         padding-left: 10%;
