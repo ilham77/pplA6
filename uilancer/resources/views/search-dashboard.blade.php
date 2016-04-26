@@ -107,7 +107,8 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user">User</span>
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">User</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -157,7 +158,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left">Cari Lowongan Kerja</h1>
+  <h1 class="text-left" style="margin-top:35px">Cari Pekerjaan</h1>
   <div class="row">
     <div class="col-md-8">
       <form action="/pplA6/uilancer/public/searchPekerjaanFromDashboard" method="POST">
@@ -177,7 +178,7 @@
                         <div class="col-md-4">
                             <input type="text" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
                         </div>
-                        <div class="col-md-1" style="width:45px;">
+                        <div class="col-md-1" style="width:45px; height:34px; vertical-align: middle; font-size: 13pt;">
                             to
                         </div>
                         <div class="col-md-4">
@@ -205,7 +206,7 @@
                         <div class="col-md-4">
                             <input type="date" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
                         </div>
-                        <div class="col-md-1" style="width:45px;">
+                        <div class="col-md-1" style="width:45px; height:34px; vertical-align: middle; font-size: 13pt;">
                             to
                         </div>
                         <div class="col-md-4">
@@ -214,7 +215,7 @@
                 </div>
               <br>
 
-            <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari Lowongan!</button>
+            <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari!</button>
           </form>
     </div>
   </div> 
