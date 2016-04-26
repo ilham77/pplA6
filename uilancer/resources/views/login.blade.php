@@ -106,7 +106,7 @@
               <p><button class="btn btn-danger" type="submit" name="commit">Login</button></p>
             </form>
             <div class="login-help">
-              <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+              <p><a href="index.html">Don't have official account?</a></p>
             </div>
           </div>
       </section>
