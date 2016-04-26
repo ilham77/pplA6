@@ -297,6 +297,7 @@
             {!! Form::open(array('url' => '/edit', 'class'=>'form-horizontal','files'=>true)) !!}
             
             <div>
+               <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>
 			@if($avatar=="")
             <img src="http://placehold.it/200x200" alt="">
 			@else
