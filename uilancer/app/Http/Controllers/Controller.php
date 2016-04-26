@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 use SSO\SSO;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -14,9 +15,20 @@ class Controller extends BaseController
     public function login(){
         SSO::Authenticate();
         $user=SSO::getUser();
-        echo $user->username . "</br>";
-        echo $user->name;
-        echo "<!DOCTYPE html><html><head></head><body></br><a href=\"".url('logout')."\">LOGOUT</a></body></html>";
+       if(DB::table('mahasiswa')->where('npm','=',$user->npm)->get()){
+           echo $user->name;
+       }else{
+            DB::table('mahasiswa')->insert([
+                ['npm' => $user->npm,
+                 'username' => $user->username,
+                 'name' => $user->name, 
+                 'org_code' => $user->org_code,  
+                 'faculty' => $user->faculty,
+                 'educational_program' => $user->educational_program]
+            ]);
+            
+            return redirect('/');
+        }
 
     }
     public function showLogin()
