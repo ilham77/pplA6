@@ -25,6 +25,23 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Using A Route Closure...
+
+Route::get('profile', ['middleware' => 'auth', function() {
+    // Only authenticated users may enter...
+}]);
+
+// Using A Controller...
+
+Route::get('profile', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@show'
+]);
+
 Route::get('sso-login','SSOController@login');
 Route::get('logout','SSOController@logout');
 Route::get('/detail', function() {
