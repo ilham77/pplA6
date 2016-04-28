@@ -20,10 +20,7 @@ Route::get('/', function ()
 {
 	return View::make('home');
 });
-Route::get('/edit', function () 
-{
-	return View::make('edit');
-});
+
 
 Route::get('/login', function () {
     return view('login');
@@ -49,8 +46,11 @@ Route::get('/infoAccount', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/*
+
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/edit', function () {
+		return View::make('edit');
+	});
+	Route::post('saveprofile', 'UserController@editProfile');
 });
-*/
+
