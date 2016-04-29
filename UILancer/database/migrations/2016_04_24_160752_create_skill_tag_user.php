@@ -34,3 +34,4 @@ class CreateSkillTagUser extends Migration
                 Schema::drop('users');
     }
 }
+
