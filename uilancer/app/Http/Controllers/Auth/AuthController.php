@@ -22,15 +22,43 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    
+    private $redirectTo = '/';
 
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectPath = '/dashboard';
-    protected $loginPath = '/login'
-    protected $redirectTo = '/';
+    public function getLogin()
+    {
+       
+    }
+    
+    
+     public function postLogin()
+        {
+         
+         
+            
+             if((!DB::table('users')->where('username','=',$user->username)->get())){ 
+               
+            
+                return view('home');
+             } else {
+               $user = User::where('username','=',$user->username)->first();
+               \Auth::loginUsingId($user->id);
+               return view('home')->with('username', $user->username);
+             }
+       
+        }
+    
+    public function getLogout()
+    {
+        Auth::logout(); // log the user out of our application
+        return Redirect::to('login'); // redirect the user to the login screen
+    }
+
     
     /**
      * Create a new authentication controller instance.

@@ -3,6 +3,7 @@
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -42,7 +43,7 @@
     .form-bottom form button.btn {
         width: 30%;
     }
-    .form-bottom form .input-error {
+    .form-bottom form  .input-error {
         border-color: #4aaf51;
     }
   </style>
@@ -95,6 +96,7 @@
   <div class="col-sm-6 col-sm-offset-3 form-box">
     <div class="form-top">
       <section class="container">
+          
           <h1>Login Official</h1>
           <div class="form-bottom">
             <form method="post" action="index.html">
@@ -104,11 +106,18 @@
               </div>
               <p class="remember_me">
               <label>
-                <input type="checkbox" name="remember_me" id="remember_me">
-                Remember me on this computer
+                 @if(session('error'))
+                <div class="alert alert-danger">
+                    <strong>Login Failed :(</strong>
+                    <br>
+                    <ul>
+                        {{session('error')}}
+                    </ul>
+                </div>
+                @endif
               </label>
               </p>
-              <p><button class="btn btn-danger" type="submit" name="commit">Login</button></p>
+              <p><a href="{{url('userlogin')}}" class="btn btn-danger" type="submit" name="commit">Login</a></p>
             </form>
             <div class="login-help">
               <p><a href="index.html">Don't have official account?</a></p>

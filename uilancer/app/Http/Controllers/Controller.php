@@ -13,9 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
     public function login(){
-        SSO::Authenticate();
-        $user=SSO::getUser();
-       if(DB::table('mahasiswa')->where('npm','=',$user->npm)->get()){
+       if(DB::table('user')->where('username','=',$user->npm)->get()){
            echo $user->name;
        }else{
             DB::table('mahasiswa')->insert([
@@ -84,3 +82,4 @@ class Controller extends BaseController
         return redirect('/');
     }
 }
+
