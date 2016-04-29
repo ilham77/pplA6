@@ -52,6 +52,7 @@ Route::get('/search-dashboard', function () {
 Route::get('/listPekerjaan','PekerjaanController@index');
 Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -64,7 +65,6 @@ Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']
 */
 
 Route::group(['middleware' => ['web']], function () {
-
     Route::get('/bukalowongan', function () {
 		return view('postlowongan');
 	});

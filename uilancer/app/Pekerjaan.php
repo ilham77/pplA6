@@ -8,8 +8,15 @@ class Pekerjaan extends Model
 {
     protected $table = 'pekerjaan';
 
+<<<<<<< HEAD
     public function skillTag()
     {
         return $this->hasMany('App\SkillTag');
     }
 }
+=======
+    public function skill() {
+    	return $this->hasMany(SkillPekerjaan::class);
+    }
+}
+>>>>>>> post-lowongan-UI
