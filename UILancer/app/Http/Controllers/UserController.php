@@ -9,6 +9,8 @@ use App\Http\Requests;
 class UserController extends Controller
 {
     public function editProfile(Request $request, User $user) {
-    	//
+    	
+    	
+    	
     }
 }

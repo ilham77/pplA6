@@ -89,7 +89,7 @@
             <p>
             <h1>Edit Profile</h1>
 
-            <form action="saveprofile/{{ $user->id }}" method="POST" role="form" enctype="multipart/form-type">
+            <form action="saveprofile/1" method="POST" role="form" enctype="multipart/form-type">
               {{csrf_field()}}
               <div class="form-group">
                 <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>

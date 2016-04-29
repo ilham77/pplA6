@@ -12,10 +12,15 @@ class CreateSkillTagUser extends Migration
      */
     public function up()
     {
-           Schema::create('users', function (Blueprint $table) {
+        Schema::create('skilluser', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
+            $table->timestamps();
+            $table->integer('user_id')->unsigned();
             $table->string('skill');
+        });
+
+        Schema::table('skillpekerjaan', function ($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
