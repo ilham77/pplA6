@@ -29,7 +29,7 @@ class PekerjaanController extends Controller
     {
         $this->validate($request, [
 
-                'judul'       => 'required|alpha_num|max:255',
+                'judul'       => 'required|max:255',
                 'deskripsi'   => 'required',
                 'budget'      => 'required|numeric',
                 'estimasi'    => 'required|numeric',

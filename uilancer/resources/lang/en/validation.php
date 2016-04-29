@@ -94,7 +94,6 @@ return [
     'custom' => [
         'judul' => [
             'required'  => 'Judul pekerjaan harus diisi!',
-            'alpha_num' => 'Judul pekerjaan hanya boleh terdiri atas huruf dan angka!',
             'max'       => 'Judul pekerjaan tidak boleh lebih dari :max karakter!',
         ],
         'deskripsi' => [
