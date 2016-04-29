@@ -39,11 +39,6 @@ Route::get('/infoAccount', function () {
 });
 
 //Routing yang berhubungan dengan pekerjaan
-Route::post('/addPekerjaan',['uses' => 'PekerjaanController@insertPekerjaan']);
-Route::get('/insertPekerjaan', function () {
-    return view('pekerjaan.insertPekerjaan');
-});
-
 Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
@@ -68,7 +63,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/bukalowongan', function () {
 		return view('postlowongan');
 	});
-	Route::post('addlowongan', 'PekerjaanController@insert');
+	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
 
 });
 

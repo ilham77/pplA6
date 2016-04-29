@@ -29,24 +29,22 @@ class PekerjaanController extends Controller
     {
         $this->validate($request, [
 
-                'judul_pekerjaan'       => 'required|alpha_num|max:255',
-                'deskripsi_pekerjaan'   => 'required',
-                'startHonor'            => 'required|numeric',
-                'endHonor'              => 'required|numeric',
-                'durasi'                => 'required|numeric',
-                'endDate'               => 'required|date|after:now',
-                'skill'                 => 'required',
+                'judul'       => 'required|alpha_num|max:255',
+                'deskripsi'   => 'required',
+                'budget'      => 'required|numeric',
+                'estimasi'    => 'required|numeric',
+                'deadline'    => 'required|date|after:now',
+                'skill'       => 'required',
 
             ]);
 
         $pekerjaan = new Pekerjaan;
 
-        $pekerjaan->judul_pekerjaan       = $request->judul_pekerjaan;
-        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsi_pekerjaan;
-        $pekerjaan->startHonor = $request->startHonor;
-        $pekerjaan->endHonor = $request->endHonor;
-        $pekerjaan->durasi = $request->durasi;
-        $pekerjaan->endDate = $request->endDate;
+        $pekerjaan->judul_pekerjaan       = $request->judul;
+        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsi;
+        $pekerjaan->budget = $request->budget;
+        $pekerjaan->durasi = $request->estimasi;
+        $pekerjaan->endDate = $request->deadline;
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
@@ -58,7 +56,7 @@ class PekerjaanController extends Controller
 
         $pekerjaan->save();
 
-        $arrSkill = explode(",", $request->skill_tag);
+        $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
             $skill = new skillTag;
@@ -91,23 +89,37 @@ class PekerjaanController extends Controller
             if($request->minimumHonor && $request->maksimumHonor)
             {
                 $hasil = $hasil->where(function ($query) use ($request){
-                $query->where('startHonor','>=',$request->minimumHonor)
-                      ->orWhere('endHonor','<=',$request->maksimumHonor);
+                $query->where('budget','>=',$request->minimumHonor)
+                      ->where('budget','<=',$request->maksimumHonor);
                 });
             }
             else if($request->minimumHonor)
             {
-                $hasil = $hasil->where('startHonor','>=',$request->minimumHonor);
+                $hasil = $hasil->where('budget','>=',$request->minimumHonor);
             }
 
             else if($request->maksimumHonor)
             {
-                $hasil = $hasil->where('endHonor','<=',$request->maksimumHonor);
+                $hasil = $hasil->where('budget','<=',$request->maksimumHonor);
             }
 
             if($request->durasi)
             {
                 $hasil = $hasil->where('durasi',$request->durasi);
+            }
+
+            if($request->status)
+            {
+                if($request->status == "Done")
+                {
+                    $hasil = $hasil->where('isDone',1);
+                }
+                elseif ($request->status == "Lowong") {
+                    $hasil = $hasil->where('isTaken',0);
+                }
+                elseif ($request->status == "Tutup") {
+                    $hasil = $hasil->where('isClosed',1);
+                }
             }
 
             if($request->minimumTgl && $request->maksimumTgl)

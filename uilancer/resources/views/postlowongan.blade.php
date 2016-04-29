@@ -20,7 +20,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a href="./"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
@@ -38,7 +38,7 @@
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -51,7 +51,7 @@
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
-      
+
     </div>
 </div>
 
@@ -98,7 +98,7 @@
 
         <div class="well well-sm" id="error">
           <ul>
-            
+
           @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
           @endforeach
@@ -109,7 +109,7 @@
       @endif
 
     </div>
-  </div> 
+  </div>
 </div>
 
 <!-- Container (Contact Section) -->
@@ -120,7 +120,7 @@
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
     </div>
   </div>
 </div>
@@ -148,12 +148,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-   
+
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;

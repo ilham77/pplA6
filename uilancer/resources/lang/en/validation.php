@@ -106,6 +106,7 @@ return [
         ],
         'estimasi' => [
             'required'  => 'Harap beri estimasi ukuran pekerjaan dalam minggu!',
+            'numeric'   => 'Estimasi hanya dapat diisi dalam angka (dalam minggu)!'
         ],
         'deadline' => [
             'required'  => 'Beri tanggal deadline anda mencari freelancer untuk pekerjaan ini!',

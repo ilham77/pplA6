@@ -31,6 +31,6 @@ class CreateSkillTagTable extends Migration
      */
     public function down()
     {
-        Schema::drop('skillTag');
+        Schema::drop('skillTag_pekerjaan');
     }
 }
