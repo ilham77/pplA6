@@ -26,7 +26,7 @@ class PekerjaanController extends Controller
     }
 
     public function insertPekerjaan(Request $request)
-    {   
+    {
         $pekerjaan = new pekerjaan;
         $pekerjaan->judul_pekerjaan = $request->judul_pekerjaan;
         $pekerjaan->deskripsi_pekerjaan = $request->deskripsi_pekerjaan;
@@ -58,15 +58,66 @@ class PekerjaanController extends Controller
     {
         $hasil2 = SkillTag::where('skill','LIKE','%'.$request->kunci.'%')->get();
 
-        $hasil = Pekerjaan::where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
-        ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')->orWhereIn('id',$hasil2->pluck('pekerjaan_id'))
-        ->get();
-
-        $hasil = $hasil->where('isVerified',1);
+        $hasil = Pekerjaan::where(function ($query) use ($request,$hasil2){
+                $query->where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
+                      ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
+                      ->orWhereIn('id',$hasil2->pluck('pekerjaan_id'));
+            })
+        ->where('isVerified',1);
 
         if($request->flag == "nonDash")
+        {
+            $hasil = $hasil->get();
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+        }
         else
+        {
+
+            if($request->minimumHonor && $request->maksimumHonor)
+            {
+                $hasil = $hasil->where(function ($query) use ($request){
+                $query->where('startHonor','>=',$request->minimumHonor)
+                      ->orWhere('endHonor','<=',$request->maksimumHonor);
+                });
+            }
+            else if($request->minimumHonor)
+            {
+                $hasil = $hasil->where('startHonor','>=',$request->minimumHonor);
+            }
+
+            else if($request->maksimumHonor)
+            {
+                $hasil = $hasil->where('endHonor','<=',$request->maksimumHonor);
+            }
+
+            if($request->durasi)
+            {
+                $hasil = $hasil->where('durasi',$request->durasi);
+            }
+
+            if($request->minimumTgl && $request->maksimumTgl)
+            {
+                $MyDateCarbon = \Carbon\Carbon::parse($request->maksimumTgl);
+                $MyDateCarbon->addDays(1);
+
+                $hasil = $hasil->where(function ($query) use ($request,$MyDateCarbon){
+                $query->whereBetween('created_at', [$request->minimumTgl, $MyDateCarbon]);
+                });
+            }
+            else if($request->minimumTgl)
+            {
+                $hasil = $hasil->whereDate('created_at', '>=', $request->minimumTgl);
+            }
+            else if($request->maksimumTgl)
+            {
+                $MyDateCarbon = \Carbon\Carbon::parse($request->maksimumTgl);
+                $MyDateCarbon->addDays(1);
+
+                $hasil = $hasil->whereDate('created_at', '<=', $MyDateCarbon);
+            }
+
+            $hasil = $hasil->get();
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+        }
     }
 }

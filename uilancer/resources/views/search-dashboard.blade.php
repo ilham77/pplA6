@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -119,19 +119,19 @@
 
         </ul>
       </div>
-              
+
     </div><!-- /.container-fluid -->
   </nav>
-  
-  <!-- Sidebar -->  
+
+  <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="/search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li  class="active"><a href="search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -152,8 +152,8 @@
     </ul>
 
   </div><!--/.sidebar-->
-    
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
+
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
@@ -175,13 +175,13 @@
                 <div class="form-group row">
                     <label for="rangeHonor" class="col-md-3 control-label" >Range Honor</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
+                            <input type="number" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
                         </div>
                         <div class="col-md-1" style="width:45px;">
                             to
                         </div>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
+                            <input type="number" class="form-control" name="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
                         </div>
                 </div>
               <div class="form-group row">
@@ -203,33 +203,33 @@
               <div class="form-group row">
                     <label for="rangePembuatanThread" class="col-md-3 control-label" >Waktu Pembuatan Thread</label>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
+                            <input type="date" class="form-control" name="minimumTgl" placeholder="Dalam Rupiah (Rp)">
                         </div>
                         <div class="col-md-1" style="width:45px;">
                             to
                         </div>
                         <div class="col-md-4">
-                            <input type="date" class="form-control" id="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
+                            <input type="date" class="form-control" name="maksimumTgl" placeholder="Dalam Rupiah (Rp)">
                         </div>
                 </div>
-              <br> 
+              <br>
             <input type="hidden" name="flag" value="Dash">
             <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari Lowongan!</button>
           </form>
     </div>
-  </div> 
+  </div>
 </div>
 
-        
+
       </div>
-    </div><!--/.row-->    
+    </div><!--/.row-->
   </div><!--/.row-->
 
   <script>
     !function ($) {
-        $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-            $(this).find('em:first').toggleClass("glyphicon-minus");      
-        }); 
+        $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+            $(this).find('em:first').toggleClass("glyphicon-minus");
+        });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
     }(window.jQuery);
 
@@ -239,7 +239,7 @@
     $(window).on('resize', function () {
       if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })
-  </script> 
+  </script>
 </body>
 
 </html>
