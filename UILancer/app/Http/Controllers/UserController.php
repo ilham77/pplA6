@@ -7,7 +7,7 @@ use DB;
 use Auth;
 use Validator;
 use URL;
-use Hash;
+//use Hash;
 use App\Http\Requests;
 use App\Traits\CaptchaTrait;
 
@@ -20,25 +20,26 @@ class UserController extends Controller
 {
     
   public function masuklogin(Request $request){
-    
-        $username = $request->input('username');
-        $password = $request->input('password');
 
-        
-            if(Auth::attempt(['username'=>$username,'password'=>$password])){
+        $username = $request->username;
+        $npm = $request->input('npm');
+        $user = User::where('username','=',$username)
+                ->get();
+        //return $user;
+            if($user){
                 //correct username and password
-                $user = User::where('username','=',$user->username)->first();
-                \Auth::loginUsingId($user->id);
-               return view('home')->with('username', $user->username);
-                
-             
+                $id = $user->first();
+                //$user = User::where('username','=',$user -> username)->first();
+                Auth::loginUsingId($id);
+               return view('home');
+                 
             } 
         //gagal login
         return redirect('/login')->with('error','Invalid email or password');
     }
     public function loginForm(){
          if(!Auth::check())
-           return view('home.login');
+           return view('/login');
         else
             return redirect('/');
     }

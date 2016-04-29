@@ -99,12 +99,12 @@
           
           <h1>Login Official</h1>
           <div class="form-bottom">
-            <form method="post" action="index.html">
+            <form method="get" action="userlogin">
               <div class="form-group">
-                <p><input type="text" name="login" class="form-control input" value="" size="50" placeholder="Username"></p>
-                <p><input type="password" name="password" class="form-control input" value="" size="50"placeholder="Password"></p>
+                <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
+                <p><input type="npm" name="npm" class="form-control input" value="" size="50"placeholder="password"></p>
               </div>
-              <p class="remember_me">
+              <p>
               <label>
                  @if(session('error'))
                 <div class="alert alert-danger">
