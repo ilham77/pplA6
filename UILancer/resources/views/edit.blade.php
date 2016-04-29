@@ -89,14 +89,14 @@
             <p>
             <h1>Edit Profile</h1>
 
-            <form action="saveprofile/1" method="POST" role="form" enctype="multipart/form-type">
+            <form action="saveprofile" method="POST" role="form" enctype="multipart/form-type">
               {{csrf_field()}}
               <div class="form-group">
                 <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>
                 @if($avatar=="")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('/engine/userimage').'/'.$avatar}}" width="200px" height="200px" alt="">	
+                  <img src="{{URL::to('/avatar').'/'.$avatar}}" width="200px" height="200px" alt="">	
                 @endif
                 <br/>
                 <br/>
@@ -108,7 +108,7 @@
                   </span>
                   <input type="text" class="form-control" readonly>
                 </div>
-                <span>Max. 10 MB</span>
+                <span>Max. 2 MB</span>
               </div>
               <br/>
               <div class="form-group">
