@@ -28,8 +28,8 @@ class CreateUsersTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('deskripsi');
             $table->string('ketertarikan');
-            $table->string('pekerjaan');
             $table->string('linkedin');
+            $table->string('web');
             $table->rememberToken();
             $table->timestamps();
         });

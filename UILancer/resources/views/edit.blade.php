@@ -1,4 +1,8 @@
-<?php $avatar="";?>
+<?php 
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,9 +36,11 @@
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">
-           
+            @if(\Auth::check())
+            <p>Welcome, {{\Auth::user()->name}}</p>
+            @else
             <p>Login</p>
-          
+            @endif
             </a></li>
       </ul>
     </div>
@@ -93,10 +99,10 @@
               {{csrf_field()}}
               <div class="form-group">
                 <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>
-                @if($avatar=="")
+                @if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('/avatar').'/'.$avatar}}" width="200px" height="200px" alt="">	
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">	
                 @endif
                 <br/>
                 <br/>
@@ -113,57 +119,42 @@
               <br/>
               <div class="form-group">
                 <label for="nama" class="control-label">Nama</label>
-                <input name="nama" type="text" class="form-control" placeholder="Nama...">
+                <input name="nama" type="text" class="form-control" placeholder="Nama..." value="{{\Auth::user()->name}}">
               </div>
               
               <div class="form-group">
                 <label for="email" class="control-label">Email</label>
-                <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+                <input name="email" type="email" class="form-control" placeholder="example@mail.com" value="{{\Auth::user()->email}}">
               </div>
                 
               <div class="form-group">
                 <label for="tempat" class="control-label">Tempat Kelahiran</label>
-                <input name="tempat" type="text" class="form-control" placeholder="Tempat kelahiran...">
+                <input name="tempat" type="text" class="form-control" placeholder="Tempat kelahiran..." value="{{\Auth::user()->tempat_lahir}}">
               </div>
               
               <div class="form-group">
                 <label for="tanggal" class="control-label">Tanggal Lahir</label>
-                <input name="tempat" type="date" class="form-control">
+                <input name="tanggal" type="date" class="form-control" value="{{\Auth::user()->tanggal_lahir}}">
               </div>
 
               <div class="form-group">
                 <label for="deskripsi" class="control-label">Deskripsi</label>
-                <textarea name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control"placeholder="Deskripsikan diri anda..."></textarea>
+                <textarea name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control"placeholder="Deskripsikan diri anda...">{{\Auth::user()->deskripsi}}</textarea>
               </div>
               
               <div class="form-group">
                 <label for="linkedin" class="control-label">Linkedin</label>
-                <input name="linkedin" type="text" class="form-control" placeholder="http://linkedin.com/12345-example">
+                <input name="linkedin" type="text" class="form-control" placeholder="http://linkedin.com/12345-example" value="{{\Auth::user()->linkedin}}">
               </div>
               
               <div class="form-group">
                 <label for="web" class="control-label">Website pribadi</label>
-                <input name="web" type="text" class="form-control" placeholder="http://www.example.com">
-              </div>
-              
-              <div class="form-group">
-                <label for="pekerjaan" class="control-label">Pekerjaan</label>
-                <input name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan anda...">
+                <input name="web" type="text" class="form-control" placeholder="http://www.example.com" value="{{\Auth::user()->web}}">
               </div>
               
               <div class="form-group">
                 <label for="skills" class="control-label">Skills</label>
                 <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
-              </div>
-
-              <div class="form-group">
-                <label for="password" class="control-label">Password Baru</label>
-                <input name="password" type="password" class="form-control">
-              </div>
-              
-              <div class="form-group">
-                <label for="passconfirm" class="control-label">Konfirmasi Password</label>
-                <input name="passconfirm" type="password" class="form-control">
               </div>
                 
               <div class="form-group">
@@ -178,6 +169,21 @@
                 </div>
               </div>
               <br/>
+
+              @if (count($errors))
+
+                <div class="well well-sm" id="error">
+                  <ul>
+
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+
+                  </ul>
+                </div>
+
+              @endif
+
               {!! Form::submit('Simpan', array('class'=>'btn btn-success')) !!}
               <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
             </form>    

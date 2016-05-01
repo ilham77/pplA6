@@ -19,7 +19,7 @@ class CreateSkillTagUser extends Migration
             $table->string('skill');
         });
 
-        Schema::table('skillpekerjaan', function ($table) {
+        Schema::table('skilluser', function ($table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
