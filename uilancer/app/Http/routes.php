@@ -51,6 +51,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/edit', function () {
 		return View::make('edit');
 	});
-	Route::post('saveprofile', 'Controller@editProfile');
+	Route::post('saveprofile', 'UserController@editProfile');
 });
 

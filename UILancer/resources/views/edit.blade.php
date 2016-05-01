@@ -89,7 +89,7 @@
             <p>
             <h1>Edit Profile</h1>
 
-            <form action="saveprofile" method="POST" role="form" enctype="multipart/form-type">
+            <form action="saveprofile" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
               <div class="form-group">
                 <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>
@@ -103,7 +103,7 @@
                 <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="profilepic">
+                          Browse&hellip; <input type="file" name="avatar">
                       </span>
                   </span>
                   <input type="text" class="form-control" readonly>
@@ -171,7 +171,7 @@
                 <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" multiple>
+                          Browse&hellip; <input type="file" name="cvresume">
                       </span>
                   </span>
                   <input type="text" class="form-control" readonly>
