@@ -194,8 +194,8 @@
                 <label for="statusPekerjaan" class="col-md-3 control-label">Status</label>
                 <div class="col-md-8">
                   <select class="form-control" name="status">
-                    <option>Done</option>
                     <option>Lowong</option>
+                    <option>Done</option>
                     <option>Tutup</option>
                   </select>
                 </div>
