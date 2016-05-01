@@ -172,6 +172,11 @@ footer {
   background-color: #2d2d30;
   color: #f5f5f5;
   padding: 32px;
+      clear: both;
+    position: relative;
+    z-index: 10;
+    height: 100px;
+    margin-top: -3em;
 }
 footer .glyphicon {
     font-size: 20px;

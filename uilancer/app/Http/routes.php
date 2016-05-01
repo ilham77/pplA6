@@ -26,6 +26,9 @@ Route::get('/login', function () {
 });
 
 Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
+
+
 Route::get('/detail', function () {
     return view('detail');
 });

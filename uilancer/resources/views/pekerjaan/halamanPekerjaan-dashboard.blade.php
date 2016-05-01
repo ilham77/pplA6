@@ -1,3 +1,11 @@
+<?php
+$isLogged=false;
+if(Auth::check()){
+$isLogged=true;
+}
+$isLogged=false;
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +14,7 @@
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -27,7 +35,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -107,7 +115,7 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user">User</span>
+              <span class="glyphicon glyphicon-user"></span>User
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -153,61 +161,51 @@
 
   </div><!--/.sidebar-->
     
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">     
-    <div class="row">
-      <div class="col-lg-12">
-        <div id="table" class="container-fluid">
-  <h1 class="text-center" style="margin-top:35px">Hasil Pencarian</h1>
-  <br>
-  Pekerjaan dengan kata kunci "{{ $kunci }}"  
-    <table style="width:100%" class="table table-bordered">
-      <div class="table-responsive">
-      @if(count($pekerjaans))
-       <thead>
-      <tr>
-        <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Deskripsi Pekerjaan</b></center></td>    
-        <td><center><b>Status</center></b></td>
-        <td><center><b>Progress</center></b></td>
-      </tr>
-        </thead>
-        @foreach($pekerjaans as $pekerjaan)
-            <tr>
-              <td><center><a href="pekerjaanDashboard/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
-              <td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
-              <td><center>
-              @if($pekerjaan->isTaken)
-                Sudah Diambil
-              @else
-                Lowong
-              @endif
-              </center></td>
-              <td><center>
-              @if($pekerjaan->isDone)
-                Udah Kelar
-              @else
-                Belom Kelar
-              @endif
-              </center></td>
-            </tr>
-        @endforeach
-      @else
-        <h2>Tidak ada pekerjaan</h2>
-      @endif
-       </div>
-    </table>
-        <div align="center">
-            <form action = "search-dashboard"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
-        </div>
-</div>
-    </div>
-  </div> 
-</div>
+<!-- DETAIL PEKERJAAN -->
 
-        
+    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
+        <br/>
+        <div class="container-fluid text-left">
+        <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
+        <p><span>oleh <a href=#>chan.ek</a></span>
+            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
+            <span>Jumlah Pelamar: 25</span>
+            <span>Status:
+            @if($hasil->isTaken)
+              Sudah Diambil
+            @else
+              Lowong
+            @endif</span></p>
+        <hr/>
       </div>
-    </div><!--/.row-->    
-  </div><!--/.row-->
+
+        <div id="deskripsi" class="container-fluid text-left bg-grey">
+            <h1>Deskripsi:</h1>
+            <p>
+            {{ $hasil->deskripsi_pekerjaan }}<br/>
+
+             <span>Skill yang dibutuhkan:</span>
+             @if(count($hasill))
+              @foreach($hasill as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
+            <br/>
+
+             <span>Durasi:</span>
+            <span>{{ $hasil->durasi }} Minggu</span><br/>
+
+             <span>Estimasi honor:</span>
+            <span>Rp {{$hasil->budget}}</span><br/><br/>
+
+            <span><b>Deadline:</b></span>
+            <span>{{$hasil->endDate}}</span><br/>
+        </p>
+        <p><br/>
+            <a class="btn btn-block btn-success mt-20 font2 text-center" href="#">APPLY</a>
+        </p>
+    </div>
+</div>
 
   <script>
     !function ($) {

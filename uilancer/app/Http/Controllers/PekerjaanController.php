@@ -25,6 +25,14 @@ class PekerjaanController extends Controller
     	return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill'));
     }
 
+    public function detailPekerjaanFromDashboard($pekerjaan)
+    {
+        $hasil = Pekerjaan::findorFail($pekerjaan);
+        $hasill = $hasil->skillTag;
+
+        return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill'));
+    }
+
     public function insertPekerjaan(Request $request)
     {
         $this->validate($request, [

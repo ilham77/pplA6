@@ -27,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -107,7 +107,7 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user">User</span>
+              <span class="glyphicon glyphicon-user"></span>User
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -157,7 +157,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left">Cari Lowongan Kerja</h1>
+  <h1 class="text-left" style="margin-top:35px">Cari Lowongan Kerja</h1>
   <div class="row">
     <div class="col-md-8">
       <form action="searchPekerjaan" method="POST">
