@@ -17,6 +17,30 @@ h4 {
     font-weight: 400;
     margin-bottom: 30px;
 }  
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
 .jumbotron {
     background-image: url('bgr1.jpg');
     color: #fff;
@@ -178,6 +202,12 @@ footer .glyphicon {
     margin-bottom: 20px;
     color: #333399;
 }
+
+#error {
+    background-color: #ffb3b3;
+    color: black;
+}
+
 .slideanim {visibility:hidden;}
 .slide {
     animation-name: slide;

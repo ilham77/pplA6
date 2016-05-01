@@ -92,8 +92,37 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'nama' => [
+            'required' => 'Harap isi nama anda!',
+        ],
+        'email' => [
+            'required' => 'Harap isi email anda!',
+            'email' => 'Format email anda salah!',
+        ],
+        'tanggal' => [
+            'required' => 'Harap isi tanggal kelahiran anda!',
+            'date' => 'Format penulisan tanggal lahir anda salah (harap tulis dalam mm/dd/yyyy)!',
+        ],
+        'deskripsi' => [
+            'required' => 'Harap isi deskripsi tentang anda!',
+        ],
+        'linkedin' => [
+            'url' => 'Harap isi LinkedIn anda dengan format yang benar!',
+        ],
+        'web' => [
+            'url' => 'Harap isi link website anda dengan format yang benar!',
+        ],
+        'skills' => [
+            'required' => 'Harap isi skill-skill anda!',
+        ],
+        'avatar' => [
+            'required' => 'Harap upload gambar profil anda!',
+            'mimes' => 'Format gambar profil hanya bisa jpeg, bmp, dan png!',
+            'max' => 'Gambar tidak boleh lebih dari 2MB!'
+        ],
+        'cvresume' => [
+            'mimes' => 'Harap upload CV/Resume anda dalam format pdf!',
+            'max' => 'CV/Resume tidak boleh lebih dari 4MB!'
         ],
     ],
 

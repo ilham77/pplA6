@@ -15,7 +15,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email','npm','username', 'password','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar'
+        'name', 'email','npm','username', 'password','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar', 'tanggal_lahir', 'tempat_lahir', 'pekerjaan'
     ];
 
     /**
@@ -27,6 +27,10 @@ protected $table = 'users';
         'password', 'remember_token', 'id'
     ];
     
+    public function skill() {
+        return $this->hasMany(SkillUser::class);
+    }
+
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
      $user = new User();
      $user->name = $name;
