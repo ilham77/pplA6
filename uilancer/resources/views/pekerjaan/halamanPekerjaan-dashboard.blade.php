@@ -127,19 +127,19 @@ $isLogged=false;
 
         </ul>
       </div>
-              
+
     </div><!-- /.container-fluid -->
   </nav>
-  
-  <!-- Sidebar -->  
+
+  <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="/search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -160,7 +160,7 @@ $isLogged=false;
     </ul>
 
   </div><!--/.sidebar-->
-    
+
 <!-- DETAIL PEKERJAAN -->
 
     <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
@@ -209,9 +209,9 @@ $isLogged=false;
 
   <script>
     !function ($) {
-        $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-            $(this).find('em:first').toggleClass("glyphicon-minus");      
-        }); 
+        $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+            $(this).find('em:first').toggleClass("glyphicon-minus");
+        });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
     }(window.jQuery);
 
@@ -221,7 +221,7 @@ $isLogged=false;
     $(window).on('resize', function () {
       if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })
-  </script> 
+  </script>
 </body>
 
 </html>
