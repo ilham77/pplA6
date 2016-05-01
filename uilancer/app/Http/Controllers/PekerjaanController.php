@@ -38,7 +38,7 @@ class PekerjaanController extends Controller
         $this->validate($request, [
 
                 'judul'       => 'required|max:255',
-                'deskripsi'   => 'required',
+                'deskripsiPekerjaan'   => 'required',
                 'budget'      => 'required|numeric',
                 'estimasi'    => 'required|numeric',
                 'deadline'    => 'required|date|after:now',
@@ -49,7 +49,7 @@ class PekerjaanController extends Controller
         $pekerjaan = new Pekerjaan;
 
         $pekerjaan->judul_pekerjaan       = $request->judul;
-        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsi;
+        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsiPekerjaan;
         $pekerjaan->budget = $request->budget;
         $pekerjaan->durasi = $request->estimasi;
         $pekerjaan->endDate = $request->deadline;

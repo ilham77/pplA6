@@ -29,7 +29,13 @@
         <li><a href="./">About Us</a></li>
         <li><a href="./">Testimoni</a></li>
         <li><a href="./">Partner</a></li>
-        <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+        <li data-toggle="modal" data-target="#myModal"><a href="#">
+            @if(\Auth::check())
+            <p>Welcome, {{\Auth::user()->name}}</p>
+            @else
+            <p>Login</p>
+            @endif
+            </a></li>
       </ul>
     </div>
   </div>
@@ -38,9 +44,18 @@
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
+           @if(\Auth::check())
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Logout</h4>
+        </div>
+        <div class="modal-body">
+          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+        </div>
+      </div>
+            @else
+               <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
@@ -51,7 +66,10 @@
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
-
+            @endif
+      <!-- Modal content-->
+   
+      
     </div>
 </div>
 
@@ -67,7 +85,7 @@
         </div>
         <div class="form-group">
           <label for="deskripsi">Deskripsi Pekerjaan</label>
-          <textarea class="form-control" name="deskripsi" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
+          <textarea class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
         </div>
         <div class="form-group">
           <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>

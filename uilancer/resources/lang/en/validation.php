@@ -95,10 +95,11 @@ return [
         'judul' => [
             'required'  => 'Judul pekerjaan harus diisi!',
             'max'       => 'Judul pekerjaan tidak boleh lebih dari :max karakter!',
+        ],
         'nama' => [
             'required' => 'Harap isi nama anda!',
         ],
-        'deskripsi' => [
+        'deskripsiPekerjaan' => [
             'required'  => 'Deskripsi pekerjaan harus diisi!',
         ],
         'budget' => [

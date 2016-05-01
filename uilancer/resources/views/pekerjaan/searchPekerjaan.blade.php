@@ -96,7 +96,7 @@
 			 </div>
 		</table>
         <div align="center">
-            <form action="{{URL::route('home')}}"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
+            <form action="home"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>
 
