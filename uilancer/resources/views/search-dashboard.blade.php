@@ -162,7 +162,7 @@
     <div class="col-md-8">
       <form action="searchPekerjaan" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>
+          <input required type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>
         </div>
         <hr style="border: 1 none;">
         <h3 class="text-left">Filter</h3>
