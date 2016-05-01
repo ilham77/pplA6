@@ -47,7 +47,7 @@ protected $table = 'users';
     }
     
     public static function setPassword($password){
-     $password = Hash::make('secret');
+     //$password = Hash::make('secret');
      $user->password = $password;
      $user->save();   
     }

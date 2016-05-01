@@ -99,25 +99,17 @@
           
           <h1>Login Official</h1>
           <div class="form-bottom">
-            <form method="get" action="userlogin">
+            <form method="post" action="userlogin">
               <div class="form-group">
                 <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
-                <p><input type="npm" name="npm" class="form-control input" value="" size="50"placeholder="password"></p>
+                <p><input type="password" name="password" class="form-control input" value="" size="50"placeholder="password"></p>
               </div>
               <p>
               <label>
-                 @if(session('error'))
-                <div class="alert alert-danger">
-                    <strong>Login Failed :(</strong>
-                    <br>
-                    <ul>
-                        {{session('error')}}
-                    </ul>
-                </div>
-                @endif
+                
               </label>
               </p>
-              <p><a href="{{url('userlogin')}}" class="btn btn-danger" type="submit" name="commit">Login</a></p>
+              <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
             <div class="login-help">
               <p><a href="index.html">Don't have official account?</a></p>

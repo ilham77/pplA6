@@ -25,7 +25,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('userlogin', 'UserController@masuklogin');
+Route::post('userlogin', 'UserController@masuklogin');
 Route::get('userlogout', 'UserController@logout');
 
 // Using A Route Closure...
