@@ -95,6 +95,8 @@ return [
         'judul' => [
             'required'  => 'Judul pekerjaan harus diisi!',
             'max'       => 'Judul pekerjaan tidak boleh lebih dari :max karakter!',
+        'nama' => [
+            'required' => 'Harap isi nama anda!',
         ],
         'deskripsi' => [
             'required'  => 'Deskripsi pekerjaan harus diisi!',
@@ -114,6 +116,35 @@ return [
         ],
         'skill' => [
             'required'  => 'Harap tulis skill-skill yang diperlukan untuk pekerjaan ini (harap tulis dalam 1 kata per skill)!',
+        ],
+        'email' => [
+            'required' => 'Harap isi email anda!',
+            'email' => 'Format email anda salah!',
+        ],
+        'tanggal' => [
+            'required' => 'Harap isi tanggal kelahiran anda!',
+            'date' => 'Format penulisan tanggal lahir anda salah (harap tulis dalam mm/dd/yyyy)!',
+        ],
+        'deskripsi' => [
+            'required' => 'Harap isi deskripsi tentang anda!',
+        ],
+        'linkedin' => [
+            'url' => 'Harap isi LinkedIn anda dengan format yang benar!',
+        ],
+        'web' => [
+            'url' => 'Harap isi link website anda dengan format yang benar!',
+        ],
+        'skills' => [
+            'required' => 'Harap isi skill-skill anda!',
+        ],
+        'avatar' => [
+            'required' => 'Harap upload gambar profil anda!',
+            'mimes' => 'Format gambar profil hanya bisa jpeg, bmp, dan png!',
+            'max' => 'Gambar tidak boleh lebih dari 2MB!'
+        ],
+        'cvresume' => [
+            'mimes' => 'Harap upload CV/Resume anda dalam format pdf!',
+            'max' => 'CV/Resume tidak boleh lebih dari 4MB!'
         ],
     ],
 

@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', ['as' => 'home', function ()
-{
-	return View::make('home');
-}]);
 
 Route::get('/login', function () {
     return view('login');
@@ -34,8 +30,10 @@ Route::get('/detail', function () {
 });
 
 
-Route::get('sso-login','Controller@login');
-Route::get('logout','Controller@logout');
+
+Route::get('/detail', function() {
+    return view('detail');
+});
 
 Route::get('/infoAccount', function () {
     return view('infoAccount');
@@ -63,6 +61,14 @@ Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('/', function () 
+	{
+		return View::make('home');
+	});
+	Route::get('sso-login','SSOController@login');
+	Route::get('logout','SSOController@logout');
+    Route::get('/edit', 'UserController@editForm');
+	Route::post('saveprofile', 'UserController@editProfile');
     Route::get('/bukalowongan', function () {
 		return view('postlowongan');
 	});
