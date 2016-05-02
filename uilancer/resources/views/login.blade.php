@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
   
   <style>
     body img{
@@ -99,14 +101,14 @@
           
           <h1>Login Official</h1>
           <div class="form-bottom">
-            <form method="post" action="userlogin">
+            <form id='#defaultForm' method="post" action="userlogin">
               <div class="form-group">
                 <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
                 <p><input type="password" name="password" class="form-control input" value="" size="50"placeholder="password"></p>
               </div>
               <p>
               <label>
-                
+               
               </label>
               </p>
               <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
@@ -119,5 +121,49 @@
     </div>
   </div>
 </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    // Generate a simple captcha
+    
+   
+
+    $('#defaultForm').formValidation({
+        message: 'This value is not valid',
+       
+        fields: {
+            
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            } 
+        }
+    });
+});
+</script>
 </body>
 </html>
