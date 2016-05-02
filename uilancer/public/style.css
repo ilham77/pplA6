@@ -17,6 +17,30 @@ h4 {
     font-weight: 400;
     margin-bottom: 30px;
 }  
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
 .jumbotron {
     background-image: url('bgr1.jpg');
     color: #fff;
@@ -71,6 +95,44 @@ h4 {
 }
 .item span {
     font-style: normal;
+}
+.panel {
+    border: 1px solid #00004d; 
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+}
+.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+.panel-footer .btn:hover {
+    border: 1px solid #00004d;
+    background-color: #fff !important;
+    color: #00004d;
+}
+.panel-heading {
+    color: #fff !important;
+    background-color: #000066 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.panel-footer {
+    background-color: white !important;
+}
+.panel-footer h3 {
+    font-size: 32px;
+}
+.panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+}
+.panel-footer .btn {
+    margin: 15px 0;
+    background-color: #00004d;
+    color: #fff;
 }
 .navbar {
     margin-bottom: 0;
@@ -131,15 +193,26 @@ h4 {
     right:0; 
 }
 footer {
-    background-color: #2d2d30;
-    color: #f5f5f5;
-    padding: 32px;
+  background-color: #2d2d30;
+  color: #f5f5f5;
+  padding: 32px;
+      clear: both;
+    position: relative;
+    z-index: 10;
+    height: 100px;
+    margin-top: -3em;
 }
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
     color: #333399;
 }
+
+#error {
+    background-color: #ffb3b3;
+    color: black;
+}
+
 .slideanim {visibility:hidden;}
 .slide {
     animation-name: slide;
@@ -185,9 +258,4 @@ footer .glyphicon {
     .logo {
         font-size: 150px;
     }
-}
-h1 {
-    font-weight: 300;
-    font-size: 40px;
-    color: #003366;
 }

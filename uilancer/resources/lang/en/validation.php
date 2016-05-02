@@ -92,8 +92,60 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'judul' => [
+            'required'  => 'Judul pekerjaan harus diisi!',
+            'max'       => 'Judul pekerjaan tidak boleh lebih dari :max karakter!',
+        ],
+        'nama' => [
+            'required' => 'Harap isi nama anda!',
+        ],
+        'deskripsiPekerjaan' => [
+            'required'  => 'Deskripsi pekerjaan harus diisi!',
+        ],
+        'budget' => [
+            'required'  => 'Harap beri budget/honor untuk lowongan Anda!',
+            'numeric'   => 'Budget/honor hanya dapat diisi dalam angka (dalam Rp.)!'
+        ],
+        'estimasi' => [
+            'required'  => 'Harap beri estimasi ukuran pekerjaan dalam minggu!',
+            'numeric'   => 'Estimasi hanya dapat diisi dalam angka (dalam minggu)!'
+        ],
+        'deadline' => [
+            'required'  => 'Beri tanggal deadline anda mencari freelancer untuk pekerjaan ini!',
+            'date'      => 'Deadline pencarian hanya dapat diisi dalam format mm/dd/yyyy!',
+            'after'     => 'Tanggal deadline hanya bisa diisi tanggal setelah hari ini!',
+        ],
+        'skill' => [
+            'required'  => 'Harap tulis skill-skill yang diperlukan untuk pekerjaan ini (harap tulis dalam 1 kata per skill)!',
+        ],
+        'email' => [
+            'required' => 'Harap isi email anda!',
+            'email' => 'Format email anda salah!',
+        ],
+        'tanggal' => [
+            'required' => 'Harap isi tanggal kelahiran anda!',
+            'date' => 'Format penulisan tanggal lahir anda salah (harap tulis dalam mm/dd/yyyy)!',
+        ],
+        'deskripsi' => [
+            'required' => 'Harap isi deskripsi tentang anda!',
+        ],
+        'linkedin' => [
+            'url' => 'Harap isi LinkedIn anda dengan format yang benar!',
+        ],
+        'web' => [
+            'url' => 'Harap isi link website anda dengan format yang benar!',
+        ],
+        'skills' => [
+            'required' => 'Harap isi skill-skill anda!',
+        ],
+        'avatar' => [
+            'required' => 'Harap upload gambar profil anda!',
+            'mimes' => 'Format gambar profil hanya bisa jpeg, bmp, dan png!',
+            'max' => 'Gambar tidak boleh lebih dari 2MB!'
+        ],
+        'cvresume' => [
+            'mimes' => 'Harap upload CV/Resume anda dalam format pdf!',
+            'max' => 'CV/Resume tidak boleh lebih dari 4MB!'
         ],
     ],
 

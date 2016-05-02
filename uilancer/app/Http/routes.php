@@ -16,24 +16,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', function () 
-{
-	return View::make('home');
-});
 
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('sso-login','Controller@login');
-Route::get('logout','Controller@logout');
+
+Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
+
+
+Route::get('/detail', function () {
+    return view('detail');
+});
+
+
+
+Route::get('/detail', function() {
+    return view('detail');
+});
 
 Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+
+//Routing yang berhubungan dengan pekerjaan
+Route::get('/search-dashboard', function () {
+    return View::make('search-dashboard');
 });
 
 /*
@@ -46,8 +59,23 @@ Route::get('/dashboard', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-/*
+
 Route::group(['middleware' => ['web']], function () {
-    //
+	Route::get('/', function () {
+		return View::make('home');
+	});
+	Route::get('/home', function () {
+		return View::make('home');
+	});
+	Route::get('sso-login','SSOController@login');
+	Route::get('logout','SSOController@logout');
+    Route::get('/edit', 'UserController@editForm');
+	Route::post('saveprofile', 'UserController@editProfile');
+    Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
+	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
+	Route::get('/listPekerjaan','PekerjaanController@index');
+	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
+	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+	Route::get('/profile','UserController@viewProfile');
+
 });
-*/
