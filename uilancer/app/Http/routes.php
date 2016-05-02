@@ -39,14 +39,15 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 //Routing yang berhubungan dengan pekerjaan
 Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
-
-
-
-
 
 /*
 |--------------------------------------------------------------------------
