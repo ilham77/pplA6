@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function viewProfile() {
         if (Auth::user()){
-            return view('profile');
+            return view('dashboard.dashboard');
         } else {
             return redirect('/');
         }
