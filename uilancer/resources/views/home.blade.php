@@ -31,7 +31,13 @@
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
       
-        <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+        <li data-toggle="modal" data-target="#myModal"><a href="#">
+            @if(\Auth::check())
+            <p>Welcome, {{\Auth::user()->name}}</p>
+            @else
+            <p>Login</p>
+            @endif
+            </a></li>
       </ul>
     </div>
   </div>
@@ -40,9 +46,19 @@
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
+           @if(\Auth::check())
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Logout</h4>
+        </div>
+        <div class="modal-body">
+          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <a href="{{url('profile')}}" class="btn btn-danger">Profil</a>
+        </div>
+      </div>
+            @else
+               <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
@@ -53,6 +69,9 @@
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
+            @endif
+      <!-- Modal content-->
+   
       
     </div>
 </div>
@@ -60,9 +79,10 @@
 <div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
   <h1>Find Freelancer</h1> 
   <p>What kind of service are you looking for ?</p> 
-  <form class="form-inline">
-    <input type="text" class="form-control" size="50" placeholder="Example: website, etc " required>
-    <button type="button" class="btn btn-danger">Search</button><br>
+  <form action="searchPekerjaan" method="POST" class="form-inline">
+    {{ csrf_field() }}<input type="text" name="kunci" class="form-control" size="50" placeholder="Example: website, etc " required>
+    <input type="hidden" name="flag" value="nonDash">
+    <button type="submit" class="btn btn-danger">Search</button><br>
   </form>
   <br>
   <br>
