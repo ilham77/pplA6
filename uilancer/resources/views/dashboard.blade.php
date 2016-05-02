@@ -113,7 +113,7 @@
 						</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+							<li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
 							<li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
 						</ul>
 					</li>
@@ -131,7 +131,7 @@
 			<li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+			<li><a href="bukalowongan"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
 			<li class="parent ">
 				<a href="#">
 					<span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat 
@@ -180,7 +180,7 @@
             <p>Email            : {{\Auth::user()->email}}</p>
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
-            <p>Ketertarikan     : Massage, Telephone marketing</p>
+            <p>Ketertarikan     : </p>
             <p>Pekerjaan        : {{\Auth::user()->role}}</p> 
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
             CV / Resume :

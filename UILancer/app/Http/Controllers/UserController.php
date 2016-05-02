@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function viewProfile() {
         if (Auth::user()){
-            return view('dashboard.dashboard');
+            return view('dashboard');
         } else {
             return redirect('/');
         }
@@ -57,11 +57,14 @@ class UserController extends Controller
 
     	$userid = $user->id;
 
-		$file = $request->file('avatar');
-		$destinationPath = 'avatar';
-		$fileName = $userid . "-avatar";
-		$user->avatar = $fileName;
-        $file->move($destinationPath, $fileName);
+        if ($request->hasFile('avatar')){
+            $file = $request->file('avatar');
+            $destinationPath = 'avatar';
+            $fileName = $userid . "-avatar";
+            $user->avatar = $fileName;
+            $file->move($destinationPath, $fileName);
+        }
+		
 
         if ($request->hasFile('cvresume')){
         	$file = $request->file('cvresume');
@@ -82,6 +85,6 @@ class UserController extends Controller
   		
   		$user->save();
 
-    	return redirect('profile');
+    	return redirect('dashboard');
 	}
 }
