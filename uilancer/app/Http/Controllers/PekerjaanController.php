@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTag;
+use Auth;
 
 class PekerjaanController extends Controller
 {
@@ -31,6 +32,14 @@ class PekerjaanController extends Controller
         $hasill = $hasil->skillTag;
 
         return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill'));
+    }
+
+    public function bukaLowongan() {
+        if (Auth::user()){
+            return view('postlowongan');
+        } else {
+            return redirect('/');
+        }
     }
 
     public function insertPekerjaan(Request $request)
@@ -72,7 +81,7 @@ class PekerjaanController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-        return back();
+        return redirect('/');
     }
 
     public function searchPekerjaan(Request $request)

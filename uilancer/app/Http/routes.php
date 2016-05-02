@@ -21,7 +21,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
 
 
@@ -70,12 +70,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('logout','SSOController@logout');
     Route::get('/edit', 'UserController@editForm');
 	Route::post('saveprofile', 'UserController@editProfile');
-    Route::get('/bukalowongan', function () {
-		return view('postlowongan');
-	});
+    Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
 	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
+	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 
 });
 
