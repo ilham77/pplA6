@@ -23,6 +23,14 @@ class UserController extends Controller
 		}
 	}
 
+    public function viewProfile() {
+        if (Auth::user()){
+            return view('profile');
+        } else {
+            return redirect('/');
+        }
+    }
+
     public function editProfile(Request $request){
 
     	$this->validate($request, [
@@ -74,6 +82,6 @@ class UserController extends Controller
   		
   		$user->save();
 
-    	return redirect('/');
+    	return redirect('profile');
 	}
 }

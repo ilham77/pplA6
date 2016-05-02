@@ -54,6 +54,7 @@
         </div>
         <div class="modal-body">
           <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <a href="{{url('profile')}}" class="btn btn-danger">Profil</a>
         </div>
       </div>
             @else
