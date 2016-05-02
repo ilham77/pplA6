@@ -107,13 +107,14 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>User
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
             </ul>
           </li>
 
@@ -126,7 +127,8 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="dashboard"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
@@ -161,6 +163,7 @@
   <div class="row">
     <div class="col-md-8">
       <form action="searchPekerjaan" method="POST">
+      {{csrf_field()}}
         <div class="form-group">
           <input required type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>
         </div>

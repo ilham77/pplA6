@@ -62,6 +62,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/home', function () {
 		return View::make('home');
 	});
+	Route::get('/search-dashboard', function () {
+    return View::make('search-dashboard');
+	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
     Route::get('/edit', 'UserController@editForm');
