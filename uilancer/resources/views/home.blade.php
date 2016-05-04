@@ -54,6 +54,7 @@
         </div>
         <div class="modal-body">
           <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <a href="{{url('dashboard')}}" class="btn btn-danger">Profil</a>
         </div>
       </div>
             @else
@@ -78,9 +79,10 @@
 <div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
   <h1>Find Freelancer</h1> 
   <p>What kind of service are you looking for ?</p> 
-  <form class="form-inline">
-    <input type="text" class="form-control" size="50" placeholder="Example: website, etc " required>
-    <button type="button" class="btn btn-danger">Search</button><br>
+  <form action="searchPekerjaan" method="POST" class="form-inline">
+    {{ csrf_field() }}<input type="text" name="kunci" class="form-control" size="50" placeholder="Example: website, etc " required>
+    <input type="hidden" name="flag" value="nonDash">
+    <button type="submit" class="btn btn-danger">Search</button><br>
   </form>
   <br>
   <br>
