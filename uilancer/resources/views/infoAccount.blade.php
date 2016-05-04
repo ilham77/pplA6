@@ -102,21 +102,69 @@
     </div>
   </div> 
 </div>
+    
 
-<!-- Container (About Us Section) -->
-<div id="about" class="container-fluid bg-grey">
-<div class="row">
-    <div class="col-sm-8">
-      <h2>About Us</h2><br>
-      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
-      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-level-up logo"></span>
-    </div>
-  </div>
-</div>
+    <div id="form-pekerjaan" class="container-fluid bg-grey">
+        <h1>POST LOWONGAN PEKERJAAN</h1>
+         <form action="saveprofile" method="POST" role="form" enctype="multipart/form-data">
+              {{csrf_field()}}
+              <br/>
+              <div class="form-group">
+                <label for="nama" class="control-label">Nama</label>
+                <input name="nama" type="text" class="form-control" placeholder="Nama...">
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+              </div>
+                
+              <div class="form-group">
+                <label for="tempat" class="control-label">Tempat Kelahiran</label>
+                <input name="tempat" type="text" class="form-control" placeholder="Tempat kelahiran..." >
+              </div>
+              
+              <div class="form-group">
+                <label for="tanggal" class="control-label">Tanggal Lahir</label>
+                <input name="tanggal" type="date" class="form-control" >
+              </div>
 
+              <div class="form-group">
+                <label for="deskripsi" class="control-label">Deskripsi</label>
+                <textarea name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control"placeholder="Deskripsikan diri anda..."></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="linkedin" class="control-label">Linkedin</label>
+                <input name="linkedin" type="text" class="form-control" placeholder="http://linkedin.com/12345-example">
+              </div>
+              
+              <div class="form-group">
+                <label for="web" class="control-label">Website pribadi</label>
+                <input name="web" type="text" class="form-control" placeholder="http://www.example.com" >
+              </div>
+              
+              <div class="form-group">
+                <label for="skills" class="control-label">Skills</label>
+                <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
+              </div>
+                
+              <div class="form-group">
+                <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label>
+                <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-primary btn-file">
+                          Browse&hellip; <input type="file" name="cvresume">
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+                </div>
+              </div>
+        
+              {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
+              <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
+        </form>
+    </div>
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
   <h2 class="text-center">CONTACT</h2>
