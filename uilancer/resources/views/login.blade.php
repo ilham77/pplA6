@@ -104,7 +104,7 @@
             <form id='#defaultForm' method="post" action="userlogin">
               <div class="form-group">
                 <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
-                <p><input type="password" name="password" class="form-control input" value="" size="50"placeholder="password"></p>
+                <p><input type="password" name="password" class="form-control input" value="" size="50" placeholder="password"></p>
               </div>
               <p>
               <label>
@@ -114,7 +114,7 @@
               <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
             <div class="login-help">
-              <p><a href="index.html">Don't have official account?</a></p>
+              <p><a href="infoAccount">Don't have official account?</a></p>
             </div>
           </div>
       </section>

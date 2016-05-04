@@ -36,32 +36,27 @@ class UserController extends Controller
 
         $username = Input::get('username');
         $password = Input::get('password');
-        //echo($username);
-        //echo('a');
         $user= DB::table('users')->where([['username','=',$username],['password','=',$password]])->first();
         if($user===null){
             return redirect('/login')->with('error','Invalid email or password');
-            //return view('home');
             }
         if($user->role='official'){
-            //correct username and password
-            //$user = User::where('username','=',$user ->username)->first();
             Auth::loginUsingId($user->id);
             return view('home');
                  
         }
-        //gagal login
         return redirect('/login')->with('error','Invalid email or password');
     }
+
     public function loginForm(){
-         if(!Auth::check())
+        if(!Auth::check())
            return view('/login');
         else
             return redirect('/');
     }
+    
     public function logout(){
-        \Auth::logout();
-        //SSO::logout();
+        Auth::logout();
         return redirect('/');
     }
 

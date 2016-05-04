@@ -28,9 +28,6 @@ Route::get('/detail', function () {
     return view('detail');
 });
 
-Route::post('userlogin', 'UserController@masuklogin');
-Route::get('userlogout', 'UserController@logout');
-
 Route::get('/detail', function() {
     return view('detail');
 });
@@ -67,6 +64,8 @@ Route::group(['middleware' => ['web']], function () {
 	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
+	Route::post('userlogin', 'UserController@masuklogin');
+	Route::get('userlogout', 'UserController@logout');
     Route::get('/edit', 'UserController@editForm');
 	Route::post('saveprofile', 'UserController@editProfile');
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
