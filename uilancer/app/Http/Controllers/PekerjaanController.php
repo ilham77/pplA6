@@ -22,6 +22,12 @@ class PekerjaanController extends Controller
     public function detailPekerjaan($pekerjaan)
     {
         $hasil = Pekerjaan::findorFail($pekerjaan);
+        $hasil->endDate =  \Carbon\Carbon::parse($hasil->endDate)->format('M j, Y');
+
+        $tempHonor = strrev("".$hasil->budget."");
+        $tempHonor = str_split($tempHonor,3);
+        $hasil->budget = strrev(implode(".", $tempHonor));
+
     	$hasill = $hasil->skillTag;
         $jobGiver = User::whereHas('pekerjaan',function($query) use ($pekerjaan){
                 $query->where('id',$pekerjaan);
