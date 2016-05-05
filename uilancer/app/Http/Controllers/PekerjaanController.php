@@ -105,7 +105,7 @@ class PekerjaanController extends Controller
 
         if($request->flag == "nonDash")
         {
-            $hasil = $hasil->get();
+            $hasil = $hasil->simplePaginate(10)->appends($request->all());
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
         else
@@ -168,7 +168,7 @@ class PekerjaanController extends Controller
                 $hasil = $hasil->whereDate('created_at', '<=', $MyDateCarbon);
             }
 
-            $hasil = $hasil->get();
+            $hasil = $hasil->simplePaginate(10)->appends($request->all());
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }

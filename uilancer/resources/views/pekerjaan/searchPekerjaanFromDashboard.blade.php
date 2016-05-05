@@ -197,6 +197,7 @@
        </div>
     </table>
         <div align="center">
+            {!! $pekerjaans->render() !!}
             <form action = "search-dashboard"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>

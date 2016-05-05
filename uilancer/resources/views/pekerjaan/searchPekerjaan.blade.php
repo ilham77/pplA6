@@ -20,7 +20,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a href="./"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
@@ -38,7 +38,7 @@
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -51,21 +51,21 @@
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
-      
+
     </div>
 </div>
 
 <div id="table" class="container-fluid">
   <h1 class="text-center">Hasil Pencarian</h1>
   <br>
-  Pekerjaan dengan kata kunci "{{ $kunci }}"	
+  Pekerjaan dengan kata kunci "{{ $kunci }}"
 		<table style="width:100%" class="table table-bordered">
 			<div class="table-responsive">
 			@if(count($pekerjaans))
       <thead>
             <tr>
               <td><center><b>Judul Pekerjaan</b></center></td>
-              <td><center><b>Deskripsi Pekerjaan</b></center></td>    
+              <td><center><b>Deskripsi Pekerjaan</b></center></td>
               <td><center><b>Status</center></b></td>
               <td><center><b>Progress</center></b></td>
             </tr>
@@ -96,6 +96,7 @@
 			 </div>
 		</table>
         <div align="center">
+            {!! $pekerjaans->render() !!}
             <form action="home"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>
@@ -123,12 +124,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-   
+
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -144,17 +145,3 @@ $(document).ready(function(){
 
 </body>
 </html>
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>halaman hasil search pekerjaan</title>
-</head>
-<body>
-
-</body>
-</html> -->

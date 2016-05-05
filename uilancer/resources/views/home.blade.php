@@ -4,7 +4,7 @@
   <title>UILancer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
@@ -20,7 +20,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
     <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
@@ -30,7 +30,7 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
-      
+
         <li data-toggle="modal" data-target="#myModal"><a href="#">
             @if(\Auth::check())
             <p>Welcome, {{\Auth::user()->name}}</p>
@@ -71,15 +71,15 @@
       </div>
             @endif
       <!-- Modal content-->
-   
-      
+
+
     </div>
 </div>
 
 <div class="jumbotron text-center" style="background-image: url('bgr1.jpg');">
-  <h1>Find Freelancer</h1> 
-  <p>What kind of service are you looking for ?</p> 
-  <form action="searchPekerjaan" method="POST" class="form-inline">
+  <h1>Find Freelancer</h1>
+  <p>What kind of service are you looking for ?</p>
+  <form action="searchPekerjaan" method="GET" class="form-inline">
     {{ csrf_field() }}<input type="text" name="kunci" class="form-control" size="50" placeholder="Example: website, etc " required>
     <input type="hidden" name="flag" value="nonDash">
     <button type="submit" class="btn btn-danger">Search</button><br>
@@ -171,7 +171,7 @@
 </div>
 
 <!-- Container (Partner Section) -->
-<div id="partner" class="container-fluid text-center">  
+<div id="partner" class="container-fluid text-center">
   <h2>Partner</h2><br>
   <div class="row text-center slideanim">
     <div class="col-sm-4">
@@ -217,7 +217,7 @@
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
     </div>
     <div class="col-sm-7 slideanim">
       <div class="row">
@@ -233,7 +233,7 @@
         <div class="col-sm-12 form-group">
           <button class="btn btn-default pull-right" type="submit">Send</button>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 </div>
@@ -259,12 +259,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-   
+
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
