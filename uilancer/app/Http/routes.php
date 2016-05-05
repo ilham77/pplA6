@@ -72,4 +72,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');
 
+    Route::get('/apply/{pekerjaan}/{user}','UserController@apply');
+
 });

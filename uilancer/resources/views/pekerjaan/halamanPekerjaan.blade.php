@@ -113,7 +113,7 @@
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" href="#">APPLY</a>
+            <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">APPLY</a>
         </p>
     </div>
 </div>

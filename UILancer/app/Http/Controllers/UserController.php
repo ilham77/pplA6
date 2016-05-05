@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use App\SkillUser;
 use App\User;
+use App\ApplyManager;
 use Auth;
 use Redirect;
 use Session;
@@ -64,7 +65,7 @@ class UserController extends Controller
             $user->avatar = $fileName;
             $file->move($destinationPath, $fileName);
         }
-		
+
 
         if ($request->hasFile('cvresume')){
         	$file = $request->file('cvresume');
@@ -82,9 +83,27 @@ class UserController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-  		
+
   		$user->save();
 
     	return redirect('dashboard');
 	}
+
+    public function apply($pekerjaan, $user)
+    {
+        if(Auth::user())
+        {
+            $apply_manager = new ApplyManager;
+            $apply_manager->status = 0;
+            $apply_manager->pekerjaan_id = $pekerjaan;
+            $apply_manager->freelancer_id = $user;
+            $apply_manager->save();
+
+            return redirect()->back();
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
 }
