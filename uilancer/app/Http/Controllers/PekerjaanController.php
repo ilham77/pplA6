@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Pekerjaan;
-use App\SkillTag;
+use App\SkillTagPekerjaan;
+use App\User;
 use Auth;
 
 class PekerjaanController extends Controller
@@ -20,18 +21,18 @@ class PekerjaanController extends Controller
 
     public function detailPekerjaan($pekerjaan)
     {
-    	$hasil = Pekerjaan::findorFail($pekerjaan);
-    	$hasill = $hasil->skillTag;
-
-    	return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill'));
-    }
-
-    public function detailPekerjaanFromDashboard($pekerjaan)
-    {
         $hasil = Pekerjaan::findorFail($pekerjaan);
-        $hasill = $hasil->skillTag;
+    	$hasill = $hasil->skillTag;
+        $jobGiver = User::whereHas('pekerjaan',function($query) use ($pekerjaan){
+                $query->where('id',$pekerjaan);
+            })->get();
 
-        return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill'));
+
+        if (Auth::user()){
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver'));
+        } else {
+            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver'));
+        }
     }
 
     public function bukaLowongan() {
@@ -71,12 +72,13 @@ class PekerjaanController extends Controller
         $pekerjaan->isTaken     = 0;
         $pekerjaan->isClosed    = 0;
 
+        $pekerjaan->user_id = Auth::user()->id;
         $pekerjaan->save();
 
         $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
-            $skill = new skillTag;
+            $skill = new SkillTagPekerjaan;
             $skill->pekerjaan_id = $pekerjaan->id;
             $skill->skill = $as;
             $skill->save();
@@ -86,12 +88,12 @@ class PekerjaanController extends Controller
 
     public function searchPekerjaan(Request $request)
     {
-        $hasil2 = SkillTag::where('skill','LIKE','%'.$request->kunci.'%')->get();
-
-        $hasil = Pekerjaan::where(function ($query) use ($request,$hasil2){
+        $hasil = Pekerjaan::where(function ($query) use ($request){
                 $query->where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
                       ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
-                      ->orWhereIn('id',$hasil2->pluck('pekerjaan_id'));
+                      ->orWhereHas('skillTag',function($query) use ($request){
+                            $query->where('skill','LIKE','%'.$request->kunci.'%');
+                        });
             })
         ->where('isVerified',1);
 
