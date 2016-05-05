@@ -81,7 +81,7 @@ class PekerjaanController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-        return redirect('/');
+        return redirect('dashboard');
     }
 
     public function searchPekerjaan(Request $request)

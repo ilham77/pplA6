@@ -39,11 +39,6 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
 //Routing yang berhubungan dengan pekerjaan
 Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
@@ -67,6 +62,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/home', function () {
 		return View::make('home');
 	});
+	Route::get('/search-dashboard', function () {
+    return View::make('search-dashboard');
+	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
     Route::get('/edit', 'UserController@editForm');
@@ -76,6 +74,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-	Route::get('/profile','UserController@viewProfile');
+	Route::get('/dashboard','UserController@viewProfile');
 
 });
