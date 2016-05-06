@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\SkillUser;
 use App\User;
 use App\ApplyManager;
+use App\Pekerjaan;
 use Auth;
 use Redirect;
 use Session;
@@ -89,21 +90,35 @@ class UserController extends Controller
     	return redirect('dashboard');
 	}
 
-    public function apply($pekerjaan, $user)
+    public function apply($pekerjaan, $freelancer)
     {
         if(Auth::user())
         {
-            $apply_manager = new ApplyManager;
-            $apply_manager->status = 0;
-            $apply_manager->pekerjaan_id = $pekerjaan;
-            $apply_manager->freelancer_id = $user;
-            $apply_manager->save();
+            $jobGiver_id = User::whereHas('pekerjaan', function($query) use ($pekerjaan){
+                $query->where('id', $pekerjaan);
+            })->first();
 
-            return redirect()->back();
+
+            //1. PERHATIAN!!! bagian '&& Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
+            //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
+            if($jobGiver_id->id != $freelancer && Auth::user()->id == $freelancer)
+            {
+                $apply_manager = new ApplyManager;
+                $apply_manager->status = 0;
+                $apply_manager->pekerjaan_id = $pekerjaan;
+                $apply_manager->freelancer_id = $freelancer;
+                $apply_manager->save();
+
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply berhasil :)'));
+            }
+            else
+            {
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Lah kan lu yang buka jobnya'));
+            }
         }
         else
         {
-            return redirect()->back();
+            return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Login dulu boss'));
         }
     }
 }

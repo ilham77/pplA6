@@ -169,7 +169,7 @@ $isLogged=false;
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
         <p><span>oleh <a href=#>{{ $jobGiver->first()->name }}</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: 25</span>
+            <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
             <span>Status:
             @if($hasil->isTaken)
               Sudah Diambil
@@ -204,6 +204,21 @@ $isLogged=false;
         <p><br/>
             <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">APPLY</a>
         </p>
+
+        @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+        @endif
+
     </div>
 </div>
 

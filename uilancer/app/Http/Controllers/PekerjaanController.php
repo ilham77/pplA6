@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTagPekerjaan;
 use App\User;
+use App\ApplyManager;
 use Auth;
 
 class PekerjaanController extends Controller
@@ -29,15 +30,17 @@ class PekerjaanController extends Controller
         $hasil->budget = strrev(implode(".", $tempHonor));
 
     	$hasill = $hasil->skillTag;
+
         $jobGiver = User::whereHas('pekerjaan',function($query) use ($pekerjaan){
                 $query->where('id',$pekerjaan);
             })->get();
 
+        $jumlah_pelamar = $hasil->applyManager->count();
 
         if (Auth::user()){
-            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver'));
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar'));
         } else {
-            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver'));
+            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar'));
         }
     }
 
