@@ -44,6 +44,17 @@ Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
 
+Route::get('/admin', function () {
+    return View::make('admin.inbox');
+});
+
+Route::get('/createUser', function () {
+    return View::make('admin.createUser');
+});
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
