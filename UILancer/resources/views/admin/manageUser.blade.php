@@ -176,7 +176,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Inbox</h1>
+  <h1 class="text-left" style="margin-top:35px">Manajemen User</h1>
   <div class="row">
     <div class="col-md-12">
     <div class="row">
@@ -198,67 +198,47 @@
             </div>
         </div>
     </div>
-    <hr>
+    <br>
     <div class="row">
-
-        <div class="col-md-12">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-tasks">
-                </span> Permintaan Pembuatan Pekerjaan</a></li>
-                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                    Report User</a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
-                          <span class="">Judul Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span> 
-                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
-                          <span class="">Membuat game</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span> 
-                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
-                          <span class="">Membuat soal SDA</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span> 
-                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="tab-pane fade in" id="profile">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
-                          <span class="">Judul Report</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span> 
-                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
-                          <span class="">Tidak memberikan bayaran</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span> 
-                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
-                          <span class="">Tidak mengaccept status Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span> 
-                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
-                        </a>
-                    </div>
-                </div>
-
-        </div>
+  
+        <div class="col-sm-9 col-md-12">
+            <table class="table table-hover">
+              <div class="table-responsive">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>Luthfi Kurnia Putra</td>
+                  <td>Mahasiswa</td>
+                  <td>luthfi.kurnia@ui.ac.id</td>
+                  <td><a href='#'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#'><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Alamanda Shantika</td>
+                  <td>Official Account</td>
+                  <td>alamanda@gojek.com</td>
+                  <td><a href='#'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#'><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Muhammad Gibran</td>
+                  <td>Admin</td>
+                  <td>gibran@uilancer.com</td>
+                  <td><a href='#'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#'><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+              </div>
+            </table>
     </div>
-</div>
+  </div>
+    <button class="btn btn-defautl  center-block ">Tambah Akun</button>
     </div>
   </div>
 </div>

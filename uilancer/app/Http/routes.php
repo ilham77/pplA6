@@ -44,12 +44,12 @@ Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
 
-Route::get('/admin', function () {
+Route::get('/inbox', function () {
     return View::make('admin.inbox');
 });
 
-Route::get('/createUser', function () {
-    return View::make('admin.createUser');
+Route::get('/manageUser', function () {
+    return View::make('admin.manageUser');
 });
 
 
