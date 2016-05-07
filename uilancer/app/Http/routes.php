@@ -52,6 +52,14 @@ Route::get('/manageUser', function () {
     return View::make('admin.manageUser');
 });
 
+Route::get('/createUser', function () {
+    return View::make('admin.createUser');
+});
+
+Route::get('/editUser', function () {
+    return View::make('admin.editUser');
+});
+
 
 
 

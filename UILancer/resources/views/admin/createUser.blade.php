@@ -176,69 +176,67 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Manajemen User</h1>
+  <h1 class="text-left" style="margin-top:35px">Tambah Akun</h1>
+  <br>
   <div class="row">
     <div class="col-md-12">
     <div class="row">
-        <div class="col-sm-3 col-md-2">
-
-        </div>
-        <div class="col-sm-9 col-md-10">
-           
-            <div class="pull-right">
-                <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
-                <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-  
         <div class="col-sm-9 col-md-12">
-            <table class="table table-hover">
-              <div class="table-responsive">
-                <thead>
-                  <tr>
-                    <th>Nama</th>
-                    <th>Role</th>
-                    <th>Email</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tr>
-                  <td><a href="#">Luthfi Kurnia Putra</a></td>
-                  <td>Mahasiswa</td>
-                  <td>luthfi.kurnia@ui.ac.id</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">Alamanda Shantika</a></td>
-                  <td>Official Account</td>
-                  <td>alamanda@gojek.com</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">Muhammad Gibran</a></td>
-                  <td>Admin</td>
-                  <td>gibran@uilancer.com</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
+            <form action="addUser" method="POST" role="form">
+              {{ csrf_field() }}
+              <div class="form-group row">
+                <label for="emailUser" class="col-md-3 control-label">Email</label>
+                <div class="col-md-8">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
               </div>
-            </table>
+              <div class="form-group row">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-defautl" onclick="generatePassword()">Generate Password</button>  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="institusi" class="col-md-3 control-label">Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="institusi" placeholder="Institusi">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="alamatInstitusi" class="col-md-3 control-label">Alamat Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="alamatInstitusi" placeholder="Alamat Institusi">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="namaUser" class="col-md-3 control-label">Nama Pemilik Akun</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="namaPemilikAkun" placeholder="Nama Pemilik Akun">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="role" class="col-md-3 control-label">Role</label>
+                <div class="col-md-8">
+                  <select class="form-control" name="role">
+                    <option>Admin</option>
+                    <option>Akun Official</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success left-block">Submit</button>
+            </form>
+        </div>
     </div>
-  </div>
-    <form action = "createUser"> <button class="btn btn-defautl  center-block ">Tambah Akun</button> </form>
+  <br>
     </div>
   </div>
 </div>
@@ -247,26 +245,6 @@
       </div>
     </div><!--/.row-->
   </div><!--/.row-->
-
-  <div class="modal fade" id="modalDelete" role="dialog">
-    <div class="modal-dialog">
-               <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <center>
-        <div class="modal-body">
-          <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
-          <a href="#" class="btn btn-default">Yes</a>
-          <a class="btn btn-default" data-dismiss="modal">No</a>
-        </div>
-      </center>
-      </div>
-      <!-- Modal content-->
-   
-      
-    </div>
-</div>
 
   <script>
     !function ($) {
