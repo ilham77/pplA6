@@ -186,14 +186,14 @@
         <div class="col-sm-9 col-md-10">
 
             <div class="pull-right">
-                <span class="text-muted"><b>1</b>–<b>10</b> of <b>160</b></span>
+                <span class="text-muted"><b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
                 <div class="btn-group btn-group-sm">
                   {!! $pekerjaan->render() !!}
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="row">
 
         <div class="col-md-12">
@@ -211,7 +211,7 @@
                       @foreach($pekerjaan as $sbhPekerjaan)
                         <a href="pekerjaanDashboard/{{ $sbhPekerjaan->id }}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
-                          <span class="">{{ $sbhPekerjaan->user->name }}</span>
+                          <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
                           <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
                           <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>

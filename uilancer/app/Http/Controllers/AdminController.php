@@ -11,8 +11,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $pekerjaan = Pekerjaan::simplePaginate(10);
-        
+        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
         return view('admin.inbox',compact('pekerjaan'));
     }
 }
