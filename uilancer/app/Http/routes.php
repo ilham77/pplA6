@@ -44,9 +44,7 @@ Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
 
-Route::get('/inbox', function () {
-    return View::make('admin.inbox');
-});
+Route::get('/inbox', 'AdminController@index');
 
 Route::get('/manageUser', function () {
     return View::make('admin.manageUser');

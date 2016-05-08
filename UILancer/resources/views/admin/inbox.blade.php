@@ -184,16 +184,11 @@
 
         </div>
         <div class="col-sm-9 col-md-10">
-           
+
             <div class="pull-right">
-                <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
+                <span class="text-muted"><b>1</b>–<b>10</b> of <b>160</b></span>
                 <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </button>
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </button>
+                  {!! $pekerjaan->render() !!}
                 </div>
             </div>
         </div>
@@ -213,24 +208,14 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
-                          <span class="">Judul Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span> 
-                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
+                      @foreach($pekerjaan as $sbhPekerjaan)
+                        <a href="pekerjaanDashboard/{{ $sbhPekerjaan->id }}" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
+                          <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
+                          <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
+                          <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
-                          <span class="">Membuat game</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span> 
-                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
-                          <span class="">Membuat soal SDA</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span> 
-                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
-                        </a>
+                      @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade in" id="profile">
@@ -238,19 +223,19 @@
                         <a href="#" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
                           <span class="">Judul Report</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span> 
+                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span>
                           <span class="badge">12:10 AM</span> <span class="pull-right"></span>
                         </a>
                         <a href="#" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
                           <span class="">Tidak memberikan bayaran</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span> 
+                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span>
                           <span class="badge">12:05 AM</span> <span class="pull-right"></span>
                         </a>
                         <a href="#" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
                           <span class="">Tidak mengaccept status Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span> 
+                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span>
                           <span class="badge">12:00 AM</span> <span class="pull-right"></span>
                         </a>
                     </div>
