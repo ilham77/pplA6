@@ -206,8 +206,9 @@
                         </a>
                       @endforeach
                     </div>
+                    <br>
                     @if($pekerjaan->total() != 0)
-                    <div class="pull-right">
+                    <div class="text-center">
                         <span class="text-muted"><b>
 
                           {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
@@ -216,6 +217,7 @@
                         </div>
                     </div>
                     @else
+                    <br>
                     <br>
                     @endif
                 </div>
@@ -240,6 +242,8 @@
                           <span class="badge">12:00 AM</span> <span class="pull-right"></span>
                         </a>
                     </div>
+                    <br>
+                    <br>
                     @if($pekerjaan->total() != 0)
                     <div class="text-center">
                         <span class="text-muted"><b>
