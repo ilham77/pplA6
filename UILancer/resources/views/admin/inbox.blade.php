@@ -180,18 +180,7 @@
   <div class="row">
     <div class="col-md-12">
     <div class="row">
-        <div class="col-sm-3 col-md-2">
 
-        </div>
-        <div class="col-sm-9 col-md-10">
-
-            <div class="pull-right">
-                <span class="text-muted"><b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
-                <div class="btn-group btn-group-sm">
-                  {!! $pekerjaan->render() !!}
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="row">
@@ -217,6 +206,18 @@
                         </a>
                       @endforeach
                     </div>
+                    @if($pekerjaan->total() != 0)
+                    <div class="pull-right">
+                        <span class="text-muted"><b>
+
+                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
+                        <div class="btn-group btn-group-sm">
+                          {!! $pekerjaan->render() !!}
+                        </div>
+                    </div>
+                    @else
+                    <br>
+                    @endif
                 </div>
                 <div class="tab-pane fade in" id="profile">
                     <div class="list-group">
@@ -239,6 +240,18 @@
                           <span class="badge">12:00 AM</span> <span class="pull-right"></span>
                         </a>
                     </div>
+                    @if($pekerjaan->total() != 0)
+                    <div class="text-center">
+                        <span class="text-muted"><b>
+
+                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
+                        <div class="btn-group btn-group-sm">
+                          {!! $pekerjaan->render() !!}
+                        </div>
+                    </div>
+                    @else
+                    <br>
+                    @endif
                 </div>
 
         </div>
