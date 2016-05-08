@@ -202,7 +202,9 @@ $isLogged=false;
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">APPLY</a>
+            @if($hasil->user->id != Auth::user()->id)
+              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">APPLY</a>
+            @endif
         </p>
 
         @if (count($errors))

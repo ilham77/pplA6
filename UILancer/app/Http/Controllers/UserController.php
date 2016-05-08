@@ -94,12 +94,10 @@ class UserController extends Controller
     {
         if(Auth::user())
         {
-            $jobGiver_id = Pekerjaan::find($pekerjaan)->first()->user->id;
-
-
-            //1. PERHATIAN!!! bagian '&& Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
+            //1. PERHATIAN!!! bagian 'Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
             //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
-            if($jobGiver_id != $freelancer && Auth::user()->id == $freelancer)
+
+            if(Auth::user()->id == $freelancer)
             {
                 $apply_manager = new ApplyManager;
                 $apply_manager->status = 0;
@@ -111,7 +109,7 @@ class UserController extends Controller
             }
             else
             {
-                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Lah kan lu yang buka jobnya'));
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'jangan nge-apply-in orang dong'));
             }
         }
         else
