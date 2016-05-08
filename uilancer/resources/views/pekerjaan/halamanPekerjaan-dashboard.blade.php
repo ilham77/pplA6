@@ -167,7 +167,7 @@ $isLogged=false;
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>{{ $jobGiver->first()->name }}</a></span>
+        <p><span>oleh <a href=#>{{ $jobGiver->name }}</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
             <span>Status:

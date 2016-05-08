@@ -94,14 +94,12 @@ class UserController extends Controller
     {
         if(Auth::user())
         {
-            $jobGiver_id = User::whereHas('pekerjaan', function($query) use ($pekerjaan){
-                $query->where('id', $pekerjaan);
-            })->first();
+            $jobGiver_id = Pekerjaan::find($pekerjaan)->first()->user->id;
 
 
             //1. PERHATIAN!!! bagian '&& Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
             //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
-            if($jobGiver_id->id != $freelancer && Auth::user()->id == $freelancer)
+            if($jobGiver_id != $freelancer && Auth::user()->id == $freelancer)
             {
                 $apply_manager = new ApplyManager;
                 $apply_manager->status = 0;

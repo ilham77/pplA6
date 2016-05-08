@@ -31,9 +31,7 @@ class PekerjaanController extends Controller
 
     	$hasill = $hasil->skillTag;
 
-        $jobGiver = User::whereHas('pekerjaan',function($query) use ($pekerjaan){
-                $query->where('id',$pekerjaan);
-            })->get();
+        $jobGiver = $hasil->user;
 
         $jumlah_pelamar = $hasil->applyManager->count();
 
