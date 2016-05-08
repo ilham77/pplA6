@@ -13,4 +13,9 @@ class Pekerjaan extends Model
     {
         return $this->hasMany('App\SkillTag');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

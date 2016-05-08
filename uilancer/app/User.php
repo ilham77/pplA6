@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    
+
 protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -26,7 +26,7 @@ protected $table = 'users';
     protected $hidden = [
         'password', 'remember_token', 'id'
     ];
-    
+
     public function skill() {
         return $this->hasMany(SkillUser::class);
     }
@@ -34,25 +34,29 @@ protected $table = 'users';
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
      $user = new User();
      $user->name = $name;
-     $user->npm = $npm; 
+     $user->npm = $npm;
      $user->username = $username;
      $user->org_code = $org_code;
      $user->faculty=$faculty;
      $user->role = $role;
      $user->educational_program = $educational_program;
-     $user->save();   
+     $user->save();
      return $user;
     }
-    
+
 
     public static function get($npm){
     $user = User::find($npm);
     return $user;
     }
-    
+
     public static function setPassword($password){
      $password = Hash::make('secret');
      $user->password = $password;
-     $user->save();   
+     $user->save();
+    }
+
+    public static function pekerjaan(){
+       return $this->hasMany('App\Pekerjaan');
     }
 }
