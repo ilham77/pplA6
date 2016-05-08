@@ -60,7 +60,7 @@ Route::get('/editUser', function () {
     return View::make('admin.editUser');
 });
 
-
+Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 
 
 /*

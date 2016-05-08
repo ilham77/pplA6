@@ -167,7 +167,7 @@ $isLogged=false;
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>chan.ek</a></span>
+        <p><span>oleh <a href=#>chanek</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <span>Jumlah Pelamar: 25</span>
             <span>Status:
@@ -202,8 +202,14 @@ $isLogged=false;
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" href="#">APPLY</a>
+            @if($hasil->isVerified == 0)
+            <!-- Auth::user()->role == "admin" --> 
+              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../verify/{{ $hasil->id }}">Verify</a>
+            @else
+              <a class="btn btn-block btn-success mt-20 font2 text-center" >APPLY</a>
+            @endif
         </p>
+
     </div>
 </div>
 

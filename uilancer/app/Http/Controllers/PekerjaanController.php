@@ -84,6 +84,14 @@ class PekerjaanController extends Controller
         return redirect('dashboard');
     }
 
+    public function verifyJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->update(array('isVerified' => 1));
+        return redirect('inbox');
+    }
+
+
+
     public function searchPekerjaan(Request $request)
     {
         $hasil2 = SkillTag::where('skill','LIKE','%'.$request->kunci.'%')->get();
