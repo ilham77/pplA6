@@ -71,6 +71,7 @@ class PekerjaanController extends Controller
         $pekerjaan->isTaken     = 0;
         $pekerjaan->isClosed    = 0;
 
+        $pekerjaan->user_id = Auth::user()->id;
         $pekerjaan->save();
 
         $arrSkill = explode(";", $request->skill);
