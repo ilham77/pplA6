@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('deskripsi');
             $table->string('ketertarikan');
             $table->string('linkedin');
+            $table->integer('phone')->unsigned();
             $table->string('web');
             $table->rememberToken();
             $table->timestamps();

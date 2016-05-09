@@ -145,6 +145,11 @@
                 <label for="tanggal" class="control-label">Tanggal Lahir</label>
                 <input name="tanggal" type="date" class="form-control" value="{{\Auth::user()->tanggal_lahir}}">
               </div>
+                
+                <div class="form-group">
+                <label for="phone" class="control-label">Nomor Telepon</label>
+                <input name="phone" type="date" class="form-control" value="{{\Auth::user()->phone}}">
+              </div>
 
               <div class="form-group">
                 <label for="deskripsi" class="control-label">Deskripsi</label>

@@ -10,6 +10,27 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+//<![CDATA[
+        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsi_pekerjaan'); });
+  //]]>
+  </script>
+    
+    <style type="text/css">
+/*<![CDATA[*/
+#myInstance1 {
+        border: 2px dashed #0000ff;
+}
+.nicEdit-selected {
+        border: 2px solid #0000ff !important;
+}
+ 
+.nicEdit-main {
+        background-color: #fff !important;
+}
+ 
+/*]]>*/
+</style>
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -110,56 +131,57 @@
               {{csrf_field()}}
               <br/>
               <div class="form-group">
-                <label for="nama" class="control-label">Nama</label>
-                <input name="nama" type="text" class="form-control" placeholder="Nama...">
+                <label for="nama" class="control-label">Nama Lengkap</label>
+                <input name="nama" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
               </div>
-              
+             
+             <div class="form-group">
+                <label for="asal_instansi" class="control-label">Asal Instansi</label>
+                <input name="asal_instansi" type="text" class="form-control" placeholder="Tuliskan asal instansi anda...">
+              </div>
+             
               <div class="form-group">
                 <label for="email" class="control-label">Email</label>
                 <input name="email" type="email" class="form-control" placeholder="example@mail.com">
               </div>
-                
+             
+                <div class="form-group">
+                <label for="phone" class="control-label">No. Telepon</label>
+                <input name="phone" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0" required>
+              </div>
+             
               <div class="form-group">
-                <label for="tempat" class="control-label">Tempat Kelahiran</label>
-                <input name="tempat" type="text" class="form-control" placeholder="Tempat kelahiran..." >
+                <label for="tgl_tutup" class="control-label">Tanggal lowongan ditutup</label>
+                <input name="tgl_tutup" type="date" class="form-control" required >
               </div>
               
               <div class="form-group">
-                <label for="tanggal" class="control-label">Tanggal Lahir</label>
-                <input name="tanggal" type="date" class="form-control" >
+                <label for="deadline" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
+                <input name="deadline" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+              </div>
+             
+             <div class="form-group">
+                <label for="budget" class="control-label">Budget (dalam IDR )</label>
+                <input name="budget" type="number" class="form-control" required placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
               </div>
 
+
               <div class="form-group">
-                <label for="deskripsi" class="control-label">Deskripsi</label>
-                <textarea name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control"placeholder="Deskripsikan diri anda..."></textarea>
+                <label for="deskripsi_pekerjaan" class="control-label">Deskripsi Pekerjaan</label>
+                <textarea id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
               </div>
               
               <div class="form-group">
-                <label for="linkedin" class="control-label">Linkedin</label>
-                <input name="linkedin" type="text" class="form-control" placeholder="http://linkedin.com/12345-example">
+                <label for="website" class="control-label">Website</label>
+                <input name="website" type="text" class="form-control" placeholder="http://www.example.com">
               </div>
               
               <div class="form-group">
-                <label for="web" class="control-label">Website pribadi</label>
-                <input name="web" type="text" class="form-control" placeholder="http://www.example.com" >
-              </div>
-              
-              <div class="form-group">
-                <label for="skills" class="control-label">Skills</label>
+                <label for="skills" class="control-label">Skill yang dibutuhkan</label>
                 <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
               </div>
                 
-              <div class="form-group">
-                <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label>
-                <div class="input-group">
-                  <span class="input-group-btn">
-                      <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="cvresume">
-                      </span>
-                  </span>
-                  <input type="text" class="form-control" readonly>
-                </div>
-              </div>
+   
         
               {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
               <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
@@ -221,6 +243,7 @@ $(document).ready(function(){
     });
   });
   
+    
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
