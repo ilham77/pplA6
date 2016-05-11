@@ -156,6 +156,7 @@ input[readonly] {
 .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #fff !important;
     background-color: #333399 !important;
+    height: 50px;
 }
 .navbar-default .navbar-toggle {
     border-color: transparent;

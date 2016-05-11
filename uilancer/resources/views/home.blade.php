@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-    <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+      <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -31,34 +31,37 @@
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
       
-        <li data-toggle="modal" data-target="#myModal"><a href="#">
-            @if(\Auth::check())
-            <p>Welcome, {{\Auth::user()->name}}</p>
-            @else
-            <p>Login</p>
-            @endif
-            </a></li>
+        <li data-toggle="modal" data-target="#myModal">
+            <a href="#">
+              @if(\Auth::check())
+                <p>Welcome, {{\Auth::user()->name}}</p>
+              @else
+                <p>Login</p>
+              @endif
+            </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-  <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-           @if(\Auth::check())
-               <div class="modal-content">
+      @if(\Auth::check())
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Logout</h4>
+          <h4 class="modal-title">Menu</h4>
         </div>
         <div class="modal-body">
           <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <div class="divider"></div>
           <a href="{{url('dashboard')}}" class="btn btn-danger">Profil</a>
         </div>
       </div>
-            @else
-               <div class="modal-content">
+      @else
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
@@ -69,10 +72,7 @@
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
-            @endif
-      <!-- Modal content-->
-   
-      
+      @endif
     </div>
 </div>
 
@@ -88,7 +88,7 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="infoAccount">Don't have official account?</a>
+  <a href="infoAccount" style="font-weight: bold;">Don't have official account?</a>
   </form>
 </div>
 
@@ -128,7 +128,7 @@
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4 style="color:#303030;">HARD WORK</h4>
+      <h4>HARD WORK</h4>
       <p>Dikerjakan oleh tim dengan kerja keras</p>
     </div>
   </div>
