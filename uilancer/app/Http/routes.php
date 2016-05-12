@@ -17,9 +17,7 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
+
 
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
 
@@ -53,6 +51,9 @@ Route::get('/search-dashboard', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('/login', function () {
+    	return view('login');
+	});
 	Route::get('/', function () {
 		return View::make('home');
 	});

@@ -102,14 +102,25 @@
           <h1>Login Official</h1>
           <div class="form-bottom">
             <form id='#defaultForm' method="post" action="userlogin">
+            {{csrf_field()}}
               <div class="form-group">
                 <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
                 <p><input type="password" name="password" class="form-control input" value="" size="50" placeholder="password"></p>
               </div>
               <p>
-              <label>
-               
-              </label>
+                @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+      @endif
               </p>
               <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
