@@ -17,9 +17,6 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
 
 
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
@@ -28,8 +25,6 @@ Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@deta
 Route::get('/detail', function () {
     return view('detail');
 });
-
-
 
 Route::get('/detail', function() {
     return view('detail');
@@ -56,6 +51,9 @@ Route::get('/search-dashboard', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('/login', function () {
+    	return view('login');
+	});
 	Route::get('/', function () {
 		return View::make('home');
 	});
@@ -67,6 +65,8 @@ Route::group(['middleware' => ['web']], function () {
 	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
+	Route::post('userlogin', 'UserController@masuklogin');
+	Route::get('userlogout', 'UserController@logout');
     Route::get('/edit', 'UserController@editForm');
 	Route::post('saveprofile', 'UserController@editProfile');
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');

@@ -19,7 +19,7 @@ class SSOController extends BaseController
          if(SSO::check()){
             
              if((!DB::table('users')->where('npm','=',$user->npm)->get())){ 
-               $newUser = User::insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
+               $newUser = User::    insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
                 \Auth::loginUsingId($newUser->id);
                 return view('home')->with('npm', $user->npm);
              } else {
