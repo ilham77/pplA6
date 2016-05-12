@@ -12,7 +12,7 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
 //<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsi_pekerjaan'); });
+        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsi'); });
   //]]>
   </script>
     
@@ -127,12 +127,12 @@
 
     <div id="form-pekerjaan" class="container-fluid bg-grey">
         <h1>POST LOWONGAN PEKERJAAN</h1>
-         <form action="saveprofile" method="POST" role="form" enctype="multipart/form-data">
+         <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
               <br/>
               <div class="form-group">
-                <label for="nama" class="control-label">Nama Lengkap</label>
-                <input name="nama" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
+                <label for="name" class="control-label">Nama Lengkap</label>
+                <input name="name" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
               </div>
              
              <div class="form-group">
@@ -146,18 +146,18 @@
               </div>
              
                 <div class="form-group">
-                <label for="phone" class="control-label">No. Telepon</label>
-                <input name="phone" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0" required>
+                <label for="no_telp" class="control-label">No. Telepon</label>
+                <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0" required>
               </div>
              
               <div class="form-group">
-                <label for="tgl_tutup" class="control-label">Tanggal lowongan ditutup</label>
-                <input name="tgl_tutup" type="date" class="form-control" required >
+                <label for="deadline" class="control-label">Tanggal lowongan ditutup</label>
+                <input name="deadline" type="date" class="form-control" required>
               </div>
               
               <div class="form-group">
-                <label for="deadline" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
-                <input name="deadline" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+                <label for="durasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
+                <input name="durasi" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
               </div>
              
              <div class="form-group">
@@ -165,10 +165,14 @@
                 <input name="budget" type="number" class="form-control" required placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
               </div>
 
+             <div class="form-group">
+                <label for="judul" class="control-label">Judul Pekerjaan</label>
+                <input name="judul" type="text" class="form-control" placeholder="Tuliskan judul pekerjaan yang ingin anda post...">
+              </div>
 
               <div class="form-group">
-                <label for="deskripsi_pekerjaan" class="control-label">Deskripsi Pekerjaan</label>
-                <textarea id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
+                <label for="deskripsi" class="control-label">Deskripsi Pekerjaan</label>
+                <textarea id="deskripsi" name="deskripsi_pekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
               </div>
               
               <div class="form-group">
