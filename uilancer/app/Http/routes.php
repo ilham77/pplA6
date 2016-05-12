@@ -75,5 +75,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');
-
+	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 });
