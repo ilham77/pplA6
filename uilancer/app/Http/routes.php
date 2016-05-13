@@ -42,22 +42,6 @@ Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
 
-Route::get('/inbox', 'AdminController@index');
-
-Route::get('/manageUser', function () {
-    return View::make('admin.manageUser');
-});
-
-Route::get('/createUser', function () {
-    return View::make('admin.createUser');
-});
-
-Route::get('/editUser', function () {
-    return View::make('admin.editUser');
-});
-
-Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +79,20 @@ Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
 });
+
+
+Route::get('/inbox', 'AdminController@index');
+
+Route::get('/manageUser', function () {
+    return View::make('admin.manageUser');
+});
+
+Route::get('/createUser', function () {
+    return View::make('admin.createUser');
+});
+
+Route::get('/editUser', function () {
+    return View::make('admin.editUser');
+});
+
+Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
