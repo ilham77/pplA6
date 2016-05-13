@@ -116,7 +116,6 @@
         <div id="biodata" class="col-md-9 col-xs-4 col-lg-9">
             <p>Tempat Kelahiran : {{\Auth::user()->tempat_lahir}}</p>
             <p>Tanggal Lahir    : {{\Auth::user()->tanggal_lahir}}</p>
-            <p>Nomor Telepon    : {{\Auth::user()->phone}}</p>
             <p>Email            : {{\Auth::user()->email}}</p>
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
