@@ -193,10 +193,11 @@
               <div class="form-group row">
                 <label for="password" class="col-md-3 control-label">Password</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="password" placeholder="Password">
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
                 <div class="col-md-1">
-                    <button class="btn btn-defautl" onclick="generatePassword()">Generate Password</button>  
+                    <button id="generatePassword" type="button" class="btn btn-defautl">Generate Passoword</button>
+                    
                 </div>
               </div>
               <div class="form-group row">
@@ -250,8 +251,17 @@
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
+
         });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        document.getElementById("generatePassword").onclick = function () { 
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmno pqrstuvwxyz0123456789";
+            for( var i=0; i < 8; i++ ) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            document.getElementById("password").value = text;
+        };
     }(window.jQuery);
 
     $(window).on('resize', function () {
