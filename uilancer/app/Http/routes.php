@@ -35,9 +35,7 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-Route::get('/infoAccount', function () {
-    return view('infoAccount');
-});
+
 
 //Routing yang berhubungan dengan pekerjaan
 Route::get('/search-dashboard', function () {
@@ -92,5 +90,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');
-
+    Route::post('post-lowongan','PekerjaanController@postLowongan');
+Route::get('/infoAccount', function () {
+    return view('infoAccount');
+});
 });

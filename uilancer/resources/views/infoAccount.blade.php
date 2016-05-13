@@ -10,6 +10,27 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+//<![CDATA[
+        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsi'); });
+  //]]>
+  </script>
+    
+    <style type="text/css">
+/*<![CDATA[*/
+#myInstance1 {
+        border: 2px dashed #0000ff;
+}
+.nicEdit-selected {
+        border: 2px solid #0000ff !important;
+}
+ 
+.nicEdit-main {
+        background-color: #fff !important;
+}
+ 
+/*]]>*/
+</style>
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -102,21 +123,74 @@
     </div>
   </div> 
 </div>
+    
 
-<!-- Container (About Us Section) -->
-<div id="about" class="container-fluid bg-grey">
-<div class="row">
-    <div class="col-sm-8">
-      <h2>About Us</h2><br>
-      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
-      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-level-up logo"></span>
-    </div>
-  </div>
-</div>
+    <div id="form-pekerjaan" class="container-fluid bg-grey">
+        <h1>POST LOWONGAN PEKERJAAN</h1>
+         <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
+              {{csrf_field()}}
+              <br/>
+              <div class="form-group">
+                <label for="name" class="control-label">Nama Lengkap</label>
+                <input name="name" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
+              </div>
+             
+             <div class="form-group">
+                <label for="asal_instansi" class="control-label">Asal Instansi</label>
+                <input name="asal_instansi" type="text" class="form-control" placeholder="Tuliskan asal instansi anda...">
+              </div>
+             
+              <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+              </div>
+             
+                <div class="form-group">
+                <label for="no_telp" class="control-label">No. Telepon</label>
+                <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0" required>
+              </div>
+             
+              <div class="form-group">
+                <label for="deadline" class="control-label">Tanggal lowongan ditutup</label>
+                <input name="deadline" type="date" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="durasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
+                <input name="durasi" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+              </div>
+             
+             <div class="form-group">
+                <label for="budget" class="control-label">Budget (dalam IDR )</label>
+                <input name="budget" type="number" class="form-control" required placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
+              </div>
 
+             <div class="form-group">
+                <label for="judul" class="control-label">Judul Pekerjaan</label>
+                <input name="judul" type="text" class="form-control" placeholder="Tuliskan judul pekerjaan yang ingin anda post...">
+              </div>
+
+              <div class="form-group">
+                <label for="deskripsi" class="control-label">Deskripsi Pekerjaan</label>
+                <textarea id="deskripsi" name="deskripsi_pekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="website" class="control-label">Website</label>
+                <input name="website" type="text" class="form-control" placeholder="http://www.example.com">
+              </div>
+              
+              <div class="form-group">
+                <label for="skills" class="control-label">Skill yang dibutuhkan</label>
+                <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
+              </div>
+                
+   
+        
+              {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
+              <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
+        </form>
+    </div>
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
   <h2 class="text-center">CONTACT</h2>
@@ -173,6 +247,7 @@ $(document).ready(function(){
     });
   });
   
+    
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;

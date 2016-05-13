@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTag;
 use Auth;
+use App\UserLuar;
+
 
 class PekerjaanController extends Controller
 {
@@ -172,5 +174,14 @@ class PekerjaanController extends Controller
             $hasil = $hasil->get();
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
+    }
+    
+    public function postLowongan(Request $request){
+        $user = new UserLuar;
+        $user->name = $request->name;
+        $user->asal_instansi=$request->asal_instansi;
+        $user->email=$request->email;
+        $user->no_telp=$request->no_telp;
+        return $this->insertPekerjaan($request);
     }
 }
