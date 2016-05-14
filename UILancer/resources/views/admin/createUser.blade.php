@@ -233,7 +233,7 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-success left-block">Submit!</button>
+              <button type="submit" class="btn btn-success left-block">Submit</button>
             </form>
         </div>
     </div>
