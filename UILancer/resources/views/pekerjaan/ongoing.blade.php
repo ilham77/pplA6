@@ -129,7 +129,7 @@
     <ul class="nav menu">
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -148,7 +148,7 @@
           </li>
         </ul>
       </li>
-      <li><a href="{{url('ongoing')}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li  class="active"><a href="{{url('ongoing')}}" ><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
