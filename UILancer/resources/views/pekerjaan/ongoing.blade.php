@@ -227,7 +227,7 @@
         <td><center>5 pekan</center></td>
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
-        <td><center><a class="btn btn-primary mt-20 font2 text-center" href="#">Done</a></center></td>
+        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Done</a></center></td>
             </tr> 
        </div>
     </table>
@@ -255,15 +255,65 @@
         </div>
         <center>
         <div class="modal-body">
-          <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
+          <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
           <a href="#" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>
       </div>
       <!-- Modal content-->
-   
-      
+    </div>
+</div>
+
+
+  <div class="modal fade" id="modalTestimoni" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rating, Testimoni, dan Konfirmasi</h4>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px">
+            <br>
+            
+                              <table>
+                                    <tbody>
+                                        <tr height="50px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Berikan rating anda</label></div></td>
+                                            <td width="400px" style="margin-left:15px;">
+                                              <!-- <input required class="form-control" type="number" name="rating" placeholder="Rating"> -->
+    <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+  </fieldset>
+                                            </td>
+                                        </tr>
+
+                                        <tr height="85px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Testimoni</label></div></td>
+                                            <td><textarea required style="resize:none;margin-left:20px;" class="form-control" type="text" rows="3" name="testimoni" placeholder="Testimoni"></textarea></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+            <a class="btn btn-success mt-20 font2 text-center" href="#">Konfirmasi selesai</a></center>
+          </div><!-- 
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a> -->
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
     </div>
 </div>
 
