@@ -167,23 +167,33 @@ $isLogged=false;
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>{{ $jobGiver->name }}</a></span>
+        <span>Oleh : <a href=#>{{ $jobGiver->name }}</a></span>
+        <br>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
+            <br>
             <span>Status:
             @if($hasil->isTaken)
               Sudah Diambil
             @else
               Lowong
-            @endif</span></p>
-        <hr/>
+            @endif</span>
+            <br>
+                        <span>Jumlah Pelamar: 
+              @if($hasil->user->id == Auth::user()->id)
+                <a href="#">{{ $jumlah_pelamar }}</a>
+              @else
+                {{ $jumlah_pelamar }}
+              @endif
+              </span>
+        <hr style="border-width: 2px;">
       </div>
 
-        <div id="deskripsi" class="container-fluid text-left bg-grey">
-            <h1>Deskripsi:</h1>
+        <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
+            <b><h3>Deskripsi:</h3></b>
             <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
-
+            {{ $hasil->deskripsi_pekerjaan }}
+            </p>
+            <br/>
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))
               @foreach($hasill as $skill)
@@ -196,15 +206,20 @@ $isLogged=false;
             <span>{{ $hasil->durasi }} Minggu</span><br/>
 
              <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/><br/>
+            <span>Rp {{$hasil->budget}}</span><br/>
 
             <span><b>Deadline:</b></span>
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
+          <div class="text-right">
             @if($hasil->user->id != Auth::user()->id)
-              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">APPLY</a>
+              <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+            @else
+              <a class="btn btn-primary mt-20 font2 text-center" href="#">Edit</a>
+              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif
+          </div>
         </p>
 
         @if (count($errors))
