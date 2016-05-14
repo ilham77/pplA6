@@ -181,7 +181,7 @@
         <td><center>5 pekan</center></td>
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
-        <td><center><a class="btn btn-primary mt-20 font2 text-center" href="#">Done</a></center></td>
+        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
             </tr> 
                         <tr>
         <td><center>Membuat web</center></td>
@@ -246,6 +246,27 @@
       </div>
     </div><!--/.row-->
   </div><!--/.row-->
+
+  <div class="modal fade" id="modalDone" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+   
+      
+    </div>
+</div>
+
 
   <script>
     !function ($) {
