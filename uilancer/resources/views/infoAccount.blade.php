@@ -10,9 +10,10 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+<script type="text/javascript">
 //<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsi'); });
+        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
   //]]>
   </script>
     
@@ -82,10 +83,10 @@
 
 <div id="services" class="container-fluid">
   <div class="row">
-    <div class="col-sm-6">
+    <div  class="col-sm-6">
       <div class="panel panel-default text-left">
-        <div class="panel-heading">
-          <h3>Apa itu Official Account?</h3>
+        <div id="official" class="panel-heading">
+          <center><h3>Apa itu Official Account?</h3></center>
           <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
         </div>
         <div class="panel-body">
@@ -110,7 +111,7 @@
     </div> 
     <div class="col-sm-6">
       <div class="panel panel-default text-center">
-        <div class="panel-heading">
+        <div id="no-official" class="panel-heading">
           <h3>Saya hanya ingin mencari freelancer...</h3>
           <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer, tetapi Anda tidak akan mendapati semua keuntungan yang didapat sebagai Official Account.</p>
         </div>
@@ -131,7 +132,7 @@
     
 
     <div id="form-pekerjaan" class="container-fluid bg-grey">
-        <h1>POST LOWONGAN PEKERJAAN</h1>
+        <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
          <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
               <br/>

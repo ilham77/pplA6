@@ -8,7 +8,28 @@
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
+  //]]>
+  </script>
+     <style type="text/css">
+/*<![CDATA[*/
+#myInstance1 {
+        border: 2px dashed #0000ff;
+}
+.nicEdit-selected {
+        border: 2px solid #0000ff !important;
+}
+ 
+.nicEdit-main {
+        background-color: #fff !important;
+}
+ 
+/*]]>*/
+</style>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
@@ -85,7 +106,7 @@
         </div>
         <div class="form-group">
           <label for="deskripsi">Deskripsi Pekerjaan</label>
-          <textarea class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
+          <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
         </div>
         <div class="form-group">
           <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
