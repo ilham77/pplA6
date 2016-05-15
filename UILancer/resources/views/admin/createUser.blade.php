@@ -195,7 +195,7 @@
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="password" id="password" placeholder="Password">
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" style="margin-left:-10px;">
                     <button id="generatePassword" type="button" class="btn btn-defautl">Generate Passoword</button>
                     
                 </div>
@@ -256,7 +256,7 @@
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
         document.getElementById("generatePassword").onclick = function () { 
             var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmno pqrstuvwxyz0123456789";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for( var i=0; i < 8; i++ ) {
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             }
