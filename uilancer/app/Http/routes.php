@@ -35,9 +35,6 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-Route::get('/post', function () {
-    return view('post');
-});
 
 Route::post('post-lowongan','PekerjaanController@postLowongan');
 

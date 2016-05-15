@@ -87,7 +87,7 @@
       </div>
       <center>
        <button class="btn btn-danger text-center">
-          <a style="color:white; text-style:none;" href="{{URL::previous()}}">Kembali</a></center></button>
+          <a style="color:white; text-style:none;" href="{{url('/')}}">Kembali</a></center></button>
   </div>
 
 <!-- Container (Contact Section) -->

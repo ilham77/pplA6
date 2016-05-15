@@ -83,23 +83,26 @@
 <div id="services" class="container-fluid">
   <div class="row">
     <div class="col-sm-6">
-      <div class="panel panel-default text-center">
+      <div class="panel panel-default text-left">
         <div class="panel-heading">
           <h3>Apa itu Official Account?</h3>
           <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
         </div>
         <div class="panel-body">
-          <p>Akun resmi UILancer</p>
-          <p>Email resmi @uilancer.com</p>
-          <p>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</p>
-          <p>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</p>
-          <p>Job Manager untuk mengelola pelamar pekerjaan</p>
-          <p>Melihat profil pelamar</p>
-          <p>Halaman Profil dan Dashboard untuk Anda</p>
-          <p>Testimoni dan rating freelancer</p>
-          <p>Testimoni dapat ditampilkan di halaman depan UILancer</p>
+            <ul>
+          <li>Akun resmi UILancer</li>
+          <li>Email resmi @uilancer.com</li>
+          <li>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</li>
+          <li>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</li>
+          <li>Job Manager untuk mengelola pelamar pekerjaan</li>
+          <li>Melihat profil pelamar</li>
+          <li>Halaman Profil dan Dashboard untuk Anda</li>
+          <li>Testimoni dan rating freelancer</li>
+          <li>Testimoni dapat ditampilkan di halaman depan UILancer</li>
+          <li>Logo dapat ditampilkan di halaman depan UILancer</li>
+            </ul>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer text-center">
           <p>Untuk mendapatkan Official Account, Anda dapat kontak kami dengan email ke:</p>
           <a href="#">info@uilancer.com</a>
         </div>
@@ -109,15 +112,17 @@
       <div class="panel panel-default text-center">
         <div class="panel-heading">
           <h3>Saya hanya ingin mencari freelancer...</h3>
-          <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer tanpa Official Account, tetapi Anda tidak akan mendapati semua keuntung yang didapati Official Account.</p>
+          <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer, tetapi Anda tidak akan mendapati semua keuntungan yang didapat sebagai Official Account.</p>
         </div>
-        <div class="panel-body">
-          <p>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</p>
-          <p>Melihat profil pelamar</p>
-          <p>Testimoni dan rating freelancer</p>
+        <div class="panel-body text-left">
+            <ul>
+          <li>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</li>
+          <li>Melihat profil pelamar</li>
+          <li>Testimoni dan rating freelancer</li>
+            </ul>
         </div>
         <div class="panel-footer">
-          <button class="btn btn-lg">Post Lowongan Pekerjaan Anda!</button>
+          <button class="btn btn-lg" onclick="location.href='#form-pekerjaan';">Post Lowongan Pekerjaan Anda!</button>
         </div>
       </div> 
     </div>
@@ -156,8 +161,8 @@
               </div>
               
               <div class="form-group">
-                <label for="durasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
-                <input name="durasi" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+                <label for="estimasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
+                <input name="estimasi" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
               </div>
              
              <div class="form-group">
@@ -171,8 +176,8 @@
               </div>
 
               <div class="form-group">
-                <label for="deskripsi" class="control-label">Deskripsi Pekerjaan</label>
-                <textarea id="deskripsi" name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
+                <label for="deskripsiPekerjaan" class="control-label">Deskripsi Pekerjaan</label>
+                <textarea id="deskripsiPekerjaan" name="deskripsiPekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
               </div>
               
               <div class="form-group">
@@ -184,11 +189,23 @@
                 <label for="skills" class="control-label">Skill yang dibutuhkan</label>
                 <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
               </div>
-                
-   
+             
         
               {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
               <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
+              @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+      @endif
         </form>
     </div>
 <!-- Container (Contact Section) -->
