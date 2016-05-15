@@ -39,7 +39,7 @@ Route::get('/post', function () {
     return view('post');
 });
 
-
+Route::post('post-lowongan','PekerjaanController@postLowongan');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');
-    Route::post('post-lowongan','PekerjaanController@postLowongan');
+  
 Route::get('/infoAccount', function () {
     return view('infoAccount');
 });

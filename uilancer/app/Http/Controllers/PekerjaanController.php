@@ -173,6 +173,6 @@ class PekerjaanController extends Controller
         $user->asal_instansi=$request->asal_instansi;
         $user->email=$request->email;
         $user->no_telp=$request->no_telp;
-        return $this->insertPekerjaan($request);
+        return view('/home');
     }
 }

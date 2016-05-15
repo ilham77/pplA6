@@ -15,7 +15,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email','npm','username', 'password','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar', 'tanggal_lahir', 'tempat_lahir', 'pekerjaan'
+        'name', 'email','npm','username', 'password','org_code','role', 'phone', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar', 'tanggal_lahir', 'tempat_lahir', 'pekerjaan'
     ];
 
     /**

@@ -172,7 +172,7 @@
 
               <div class="form-group">
                 <label for="deskripsi" class="control-label">Deskripsi Pekerjaan</label>
-                <textarea id="deskripsi" name="deskripsi_pekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
+                <textarea id="deskripsi" name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
               </div>
               
               <div class="form-group">
