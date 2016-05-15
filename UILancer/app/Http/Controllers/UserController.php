@@ -33,6 +33,11 @@ class UserController extends Controller
         }
     }
 
+    public function viewPublicProfile($user){
+        $usr = User::findorFail($user);
+        return view('profile-public', compact('usr'));
+    }
+
     public function masuklogin(Request $request){
 
         $username = Input::get('username');
