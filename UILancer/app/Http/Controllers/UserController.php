@@ -141,4 +141,9 @@ class UserController extends Controller
             return redirect('/home');
         }
     }
+
+    public function onGoing($user)
+    {
+        return view('pekerjaan.ongoing');
+    }
 }

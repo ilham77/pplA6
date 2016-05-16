@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -182,7 +182,7 @@
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
         <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
-            </tr> 
+            </tr>
                         <tr>
         <td><center>Membuat web</center></td>
         <td><center>Kurnianto Trilaksono</center></td>
@@ -190,7 +190,7 @@
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
         <td><center>Waiting for the confirmation</center></td>
-            </tr> 
+            </tr>
        </div>
     </table>
 </div>
@@ -220,7 +220,7 @@
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
         <td><center>Waiting to be done</center></td>
-            </tr> 
+            </tr>
         <tr>
         <td><center>Membuat web</center></td>
         <td><center>Kurnianto Trilaksono</center></td>
@@ -228,7 +228,7 @@
         <td><center>Rp3.000.000,-</center></td>
         <td><center>20 December 2017</center></td>
         <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Done</a></center></td>
-            </tr> 
+            </tr>
        </div>
     </table>
 </div>
@@ -277,7 +277,7 @@
         <div class="modal-body">
           <div style="margin-top:-15px">
             <br>
-            
+
                               <table>
                                     <tbody>
                                         <tr height="50px">
@@ -307,7 +307,7 @@
                                 </table>
                                 <br>
             <a class="btn btn-success mt-20 font2 text-center" href="#">Konfirmasi selesai</a></center>
-          </div><!-- 
+          </div><!--
           <a href="#" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a> -->
         </div>
