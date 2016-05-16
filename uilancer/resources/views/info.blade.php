@@ -131,7 +131,21 @@
 </div>
     
 
-    <div id="form-pekerjaan" class="container-fluid bg-grey">
+    <div id="form-pekerjaan" class="container-fluid bg-grey">   
+              @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+      @endif
+             <br><br>
         <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
          <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
@@ -153,22 +167,22 @@
              
                 <div class="form-group">
                 <label for="no_telp" class="control-label">No. Telepon</label>
-                <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0" required>
+                <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0"  >
               </div>
              
               <div class="form-group">
                 <label for="deadline" class="control-label">Tanggal lowongan ditutup</label>
-                <input name="deadline" type="date" class="form-control" required>
+                <input name="deadline" type="date" class="form-control"  >
               </div>
               
               <div class="form-group">
                 <label for="estimasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
-                <input name="estimasi" type="number" class="form-control" min="0" max="52" required placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+                <input name="estimasi" type="number" class="form-control" min="0" max="52"   placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
               </div>
              
              <div class="form-group">
                 <label for="budget" class="control-label">Budget (dalam IDR )</label>
-                <input name="budget" type="number" class="form-control" required placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
+                <input name="budget" type="number" class="form-control"   placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
               </div>
 
              <div class="form-group">
@@ -187,26 +201,14 @@
               </div>
               
               <div class="form-group">
-                <label for="skills" class="control-label">Skill yang dibutuhkan</label>
-                <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
+                <label for="skill" class="control-label">Skill yang dibutuhkan</label>
+                <input name="skill" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
               </div>
              
         
               {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
               <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
-              @if (count($errors))
-
-        <div class="well well-sm" id="error">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-
-          </ul>
-        </div>
-
-      @endif
+     
         </form>
     </div>
 <!-- Container (Contact Section) -->
@@ -222,10 +224,10 @@
     <div class="col-sm-7 slideanim">
       <div class="row">
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text"  >
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email"  >
         </div>
       </div>
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>

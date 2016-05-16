@@ -172,7 +172,13 @@ class PekerjaanController extends Controller
                 'name'		=> 'required',
                 'asal_instansi' => 'required',
                 'email'		=> 'required|email',
-                'no_telp'   => 'required'
+                'no_telp'   => 'required|numeric|min:6',
+                'judul'       => 'required|max:255',
+                'deskripsiPekerjaan'   => 'required',
+                'budget'      => 'required|numeric',
+                'estimasi'    => 'required|numeric',
+                'deadline'    => 'required|date|after:now',
+                'skill'       => 'required'
             ]);
         $user = new UserLuar;
         $user->name = $request->name;
@@ -180,15 +186,6 @@ class PekerjaanController extends Controller
         $user->email=$request->email;
         $user->no_telp=$request->no_telp;
         $user->save();
-        $this->validate($request, [
-
-                'judul'       => 'required|max:255',
-                'deskripsiPekerjaan'   => 'required',
-                'budget'      => 'required|numeric',
-                'estimasi'    => 'required|numeric',
-                'deadline'    => 'required|date|after:now',
-                'skill'       => 'required',
-            ]);
 
         $pekerjaan = new Pekerjaan;
 

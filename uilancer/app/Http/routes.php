@@ -25,22 +25,16 @@ Route::get('/login', function () {
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
 
 
-Route::get('/detail', function () {
-    return view('detail');
-});
-
-
-
 Route::get('/detail', function() {
     return view('detail');
 });
 
 
-Route::post('post-lowongan','PekerjaanController@postLowongan');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
 
 //Routing yang berhubungan dengan pekerjaan
 Route::get('/search-dashboard', function () {
@@ -74,9 +68,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-	Route::get('/dashboard','UserController@viewProfile');
-  
-Route::get('/infoAccount', function () {
-    return view('infoAccount');
+Route::get('/dashboard','UserController@viewProfile');
+Route::post('post-lowongan','PekerjaanController@postLowongan');
+Route::get('/info', function () {
+    return view('info');
 });
 });
