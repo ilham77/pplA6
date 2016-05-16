@@ -20,9 +20,7 @@ class CreatePekerjaanTable extends Migration
             $table->boolean('isTaken');
             $table->boolean('isVerified');
             $table->boolean('isClosed');
-
             $table->integer('budget');
-
             $table->date('endDate');
             $table->integer('durasi');
             $table->timestamps();
