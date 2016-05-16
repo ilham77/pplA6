@@ -224,6 +224,16 @@
                   <td class="col-md-3">Fakultas/Institusi</td>
                   <td class="col-md-9">{{$usr->faculty}}</td>
                 </tr>
+                <tr>
+                  <td class="col-md-3">Skill</td>
+                  <td class="col-md-9">
+                    @if(count($skills))
+              @foreach($skills as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
