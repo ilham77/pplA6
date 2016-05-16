@@ -71,7 +71,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');
-
+	Route::get('/ongoing', function () {
+    	return View::make('pekerjaan.ongoing');
+	});
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
 });

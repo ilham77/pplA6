@@ -129,7 +129,7 @@
     <ul class="nav menu">
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -148,85 +148,175 @@
           </li>
         </ul>
       </li>
-      <li><a href="{{url('ongoing')}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li  class="active"><a href="{{url('ongoing')}}" ><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
 
   </div><!--/.sidebar-->
 
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+ <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
-        <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Cari Lowongan Kerja</h1>
-  <div class="row">
-    <div class="col-md-8">
-      <form action="searchPekerjaan" method="GET">
-      {{csrf_field()}}
-        <div class="form-group">
-          <input required type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>
-        </div>
-        <hr style="border: 1 none;">
-        <h3 class="text-left">Filter</h3>
-              <div class="form-group row">
-                <label for="pencariPekerja" class="col-md-3 control-label">Pencari Pekerja</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="pencari" placeholder="Nama">
-                </div>
-              </div>
-                <div class="form-group row">
-                    <label for="rangeHonor" class="col-md-3 control-label" >Range Honor</label>
-                        <div class="col-md-4">
-                            <input type="number" class="form-control" name="minimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                        <div class="col-md-1" style="width:45px;">
-                            to
-                        </div>
-                        <div class="col-md-4">
-                            <input type="number" class="form-control" name="maksimumHonor" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                </div>
-              <div class="form-group row">
-                <label for="durasiPekerjaan" class="col-md-3 control-label">Durasi Pekerjaan</label>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="durasi" placeholder="Dalam pekan">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="statusPekerjaan" class="col-md-3 control-label">Status</label>
-                <div class="col-md-8">
-                  <select class="form-control" name="status">
-                    <option>Lowong</option>
-                    <option>Done</option>
-                    <option>Tutup</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group row">
-                    <label for="rangePembuatanThread" class="col-md-3 control-label" >Waktu Pembuatan Thread</label>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" name="minimumTgl" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                        <div class="col-md-1" style="width:45px;">
-                            to
-                        </div>
-                        <div class="col-md-4">
-                            <input type="date" class="form-control" name="maksimumTgl" placeholder="Dalam Rupiah (Rp)">
-                        </div>
-                </div>
-              <br>
-            <input type="hidden" name="flag" value="Dash">
-            <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari Lowongan!</button>
-          </form>
+        <div id="table" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
+  <br>
+  <u><h3>Freelancer</h3></u>
+    <table style="width:100%" class="table table-hover">
+      <div class="table-responsive">
+       <thead>
+      <tr>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Pencari Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td></td>
+        <td></td>
+      </tr>
+        </thead>
+            <tr>
+        <td><center>Membuat web</center></td>
+        <td><center>Kurnianto Trilaksono</center></td>
+        <td><center>5 pekan</center></td>
+        <td><center>Rp3.000.000,-</center></td>
+        <td><center>20 December 2017</center></td>
+        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+            </tr> 
+                        <tr>
+        <td><center>Membuat web</center></td>
+        <td><center>Kurnianto Trilaksono</center></td>
+        <td><center>5 pekan</center></td>
+        <td><center>Rp3.000.000,-</center></td>
+        <td><center>20 December 2017</center></td>
+        <td><center>Waiting for the confirmation</center></td>
+            </tr> 
+       </div>
+    </table>
+</div>
     </div>
   </div>
+<div class="row">
+      <div class="col-lg-12">
+        <div id="table" class="container-fluid">
+  <u><h3>Job Giver</h3></u>
+    <table style="width:100%" class="table table-hover">
+      <div class="table-responsive">
+       <thead>
+      <tr>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td></td>
+        <td></td>
+      </tr>
+        </thead>
+            <tr>
+        <td><center>Membuat web</center></td>
+        <td><center>Kurnianto Trilaksono</center></td>
+        <td><center>5 pekan</center></td>
+        <td><center>Rp3.000.000,-</center></td>
+        <td><center>20 December 2017</center></td>
+        <td><center>Waiting to be done</center></td>
+            </tr> 
+        <tr>
+        <td><center>Membuat web</center></td>
+        <td><center>Kurnianto Trilaksono</center></td>
+        <td><center>5 pekan</center></td>
+        <td><center>Rp3.000.000,-</center></td>
+        <td><center>20 December 2017</center></td>
+        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Done</a></center></td>
+            </tr> 
+       </div>
+    </table>
+</div>
+    </div>
+  </div>
+
 </div>
 
 
       </div>
     </div><!--/.row-->
   </div><!--/.row-->
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
+
+  <div class="modal fade" id="modalDone" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+    </div>
+</div>
+
+
+  <div class="modal fade" id="modalTestimoni" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rating, Testimoni, dan Konfirmasi</h4>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px">
+            <br>
+            
+                              <table>
+                                    <tbody>
+                                        <tr height="50px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Berikan rating anda</label></div></td>
+                                            <td width="400px" style="margin-left:15px;">
+                                              <!-- <input required class="form-control" type="number" name="rating" placeholder="Rating"> -->
+    <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+  </fieldset>
+                                            </td>
+                                        </tr>
+
+                                        <tr height="85px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Testimoni</label></div></td>
+                                            <td><textarea required style="resize:none;margin-left:20px;" class="form-control" type="text" rows="3" name="testimoni" placeholder="Testimoni"></textarea></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+            <a class="btn btn-success mt-20 font2 text-center" href="#">Konfirmasi selesai</a></center>
+          </div><!-- 
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a> -->
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+    </div>
+</div>
+
 
   <script>
     !function ($) {
