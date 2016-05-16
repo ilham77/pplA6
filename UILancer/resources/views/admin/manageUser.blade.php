@@ -1,11 +1,3 @@
-<?php
-$isLogged=false;
-if(Auth::check()){
-$isLogged=true;
-}
-$isLogged=false;
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +5,8 @@ $isLogged=false;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
+<link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -115,13 +107,14 @@ $isLogged=false;
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>User
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
             </ul>
           </li>
 
@@ -134,8 +127,26 @@ $isLogged=false;
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -161,55 +172,99 @@ $isLogged=false;
 
   </div><!--/.sidebar-->
 
-<!-- DETAIL PEKERJAAN -->
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="form" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">Manajemen User</h1>
+  <div class="row">
+    <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
 
-    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
-        <br/>
-        <div class="container-fluid text-left">
-        <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>chanek</a></span>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: 25</span>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span></p>
-        <hr/>
+        </div>
+        <div class="col-sm-9 col-md-10">
+           
+            <div class="pull-right">
+                <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+  
+        <div class="col-sm-9 col-md-12">
+            <table class="table table-hover">
+              <div class="table-responsive">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td><a href="#">Luthfi Kurnia Putra</a></td>
+                  <td>Mahasiswa</td>
+                  <td>luthfi.kurnia@ui.ac.id</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Alamanda Shantika</a></td>
+                  <td>Official Account</td>
+                  <td>alamanda@gojek.com</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Muhammad Gibran</a></td>
+                  <td>Admin</td>
+                  <td>gibran@uilancer.com</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+              </div>
+            </table>
+    </div>
+  </div>
+    <form action = "createUser"> <button class="btn btn-defautl  center-block ">Tambah Akun</button> </form>
+    </div>
+  </div>
+</div>
+
+
       </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
-        <div id="deskripsi" class="container-fluid text-left bg-grey">
-            <h1>Deskripsi:</h1>
-            <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
-
-             <span>Skill yang dibutuhkan:</span>
-             @if(count($hasill))
-              @foreach($hasill as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-            <br/>
-
-             <span>Durasi:</span>
-            <span>{{ $hasil->durasi }} Minggu</span><br/>
-
-             <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/><br/>
-
-            <span><b>Deadline:</b></span>
-            <span>{{$hasil->endDate}}</span><br/>
-        </p>
-        <p><br/>
-            @if($hasil->isVerified == 0)
-            <!-- Auth::user()->role == "admin" --> 
-              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../verify/{{ $hasil->id }}">Verify</a>
-            @else
-              <a class="btn btn-block btn-success mt-20 font2 text-center" >APPLY</a>
-            @endif
-        </p>
-
+  <div class="modal fade" id="modalDelete" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+   
+      
     </div>
 </div>
 

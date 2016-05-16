@@ -32,11 +32,31 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/infoAccount', function () {
+    return view('infoAccount');
+});
 
 //Routing yang berhubungan dengan pekerjaan
 Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
+
+Route::get('/inbox', 'AdminController@index');
+
+Route::get('/manageUser', function () {
+    return View::make('admin.manageUser');
+});
+
+Route::get('/createUser', function () {
+    return View::make('admin.createUser');
+});
+
+Route::get('/editUser', function () {
+    return View::make('admin.editUser');
+});
+
+Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -77,5 +97,4 @@ Route::get('/dashboard','UserController@viewProfile');
 Route::post('post-lowongan','PekerjaanController@postLowongan');
 Route::get('/info', function () {
     return view('info');
-});
 });

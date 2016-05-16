@@ -8,8 +8,6 @@ use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTag;
 use Auth;
-use App\UserLuar;
-
 
 class PekerjaanController extends Controller
 {
@@ -67,12 +65,13 @@ class PekerjaanController extends Controller
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
-        $pekerjaan->isVerified  = 1;
+        $pekerjaan->isVerified  = 0;
 
         $pekerjaan->isDone      = 0;
         $pekerjaan->isTaken     = 0;
         $pekerjaan->isClosed    = 0;
 
+        $pekerjaan->user_id = Auth::user()->id;
         $pekerjaan->save();
 
         $arrSkill = explode(";", $request->skill);
@@ -85,6 +84,14 @@ class PekerjaanController extends Controller
         }
         return redirect('dashboard');
     }
+
+    public function verifyJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->update(array('isVerified' => 1));
+        return redirect('inbox');
+    }
+
+
 
     public function searchPekerjaan(Request $request)
     {
