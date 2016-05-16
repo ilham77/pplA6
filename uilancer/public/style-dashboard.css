@@ -2,7 +2,7 @@ body {
 	background: #f1f4f7;
 	padding-top: 50px;
 	color: #5f6468;
-	font-family: Lato, sans-serif; 
+	font-family: Lato, sans-serif;
 }
 
 a, a:hover, a:focus {
@@ -94,7 +94,7 @@ h1 {
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
-		overflow-y: auto; 
+		overflow-y: auto;
 		background-color: #fff;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
@@ -103,7 +103,7 @@ h1 {
 	}
 }
 
-.sidebar ul.nav a:hover, 
+.sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
 	text-decoration: none;
 	background-color: #e9ecf2;
@@ -253,4 +253,8 @@ ul.msg_list li a .message {
 
 #notifikasi {
 	padding-left: 20px;
+}
+#error {
+    background-color: #ffb3b3;
+    color: black;
 }

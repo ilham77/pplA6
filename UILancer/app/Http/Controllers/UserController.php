@@ -114,7 +114,31 @@ class UserController extends Controller
         }
         else
         {
-            return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Login dulu boss'));
+            return redirect('/home');
+        }
+    }
+
+    public function cancelApply($pekerjaan, $freelancer)
+    {
+        if(Auth::user())
+        {
+            //1. PERHATIAN!!! bagian 'Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
+            //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
+
+            if(Auth::user()->id == $freelancer)
+            {
+                ApplyManager::where('pekerjaan_id',$pekerjaan)->where('freelancer_id',$freelancer)->delete();
+
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Cancel berhasil :)'));
+            }
+            else
+            {
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'jangan cancelin orang dong'));
+            }
+        }
+        else
+        {
+            return redirect('/home');
         }
     }
 }

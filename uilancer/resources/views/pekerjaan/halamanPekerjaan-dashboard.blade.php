@@ -178,7 +178,7 @@ $isLogged=false;
               Lowong
             @endif</span>
             <br>
-                        <span>Jumlah Pelamar: 
+                        <span>Jumlah Pelamar:
               @if($hasil->user->id == Auth::user()->id)
                 <a href="#">{{ $jumlah_pelamar }}</a>
               @else
@@ -214,7 +214,11 @@ $isLogged=false;
         <p><br/>
           <div class="text-right">
             @if($hasil->user->id != Auth::user()->id)
-              <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+              @if (in_array(Auth::user()->id, $id_pelamar))
+                <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+              @else
+                <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+              @endif
             @else
               <a class="btn btn-primary mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
@@ -228,7 +232,7 @@ $isLogged=false;
           <ul>
 
           @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
+            {{ $error }}
           @endforeach
 
           </ul>

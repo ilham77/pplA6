@@ -35,10 +35,16 @@ class PekerjaanController extends Controller
 
         $jumlah_pelamar = $hasil->applyManager->count();
 
+        $id_pelamar = Array();
+
+        foreach($hasil->applyManager as $am) {
+            array_push($id_pelamar, $am->freelancer_id);
+        }
+
         if (Auth::user()){
-            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar'));
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
         } else {
-            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar'));
+            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
         }
     }
 
