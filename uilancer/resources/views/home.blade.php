@@ -92,6 +92,20 @@
   </form>
 </div>
 
+<!-- Container (About Us Section) -->
+<div id="about" class="container-fluid">
+<div class="row">
+    <div class="col-sm-8">
+      <h2>About Us</h2><br>
+      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
+      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-level-up logo"></span>
+    </div>
+  </div>
+</div>
+
 <!-- Container (Why UILancer Section) -->
 <div id="services" class="container-fluid text-center">
   <h2>Why UILancer?</h2>
@@ -195,19 +209,24 @@
   </div>
 </div>
 
-<!-- Container (About Us Section) -->
-<div id="about" class="container-fluid bg-grey">
-<div class="row">
-    <div class="col-sm-8">
-      <h2>About Us</h2><br>
-      <h4>UILancer adalah aplikasi berbasis web yang menyediakan jasa untuk mewadahi para pencari freelance (mahasiswa/i UI) dan pemberi kerja (pihak UI/Non UI). Selain itu UILancer hadir sebagai penghubung antara freelancer dan job giver.</h4>
-      <p>UILancer dikembangkan oleh tim PPLA6 dimana terdiri dari mahasiswa/i Fasilkom Universitas Indonesia yang sedang memenuhi matakuliah Proyek Perangkat Lunak.</p><br>
+<!-- Container (Statistik Section) -->
+<div id="statistik" class="container-fluid text-center bg-grey">  
+  <div class="row text-center slideanim">
+    <div class="col-sm-4">
+        <h1><strong>8,715</strong></h1>
+        <h2><strong>Job Terpasang</strong></h2>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-level-up logo"></span>
+        <h1><strong>IDR 10,500,782,190</strong></h1>
+        <h2><strong>Jumlah Job Keseluruhan (IDR)</strong></h2>
+    </div>
+    <div class="col-sm-4">
+        <h1><strong>50,341</strong></h1>
+        <h2><strong>Jumlah Pekerja</strong></h2>
     </div>
   </div>
 </div>
+
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">

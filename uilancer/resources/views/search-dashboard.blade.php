@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -27,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="./"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -127,10 +127,11 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
+      <li><a href="./"><span class="glyphicon glyphicon-home"></span> Home</a></li>
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="bukalowongan"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
@@ -155,7 +156,7 @@
 
   </div><!--/.sidebar-->
 
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-8 col-lg-offset-3 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
