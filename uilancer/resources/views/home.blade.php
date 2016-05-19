@@ -88,7 +88,7 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-  <a href="infoAccount" style="font-weight: bold;">Don't have official account?</a>
+  <a href="infoAccount" style="font-weight: bold; text-decoration: none;">Don't have official account?</a>
   </form>
 </div>
 

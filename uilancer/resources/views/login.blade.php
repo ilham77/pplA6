@@ -5,6 +5,7 @@
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Login Official</title>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -83,6 +84,7 @@
         </div>
         <div class="modal-body">
           <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
+          <div class="divider"></div>
           <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
         </div>
       </div>
