@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTag;
 use Auth;
+use App\UserLuar;
 
 class PekerjaanController extends Controller
 {
