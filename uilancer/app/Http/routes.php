@@ -62,6 +62,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});
+    Route::get('/password', function () {
+    	return view('password');
+	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
 	Route::post('userlogin', 'UserController@masuklogin');

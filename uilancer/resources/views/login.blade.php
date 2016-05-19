@@ -127,6 +127,9 @@
             <div class="login-help">
               <p><a href="infoAccount">Don't have official account?</a></p>
             </div>
+            <div class="login-help">
+              <p><a href="{{url('password')}}">forget your password?</a></p>
+            </div>
           </div>
       </section>
     </div>
