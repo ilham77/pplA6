@@ -42,13 +42,14 @@ input[readonly] {
 }
 
 .jumbotron {
-    background-image: url('bgr1.jpg');
+    background-image: url('bgr2.jpg');
     color: #fff;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
     min-height: 650px;
     margin-top: 60px;
 }
+
 .jumbotron a{
    color: #fff
 }
@@ -260,3 +261,12 @@ footer {
         font-size: 150px;
     }
 }
+
+#official{
+background-color:blue;
+}
+
+#no-official{
+background-color:orange;
+}
+

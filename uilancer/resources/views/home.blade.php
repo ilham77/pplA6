@@ -88,7 +88,11 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
+<<<<<<< HEAD
   <a href="infoAccount" style="font-weight: bold; text-decoration: none;">Don't have official account?</a>
+=======
+  <a href="info">Don't have official account?</a>
+>>>>>>> refs/remotes/origin/master
   </form>
 </div>
 

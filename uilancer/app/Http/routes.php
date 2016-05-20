@@ -17,18 +17,24 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
 
 
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
 
 
-Route::get('/detail', function () {
+Route::get('/detail', function() {
     return view('detail');
 });
 
+<<<<<<< HEAD
+=======
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+>>>>>>> refs/remotes/origin/master
 Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
@@ -37,6 +43,23 @@ Route::get('/infoAccount', function () {
 Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
+
+Route::get('/inbox', 'AdminController@index');
+
+Route::get('/manageUser', function () {
+    return View::make('admin.manageUser');
+});
+
+Route::get('/createUser', function () {
+    return View::make('admin.createUser');
+});
+
+Route::get('/editUser', function () {
+    return View::make('admin.editUser');
+});
+
+Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +73,9 @@ Route::get('/search-dashboard', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('/login', function () {
+    	return view('login');
+	});
 	Route::get('/', function () {
 		return View::make('home');
 	});
@@ -64,6 +90,8 @@ Route::group(['middleware' => ['web']], function () {
 	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
+	Route::post('userlogin', 'UserController@masuklogin');
+	Route::get('userlogout', 'UserController@logout');
     Route::get('/edit', 'UserController@editForm');
 	Route::post('saveprofile', 'UserController@editProfile');
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
@@ -71,6 +99,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-	Route::get('/dashboard','UserController@viewProfile');
-
+Route::get('/dashboard','UserController@viewProfile');
+Route::post('post-lowongan','PekerjaanController@postLowongan');
+Route::get('/info', function () {
+    return view('info');
+});
 });

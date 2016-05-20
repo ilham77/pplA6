@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Pekerjaan;
 use App\SkillTag;
 use Auth;
+use App\UserLuar;
 
 class PekerjaanController extends Controller
 {
@@ -65,12 +66,13 @@ class PekerjaanController extends Controller
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
-        $pekerjaan->isVerified  = 1;
+        $pekerjaan->isVerified  = 0;
 
         $pekerjaan->isDone      = 0;
         $pekerjaan->isTaken     = 0;
         $pekerjaan->isClosed    = 0;
 
+        $pekerjaan->user_id = Auth::user()->id;
         $pekerjaan->save();
 
         $arrSkill = explode(";", $request->skill);
@@ -83,6 +85,14 @@ class PekerjaanController extends Controller
         }
         return redirect('dashboard');
     }
+
+    public function verifyJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->update(array('isVerified' => 1));
+        return redirect('inbox');
+    }
+
+
 
     public function searchPekerjaan(Request $request)
     {
@@ -164,4 +174,55 @@ class PekerjaanController extends Controller
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }
+    
+    public function postLowongan(Request $request){
+        	$this->validate($request, [
+                'name'		=> 'required',
+                'asal_instansi' => 'required',
+                'email'		=> 'required|email',
+                'no_telp'   => 'required|numeric|min:6',
+                'judul'       => 'required|max:255',
+                'deskripsiPekerjaan'   => 'required',
+                'budget'      => 'required|numeric',
+                'estimasi'    => 'required|numeric',
+                'deadline'    => 'required|date|after:now',
+                'skill'       => 'required'
+            ]);
+        $user = new UserLuar;
+        $user->name = $request->name;
+        $user->asal_instansi=$request->asal_instansi;
+        $user->email=$request->email;
+        $user->no_telp=$request->no_telp;
+        $user->save();
+
+        $pekerjaan = new Pekerjaan;
+
+        $pekerjaan->judul_pekerjaan       = $request->judul;
+        $pekerjaan->deskripsi_pekerjaan   = $request->deskripsiPekerjaan;
+        $pekerjaan->budget = $request->budget;
+        $pekerjaan->durasi = $request->estimasi;
+        $pekerjaan->endDate = $request->deadline;
+
+        /* Disini perlu ada validasi terhadap jenis user
+           Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
+        $pekerjaan->isVerified  = 0;
+
+        $pekerjaan->isDone      = 0;
+        $pekerjaan->isTaken     = 0;
+        $pekerjaan->isClosed    = 0;
+
+        $pekerjaan->save();
+
+        $arrSkill = explode(";", $request->skill);
+        foreach($arrSkill as $as)
+        {
+            $skill = new skillTag;
+            $skill->pekerjaan_id = $pekerjaan->id;
+            $skill->skill = $as;
+            $skill->save();
+        }
+        return view('post');
+    }
+    
+    
 }

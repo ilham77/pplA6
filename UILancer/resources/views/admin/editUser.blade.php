@@ -1,11 +1,3 @@
-<?php
-$isLogged=false;
-if(Auth::check()){
-$isLogged=true;
-}
-$isLogged=false;
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +5,8 @@ $isLogged=false;
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
+<link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -115,13 +107,14 @@ $isLogged=false;
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>User
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
             </ul>
           </li>
 
@@ -134,8 +127,26 @@ $isLogged=false;
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -161,57 +172,79 @@ $isLogged=false;
 
   </div><!--/.sidebar-->
 
-<!-- DETAIL PEKERJAAN -->
-
-    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
-        <br/>
-        <div class="container-fluid text-left">
-        <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>chanek</a></span>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: 25</span>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span></p>
-        <hr/>
-      </div>
-
-        <div id="deskripsi" class="container-fluid text-left bg-grey">
-            <h1>Deskripsi:</h1>
-            <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
-
-             <span>Skill yang dibutuhkan:</span>
-             @if(count($hasill))
-              @foreach($hasill as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-            <br/>
-
-             <span>Durasi:</span>
-            <span>{{ $hasil->durasi }} Minggu</span><br/>
-
-             <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/><br/>
-
-            <span><b>Deadline:</b></span>
-            <span>{{$hasil->endDate}}</span><br/>
-        </p>
-        <p><br/>
-            @if($hasil->isVerified == 0)
-            <!-- Auth::user()->role == "admin" --> 
-              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../verify/{{ $hasil->id }}">Verify</a>
-            @else
-              <a class="btn btn-block btn-success mt-20 font2 text-center" >APPLY</a>
-            @endif
-        </p>
-
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="form" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">Edit Akun</h1>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-9 col-md-12">
+            <form action="addUser" method="POST" role="form">
+              {{ csrf_field() }}
+              <div class="form-group row">
+                <label for="emailUser" class="col-md-3 control-label">Email</label>
+                <div class="col-md-8">
+                    <input type="email" class="form-control" name="email" placeholder="Email" value="gibran@uilancer.com">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-4">
+                    <input type="password" class="form-control" name="password" placeholder="Password" value="123456">
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-defautl" onclick="generatePassword()">Generate Password</button>  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="institusi" class="col-md-3 control-label">Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="institusi" placeholder="Institusi" value="UILancer">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="alamatInstitusi" class="col-md-3 control-label">Alamat Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="alamatInstitusi" placeholder="Alamat Institusi" value="Lantai 5 Fasilkom UI">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="namaPemilik" class="col-md-3 control-label">Nama Pemilik Akun</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="namaPemilikAkun" placeholder="Nama Pemilik Akun" value="Muhammad Gibran">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="role" class="col-md-3 control-label" value="Admin">Role</label>
+                <div class="col-md-8">
+                  <select class="form-control" name="role">
+                    <option>Admin</option>
+                    <option>Akun Official</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success left-block">Submit</button>
+            </form>
+        </div>
     </div>
+  <br>
+    </div>
+  </div>
 </div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
   <script>
     !function ($) {

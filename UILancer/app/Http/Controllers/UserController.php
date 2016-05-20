@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use App\SkillUser;
 use App\User;
 use Auth;
-use Redirect;
+use DB;
 use Session;
+use Hash;
 
 class UserController extends Controller
 {
@@ -29,6 +31,41 @@ class UserController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    public function masuklogin(Request $request){
+
+        $username = Input::get('username');
+        $password = Input::get('password');
+        $user= DB::table('users')->where([['username','=',$username]])->first();
+        if($user===null){
+            return redirect('/login')->withErrors(['Invalid email or password']);
+        } else {
+            $pwd = $user->password;
+            if (Hash::check($password, $pwd)) {
+                if($user->role == 'official'){
+                    Auth::loginUsingId($user->id);
+                    return redirect('/');
+                } else {
+                    return redirect('/login')->withErrors(['Invalid email or password']);
+                }
+            } else {
+                return redirect('/login')->withErrors(['Invalid email or password']);
+            }
+        }
+        
+    }
+
+    public function loginForm(){
+        if(!Auth::check())
+           return view('/login');
+        else
+            return redirect('/');
+    }
+    
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 
     public function editProfile(Request $request){
