@@ -179,4 +179,26 @@ class PekerjaanController extends Controller
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }
+
+    public function ongoing(User $user)
+    {
+        $freelancer_job = $user->applyManager->where('status',1);
+
+        foreach ($freelancer_job as $fj) {
+            $tempHonor = strrev("".$fj->pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $fj->pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
+
+
+        $jobgiver_job = $user->pekerjaan->where('isTaken',1);
+
+        foreach ($jobgiver_job as $jg) {
+            $tempHonor = strrev("".$jg->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $jg->budget = strrev(implode(".", $tempHonor));
+        }
+
+        return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job'));
+    }
 }

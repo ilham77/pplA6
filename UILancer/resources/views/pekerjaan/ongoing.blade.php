@@ -164,33 +164,33 @@
   <u><h3>Freelancer</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
-       <thead>
-      <tr>
+      @if(count($freelancer_job))
+        <thead>
+        <tr>
         <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Pencari Pekerja</b></center></td>
+        <td><center><b>Pemberi Pekerja</b></center></td>
         <td><center><b>Durasi Kerja</center></b></td>
         <td><center><b>Honor</b></center></td>
         <td><center><b>Deadline</b></center></td>
         <td></td>
         <td></td>
-      </tr>
+        </tr>
         </thead>
-            <tr>
-        <td><center>Membuat web</center></td>
-        <td><center>Kurnianto Trilaksono</center></td>
-        <td><center>5 pekan</center></td>
-        <td><center>Rp3.000.000,-</center></td>
-        <td><center>20 December 2017</center></td>
-        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
-            </tr>
-                        <tr>
-        <td><center>Membuat web</center></td>
-        <td><center>Kurnianto Trilaksono</center></td>
-        <td><center>5 pekan</center></td>
-        <td><center>Rp3.000.000,-</center></td>
-        <td><center>20 December 2017</center></td>
-        <td><center>Waiting for the confirmation</center></td>
-            </tr>
+        @foreach($freelancer_job as $fj)
+          <tr>
+            <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
+            <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
+            <td><center>{{ $fj->pekerjaan->durasi }} pekan</center></td>
+            <td><center>Rp{{ $fj->pekerjaan->budget }},-</center></td>
+            <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
+            <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+          </tr>
+        @endforeach
+      @else
+        <tr>
+          <td><center><b>Tidak ada pekerjaan</b></center></td>
+        </tr>
+      @endif
        </div>
     </table>
 </div>
@@ -202,10 +202,11 @@
   <u><h3>Job Giver</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
-       <thead>
+       @if(count($jobgiver_job))
+        <thead>
       <tr>
         <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Pekerja</b></center></td>
+        <td><center><b> Pekerja</b></center></td>
         <td><center><b>Durasi Kerja</center></b></td>
         <td><center><b>Honor</b></center></td>
         <td><center><b>Deadline</b></center></td>
@@ -213,22 +214,23 @@
         <td></td>
       </tr>
         </thead>
+        @foreach($jobgiver_job as $jg)
+          @foreach($jg->applyManager as $am)
             <tr>
-        <td><center>Membuat web</center></td>
-        <td><center>Kurnianto Trilaksono</center></td>
-        <td><center>5 pekan</center></td>
-        <td><center>Rp3.000.000,-</center></td>
-        <td><center>20 December 2017</center></td>
-        <td><center>Waiting to be done</center></td>
+              <td><center>{{ $jg->judul_pekerjaan }}</center></td>
+              <td><center>{{ $am->user->name }}</center></td>
+              <td><center>{{ $jg->durasi }} pekan</center></td>
+              <td><center>Rp{{ $jg->budget }},-</center></td>
+              <td><center>{{ $jg->endDate }}</center></td>
+              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
             </tr>
+          @endforeach
+        @endforeach
+      @else
         <tr>
-        <td><center>Membuat web</center></td>
-        <td><center>Kurnianto Trilaksono</center></td>
-        <td><center>5 pekan</center></td>
-        <td><center>Rp3.000.000,-</center></td>
-        <td><center>20 December 2017</center></td>
-        <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Done</a></center></td>
-            </tr>
+          <td><center><b>Tidak ada pekerjaan</b></center></td>
+        </tr>
+      @endif
        </div>
     </table>
 </div>

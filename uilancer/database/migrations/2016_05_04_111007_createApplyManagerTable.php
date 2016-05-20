@@ -14,14 +14,14 @@ class CreateApplyManagerTable extends Migration
     {
         Schema::create('apply_manager', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('freelancer_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('pekerjaan_id')->unsigned();
             $table->boolean('status');
             $table->timestamps();
         });
 
         Schema::table('apply_manager',function($table){
-            $table->foreign('freelancer_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
         });
     }
