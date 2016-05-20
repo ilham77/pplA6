@@ -29,12 +29,6 @@ Route::get('/detail', function () {
     return view('detail');
 });
 
-
-
-Route::get('/detail', function() {
-    return view('detail');
-});
-
 Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
@@ -64,6 +58,9 @@ Route::group(['middleware' => ['web']], function () {
 	});
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
+	});
+	Route::get('/faq', function() {
+    return view('faq');
 	});
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
