@@ -9,12 +9,6 @@
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
-  //]]>
-  </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -114,7 +108,7 @@
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-user"></span>
-              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -133,9 +127,26 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -161,77 +172,96 @@
 
   </div><!--/.sidebar-->
 
-
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Buka Pekerjaan</h1>
+  <h1 class="text-left" style="margin-top:35px">Tambah Akun</h1>
   <br>
   <div class="row">
-    <div class="col-md-8">
-            <form action="addlowongan" method="POST" role="form">
-        {{ csrf_field() }}
-                    <div class="form-group">
-                      <label for="judul">Judul Pekerjaan</label>
-                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
-                    </div>
-                    <div class="form-group">
-                      <label for="deskripsi">Deskripsi Pekerjaan</label>
-                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
-                    </div>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="budget">Budget</label>
-                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
-                      </div>
-                      <div class="form-group">
-                        <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-                        <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="waktututup">Deadline pencarian:</label>
-                        <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
-                      </div>
-                    </div>
-                    <br>
-
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
-                  </form>
-
-                  @if (count($errors))
-
-                    <div class="well well-sm" id="error">
-                      <ul>
-
-                      @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                      @endforeach
-
-                      </ul>
-                    </div>
-
-                  @endif
+    <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-9 col-md-12">
+            <form action="addUser" method="POST" role="form">
+              {{ csrf_field() }}
+              <div class="form-group row">
+                <label for="emailUser" class="col-md-3 control-label">Email</label>
+                <div class="col-md-8">
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="col-md-1" style="margin-left:-10px;">
+                    <button id="generatePassword" type="button" class="btn btn-defautl">Generate Passoword</button>
+                    
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="institusi" class="col-md-3 control-label">Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="institusi" placeholder="Institusi">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="alamatInstitusi" class="col-md-3 control-label">Alamat Institusi</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="alamatInstitusi" placeholder="Alamat Institusi">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="namaUser" class="col-md-3 control-label">Nama Pemilik Akun</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="namaPemilikAkun" placeholder="Nama Pemilik Akun">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="role" class="col-md-3 control-label">Role</label>
+                <div class="col-md-8">
+                  <select class="form-control" name="role">
+                    <option>Admin</option>
+                    <option>Akun Official</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success left-block">Submit</button>
+            </form>
+        </div>
     </div>
+  <br>
     </div>
   </div>
 </div>
-</div>
-</div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
   <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
+
         });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        document.getElementById("generatePassword").onclick = function () { 
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for( var i=0; i < 8; i++ ) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            document.getElementById("password").value = text;
+        };
     }(window.jQuery);
 
     $(window).on('resize', function () {

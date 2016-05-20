@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pekerjaan extends Model
 {
     protected $table = 'pekerjaan';
+    protected $fillable = ['isVerified'];
 
     public function skillTag()
     {
@@ -20,5 +21,10 @@ class Pekerjaan extends Model
 
     public function applyManager() {
         return $this->hasMany(ApplyManager::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

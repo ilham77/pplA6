@@ -3,6 +3,7 @@
 <!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
   
   <style>
     body img{
@@ -42,7 +45,7 @@
     .form-bottom form button.btn {
         width: 30%;
     }
-    .form-bottom form .input-error {
+    .form-bottom form  .input-error {
         border-color: #4aaf51;
     }
   </style>
@@ -95,28 +98,83 @@
   <div class="col-sm-6 col-sm-offset-3 form-box">
     <div class="form-top">
       <section class="container">
+          
           <h1>Login Official</h1>
           <div class="form-bottom">
-            <form method="post" action="index.html">
+            <form id='#defaultForm' method="post" action="userlogin">
+            {{csrf_field()}}
               <div class="form-group">
-                <p><input type="text" name="login" class="form-control input" value="" size="50" placeholder="Username"></p>
-                <p><input type="password" name="password" class="form-control input" value="" size="50"placeholder="Password"></p>
+                <p><input type="text" name="username" class="form-control input" value="" size="50" placeholder="Username"></p>
+                <p><input type="password" name="password" class="form-control input" value="" size="50" placeholder="password"></p>
               </div>
-              <p class="remember_me">
-              <label>
-                <input type="checkbox" name="remember_me" id="remember_me">
-                Remember me on this computer
-              </label>
+              <p>
+                @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+      @endif
               </p>
-              <p><button class="btn btn-danger" type="submit" name="commit">Login</button></p>
+              <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
             <div class="login-help">
-              <p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+              <p><a href="infoAccount">Don't have official account?</a></p>
             </div>
           </div>
       </section>
     </div>
   </div>
 </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    // Generate a simple captcha
+    
+   
+
+    $('#defaultForm').formValidation({
+        message: 'This value is not valid',
+       
+        fields: {
+            
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            } 
+        }
+    });
+});
+</script>
 </body>
 </html>

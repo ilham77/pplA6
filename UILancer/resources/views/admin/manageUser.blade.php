@@ -9,12 +9,6 @@
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
-  //]]>
-  </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -114,7 +108,7 @@
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-user"></span>
-              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -133,9 +127,26 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -161,69 +172,100 @@
 
   </div><!--/.sidebar-->
 
-
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Buka Pekerjaan</h1>
-  <br>
+  <h1 class="text-left" style="margin-top:35px">Manajemen User</h1>
   <div class="row">
-    <div class="col-md-8">
-            <form action="addlowongan" method="POST" role="form">
-        {{ csrf_field() }}
-                    <div class="form-group">
-                      <label for="judul">Judul Pekerjaan</label>
-                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
-                    </div>
-                    <div class="form-group">
-                      <label for="deskripsi">Deskripsi Pekerjaan</label>
-                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
-                    </div>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="budget">Budget</label>
-                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
-                      </div>
-                      <div class="form-group">
-                        <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-                        <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="waktututup">Deadline pencarian:</label>
-                        <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
-                      </div>
-                    </div>
-                    <br>
+    <div class="col-md-12">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
-                  </form>
-
-                  @if (count($errors))
-
-                    <div class="well well-sm" id="error">
-                      <ul>
-
-                      @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                      @endforeach
-
-                      </ul>
-                    </div>
-
-                  @endif
+        </div>
+        <div class="col-sm-9 col-md-10">
+           
+            <div class="pull-right">
+                <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </button>
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    <br>
+    <div class="row">
+  
+        <div class="col-sm-9 col-md-12">
+            <table class="table table-hover">
+              <div class="table-responsive">
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td><a href="#">Luthfi Kurnia Putra</a></td>
+                  <td>Mahasiswa</td>
+                  <td>luthfi.kurnia@ui.ac.id</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Alamanda Shantika</a></td>
+                  <td>Official Account</td>
+                  <td>alamanda@gojek.com</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+                <tr>
+                  <td><a href="#">Muhammad Gibran</a></td>
+                  <td>Admin</td>
+                  <td>gibran@uilancer.com</td>
+                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
+                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                </tr>
+              </div>
+            </table>
+    </div>
+  </div>
+    <form action = "createUser"> <button class="btn btn-defautl  center-block ">Tambah Akun</button> </form>
     </div>
   </div>
 </div>
-</div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
+
+  <div class="modal fade" id="modalDelete" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+   
+      
+    </div>
 </div>
 
   <script>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,132 +74,27 @@
     </div>
 </div>
 
-<!-- EDIT PROFILE -->
+<!-- CONTENT -->
   <div id="body" class="container-fluid">
-    <div id="sidebar" class="container-fluid col-md-3 col-xs-1 col-lg-3">
-        <DL>
-        <DT>Menu
-            <DD><a href="#">Daftar Pekerjaan</a><br></DD>
-            <DD><a href="#">Cari Pekerjaan</a><br></DD>
-            <DD><a href="#">Buka Pekerjaan</a><br></DD>
-            <DD><a href="#">On Going Job</a><br></DD>
-        </DT><br>
-        <DT>Riwayat
-                <DD><a href="#">Pembukaan Job</a></DD>
-                <DD><a href="#">Apply Job</a></DD>
-        </DT>
-        <hr  style="height:1px;border:none;color:#333;background-color:#333;"/>
-       
-        <a href="#">Setting</a><br>
-        <a href="#">FAQ & Help</a><br>
-        </DT>
-    </div>
-    <div id="container" class="col-md-9 col-xs-4 col-lg-9 container-fluid bg-grey">
-        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
-            <p>
-            <h1>Edit Profile</h1>
-
-            <form action="saveprofile" method="POST" role="form" enctype="multipart/form-data">
-              {{csrf_field()}}
-              <div class="form-group">
-                <label for="avatar" class="control-label">Ganti Foto Profil</label><br/><br/>
-                @if(\Auth::user()->avatar == "")
-                  <img src="http://placehold.it/200x200" alt="">
-                @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">	
-                @endif
-                <br/>
-                <br/>
-                <div class="input-group">
-                  <span class="input-group-btn">
-                      <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="avatar">
-                      </span>
-                  </span>
-                  <input type="text" class="form-control" readonly>
-                </div>
-                <span>Max. 2 MB</span>
-              </div>
-              <br/>
-              <div class="form-group">
-                <label for="nama" class="control-label">Nama</label>
-                <input name="nama" type="text" class="form-control" placeholder="Nama..." value="{{\Auth::user()->name}}">
-              </div>
+      <div id="content" class="container-fluid  text-center">
+          <h1 class="text-primary">Terima kasih telah menggunakan UILancer!</h1>
+          <br><br>
+          <div id="infobox" class="panel-body text-center well well-lg">
+              <p>Lowongan anda berhasil diajukan, harap menunggu verifikasi <strong>Administrator</strong> agar lowongan dapat di post. Kami akan segera menghubungi anda!</p><br/>
               
-              <div class="form-group">
-                <label for="email" class="control-label">Email</label>
-                <input name="email" type="email" class="form-control" placeholder="example@mail.com" value="{{\Auth::user()->email}}">
-              </div>
-                
-              <div class="form-group">
-                <label for="tempat" class="control-label">Tempat Kelahiran</label>
-                <input name="tempat" type="text" class="form-control" placeholder="Tempat kelahiran..." value="{{\Auth::user()->tempat_lahir}}">
-              </div>
-              
-              <div class="form-group">
-                <label for="tanggal" class="control-label">Tanggal Lahir</label>
-                <input name="tanggal" type="date" class="form-control" value="{{\Auth::user()->tanggal_lahir}}">
-              </div>
-
-              <div class="form-group">
-                <label for="deskripsi" class="control-label">Deskripsi</label>
-                <textarea name="deskripsi" style="resize:none;" cols="5" rows="10" class="form-control"placeholder="Deskripsikan diri anda...">{{\Auth::user()->deskripsi}}</textarea>
-              </div>
-              
-              <div class="form-group">
-                <label for="linkedin" class="control-label">Linkedin</label>
-                <input name="linkedin" type="text" class="form-control" placeholder="http://linkedin.com/12345-example" value="{{\Auth::user()->linkedin}}">
-              </div>
-              
-              <div class="form-group">
-                <label for="web" class="control-label">Website pribadi</label>
-                <input name="web" type="text" class="form-control" placeholder="http://www.example.com" value="{{\Auth::user()->web}}">
-              </div>
-              
-              <div class="form-group">
-                <label for="skills" class="control-label">Skills</label>
-                <input name="skills" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
-              </div>
-                
-              <div class="form-group">
-                <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label>
-                <div class="input-group">
-                  <span class="input-group-btn">
-                      <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="cvresume">
-                      </span>
-                  </span>
-                  <input type="text" class="form-control" readonly>
-                </div>
-              </div>
-              <br/>
-
-              @if (count($errors))
-
-                <div class="well well-sm" id="error">
-                  <ul>
-
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-
-                  </ul>
-                </div>
-
-              @endif
-
-              {!! Form::submit('Simpan', array('class'=>'btn btn-success')) !!}
-              <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
-            </form>    
-        </div>
-    </div>
+                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+          </div>
+      </div>
+      <center>
+       <button class="btn btn-danger text-center">
+          <a style="color:white; text-style:none;" href="{{url('/')}}">Kembali</a></center></button>
   </div>
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center">
+    <div class="col-sm-5">
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>

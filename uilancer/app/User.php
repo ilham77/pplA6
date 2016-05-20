@@ -15,7 +15,7 @@ protected $table = 'users';
      * @var array
      */
     protected $fillable = [
-        'name', 'email','npm','username', 'password','org_code','role', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar', 'tanggal_lahir', 'tempat_lahir', 'pekerjaan'
+        'name', 'email','npm','username', 'password','org_code','role', 'phone', 'deskripsi', 'ketertarikan', 'linkedin', 'avatar', 'tanggal_lahir', 'tempat_lahir', 'pekerjaan'
     ];
 
     /**
@@ -59,8 +59,12 @@ protected $table = 'users';
     }
 
     public static function setPassword($password){
-     $password = Hash::make('secret');
+     //$password = Hash::make('secret');
      $user->password = $password;
      $user->save();
+    }
+
+    public static function pekerjaan(){
+       return $this->hasMany('App\Pekerjaan');
     }
 }

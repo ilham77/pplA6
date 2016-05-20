@@ -99,6 +99,20 @@ return [
         'nama' => [
             'required' => 'Harap isi nama anda!',
         ],
+        'name' => [
+            'required' => 'Harap isi nama anda!',
+        ],
+        'no_telp' => [
+            'required' => 'Harap isi nomor telepon yang bisa dihubungi!',
+             'min'       => 'Format nomor telepon salah!',
+            'numeric' => 'Format nomor telepon salah!',
+        ],
+        'asal_instansi' => [
+            'required' => 'Harap isi asal instansi anda!',
+        ],
+        'email' => [
+            'required' => 'Harap isi email anda!',
+        ],
         'deskripsiPekerjaan' => [
             'required'  => 'Deskripsi pekerjaan harus diisi!',
         ],
