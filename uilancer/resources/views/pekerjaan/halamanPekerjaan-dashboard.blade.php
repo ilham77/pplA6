@@ -167,23 +167,33 @@ $isLogged=false;
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>chanek</a></span>
+        <span>Oleh : <a href=#>{{ $jobGiver->name }}</a></span>
+        <br>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: 25</span>
+            <br>
             <span>Status:
             @if($hasil->isTaken)
               Sudah Diambil
             @else
               Lowong
-            @endif</span></p>
-        <hr/>
+            @endif</span>
+            <br>
+                        <span>Jumlah Pelamar:
+              @if($hasil->user->id == Auth::user()->id)
+                <a href="#">{{ $jumlah_pelamar }}</a>
+              @else
+                {{ $jumlah_pelamar }}
+              @endif
+              </span>
+        <hr style="border-width: 2px;">
       </div>
 
-        <div id="deskripsi" class="container-fluid text-left bg-grey">
-            <h1>Deskripsi:</h1>
+        <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
+            <b><h3>Deskripsi:</h3></b>
             <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
-
+            {{ $hasil->deskripsi_pekerjaan }}
+            </p>
+            <br/>
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))
               @foreach($hasill as $skill)
@@ -196,22 +206,51 @@ $isLogged=false;
             <span>{{ $hasil->durasi }} Minggu</span><br/>
 
              <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/><br/>
+            <span>Rp {{$hasil->budget}}</span><br/>
 
             <span><b>Deadline:</b></span>
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
+          <div class="text-right">
+          @if(Auth::user()->role == 'admin')
             @if($hasil->isVerified == 0)
-            <!-- Auth::user()->role == "admin" --> 
-            <div class="text-right">
               <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
               <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
-              
             @else
-              <a class="btn btn-block btn-success mt-20 font2 text-center" >APPLY</a>
+              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">unVerify</a>
             @endif
+          @else
+            @if($hasil->user->id != Auth::user()->id)
+              @if (in_array(Auth::user()->id, $id_pelamar))
+                <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+              @else
+                <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+              @endif
+            @else
+              <a class="btn btn-primary mt-20 font2 text-center" href="#">Edit</a>
+              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
+            @endif
+          @endif
+
+
+
+          </div>
         </p>
+
+        @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            {{ $error }}
+          @endforeach
+
+          </ul>
+        </div>
+
+        @endif
 
     </div>
 </div>

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserLuar extends Migration
+class CreateApplyManagerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,18 @@ class CreateUserLuar extends Migration
      */
     public function up()
     {
-       Schema::create('user_luar', function (Blueprint $table) {
-            $table->increments('id',true);
-            $table->string('name');
-            $table->string('asal_instansi');
-            $table->string('email');
-            $table->integer('no_telp')->unsigned();
+        Schema::create('apply_manager', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->integer('pekerjaan_id')->unsigned();
+            $table->boolean('status');
             $table->timestamps();
-         });
-
-        Schema::table('user_luar',function($table){
-            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
         });
 
+        Schema::table('apply_manager',function($table){
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
+        });
     }
 
     /**
@@ -35,6 +33,6 @@ class CreateUserLuar extends Migration
      */
     public function down()
     {
-        Schema::drop('user_luar');
+        Schema::drop('apply_manager');
     }
 }

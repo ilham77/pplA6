@@ -9,6 +9,6 @@ class SkillUser extends Model
 	protected $table = 'skilluser';
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }

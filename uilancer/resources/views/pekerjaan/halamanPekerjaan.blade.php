@@ -70,8 +70,8 @@
       </div>
             @endif
       <!-- Modal content-->
-   
-      
+
+
     </div>
 </div>
 
@@ -80,9 +80,9 @@
     <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-center bg-white">
         <br/>
         <h1><p id="judul_pekerjaan">{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>chan.ek</a></span>
+        <p><span>oleh <a href=#>{{ $jobGiver->name }}</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: 25</span>
+            <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
             <span>Status:
             @if($hasil->isTaken)
               Sudah Diambil
@@ -113,8 +113,22 @@
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" href="#">APPLY</a>
+            <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/0">APPLY</a>
         </p>
+
+        @if (count($errors))
+
+        <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+
+        @endif
     </div>
 </div>
 

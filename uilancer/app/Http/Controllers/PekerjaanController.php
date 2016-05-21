@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Pekerjaan;
-use App\SkillTag;
+use App\SkillTagPekerjaan;
+use App\User;
+use App\ApplyManager;
 use Auth;
 use App\UserLuar;
 
@@ -21,18 +23,30 @@ class PekerjaanController extends Controller
 
     public function detailPekerjaan($pekerjaan)
     {
-    	$hasil = Pekerjaan::findorFail($pekerjaan);
+        $hasil = Pekerjaan::findorFail($pekerjaan);
+        $hasil->endDate =  \Carbon\Carbon::parse($hasil->endDate)->format('M j, Y');
+
+        $tempHonor = strrev("".$hasil->budget."");
+        $tempHonor = str_split($tempHonor,3);
+        $hasil->budget = strrev(implode(".", $tempHonor));
+
     	$hasill = $hasil->skillTag;
 
-    	return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill'));
-    }
+        $jobGiver = $hasil->user;
 
-    public function detailPekerjaanFromDashboard($pekerjaan)
-    {
-        $hasil = Pekerjaan::findorFail($pekerjaan);
-        $hasill = $hasil->skillTag;
+        $jumlah_pelamar = $hasil->applyManager->count();
 
-        return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill'));
+        $id_pelamar = Array();
+
+        foreach($hasil->applyManager as $am) {
+            array_push($id_pelamar, $am->user_id);
+        }
+
+        if (Auth::user()){
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
+        } else {
+            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
+        }
     }
 
     public function bukaLowongan() {
@@ -66,7 +80,14 @@ class PekerjaanController extends Controller
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
-        $pekerjaan->isVerified  = 0;
+        if(Auth::user()->role == 'mahasiswa')
+        {
+            $pekerjaan->isVerified  = 0;
+        }
+        else
+        {
+            $pekerjaan->isVerified  = 1;
+        }
 
         $pekerjaan->isDone      = 0;
         $pekerjaan->isTaken     = 0;
@@ -78,7 +99,7 @@ class PekerjaanController extends Controller
         $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
-            $skill = new skillTag;
+            $skill = new SkillTagPekerjaan;
             $skill->pekerjaan_id = $pekerjaan->id;
             $skill->skill = $as;
             $skill->save();
@@ -92,9 +113,25 @@ class PekerjaanController extends Controller
         return redirect('inbox');
     }
 
-    public function deleteJob($idPekerjaan) {
+    public function unverifyJob($idPekerjaan) {
         $pekerjaan = Pekerjaan::find($idPekerjaan);
-        $pekerjaan->delete();
+        $pekerjaan->update(array('isVerified' => 0));
+        return redirect('inbox');
+    }
+    public function deleteJob(Pekerjaan $idPekerjaan) {
+        foreach ($idPekerjaan->skillTag as $st) {
+            $st->delete();
+        }
+
+        foreach ($idPekerjaan->applyManager as $am) {
+            $am->delete();
+        }
+
+        foreach ($idPekerjaan->userluar as $ul) {
+            $ul->delete();
+        }
+
+        $idPekerjaan->delete();
         return redirect('inbox');
     }
 
@@ -102,18 +139,18 @@ class PekerjaanController extends Controller
 
     public function searchPekerjaan(Request $request)
     {
-        $hasil2 = SkillTag::where('skill','LIKE','%'.$request->kunci.'%')->get();
-
-        $hasil = Pekerjaan::where(function ($query) use ($request,$hasil2){
+        $hasil = Pekerjaan::where(function ($query) use ($request){
                 $query->where('judul_pekerjaan','LIKE','%'.$request->kunci.'%')
                       ->orWhere('deskripsi_pekerjaan','LIKE','%'.$request->kunci.'%')
-                      ->orWhereIn('id',$hasil2->pluck('pekerjaan_id'));
+                      ->orWhereHas('skillTag',function($query) use ($request){
+                            $query->where('skill','LIKE','%'.$request->kunci.'%');
+                        });
             })
         ->where('isVerified',1);
 
         if($request->flag == "nonDash")
         {
-            $hasil = $hasil->get();
+            $hasil = $hasil->simplePaginate(10)->appends($request->all());
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
         else
@@ -176,11 +213,33 @@ class PekerjaanController extends Controller
                 $hasil = $hasil->whereDate('created_at', '<=', $MyDateCarbon);
             }
 
-            $hasil = $hasil->get();
+            $hasil = $hasil->simplePaginate(10)->appends($request->all());
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }
-    
+
+    public function ongoing(User $user)
+    {
+        $freelancer_job = $user->applyManager->where('status',1);
+
+        foreach ($freelancer_job as $fj) {
+            $tempHonor = strrev("".$fj->pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $fj->pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
+
+
+        $jobgiver_job = $user->pekerjaan->where('isTaken',1);
+
+        foreach ($jobgiver_job as $jg) {
+            $tempHonor = strrev("".$jg->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $jg->budget = strrev(implode(".", $tempHonor));
+        }
+
+        return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job'));
+    }
+
     public function postLowongan(Request $request){
         	$this->validate($request, [
                 'name'		=> 'required',
@@ -194,12 +253,6 @@ class PekerjaanController extends Controller
                 'deadline'    => 'required|date|after:now',
                 'skill'       => 'required'
             ]);
-        $user = new UserLuar;
-        $user->name = $request->name;
-        $user->asal_instansi=$request->asal_instansi;
-        $user->email=$request->email;
-        $user->no_telp=$request->no_telp;
-        $user->save();
 
         $pekerjaan = new Pekerjaan;
 
@@ -208,6 +261,7 @@ class PekerjaanController extends Controller
         $pekerjaan->budget = $request->budget;
         $pekerjaan->durasi = $request->estimasi;
         $pekerjaan->endDate = $request->deadline;
+        $pekerjaan->user_id = '1';
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
@@ -222,13 +276,22 @@ class PekerjaanController extends Controller
         $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
-            $skill = new skillTag;
+            $skill = new SkillTagPekerjaan;
             $skill->pekerjaan_id = $pekerjaan->id;
             $skill->skill = $as;
             $skill->save();
         }
+
+        $user = new UserLuar;
+        $user->name = $request->name;
+        $user->asal_instansi=$request->asal_instansi;
+        $user->email=$request->email;
+        $user->no_telp=$request->no_telp;
+        $user->pekerjaan_id = $pekerjaan->id;
+        $user->save();
+
         return view('post');
     }
-    
-    
+
+
 }
