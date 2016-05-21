@@ -80,7 +80,14 @@ class PekerjaanController extends Controller
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
-        $pekerjaan->isVerified  = 0;
+        if(Auth::user()->role == 'mahasiswa')
+        {
+            $pekerjaan->isVerified  = 0;
+        }
+        else
+        {
+            $pekerjaan->isVerified  = 1;
+        }
 
         $pekerjaan->isDone      = 0;
         $pekerjaan->isTaken     = 0;
@@ -210,7 +217,7 @@ class PekerjaanController extends Controller
 
         return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job'));
     }
-    
+
     public function postLowongan(Request $request){
         	$this->validate($request, [
                 'name'		=> 'required',
@@ -238,6 +245,7 @@ class PekerjaanController extends Controller
         $pekerjaan->budget = $request->budget;
         $pekerjaan->durasi = $request->estimasi;
         $pekerjaan->endDate = $request->deadline;
+        $pekerjaan->user_id = '1';
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
@@ -259,6 +267,6 @@ class PekerjaanController extends Controller
         }
         return view('post');
     }
-    
-    
+
+
 }

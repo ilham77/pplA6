@@ -22,9 +22,4 @@ class Pekerjaan extends Model
     public function applyManager() {
         return $this->hasMany(ApplyManager::class);
     }
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 }

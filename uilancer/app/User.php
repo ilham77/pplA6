@@ -63,8 +63,4 @@ protected $table = 'users';
      $user->password = $password;
      $user->save();
     }
-
-    public static function pekerjaan(){
-       return $this->hasMany('App\Pekerjaan');
-    }
 }
