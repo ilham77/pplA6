@@ -118,6 +118,11 @@ class PekerjaanController extends Controller
         $pekerjaan->update(array('isVerified' => 0));
         return redirect('inbox');
     }
+    public function deleteJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->delete();
+        return redirect('inbox');
+    }
 
 
 

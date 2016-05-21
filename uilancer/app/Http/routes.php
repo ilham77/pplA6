@@ -51,6 +51,7 @@ Route::get('/editUser', function () {
 
 Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
+Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 
 
 /*
