@@ -213,6 +213,14 @@ $isLogged=false;
         </p>
         <p><br/>
           <div class="text-right">
+          @if(Auth::user()->role == 'admin')
+            @if($hasil->isVerified == 0)
+              <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
+              <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
+            @else
+              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">unVerify</a>
+            @endif
+          @else
             @if($hasil->user->id != Auth::user()->id)
               @if (in_array(Auth::user()->id, $id_pelamar))
                 <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
@@ -223,6 +231,10 @@ $isLogged=false;
               <a class="btn btn-primary mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif
+          @endif
+
+
+
           </div>
         </p>
 

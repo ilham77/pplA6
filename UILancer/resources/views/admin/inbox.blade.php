@@ -6,7 +6,7 @@
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -198,7 +198,7 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                       @foreach($pekerjaan as $sbhPekerjaan)
-                        <a href="pekerjaanDashboard/{{ $sbhPekerjaan->id }}" class="list-group-item">
+                        <a href="pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
                           <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
                           <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>

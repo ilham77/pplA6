@@ -39,7 +39,7 @@ class PekerjaanController extends Controller
         $id_pelamar = Array();
 
         foreach($hasil->applyManager as $am) {
-            array_push($id_pelamar, $am->freelancer_id);
+            array_push($id_pelamar, $am->user_id);
         }
 
         if (Auth::user()){
@@ -110,6 +110,12 @@ class PekerjaanController extends Controller
     public function verifyJob($idPekerjaan) {
         $pekerjaan = Pekerjaan::find($idPekerjaan);
         $pekerjaan->update(array('isVerified' => 1));
+        return redirect('inbox');
+    }
+
+    public function unverifyJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->update(array('isVerified' => 0));
         return redirect('inbox');
     }
 
@@ -231,12 +237,6 @@ class PekerjaanController extends Controller
                 'deadline'    => 'required|date|after:now',
                 'skill'       => 'required'
             ]);
-        $user = new UserLuar;
-        $user->name = $request->name;
-        $user->asal_instansi=$request->asal_instansi;
-        $user->email=$request->email;
-        $user->no_telp=$request->no_telp;
-        $user->save();
 
         $pekerjaan = new Pekerjaan;
 
@@ -260,11 +260,20 @@ class PekerjaanController extends Controller
         $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
-            $skill = new skillTag;
+            $skill = new SkillTagPekerjaan;
             $skill->pekerjaan_id = $pekerjaan->id;
             $skill->skill = $as;
             $skill->save();
         }
+
+        $user = new UserLuar;
+        $user->name = $request->name;
+        $user->asal_instansi=$request->asal_instansi;
+        $user->email=$request->email;
+        $user->no_telp=$request->no_telp;
+        $user->pekerjaan_id = $pekerjaan->id;
+        $user->save();
+
         return view('post');
     }
 

@@ -16,12 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-
-
-
-Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
-
-
 Route::get('/detail', function() {
     return view('detail');
 });
@@ -56,6 +50,7 @@ Route::get('/editUser', function () {
 });
 
 Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 
 
 /*

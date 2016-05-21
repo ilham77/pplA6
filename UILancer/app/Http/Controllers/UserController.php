@@ -55,7 +55,7 @@ class UserController extends Controller
                 return redirect('/login')->withErrors(['Invalid email or password']);
             }
         }
-        
+
     }
 
     public function loginForm(){
@@ -64,7 +64,7 @@ class UserController extends Controller
         else
             return redirect('/');
     }
-    
+
     public function logout(){
         Auth::logout();
         return redirect('/');
@@ -139,7 +139,7 @@ class UserController extends Controller
                 $apply_manager = new ApplyManager;
                 $apply_manager->status = 0;
                 $apply_manager->pekerjaan_id = $pekerjaan;
-                $apply_manager->freelancer_id = $freelancer;
+                $apply_manager->user_id = $freelancer;
                 $apply_manager->save();
 
                 return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply berhasil :)'));
@@ -164,7 +164,7 @@ class UserController extends Controller
 
             if(Auth::user()->id == $freelancer)
             {
-                ApplyManager::where('pekerjaan_id',$pekerjaan)->where('freelancer_id',$freelancer)->delete();
+                ApplyManager::where('pekerjaan_id',$pekerjaan)->where('user_id',$freelancer)->delete();
 
                 return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Cancel berhasil :)'));
             }
