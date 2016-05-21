@@ -22,4 +22,9 @@ class Pekerjaan extends Model
     public function applyManager() {
         return $this->hasMany(ApplyManager::class);
     }
+
+    public function userluar()
+    {
+        return $this->hasMany('App\UserLuar');
+    }
 }

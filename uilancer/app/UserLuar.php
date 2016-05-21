@@ -28,6 +28,6 @@ class UserLuar extends Model
     }
 
     public function pekerjaan(){
-        return $this->hasMany('App/Pekerjaan');
+        return $this->belongsTo('App/Pekerjaan','pekerjaan_id');
     }
 }
