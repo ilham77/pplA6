@@ -204,7 +204,10 @@ $isLogged=false;
         <p><br/>
             @if($hasil->isVerified == 0)
             <!-- Auth::user()->role == "admin" --> 
-              <a class="btn btn-block btn-success mt-20 font2 text-center" href="../verify/{{ $hasil->id }}">Verify</a>
+            <div class="text-right">
+              <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
+              <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
+              
             @else
               <a class="btn btn-block btn-success mt-20 font2 text-center" >APPLY</a>
             @endif

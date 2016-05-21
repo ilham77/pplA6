@@ -92,6 +92,12 @@ class PekerjaanController extends Controller
         return redirect('inbox');
     }
 
+    public function deleteJob($idPekerjaan) {
+        $pekerjaan = Pekerjaan::find($idPekerjaan);
+        $pekerjaan->delete();
+        return redirect('inbox');
+    }
+
 
 
     public function searchPekerjaan(Request $request)
