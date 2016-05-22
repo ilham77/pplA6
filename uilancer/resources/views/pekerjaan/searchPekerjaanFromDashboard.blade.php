@@ -202,6 +202,12 @@
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+                             <span>Skill yang dibutuhkan:</span>
+             @if(count($pekerjaan->skillTag))
+              @foreach($pekerjaan->skillTag as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
