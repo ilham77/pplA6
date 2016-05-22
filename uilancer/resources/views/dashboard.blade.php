@@ -16,9 +16,41 @@
 </head>
 
 <body>
-	@extends('layoutDashboard')
-	@section('content')
+  @extends('layoutDashboard')
+  @section('content')
 	
+  <!-- Sidebar -->  
+  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <ul class="nav menu">
+
+      <li><a href="./"><span class="glyphicon glyphicon-home"></span> Home</a></li>     
+      <li class="active"><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="bukalowongan"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li class="parent ">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat 
+        </a>
+        <ul class="children collapse" id="sub-item-1">
+          <li>
+            <a class="" href="#">
+              <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
+            </a>
+          </li>
+          <li>
+            <a class="" href="#">
+              <span class="glyphicon glyphicon-check"></span> Apply Job
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="faq"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
+    </ul>
+
+  </div><!--/.sidebar-->
+
 	<div class="col-sm-9 col-sm-offset-3 col-lg-8 col-lg-offset-3 main">			
 		<div class="row">
 			<div class="col-lg-12">

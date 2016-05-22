@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +17,16 @@ Route::get('/', function () {
 });
 */
 
-
-
 Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
-
 
 Route::get('/detail', function() {
     return view('detail');
 });
 
-<<<<<<< HEAD
-=======
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
->>>>>>> refs/remotes/origin/master
 Route::get('/infoAccount', function () {
     return view('infoAccount');
 });
@@ -79,9 +71,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/', function () {
 		return View::make('home');
 	});
-	Route::get('/home', function () {
-		return View::make('home');
-	});
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});
@@ -99,9 +88,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-Route::get('/dashboard','UserController@viewProfile');
-Route::post('post-lowongan','PekerjaanController@postLowongan');
-Route::get('/info', function () {
-    return view('info');
-});
+	Route::get('/dashboard','UserController@viewProfile');
+	Route::post('post-lowongan','PekerjaanController@postLowongan');
+	Route::get('/info', function () {
+	    return view('info');
+	});
 });

@@ -11,27 +11,39 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
+  <script type="text/javascript">
+  //<![CDATA[
         bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
   //]]>
   </script>
     
-    <style type="text/css">
-/*<![CDATA[*/
-#myInstance1 {
-        border: 2px dashed #0000ff;
-}
-.nicEdit-selected {
-        border: 2px solid #0000ff !important;
-}
- 
-.nicEdit-main {
-        background-color: #fff !important;
-}
- 
-/*]]>*/
-</style>
+  <style type="text/css">
+  /*<![CDATA[*/
+  #myInstance1 {
+    border: 2px dashed #0000ff;
+  }
+  .nicEdit-selected {
+    border: 2px solid #0000ff !important;
+  }
+   
+  .nicEdit-main {
+    background-color: #fff !important;
+  }
+   /*]]>*/
+  .jumbotron h1 {
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    padding-top: 30px;
+    opacity: 0.6;
+    width: 600px;
+    height: 200px;
+    margin-left: 400px;
+  }
+
+
+  </style>
+
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -78,10 +90,10 @@
 </div>
 
 <div class="jumbotron text-center">
-  <h1>UILancer Official Account</h1> 
+  <h1>UILancer Official Account</h1>
 </div>
 
-<div id="services" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div  class="col-sm-6">
       <div class="panel panel-default text-left">
@@ -91,16 +103,16 @@
         </div>
         <div class="panel-body">
             <ul>
-          <li>Akun resmi UILancer</li>
-          <li>Email resmi @uilancer.com</li>
-          <li>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</li>
-          <li>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</li>
-          <li>Job Manager untuk mengelola pelamar pekerjaan</li>
-          <li>Melihat profil pelamar</li>
-          <li>Halaman Profil dan Dashboard untuk Anda</li>
-          <li>Testimoni dan rating freelancer</li>
-          <li>Testimoni dapat ditampilkan di halaman depan UILancer</li>
-          <li>Logo dapat ditampilkan di halaman depan UILancer</li>
+              <li>Akun resmi UILancer</li>
+              <li>Email resmi @uilancer.com</li>
+              <li>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</li>
+              <li>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</li>
+              <li>Job Manager untuk mengelola pelamar pekerjaan</li>
+              <li>Melihat profil pelamar</li>
+              <li>Halaman Profil dan Dashboard untuk Anda</li>
+              <li>Testimoni dan rating freelancer</li>
+              <li>Testimoni dapat ditampilkan di halaman depan UILancer</li>
+              <li>Logo dapat ditampilkan di halaman depan UILancer</li>
             </ul>
         </div>
         <div class="panel-footer text-center">
@@ -132,7 +144,7 @@
     
 
     <div id="form-pekerjaan" class="container-fluid bg-grey">   
-              @if (count($errors))
+      @if (count($errors))
 
         <div class="well well-sm" id="error">
           <ul>
@@ -145,7 +157,7 @@
         </div>
 
       @endif
-             <br><br>
+        <br><br>
         <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
          <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
@@ -207,10 +219,12 @@
              
         
               {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
-              <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
+              <div class="divider"></div>
+              <button class="btn btn-danger"><a style="color:white; text-decoration:none;" href="{{URL::previous()}}">KEMBALI</a></button>
      
         </form>
     </div>
+
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
   <h2 class="text-center">CONTACT</h2>
@@ -233,7 +247,7 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-danger pull-right" type="submit">Send</button>
         </div>
       </div>  
     </div>

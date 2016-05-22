@@ -88,12 +88,9 @@
   <br>
   <form>
   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" href="#">I Want to Hire</button><br>
-<<<<<<< HEAD
-  <a href="infoAccount" style="font-weight: bold; text-decoration: none;">Don't have official account?</a>
-=======
-  <a href="info">Don't have official account?</a>
->>>>>>> refs/remotes/origin/master
-  </form>
+
+  <a href="info" style="font-weight: bold; text-decoration: none;">Don't have official account?</a>
+
 </div>
 
 <!-- Container (About Us Section) -->
@@ -254,7 +251,7 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-danger pull-right" type="submit">Send</button>
         </div>
       </div>  
     </div>
