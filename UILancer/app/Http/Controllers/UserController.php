@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use App\SkillUser;
 use App\User;
+use App\ApplyManager;
+use App\Pekerjaan;
 use Auth;
 use DB;
 use Session;
@@ -53,7 +55,7 @@ class UserController extends Controller
                 return redirect('/login')->withErrors(['Invalid email or password']);
             }
         }
-        
+
     }
 
     public function loginForm(){
@@ -62,7 +64,7 @@ class UserController extends Controller
         else
             return redirect('/');
     }
-    
+
     public function logout(){
         Auth::logout();
         return redirect('/');
@@ -101,7 +103,7 @@ class UserController extends Controller
             $user->avatar = $fileName;
             $file->move($destinationPath, $fileName);
         }
-		
+
 
         if ($request->hasFile('cvresume')){
         	$file = $request->file('cvresume');
@@ -119,9 +121,66 @@ class UserController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-  		
+
   		$user->save();
 
     	return redirect('dashboard');
 	}
+
+    public function apply($pekerjaan, $freelancer)
+    {
+        if(Auth::user())
+        {
+            //1. PERHATIAN!!! bagian 'Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
+            //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
+
+            if(Auth::user()->id == $freelancer)
+            {
+                $apply_manager = new ApplyManager;
+                $apply_manager->status = 0;
+                $apply_manager->pekerjaan_id = $pekerjaan;
+                $apply_manager->user_id = $freelancer;
+                $apply_manager->save();
+
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply success'));
+            }
+            else
+            {
+                return redirect('pekerjaan/'.$pekerjaan);
+            }
+        }
+        else
+        {
+            return redirect('/home');
+        }
+    }
+
+    public function cancelApply($pekerjaan, $freelancer)
+    {
+        if(Auth::user())
+        {
+            //1. PERHATIAN!!! bagian 'Auth::user()->id == $freelancer' bisa diapus kalo mau nyoba apply
+            //2. Nyoba apply dengan inject url nya langsung, contoh : /apply/4/2
+
+            if(Auth::user()->id == $freelancer)
+            {
+                ApplyManager::where('pekerjaan_id',$pekerjaan)->where('user_id',$freelancer)->delete();
+
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply canceled'));
+            }
+            else
+            {
+                return redirect('pekerjaan/'.$pekerjaan);
+            }
+        }
+        else
+        {
+            return redirect('/home');
+        }
+    }
+
+    public function onGoing($user)
+    {
+        return view('pekerjaan.ongoing');
+    }
 }

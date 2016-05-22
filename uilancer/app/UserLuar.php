@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class UserLuar extends Model
 {
     protected $table='user_luar';
-    
+
     protected $fillable = [
         'name', 'asal_instansi','email','npm'
     ];
-    
+
     public static function insert($name, $asal_instansi,$email,$no_telp,$pekerjaan_id){
         $user = new UserLuar();
         $user->name = $name;
@@ -21,9 +21,13 @@ class UserLuar extends Model
         $user->save();
         return $user;
     }
-        
+
     public static function get($name){
         $user = UserLuar::find($name);
         return $user;
+    }
+
+    public function pekerjaan(){
+        return $this->belongsTo('App/Pekerjaan','pekerjaan_id');
     }
 }

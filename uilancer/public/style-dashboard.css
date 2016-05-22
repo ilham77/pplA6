@@ -2,7 +2,7 @@ body {
 	background: #f1f4f7;
 	padding-top: 50px;
 	color: #5f6468;
-	font-family: Lato, sans-serif; 
+	font-family: Lato, sans-serif;
 }
 
 a, a:hover, a:focus {
@@ -29,6 +29,80 @@ h1 {
 
 .navbar-header .navbar-brand span {
 	color: #30a5ff;
+}
+
+#modalDone {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	max-height: calc(100% - 100px);
+}
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+  margin-left:15px;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-family: FontAwesome;
+  display: inline-block;
+  border: solid;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+border: solid;
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+#modalTestimoni {
+
+    top: 40%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+#modalDelete {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+  	transform: translate(-50%, -50%);
+  	max-height: calc(100% - 100px);
 }
 
 .navbar {
@@ -94,7 +168,7 @@ h1 {
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
-		overflow-y: auto; 
+		overflow-y: auto;
 		background-color: #fff;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
@@ -103,7 +177,7 @@ h1 {
 	}
 }
 
-.sidebar ul.nav a:hover, 
+.sidebar ul.nav a:hover,
 .sidebar ul.nav li.parent ul li a:hover {
 	text-decoration: none;
 	background-color: #e9ecf2;
@@ -253,4 +327,8 @@ ul.msg_list li a .message {
 
 #notifikasi {
 	padding-left: 20px;
+}
+#error {
+    background-color: #ffb3b3;
+    color: black;
 }

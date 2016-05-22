@@ -18,14 +18,14 @@ class CreateUserLuar extends Migration
             $table->string('asal_instansi');
             $table->string('email');
             $table->integer('no_telp')->unsigned();
-            $table->string('pekerjaan_id');
+            $table->integer('pekerjaan_id')->unsigned();
             $table->timestamps();
          });
-        
+
         Schema::table('user_luar',function($table){
             $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
         });
-    
+
     }
 
     /**

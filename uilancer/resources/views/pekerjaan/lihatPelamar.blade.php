@@ -5,33 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
-  //]]>
-  </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-   <style type="text/css">
-/*<![CDATA[*/
-#myInstance1 {
-        border: 2px dashed #0000ff;
-}
-.nicEdit-selected {
-        border: 2px solid #0000ff !important;
-}
- 
-.nicEdit-main {
-        background-color: #fff !important;
-}   
-</style>
+
 </head>
 
 <body>
@@ -45,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -125,14 +107,13 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>
-              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
+              <span class="glyphicon glyphicon-user">User</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
-              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
             </ul>
           </li>
 
@@ -145,22 +126,21 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li class="active"><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="{{url('riwayatJobGiver')}}">
+            <a class="" href="#">
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
           <li>
-            <a class="" href="{{url('riwayatApply')}}">
+            <a class="" href="#">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
@@ -173,70 +153,152 @@
 
   </div><!--/.sidebar-->
 
-
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
-        <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Buka Pekerjaan</h1>
+        <div id="table" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">Lihat Pelamar</h1>
   <br>
-  <div class="row">
-    <div class="col-md-8">
-            <form action="addlowongan" method="POST" role="form">
-        {{ csrf_field() }}
-                    <div class="form-group">
-                      <label for="judul">Judul Pekerjaan</label>
-                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
-                    </div>
-                    <div class="form-group">
-                      <label for="deskripsi">Deskripsi Pekerjaan</label>
-                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
-                    </div>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="budget">Budget</label>
-                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
-                      </div>
-                      <div class="form-group">
-                        <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-                        <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="waktututup">Deadline pencarian:</label>
-                        <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
-                      </div>
-                    </div>
-                    <br>
+<div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
+  
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
-                  </form>
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
 
-                  @if (count($errors))
 
-                    <div class="well well-sm" id="error">
-                      <ul>
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
 
-                      @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                      @endforeach
+</div>
 
-                      </ul>
-                    </div>
-
-                  @endif
-    </div>
+</div>
     </div>
   </div>
 </div>
-</div>
-</div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
   <script>
     !function ($) {
