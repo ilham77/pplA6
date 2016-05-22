@@ -196,6 +196,7 @@
            <br><hr>
                 
           <div class="deskripsi">
+<<<<<<< HEAD
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
               <span>Rp {{$pekerjaan->budget}}</span><br>
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
@@ -208,7 +209,11 @@
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
-                <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p>
+=======
+              <span class="glyphicon glyphicon-usd"></span>
+              <span> {{$pekerjaan->budget}}</span><br>
+>>>>>>> parent of d0f67e0... Menampilkan deskripsi dengan html tag
+                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
