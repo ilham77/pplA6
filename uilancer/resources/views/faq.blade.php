@@ -11,6 +11,9 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <style>
+	body {
+		width: auto;
+	}
     .faqHeader {
         font-size: 20px;
         margin: 10px;
@@ -222,7 +225,7 @@
 	                </div>
 	            </div>
 	        </div>
-	        
+
 	        <br>
 
 	        <div class="faqHeader">Buyers</div>
