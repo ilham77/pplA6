@@ -166,7 +166,6 @@
 @if($pekerjaan->isTaken == 1)
 <h2 class="text-center" style="margin-top:35px">Pekerjaan {{ $pekerjaan->judul_pekerjaan }} sedang berlangsung.</h2>
 @else
-
 <form action="../terimaLamar" method="POST">
 {{csrf_field()}}
 @foreach($pelamar as $p)
@@ -194,7 +193,6 @@
 <input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
 </div>
 <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
-
 @endif
 </div>
     </div>

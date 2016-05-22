@@ -103,5 +103,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
-    route::post('terimaLamar', 'UserController@terimaLamar');
+    Route::post('terimaLamar', 'UserController@terimaLamar');
 });
