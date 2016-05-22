@@ -9,7 +9,7 @@ class Report extends Model
     protected $table = 'report';
     
     protected $fillable = [
-        'keluhan','reported_name','pelapor'
+        'judul','keluhan','reported_name','pelapor','asal_instansi'
     ];
     
     protected $hidden = [

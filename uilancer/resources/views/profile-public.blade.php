@@ -316,12 +316,15 @@ REPORT MODAL
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ceritakan keluhan anda:</h4>
+          <h4 class="modal-title">Report User</h4>
             <br>
         <div class="modal-body">
            <form action="../report/{{$usr->id}}/{{Auth::user()->id}}" method="post" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
             <div class="form-group">
+                <p>Judul Laporan:</p>
+            <input type="text" name="judul" class="form-control"><br>
+                <p>Ceritakan keluhan anda:</p>
             <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>
                 <br>
                 <button class="btn btn-primary" data-toggle="modal" data-target="thanks" type=submit>Kirim</button>

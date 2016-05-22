@@ -16,14 +16,18 @@ class ReportController extends Controller
         $report = new Report();
         $user = User::find($request->user);
         $pelapor = Auth::user();
+        $report->judul=$request->judul;
         $report->keluhan = $request->keluhan;
         $report->reported_id = $user->id;
         $report->reported_name = $user->name;
-        if($pelapor->name==null)
-        $report->pelapor = "";
-        else
+        if($pelapor->role=="mahasiswa" or $pelapor->role=="admin"){
+        $report->asal_instansi = $user->faculty;
+        }else{
+        $report->asal_instansi = $user->asal_instansi;
+        }
         $report->pelapor = $pelapor->name;
         $report->save();
         return redirect('/profile/'.$user->id);
-    }
+}
+
 }
