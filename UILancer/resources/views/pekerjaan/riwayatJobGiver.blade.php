@@ -20,7 +20,6 @@
   <!-- Navigasi Bar -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -166,47 +165,55 @@
     <div class="col-md-8">
     <table style="width:1050px;" class="table table-hover">
       <div class="table-responsive">
-      @if(count($kerjaDariUser))
-         <thead>
-        <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Pekerja</b></center></td>
-        <td><center><b>Durasi Kerja</center></b></td>
-        <td><center><b>Honor</b></center></td>
-        <td><center><b>Deadline</b></center></td>
-        <td><center><b>Status</b></center></td>
-        <td></td>
+        <thead>
+      <td><center><b>Judul Pekerjaan</b></center></td>
+      <td><center><b>Pekerja</b></center></td>
+      <td><center><b>Durasi Kerja</center></b></td>
+      <td><center><b>Honor</b></center></td>
+      <td><center><b>Deadline</b></center></td>
+      <td><center><b>Status</b></center></td>
+      <td></td>
         </thead>
-
-        @foreach($kerjaDariUser as $ku)
-          @foreach($ku->applyManager as $am)
-            <tr>
-              <td><center>{{ $ku->judul_pekerjaan }}</center></td>
-              <td><center>{{ $am->user->name }}</center></td>
-              <td><center>{{ $ku->durasi }} pekan</center></td>
-              <td><center>Rp.{{ $ku->budget }},-</center></td>
-              <td><center>{{ $ku->endDate  }}</center></td>
-
-              @if($am->status == 1)
-                @if($ku->isDone == 0)
-                   <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
-                @else
-                  <td><center>Done</center></td>
-                @endif
-              @else
-                @if($ku->isClosed == 1)
-                  <td><center>Closed</center></td>
-                @elseif($ku->isTaken == 1)
-                  <td><center>Rejected</center></td>
-                @else
-                  <td><center><a class="btn btn-primary mt-20 font2 text-center" href="lihatPelamar/{{ $ku->id }}">Lihat Pelamar</a></center></td>
-                @endif
-              @endif
-            </tr>
-          @endforeach
-        @endforeach
-      @else
-        <b>Tidak ada pekerjaan</b>
-      @endif
+        <tr>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
+        </tr>
+        <tr>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center><a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a></center></td>
+        </tr>
+        <tr>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>Done</center></td>
+        </tr>
+        <tr>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>Waiting to be done</center></td>
+        </tr>
+        <tr>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>hehe</center></td>
+              <td><center>Closed</center></td>
+        </tr>
     </div>
   </table>
     </div>

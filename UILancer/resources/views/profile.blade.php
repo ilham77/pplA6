@@ -20,7 +20,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
       </button>
       <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
@@ -68,14 +68,14 @@
       </div>
             @endif
       <!-- Modal content-->
-
-
+   
+      
     </div>
 </div>
 
 <!-- EDIT PROFILE -->
 <div id="body" class="container-fluid">
-
+        
     <!-- SIDEBAR -->
   <div id="sidebar" class="container-fluid col-md-3 col-xs-1 col-lg-3">
         <DL>
@@ -90,19 +90,19 @@
                 <DD><a href="#">Apply Job</a></DD>
         </DT>
         <hr  style="height:1px;border:none;color:#333;background-color:#333;"/>
-
+       
         <a href="#">Setting</a><br>
         <a href="#">FAQ & Help</a><br>
         </DT>
   </div>
-
+        
     <!-- PROFILE -->
   <div id="container" class="col-md-9 col-xs-4 col-lg-9 container-fluid bg-grey">
         <div class="col-md-4 col-xs-2 col-lg-4">
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
                 @endif
         </div>
         <div id="profile-header" class="col-md-7 col-xs-3 col-lg-7">
@@ -120,7 +120,7 @@
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
             <p>Ketertarikan     : Massage, Telephone marketing</p>
-            <p>Pekerjaan        : {{\Auth::user()->role}}</p>
+            <p>Pekerjaan        : {{\Auth::user()->role}}</p> 
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
             CV / Resume :
             <span><a href="#" download>click here to download</a></span></br>
@@ -137,7 +137,7 @@
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
     </div>
   </div>
 </div>
@@ -155,7 +155,7 @@
   <p>UILancer is marketplace for service blablabla</p>
   <a href="#">(+62) 813-681-999</a></br>
   <a href="#">ask@uilancer.com</a><br>
-  <p>Made By <a href="" title="UILancer">PPL A6</a></p>
+  <p>Made By <a href="" title="UILancer">PPL A6</a></p>   
 </footer>
 
 <script>
@@ -174,12 +174,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-
+   
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-
+  
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;

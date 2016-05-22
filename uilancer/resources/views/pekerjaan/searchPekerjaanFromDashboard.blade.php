@@ -127,7 +127,7 @@
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('listPekerjaan')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
@@ -164,7 +164,10 @@
   
 <br><br>
       @if(count($pekerjaans))
+       
         @foreach($pekerjaans as $pekerjaan)
+
+
 <div class="col-lg-12" style="margin-left:-15px;">
     <div class = "panel panel-default">
       <div class="panel-body">
@@ -172,7 +175,7 @@
 
                 
 <div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> User</span>        
+                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>        
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
@@ -197,9 +200,21 @@
            <br><hr>
                 
           <div class="deskripsi">
-              <span class="glyphicon glyphicon-usd"></span>
-              <span> {{$pekerjaan->budget}}</span><br>
-                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>  
+     <span>Rp {{$pekerjaan->budget}}</span><br>
+
+              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
+              <span>{{count($pekerjaan->applyManager)}}</span><br>
+              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
+              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+
+              <span>Skill yang dibutuhkan:</span>
+
+             @if(count($pekerjaan->skillTag))
+              @foreach($pekerjaan->skillTag as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
@@ -211,7 +226,7 @@
       @else
         <h2>Tidak ada pekerjaan</h2>
       @endif
-       
+      
         <div align="center">
             {!! $pekerjaans->render() !!}
             <form action="home"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>

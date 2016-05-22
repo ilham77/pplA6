@@ -55,6 +55,10 @@ Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 
+	Route::get('/welcome', function () {
+		return View::make('home');
+	});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -104,4 +108,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
     route::post('terimaLamar', 'UserController@terimaLamar');
+	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 });
