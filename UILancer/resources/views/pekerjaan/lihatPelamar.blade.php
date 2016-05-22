@@ -6,7 +6,7 @@
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -157,18 +157,18 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="table" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Lihat Pelamar</h1>
+  <h1 class="text-left" style="margin-top:35px">Lihat Pelamar - {{ $pekerjaan->judul_pekerjaan }}</h1>
   <br>
 <div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
-  
-<!--satu loop -->
+
+@foreach($pelamar as $p)
 <div class="col-lg-6">
   <table style="margin-top:10px">
     <tr>
       <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
       <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
+        <a href="#"><h4><b>{{ $p->user->name }}</b></h4></a>
+        {{ $p->user->deskripsi }}
       </td>
        <td style="padding-left: 80px;">
         <a href="#" class="btn btn-success">
@@ -181,113 +181,13 @@
     </tr>
   </table>
 </div>
-<div class="col-lg-6">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
-      </td>
-      <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-<br>
-<!-- satu loop-->
 
-<!--satu loop -->
-<div class="col-lg-6">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
-      </td>
-       <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="col-lg-6">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
-      </td>
-      <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-<br>
-<!-- satu loop-->
+@if($i % 2 == 0)
+  <br>
+@endif
 
-
-<!--satu loop -->
-<div class="col-lg-6">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
-      </td>
-       <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="col-lg-6">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>Geda</b></h4></a>
-        aku adalah anak gembala
-      </td>
-      <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-<br>
-<!-- satu loop-->
-
+<?php $i++; ?>
+@endforeach
 </div>
 
 </div>

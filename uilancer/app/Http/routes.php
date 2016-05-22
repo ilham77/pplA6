@@ -69,9 +69,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/login', function () {
     	return view('login');
 	});
-	Route::get('/', function () {
-		return View::make('home');
-	});
+
+    Route::get('/', ['middleware' => 'auth', 'uses'=>'AdminController@index']);
+
 	Route::get('/home', function () {
 		return View::make('home');
 	});
@@ -81,9 +81,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/info', function () {
 	    return view('info');
 	});
-	Route::get('/lihatPelamar', function () {
-	    return view('pekerjaan.lihatPelamar');
-	});
+	Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
 	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
 	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
 

@@ -218,7 +218,7 @@ $isLogged=false;
               <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
               <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
             @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
+              <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
             @endif
@@ -230,7 +230,7 @@ $isLogged=false;
                 <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
               @endif
             @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
+              <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif

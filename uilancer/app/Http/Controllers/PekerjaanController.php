@@ -293,5 +293,11 @@ class PekerjaanController extends Controller
         return view('post');
     }
 
+    public function lihatPelamar(Pekerjaan $pekerjaan)
+    {
+        $pelamar = $pekerjaan->applyManager;
+        $i = 1;
+        return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
+    }
 
 }
