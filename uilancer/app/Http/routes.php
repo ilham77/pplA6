@@ -115,4 +115,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
 
     Route::post('addUser', 'AdminController@createUser');
+	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
+	/*Route::get('/profile', function () {
+    	return view('profile-public');
+	});*/
 });
