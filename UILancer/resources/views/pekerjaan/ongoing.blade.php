@@ -137,12 +137,12 @@
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatJobGiver')}}">
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatApply')}}">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
@@ -160,7 +160,7 @@
       <div class="col-lg-12">
         <div id="table" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
-  <br>
+
   <u><h3>Freelancer</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
@@ -187,9 +187,7 @@
           </tr>
         @endforeach
       @else
-        <tr>
-          <td><center><b>Tidak ada pekerjaan</b></center></td>
-        </tr>
+        <b>Tidak ada pekerjaan</b>
       @endif
        </div>
     </table>
@@ -206,7 +204,7 @@
         <thead>
       <tr>
         <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b> Pekerja</b></center></td>
+        <td><center><b>Pekerja</b></center></td>
         <td><center><b>Durasi Kerja</center></b></td>
         <td><center><b>Honor</b></center></td>
         <td><center><b>Deadline</b></center></td>
@@ -222,14 +220,12 @@
               <td><center>{{ $jg->durasi }} pekan</center></td>
               <td><center>Rp{{ $jg->budget }},-</center></td>
               <td><center>{{ $jg->endDate }}</center></td>
-              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+              <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Confirm</a></center></td>
             </tr>
           @endforeach
         @endforeach
       @else
-        <tr>
-          <td><center><b>Tidak ada pekerjaan</b></center></td>
-        </tr>
+<b>Tidak ada pekerjaan</b>
       @endif
        </div>
     </table>
