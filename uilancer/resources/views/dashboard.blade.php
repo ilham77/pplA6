@@ -186,34 +186,7 @@
             CV / Resume :
             <span><a href="#" download>click here to download</a></span></br>
           <a href="{{url('edit')}}" class="btn btn-danger">Edit Profile</a>
-<!--
-REPORT MODAL
--->  
-                <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
-  <!-- Modal -->
-
-<div class="modal fade" id="reportModal" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ceritakan keluhan anda:</h4>
-            <br>
-            <form action="report" method="POST" role="form" enctype="multipart/form-data">
-              {{csrf_field()}}
-            <div class="form-group">
-            <textarea class="form-control" style="resize:none;" cols="5" rows="10" ></textarea>
-                <br>    
-                    {!! Form::submit('Kirim', array('class'=>'btn btn-primary')) !!}
-        </div>
-        </form>
-        <div class="modal-body">
-        </div>
-        </div>
-      </div>
-      </div>
-           
-      
+ 
         </div>
 			</div>
 		</div><!--/.row-->		
