@@ -187,10 +187,14 @@
           <div class="col-md-4">
             @if($usr->avatar == "")
             <img src="http://placehold.it/200x200" alt="">
+              <br><br><a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @else
             <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">  
+        <br><br> <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @endif          
           </div>
+            
+            
           <div class="col-md-8">
             <h1>{{$usr->name}}</h1>
             <p>{{$usr->deskripsi}}</p>
@@ -239,7 +243,9 @@
           </div>
         </div>
         <div class="row">
+        
           <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+            
         </div>
       </div>
     </div>
@@ -299,6 +305,54 @@ $(document).ready(function(){
   });
 })
 </script>
+  <!--
+REPORT MODAL
+-->  
 
+  <!-- Modal -->
+
+<div class="modal fade" id="reportModal" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ceritakan keluhan anda:</h4>
+            <br>
+        <div class="modal-body">
+           <form action="report" method="POST" role="form" enctype="multipart/form-data">
+              {{csrf_field()}}
+            <div class="form-group">
+            <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>
+                <br>
+                <button class="btn btn-primary" data-toggle="modal" data-target="thanks" type=submit>Kirim</button>
+        </div>
+        </form>
+        </div>
+        </div>
+      </div>
+      </div>
+<!--END REPORT-->
+     
+      <!--
+THANKS MODAL
+-->  
+
+  <!-- Modal -->
+
+<div class="modal fade" id="thanks" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     
+        </form>
+        <div class="modal-body">
+            <center><p>Terima kasih. Laporan anda akan segera di proses.</p>
+                <p>Untuk pertanyaan lebih lanjut silahkan hubungi ask@uilancer.com</p></center>
+        </div>
+        </div>
+       
+      </div>
+      </div>
+<!--END THANKS-->
 </body>
 </html>

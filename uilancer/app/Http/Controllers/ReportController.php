@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\Report;
+use App\User;
 
 class ReportController extends Controller
 {

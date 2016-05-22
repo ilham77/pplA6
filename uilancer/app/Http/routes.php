@@ -20,8 +20,6 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -116,7 +114,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
 
     Route::post('addUser', 'AdminController@createUser');
-
+    
+    Route::post('report', 'ReportController@report');
 	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 	/*Route::get('/profile', function () {
     	return view('profile-public');
