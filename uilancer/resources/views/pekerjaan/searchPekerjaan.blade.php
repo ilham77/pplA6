@@ -112,7 +112,7 @@
             @endif
 
 
-                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+            <h4>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</h4>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
