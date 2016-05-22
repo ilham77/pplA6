@@ -164,34 +164,34 @@
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="col-lg-12" style="margin-left:-15px;">
+<div class="container">
     <div class = "panel panel-default">
-      <div class="panel-body">
+			<div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 
                 
-<div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>        
+<div class ="col-md-3 col-xs-1 col-lg-3">			 
+                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>				
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
-              
+							
                 </div>
                 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
-                                   @if($pekerjaan->isTaken)
+                  @if($pekerjaan->isTaken)
                   <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
-              @else
-                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
-              @endif
+							@else
+								 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
+							@endif
                 </div>
                 
                <div class ="col-md-3 col-xs-1 col-lg-3">
-              @if($pekerjaan->isDone)        
+							@if($pekerjaan->isDone)				 
                 <span class="glyphicon glyphicon-check"></span><span> Done</span>
-              @else
-                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
-              @endif
+							@else
+								<span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
+							@endif
                 </div>
            <br><hr>
                 
@@ -202,14 +202,20 @@
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
-                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+              <span>Skill yang dibutuhkan:</span>
+             @if(count($pekerjaan->skillTag))
+              @foreach($pekerjaan->skillTag as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
+                <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
             </div>
-    </div>  
-    </div>      
+		</div>	
+    </div>		
         @endforeach
       @else
         <h2>Tidak ada pekerjaan</h2>
