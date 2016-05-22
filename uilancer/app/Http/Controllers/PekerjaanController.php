@@ -16,7 +16,14 @@ class PekerjaanController extends Controller
 {
     public function index()
     {
-    	$pekerjaans = Pekerjaan::where('isVerified',1)->get();
+    	$pekerjaans = Pekerjaan::where('isVerified',1);
+        $pekerjaans = $pekerjaans->simplePaginate(10);
+
+        foreach ($pekerjaans as $pekerjaan) {
+            $tempHonor = strrev("".$pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
 
     	return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
     }
@@ -151,6 +158,12 @@ class PekerjaanController extends Controller
         if($request->flag == "nonDash")
         {
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
+            foreach ($hasil as $h) {
+                $tempHonor = strrev("".$h->budget."");
+                $tempHonor = str_split($tempHonor,3);
+                $h->budget = strrev(implode(".", $tempHonor));
+            }
+
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
         else
@@ -214,6 +227,11 @@ class PekerjaanController extends Controller
             }
 
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
+            foreach ($hasil as $h) {
+                $tempHonor = strrev("".$h->budget."");
+                $tempHonor = str_split($tempHonor,3);
+                $h->budget = strrev(implode(".", $tempHonor));
+            }
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }

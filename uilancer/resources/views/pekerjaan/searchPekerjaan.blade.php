@@ -73,7 +73,7 @@
                 <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>				
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
-                  <span class="glyphicon glyphicon-time">{{ $pekerjaan->endDate }}</span>
+                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
 							
                 </div>
                 
@@ -96,19 +96,30 @@
                 
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+<<<<<<< HEAD
               <span>{{$pekerjaan->budget}}</span><br>
+=======
+              <span>Rp {{$pekerjaan->budget}}</span><br>
+>>>>>>> refs/remotes/origin/master
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+<<<<<<< HEAD
                
                <span>Skill yang dibutuhkan:</span>
+=======
+              <span>Skill yang dibutuhkan:</span>
+>>>>>>> refs/remotes/origin/master
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
+<<<<<<< HEAD
             <br/>
+=======
+>>>>>>> refs/remotes/origin/master
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
