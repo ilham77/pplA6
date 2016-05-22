@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>UILancer - Pekerjaan {{ $hasil->judul_pekerjaan }}</title>
+  <title>UILancer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+  <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -20,17 +21,15 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
       </button>
-    <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-      <!---->
-        <li><a href="#about">About Us</a></li>
+        <li><a href="./about">About Us</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
-
         <li data-toggle="modal" data-target="#myModal"><a href="#">
             @if(\Auth::check())
             <p>Welcome, {{\Auth::user()->name}}</p>
@@ -70,70 +69,54 @@
       </div>
             @endif
       <!-- Modal content-->
-
-
+   
+      
     </div>
 </div>
 
-<!-- DETAIL PEKERJAAN -->
+<!-- CONTENT -->
+  <div id="body" class="container-fluid">
+      <div id="content" class="container-fluid  text-center">
+          <h1 class="text-primary">Terima kasih telah menggunakan UILancer!</h1>
+          <br><br>
+          <div id="infobox" class="panel-body text-center well well-lg">
+              <p>Lowongan anda berhasil diajukan, harap menunggu verifikasi <strong>Administrator</strong> agar lowongan dapat di post. Kami akan segera menghubungi anda!</p><br/>
+              
+                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+          </div>
+      </div>
+      <center>
+       <button class="btn btn-danger text-center">
+          <a style="color:white; text-style:none;" href="{{url('/')}}">Kembali</a></center></button>
+  </div>
 
-    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-center bg-white">
-        <br/>
-        <h1><p id="judul_pekerjaan">{{ $hasil->judul_pekerjaan }}</p></h1>
-        <p><span>oleh <a href=#>{{ $jobGiver->name }}</a></span>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span></p>
-        <hr/>
-        <div id="deskripsi" class="container-fluid text-left bg-grey">
-            <h1>Deskripsi:</h1>
-            <p>{!!html_entity_decode($hasil->deskripsi_pekerjaan)!!}</p><br/>
-
-             <span>Skill yang dibutuhkan:</span>
-             @if(count($hasill))
-              @foreach($hasill as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-            <br/>
-
-             <span>Durasi:</span>
-            <span>{{ $hasil->durasi }} Minggu</span><br/>
-
-             <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/><br/>
-
-            <span><b>Deadline:</b></span>
-            <span>{{$hasil->endDate}}</span><br/>
-        </p>
-        <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#myModal" href="#">APPLY</a>
-        </p>
-
-        @if (count($errors))
-
-        <div class="well well-sm" id="error">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-
-          </ul>
-        </div>
-
-        @endif
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
     </div>
+  </div>
 </div>
 
 <!-- Footer -->
 <footer class="text-center">
   <p>Copyright &copy; 2016. UILancer</p>
+</footer>
+
+<footer class="container-fluid text-center">
+  <a href="#home" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br>
+  <img src="logo2.png" alt="UILancer" width="200" height="50">
+  <p>UILancer is marketplace for service blablabla</p>
+  <a href="#">(+62) 813-681-999</a></br>
+  <a href="#">ask@uilancer.com</a><br>
+  <p>Made By <a href="" title="UILancer">PPL A6</a></p>		
 </footer>
 
 <script>
@@ -152,12 +135,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-
+   
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-
+  
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -168,7 +151,29 @@ $(document).ready(function(){
         }
     });
   });
-})
+});
+
+$(document).on('change', '.btn-file :file', function() {
+  var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  input.trigger('fileselect', [numFiles, label]);
+});
+
+$(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+        
+    });
+});
 </script>
 
 </body>

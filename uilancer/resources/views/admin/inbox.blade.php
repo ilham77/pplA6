@@ -6,32 +6,14 @@
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
-  //]]>
-  </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-   <style type="text/css">
-/*<![CDATA[*/
-#myInstance1 {
-        border: 2px dashed #0000ff;
-}
-.nicEdit-selected {
-        border: 2px solid #0000ff !important;
-}
- 
-.nicEdit-main {
-        background-color: #fff !important;
-}   
-</style>
+
 </head>
 
 <body>
@@ -126,7 +108,7 @@
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-user"></span>
-              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -145,98 +127,148 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li class="active"><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="{{url('riwayatJobGiver')}}">
+            <a class="" href="#">
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
           <li>
-            <a class="" href="{{url('riwayatApply')}}">
+            <a class="" href="#">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
         </ul>
       </li>
-      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
 
   </div><!--/.sidebar-->
 
-
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Buka Pekerjaan</h1>
-  <br>
+  <h1 class="text-left" style="margin-top:35px">Inbox</h1>
   <div class="row">
-    <div class="col-md-8">
-            <form action="addlowongan" method="POST" role="form">
-        {{ csrf_field() }}
-                    <div class="form-group">
-                      <label for="judul">Judul Pekerjaan</label>
-                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
-                    </div>
-                    <div class="form-group">
-                      <label for="deskripsi">Deskripsi Pekerjaan</label>
-                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
-                    </div>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="budget">Budget</label>
-                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
-                      </div>
-                      <div class="form-group">
-                        <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-                        <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="form-inline">
-                      <div class="form-group">
-                        <label for="waktututup">Deadline pencarian:</label>
-                        <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
-                      </div>
-                    </div>
-                    <br>
+    <div class="col-md-12">
+    <div class="row">
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
-                  </form>
-
-                  @if (count($errors))
-
-                    <div class="well well-sm" id="error">
-                      <ul>
-
-                      @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                      @endforeach
-
-                      </ul>
-                    </div>
-
-                  @endif
     </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-tasks">
+                </span> Permintaan Pembuatan Pekerjaan</a></li>
+                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-exclamation-sign"></span>
+                    Report User</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="list-group">
+                      @foreach($pekerjaan as $sbhPekerjaan)
+                        <a href="pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
+                          <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
+                          <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
+                          <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
+                        </a>
+                      @endforeach
+                    </div>
+                    <br>
+                    @if($pekerjaan->total() != 0)
+                    <div class="text-center">
+                        <span class="text-muted"><b>
+
+                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
+                        <div class="btn-group btn-group-sm">
+                          {!! $pekerjaan->render() !!}
+                        </div>
+                    </div>
+                    @else
+                    <br>
+                    <br>
+                    @endif
+                </div>
+                <div class="tab-pane fade in" id="profile">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
+                          <span class="">Judul Report</span>
+                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span>
+                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
+                          <span class="">Tidak memberikan bayaran</span>
+                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span>
+                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
+                          <span class="">Tidak mengaccept status Pekerjaan</span>
+                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span>
+                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
+                        </a>
+                    </div>
+                    <br>
+                    <br>
+                    @if($pekerjaan->total() != 0)
+                    <div class="text-center">
+                        <span class="text-muted"><b>
+
+                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
+                        <div class="btn-group btn-group-sm">
+                          {!! $pekerjaan->render() !!}
+                        </div>
+                    </div>
+                    @else
+                    <br>
+                    @endif
+                </div>
+
+        </div>
+    </div>
+</div>
     </div>
   </div>
 </div>
-</div>
-</div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
   <script>
     !function ($) {
