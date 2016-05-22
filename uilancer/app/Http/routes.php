@@ -20,14 +20,12 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-
+Route::get('/home', function () {
+    return View::make('home');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
-
-Route::get('/infoAccount', function () {
-    return view('infoAccount');
 });
 
 //Routing yang berhubungan dengan pekerjaan
@@ -66,30 +64,36 @@ Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 */
 
 Route::group(['middleware' => ['web']], function () {
-	Route::get('/login', function () {
+
+		Route::get('/info', function () {
+	    	return view('info');
+		});
+
+		Route::get('/', [
+		    'middleware' => 'auth',
+		    'uses' => 'PekerjaanController@index'
+		]);
+
+			Route::get('/login', function () {
     	return view('login');
 	});
-	Route::get('/', function () {
-		return View::make('home');
-	});
-	Route::get('/home', function () {
-		return View::make('home');
-	});
-	Route::get('/search-dashboard', function () {
-    return View::make('search-dashboard');
-	});
-	Route::get('/info', function () {
-	    return view('info');
-	});
-	Route::get('/lihatPelamar', function () {
-	    return view('pekerjaan.lihatPelamar');
-	});
-	Route::get('/riwayatApply', function () {
-	    return view('pekerjaan.riwayatApply');
-	});
-	Route::get('/riwayatJobGiver', function () {
-	    return view('pekerjaan.riwayatJobGiver');
-	});
+
+		Route::get('/search-dashboard', function () {
+			return View::make('search-dashboard');
+		});
+		Route::get('/lihatPelamar', function () {
+		    return view('pekerjaan.lihatPelamar');
+		});
+		Route::get('/riwayatApply', function () {
+		    return view('pekerjaan.riwayatApply');
+		});
+		Route::get('/riwayatJobGiver', function () {
+		    return view('pekerjaan.riwayatJobGiver');
+		});
+	
+
+
+
 
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
@@ -99,7 +103,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('saveprofile', 'UserController@editProfile');
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
 	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
-	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/dashboard','UserController@viewProfile');

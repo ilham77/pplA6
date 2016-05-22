@@ -21,11 +21,11 @@ class SSOController extends BaseController
              if((!DB::table('users')->where('npm','=',$user->npm)->get())){ 
                $newUser = User::    insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
                 \Auth::loginUsingId($newUser->id);
-                return view('home')->with('npm', $user->npm);
+                return redirect('/')->with('npm', $user->npm);
              } else {
                $user = User::where('npm','=',$user->npm)->first();
                \Auth::loginUsingId($user->id);
-               return view('home')->with('npm', $user->npm);
+               return redirect('/')->with('npm', $user->npm);
              }
          } else {
             //SSO::logout();
