@@ -142,11 +142,11 @@ class UserController extends Controller
                 $apply_manager->user_id = $freelancer;
                 $apply_manager->save();
 
-                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply berhasil :)'));
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply success'));
             }
             else
             {
-                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'jangan nge-apply-in orang dong'));
+                return redirect('pekerjaan/'.$pekerjaan);
             }
         }
         else
@@ -166,11 +166,11 @@ class UserController extends Controller
             {
                 ApplyManager::where('pekerjaan_id',$pekerjaan)->where('user_id',$freelancer)->delete();
 
-                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Cancel berhasil :)'));
+                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'Apply canceled'));
             }
             else
             {
-                return redirect('pekerjaan/'.$pekerjaan)->withErrors(array('message' => 'jangan cancelin orang dong'));
+                return redirect('pekerjaan/'.$pekerjaan);
             }
         }
         else

@@ -243,7 +243,7 @@ $isLogged=false;
 
         @if (count($errors))
 
-        <div class="well well-sm" id="error">
+        <div class="well well-sm">
           <ul>
 
           @foreach ($errors->all() as $error)
