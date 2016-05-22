@@ -125,7 +125,7 @@
               <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
             <div class="login-help">
-              <p><a href="infoAccount">Don't have official account?</a></p>
+              <p><a href="info">Don't have official account?</a></p>
             </div>
             <div class="login-help">
               <p>if you have a problem please contact us at ask@uilancer.com</p>
