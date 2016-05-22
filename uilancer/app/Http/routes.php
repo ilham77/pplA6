@@ -81,4 +81,6 @@ Route::post('post-lowongan','PekerjaanController@postLowongan');
 Route::get('/info', function () {
     return view('info');
 });
+Route::post('report','ReportController@report');
+    
 });

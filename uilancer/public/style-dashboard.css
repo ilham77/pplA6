@@ -332,3 +332,7 @@ ul.msg_list li a .message {
     background-color: #ffb3b3;
     color: black;
 }
+
+#reportModal{
+top: 15%;
+}
