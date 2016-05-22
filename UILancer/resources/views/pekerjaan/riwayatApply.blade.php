@@ -165,49 +165,45 @@
     <div class="col-md-8">
     <table style="width:1050px;" class="table table-hover">
       <div class="table-responsive">
+      @if(count($kerjaanUser))
         <thead>
-      <td><center><b>Judul Pekerjaan</b></center></td>
-      <td><center><b>Pemberi Pekerja</b></center></td>
-      <td><center><b>Durasi Kerja</center></b></td>
-      <td><center><b>Honor</b></center></td>
-      <td><center><b>Deadline</b></center></td>
-      <td><center><b>Status</b></center></td>
-      <td></td>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Pemberi Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td><center><b>Status</b></center></td>
+        <td></td>
         </thead>
-        <tr>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
-        </tr>
-        <tr>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>Declined</center></td>
-        </tr>
-        <tr>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>Waiting for selection</center></td>
-        </tr>
-        <tr>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>Waiting for done confirmation</center></td>
-        </tr>
-    </div>
-  </table>
+
+        @foreach($kerjaanUser as $ku)
+          <tr>
+              <td><center>{{ $ku->pekerjaan->judul_pekerjaan }}</center></td>
+              <td><center>{{ $ku->pekerjaan->user->name }}</center></td>
+              <td><center>{{ $ku->pekerjaan->durasi }} pekan</center></td>
+              <td><center>Rp.{{ $ku->pekerjaan->budget }},-</center></td>
+              <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>
+
+              @if($ku->status == 1)
+                @if($ku->pekerjaan->isDone == 0)
+                   <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
+                @else
+                  <td><center>Waiting for done confirmation</center></td>
+                @endif
+              @else
+                @if($ku->pekerjaan->isTaken == 1)
+                  <td><center>Declined</center></td>
+                @else
+                  <td><center>Waiting for selection</center></td>
+                @endif
+              @endif
+          </tr>
+        @endforeach
+      @else
+        <b>Tidak ada pekerjaan</b>
+      @endif
+        </div>
+      </table>
     </div>
   </div>
 </div>

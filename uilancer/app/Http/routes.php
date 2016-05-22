@@ -84,12 +84,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/lihatPelamar', function () {
 	    return view('pekerjaan.lihatPelamar');
 	});
-	Route::get('/riwayatApply', function () {
-	    return view('pekerjaan.riwayatApply');
-	});
-	Route::get('/riwayatJobGiver', function () {
-	    return view('pekerjaan.riwayatJobGiver');
-	});
+	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
+	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
 
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
