@@ -95,6 +95,7 @@
            <br><hr>
                 
           <div class="deskripsi">
+<<<<<<< HEAD
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
 <<<<<<< HEAD
               <span>{{$pekerjaan->budget}}</span><br>
@@ -120,6 +121,10 @@
             <br/>
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+              <span class="glyphicon glyphicon-usd"></span>
+              <span> {{$pekerjaan->budget}}</span><br>
+>>>>>>> parent of d0f67e0... Menampilkan deskripsi dengan html tag
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
