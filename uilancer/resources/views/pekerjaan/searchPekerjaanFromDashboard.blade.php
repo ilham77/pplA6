@@ -199,7 +199,7 @@
           <div class="deskripsi">
               <span class="glyphicon glyphicon-usd"></span>
               <span> {{$pekerjaan->budget}}</span><br>
-                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+                <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
