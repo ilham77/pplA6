@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -108,7 +108,7 @@
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-user"></span>
-              <span style="font-family: Lato, sans-serif;">Admin</span>
+              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -127,27 +127,10 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li class="parent active">
-        <a href="#">
-          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
-        </a>
-        <ul class="children collapse" id="sub-item-2">
-          <li>
-            <a class="" href="{{url('inbox')}}">
-              <span class="glyphicon glyphicon-inbox"></span> Inbox
-            </a>
-          </li>
-          <li>
-            <a class="" href="{{url('manageUser')}}">
-              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
-            </a>
-          </li>
-        </ul>
-      </li>
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
@@ -165,110 +148,177 @@
           </li>
         </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li  class="active"><a href="{{url('ongoing')}}" ><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
 
   </div><!--/.sidebar-->
 
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+ <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
-        <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Inbox</h1>
-  <div class="row">
-    <div class="col-md-12">
-    <div class="row">
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-12">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-tasks">
-                </span> Permintaan Pembuatan Pekerjaan</a></li>
-                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                    Report User</a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                    <div class="list-group">
-                      @foreach($pekerjaan as $sbhPekerjaan)
-                        <a href="pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
-                          <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
-                          <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
-                          <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
-                        </a>
-                      @endforeach
-                    </div>
-                    <br>
-                    @if($pekerjaan->total() != 0)
-                    <div class="text-center">
-                        <span class="text-muted"><b>
-
-                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
-                        <div class="btn-group btn-group-sm">
-                          {!! $pekerjaan->render() !!}
-                        </div>
-                    </div>
-                    @else
-                    <br>
-                    <br>
-                    @endif
-                </div>
-                <div class="tab-pane fade in" id="profile">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
-                          <span class="">Judul Report</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span>
-                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
-                          <span class="">Tidak memberikan bayaran</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span>
-                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
-                          <span class="">Tidak mengaccept status Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span>
-                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
-                        </a>
-                    </div>
-                    <br>
-                    <br>
-                    @if($pekerjaan->total() != 0)
-                    <div class="text-center">
-                        <span class="text-muted"><b>
-
-                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
-                        <div class="btn-group btn-group-sm">
-                          {!! $pekerjaan->render() !!}
-                        </div>
-                    </div>
-                    @else
-                    <br>
-                    @endif
-                </div>
-
-        </div>
-    </div>
+        <div id="table" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
+  <br>
+  <u><h3>Freelancer</h3></u>
+    <table style="width:100%" class="table table-hover">
+      <div class="table-responsive">
+      @if(count($freelancer_job))
+        <thead>
+        <tr>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Pemberi Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td></td>
+        <td></td>
+        </tr>
+        </thead>
+        @foreach($freelancer_job as $fj)
+          <tr>
+            <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
+            <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
+            <td><center>{{ $fj->pekerjaan->durasi }} pekan</center></td>
+            <td><center>Rp{{ $fj->pekerjaan->budget }},-</center></td>
+            <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
+            <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+          </tr>
+        @endforeach
+      @else
+        <tr>
+          <td><center><b>Tidak ada pekerjaan</b></center></td>
+        </tr>
+      @endif
+       </div>
+    </table>
 </div>
     </div>
   </div>
+<div class="row">
+      <div class="col-lg-12">
+        <div id="table" class="container-fluid">
+  <u><h3>Job Giver</h3></u>
+    <table style="width:100%" class="table table-hover">
+      <div class="table-responsive">
+       @if(count($jobgiver_job))
+        <thead>
+      <tr>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b> Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td></td>
+        <td></td>
+      </tr>
+        </thead>
+        @foreach($jobgiver_job as $jg)
+          @foreach($jg->applyManager as $am)
+            <tr>
+              <td><center>{{ $jg->judul_pekerjaan }}</center></td>
+              <td><center>{{ $am->user->name }}</center></td>
+              <td><center>{{ $jg->durasi }} pekan</center></td>
+              <td><center>Rp{{ $jg->budget }},-</center></td>
+              <td><center>{{ $jg->endDate }}</center></td>
+              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+            </tr>
+          @endforeach
+        @endforeach
+      @else
+        <tr>
+          <td><center><b>Tidak ada pekerjaan</b></center></td>
+        </tr>
+      @endif
+       </div>
+    </table>
+</div>
+    </div>
+  </div>
+
 </div>
 
 
       </div>
     </div><!--/.row-->
   </div><!--/.row-->
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
+
+  <div class="modal fade" id="modalDone" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+    </div>
+</div>
+
+
+  <div class="modal fade" id="modalTestimoni" role="dialog">
+    <div class="modal-dialog">
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rating, Testimoni, dan Konfirmasi</h4>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px">
+            <br>
+
+                              <table>
+                                    <tbody>
+                                        <tr height="50px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Berikan rating anda</label></div></td>
+                                            <td width="400px" style="margin-left:15px;">
+                                              <!-- <input required class="form-control" type="number" name="rating" placeholder="Rating"> -->
+    <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+  </fieldset>
+                                            </td>
+                                        </tr>
+
+                                        <tr height="85px">
+                                            <td style="padding-right:5px;"><div align="right"><label>Testimoni</label></div></td>
+                                            <td><textarea required style="resize:none;margin-left:20px;" class="form-control" type="text" rows="3" name="testimoni" placeholder="Testimoni"></textarea></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+            <a class="btn btn-success mt-20 font2 text-center" href="#">Konfirmasi selesai</a></center>
+          </div><!--
+          <a href="#" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a> -->
+        </div>
+      </center>
+      </div>
+      <!-- Modal content-->
+    </div>
+</div>
+
 
   <script>
     !function ($) {

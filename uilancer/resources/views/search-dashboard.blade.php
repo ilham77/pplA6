@@ -130,7 +130,7 @@
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
       <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
@@ -148,7 +148,7 @@
           </li>
         </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
@@ -162,7 +162,7 @@
   <h1 class="text-left" style="margin-top:35px">Cari Lowongan Kerja</h1>
   <div class="row">
     <div class="col-md-8">
-      <form action="searchPekerjaan" method="POST">
+      <form action="searchPekerjaan" method="GET">
       {{csrf_field()}}
         <div class="form-group">
           <input required type="text" class="form-control" name="kunci" placeholder="Masukkan pekerjaan, skill, atau kata kunci lainnya"></input>

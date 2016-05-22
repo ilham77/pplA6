@@ -31,6 +31,14 @@ protected $table = 'users';
         return $this->hasMany(SkillUser::class);
     }
 
+    public function pekerjaan() {
+        return $this->hasMany(Pekerjaan::class);
+    }
+
+    public function applyManager() {
+        return $this->hasMany(ApplyManager::class);
+    }
+
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
      $user = new User();
      $user->name = $name;
@@ -54,9 +62,5 @@ protected $table = 'users';
      //$password = Hash::make('secret');
      $user->password = $password;
      $user->save();
-    }
-
-    public static function pekerjaan(){
-       return $this->hasMany('App\Pekerjaan');
     }
 }

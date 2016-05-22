@@ -16,12 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-
-
-
-Route::get('/pekerjaanDashboard/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaanFromDashboard']);
-
-
 Route::get('/detail', function() {
     return view('detail');
 });
@@ -56,6 +50,8 @@ Route::get('/editUser', function () {
 });
 
 Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
+Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 
 
 /*
@@ -91,11 +87,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
 	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
 	Route::get('/listPekerjaan','PekerjaanController@index');
-	Route::post('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
+	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 Route::get('/dashboard','UserController@viewProfile');
 Route::post('post-lowongan','PekerjaanController@postLowongan');
 Route::get('/info', function () {
-    return view('info');
-});
+    return view('info');});
+	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
+    Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
+    Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
 });
