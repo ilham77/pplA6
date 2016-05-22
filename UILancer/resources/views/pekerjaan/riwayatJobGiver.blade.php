@@ -205,14 +205,6 @@
       @else
         <b>Tidak ada pekerjaan</b>
       @endif
-        <tr>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>hehe</center></td>
-              <td><center>Waiting to be done</center></td>
-        </tr>
     </div>
   </table>
     </div>

@@ -161,7 +161,7 @@
   <h1 class="text-left" style="margin-top:35px">Hasil Pencarian</h1>
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
-    Pekerjaan dengan kata kunci "{{ $kunci }}"
+  
 <br><br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
