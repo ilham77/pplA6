@@ -137,12 +137,12 @@
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatJobGiver')}}">
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatApply')}}">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
