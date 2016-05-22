@@ -95,39 +95,23 @@
            <br><hr>
                 
           <div class="deskripsi">
-<<<<<<< HEAD
-              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-<<<<<<< HEAD
-              <span>{{$pekerjaan->budget}}</span><br>
-=======
-              <span>Rp {{$pekerjaan->budget}}</span><br>
->>>>>>> refs/remotes/origin/master
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>  
+     <span>Rp {{$pekerjaan->budget}}</span><br>
+
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
-<<<<<<< HEAD
-<<<<<<< HEAD
-               
-               <span>Skill yang dibutuhkan:</span>
-=======
+
               <span>Skill yang dibutuhkan:</span>
->>>>>>> refs/remotes/origin/master
+
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
-<<<<<<< HEAD
-            <br/>
-=======
->>>>>>> refs/remotes/origin/master
-=======
-              <span class="glyphicon glyphicon-usd"></span>
-              <span> {{$pekerjaan->budget}}</span><br>
->>>>>>> parent of d0f67e0... Menampilkan deskripsi dengan html tag
-=======
->>>>>>> parent of 2ffb909... ngubah view lagi
+
+
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
