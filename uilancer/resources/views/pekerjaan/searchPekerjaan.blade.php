@@ -107,6 +107,7 @@
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
 <<<<<<< HEAD
+<<<<<<< HEAD
                
                <span>Skill yang dibutuhkan:</span>
 =======
@@ -125,6 +126,8 @@
               <span class="glyphicon glyphicon-usd"></span>
               <span> {{$pekerjaan->budget}}</span><br>
 >>>>>>> parent of d0f67e0... Menampilkan deskripsi dengan html tag
+=======
+>>>>>>> parent of 2ffb909... ngubah view lagi
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
