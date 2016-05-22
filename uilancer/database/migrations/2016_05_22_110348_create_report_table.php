@@ -12,16 +12,19 @@ class CreateReportTable extends Migration
      */
     public function up()
     {
-        Scheme::create('report', function (Blueprint $table)){
+        Schema::create('report', function (Blueprint $table)
+    {
             $table->increments('id');
             $table->string('keluhan');
-            $table->integer('user_id')->unsigned();
-        }
+            $table->integer('reported_id')->unsigned();
+            $table->string('reported_name');
+            $table->string('pelapor');
+        });
         
-         Schema::table('users',function($table){
-            $table->foreign('user_id')->references('id')->on('users');
+         Schema::table('report',function($table){
+            $table->foreign('reported_id')->references('id')->on('users');
+    });
     }
-
     /**
      * Reverse the migrations.
      *

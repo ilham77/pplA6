@@ -1,10 +1,3 @@
-<?php
-$isLogged=false;
-if(Auth::check()){
-$isLogged=true;
-}
-$isLogged=false;
-?>
 
 <!DOCTYPE html>
 <html>

@@ -9,11 +9,12 @@ class Report extends Model
     protected $table = 'report';
     
     protected $fillable = [
-        'keluhan'
+        'keluhan','reported_name','pelapor'
     ];
     
-    public function user() {
-        return $this->hasMany(User::class);
-    }
+    protected $hidden = [
+    'reported_id'
+    ];
+
     
 }
