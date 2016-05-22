@@ -174,7 +174,7 @@
 
                 
 <div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>        
+                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>        
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}

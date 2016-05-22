@@ -157,19 +157,19 @@
 
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
  <div class="col-lg-12" style="margin-left:-15px;">
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="container">
+<div class="col">
     <div class = "panel panel-default">
 			<div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>        
+                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>        
 
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
@@ -207,7 +207,6 @@
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
-                <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
