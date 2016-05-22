@@ -196,7 +196,7 @@
                 @if($ku->isClosed == 1)
                   <td><center>Closed</center></td>
                 @else
-                  <td><center><a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a></center></td>
+                  <td><center><a class="btn btn-primary mt-20 font2 text-center" href="lihatPelamar/{{ $ku->id }}">Lihat Pelamar</a></center></td>
                 @endif
               @endif
             </tr>

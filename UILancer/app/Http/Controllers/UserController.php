@@ -208,4 +208,16 @@ class UserController extends Controller
 
         return view('pekerjaan.riwayatJobGiver',compact('kerjaDariUser'));
     }
+
+    public function terimaLamar(Request $request)
+    {
+        $am = ApplyManager::where('user_id',$request->user)
+        ->where('pekerjaan_id',$request->pekerjaan);
+
+        $am->first()->update(array('status' => 1));
+
+        $am->first()->pekerjaan->update(array('isTaken' => 1));
+
+        return redirect('riwayatJobGiver');
+    }
 }

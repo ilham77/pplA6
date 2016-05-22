@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -160,9 +163,10 @@
   <h1 class="text-left" style="margin-top:35px">Lihat Pelamar - {{ $pekerjaan->judul_pekerjaan }}</h1>
   <br>
 <div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
-
+<form action="../terimaLamar" method="GET">
+{{csrf_field()}}
 @foreach($pelamar as $p)
-<div class="col-lg-6">
+<div class="col-lg-6 btn-group">
   <table style="margin-top:10px">
     <tr>
       <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
@@ -171,12 +175,7 @@
         {{ $p->user->deskripsi }}
       </td>
        <td style="padding-left: 80px;">
-        <a href="#" class="btn btn-success">
-          <span class="glyphicon glyphicon-ok"></span>
-        </a>
-        <a href="#" class="btn btn-danger">
-          <span class="glyphicon glyphicon-remove"></span>
-        </a>
+        <input type="checkbox" name = "user" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
       </td>
     </tr>
   </table>
@@ -188,8 +187,9 @@
 
 <?php $i++; ?>
 @endforeach
+<input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
 </div>
-
+<div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
 </div>
     </div>
   </div>
