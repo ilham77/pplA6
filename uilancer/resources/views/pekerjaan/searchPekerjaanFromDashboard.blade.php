@@ -127,7 +127,7 @@
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('listPekerjaan')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
@@ -161,7 +161,6 @@
   <h1 class="text-left" style="margin-top:35px">Hasil Pencarian</h1>
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
-    Pekerjaan dengan kata kunci "{{ $kunci }}"
 <br><br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
@@ -172,7 +171,7 @@
 
                 
 <div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> User</span>        
+                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>        
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
@@ -180,7 +179,7 @@
                 </div>
                 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
-                  @if($pekerjaan->isTaken)
+                                   @if($pekerjaan->isTaken)
                   <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
               @else
                  <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
@@ -197,8 +196,12 @@
            <br><hr>
                 
           <div class="deskripsi">
-              <span class="glyphicon glyphicon-usd"></span>
-              <span> {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
+              <span>{{count($pekerjaan->applyManager)}}</span><br>
+              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
+              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">

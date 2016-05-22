@@ -70,10 +70,10 @@
 
                 
 <div class ="col-md-3 col-xs-1 col-lg-3">			 
-                <span class="glyphicon glyphicon-user"></span><span> User</span>				
+                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>				
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
-                  <span class="glyphicon glyphicon-time">{{ $pekerjaan->endDate }}</span>
+                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
 							
                 </div>
                 
@@ -95,8 +95,12 @@
            <br><hr>
                 
           <div class="deskripsi">
-              <span class="glyphicon glyphicon-usd"></span>
-              <span> {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
+              <span>{{count($pekerjaan->applyManager)}}</span><br>
+              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
+              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
                 <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
            </div>
                 <div class="text-right">
@@ -156,7 +160,12 @@ $(document).ready(function(){
     });
   });
 })
-</script>
 
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
 </body>
 </html>
