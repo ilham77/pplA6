@@ -40,16 +40,16 @@ protected $table = 'users';
     }
 
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
-     $user = new User();
-     $user->name = $name;
-     $user->npm = $npm;
-     $user->username = $username;
-     $user->org_code = $org_code;
-     $user->faculty=$faculty;
-     $user->role = $role;
-     $user->educational_program = $educational_program;
-     $user->save();
-     return $user;
+         $user = new User();
+         $user->name = $name;
+         $user->npm = $npm;
+         $user->username = $username;
+         $user->org_code = $org_code;
+         $user->faculty=$faculty;
+         $user->role = $role;
+         $user->educational_program = $educational_program;
+         $user->save();
+         return $user;
     }
 
 
