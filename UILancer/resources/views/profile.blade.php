@@ -122,7 +122,7 @@ REPORT MODAL
             <form action="report" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
             <div class="form-group">
-            <textarea class="form-control" style="resize:none;" cols="5" rows="10" ></textarea>
+            <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>
                 <br>    
                     {!! Form::submit('Kirim', array('class'=>'btn btn-primary')) !!}
         </div>

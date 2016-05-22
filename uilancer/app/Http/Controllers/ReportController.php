@@ -11,5 +11,8 @@ use App\Report;
 class ReportController extends Controller
 {
 
-
+    public function report(Request $request){
+        $report = new Report();
+        $report->keluhan = $request->keluhan;
+    }
 }
