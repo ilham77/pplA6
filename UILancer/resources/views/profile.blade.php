@@ -106,10 +106,11 @@
                             ::user()->avatar}}" alt="">  
                 @endif
         </div>
+      
       <!--
 REPORT MODAL
 -->  
-                <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
+<a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
   <!-- Modal -->
 
 <div class="modal fade" id="reportModal" role="dialog">
