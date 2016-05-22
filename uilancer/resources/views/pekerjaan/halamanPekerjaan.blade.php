@@ -113,7 +113,7 @@
             <span>{{$hasil->endDate}}</span><br/>
         </p>
         <p><br/>
-            <a class="btn btn-block btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/0">APPLY</a>
+            <a class="btn btn-block btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#myModal" href="#">APPLY</a>
         </p>
 
         @if (count($errors))

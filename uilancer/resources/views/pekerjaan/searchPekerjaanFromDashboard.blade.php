@@ -107,7 +107,7 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user">User</span>
+              <span class="glyphicon glyphicon-user"></span>{{\Auth::user()->name}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -126,9 +126,10 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="/search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
@@ -146,7 +147,7 @@
           </li>
         </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
@@ -156,51 +157,67 @@
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
-        <div id="table" class="container-fluid">
-  <h1 class="text-center" style="margin-top:35px">Hasil Pencarian</h1>
+        <div class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">Hasil Pencarian</h1>
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
-    <table style="width:100%" class="table table-bordered">
-      <div class="table-responsive">
+    Pekerjaan dengan kata kunci "{{ $kunci }}"
+<br><br>
       @if(count($pekerjaans))
-       <thead>
-      <tr>
-        <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Deskripsi Pekerjaan</b></center></td>
-        <td><center><b>Status</center></b></td>
-        <td><center><b>Progress</center></b></td>
-      </tr>
-        </thead>
         @foreach($pekerjaans as $pekerjaan)
-            <tr>
-              <td><center><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
-              <td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
-              <td><center>
-              @if($pekerjaan->isTaken)
-                Sudah Diambil
+<div class="col-lg-12" style="margin-left:-15px;">
+    <div class = "panel panel-default">
+      <div class="panel-body">
+                    <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
+
+                
+<div class ="col-md-3 col-xs-1 col-lg-3">      
+                <span class="glyphicon glyphicon-user"></span><span> User</span>        
+                </div> 
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
+              
+                </div>
+                
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  @if($pekerjaan->isTaken)
+                  <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
               @else
-                Lowong
+                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
               @endif
-              </center></td>
-              <td><center>
-              @if($pekerjaan->isDone)
-                Udah Kelar
+                </div>
+                
+               <div class ="col-md-3 col-xs-1 col-lg-3">
+              @if($pekerjaan->isDone)        
+                <span class="glyphicon glyphicon-check"></span><span> Done</span>
               @else
-                Belom Kelar
+                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
               @endif
-              </center></td>
-            </tr>
+                </div>
+           <br><hr>
+                
+          <div class="deskripsi">
+              <span class="glyphicon glyphicon-usd"></span>
+              <span> {{$pekerjaan->budget}}</span><br>
+                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+           </div>
+                <div class="text-right">
+                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                </div>
+            </div>
+    </div>  
+    </div>      
         @endforeach
       @else
         <h2>Tidak ada pekerjaan</h2>
       @endif
-       </div>
-    </table>
+       
         <div align="center">
             {!! $pekerjaans->render() !!}
-            <form action = "search-dashboard"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
+            <form action="home"><button type="submit"  class="btn btn-defautl">Cari lagi</button></form>
         </div>
 </div>
+    </div>
     </div>
   </div>
 </div>
