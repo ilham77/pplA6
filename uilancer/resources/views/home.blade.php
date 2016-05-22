@@ -119,7 +119,7 @@
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-check logo-small"></span>
       <h4>CHECK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Terverifikasi dengan baik</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-certificate logo-small"></span>
