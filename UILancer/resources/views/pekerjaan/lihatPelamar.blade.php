@@ -163,7 +163,7 @@
   <h1 class="text-left" style="margin-top:35px">Lihat Pelamar - {{ $pekerjaan->judul_pekerjaan }}</h1>
   <br>
 <div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
-<form action="../terimaLamar" method="GET">
+<form action="../terimaLamar" method="POST">
 {{csrf_field()}}
 @foreach($pelamar as $p)
 <div class="col-lg-6 btn-group">
@@ -175,7 +175,7 @@
         {{ $p->user->deskripsi }}
       </td>
        <td style="padding-left: 80px;">
-        <input type="checkbox" name = "user" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
+        <input type="checkbox" name = "user[]" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
       </td>
     </tr>
   </table>
