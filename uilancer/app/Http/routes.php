@@ -45,6 +45,8 @@ Route::get('/createUser', function () {
     return View::make('admin.createUser');
 });
 
+Route::post('addUser', 'AdminController@createUser');
+
 Route::get('/editUser', function () {
     return View::make('admin.editUser');
 });
@@ -101,7 +103,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
-
-    Route::post('addUser', 'AdminController@createUser');
     route::post('terimaLamar', 'UserController@terimaLamar');
 });
