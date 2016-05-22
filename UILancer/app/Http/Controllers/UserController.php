@@ -35,12 +35,6 @@ class UserController extends Controller
         }
     }
 
-    public function viewPublicProfile($user){
-        $usr = User::findorFail($user);
-        $skills = $usr->skill;
-        return view('profile-public', compact('usr', 'skills'));
-    }
-
     public function masuklogin(Request $request){
 
         $username = Input::get('username');

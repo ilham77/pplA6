@@ -190,7 +190,9 @@ $isLogged=false;
 
         <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
             <b><h3>Deskripsi:</h3></b>
-            <p>{!!html_entity_decode($hasil->deskripsi_pekerjaan)!!}</p>
+            <p>
+            {{ $hasil->deskripsi_pekerjaan }}
+            </p>
             <br/>
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))

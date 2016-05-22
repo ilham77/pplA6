@@ -21,11 +21,11 @@ class SSOController extends BaseController
              if((!DB::table('users')->where('npm','=',$user->npm)->get())){ 
                $newUser = User::    insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
                 \Auth::loginUsingId($newUser->id);
-                return redirect('/home')->with('npm', $user->npm);
+                return view('home')->with('npm', $user->npm);
              } else {
                $user = User::where('npm','=',$user->npm)->first();
                \Auth::loginUsingId($user->id);
-               return redirect('/home')->with('npm', $user->npm);
+               return view('home')->with('npm', $user->npm);
              }
          } else {
             //SSO::logout();
@@ -36,7 +36,7 @@ class SSOController extends BaseController
     public function logout(){
         \Auth::logout();
         //SSO::logout();
-        return redirect('/welcome');
+        return redirect('/');
     }
     
     public function logoutSSO(){
