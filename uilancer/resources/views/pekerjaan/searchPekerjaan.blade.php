@@ -10,6 +10,17 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+#deskripsi {
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+</style>
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -110,9 +121,6 @@
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
-
-
-            <h4>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</h4>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
