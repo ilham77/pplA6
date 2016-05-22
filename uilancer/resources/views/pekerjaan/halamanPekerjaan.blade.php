@@ -92,8 +92,7 @@
         <hr/>
         <div id="deskripsi" class="container-fluid text-left bg-grey">
             <h1>Deskripsi:</h1>
-            <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
+            <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p><br/>
 
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))
