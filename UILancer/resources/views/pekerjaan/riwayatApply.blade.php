@@ -180,7 +180,7 @@
               <td><center>hehe</center></td>
               <td><center>hehe</center></td>
               <td><center>hehe</center></td>
-              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+              <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
         </tr>
         <tr>
               <td><center>hehe</center></td>
