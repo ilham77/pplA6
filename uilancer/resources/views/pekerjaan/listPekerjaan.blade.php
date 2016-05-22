@@ -14,24 +14,48 @@
   </tr>
 	@if(count($pekerjaans))
 		@foreach($pekerjaans as $pekerjaan)
-				<tr>
-					<td><center><a href="/pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></center></td>
-					<td><center>{{ $pekerjaan->deskripsi_pekerjaan }}</center></td>
-					<td><center>
-					@if($pekerjaan->isTaken)
-						Sudah Diambil
-					@else
-						Lowong
-					@endif
-					</center></td>
-					<td><center>
-					@if($pekerjaan->isDone)
-						Udah Kelar
-					@else
-						Belom Kelar
-					@endif
-					</center></td>
-				</tr>
+			<div class="container">
+    <div class = "panel panel-default">
+			<div class="panel-body">
+                    <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
+
+                
+<div class ="col-md-3 col-xs-1 col-lg-3">			 
+                <span class="glyphicon glyphicon-user"></span><span> User</span>				
+                </div> 
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  <span class="glyphicon glyphicon-time">{{ $pekerjaan->endDate }}</span>
+							
+                </div>
+                
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  @if($pekerjaan->isTaken)
+                  <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
+							@else
+								 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
+							@endif
+                </div>
+                
+               <div class ="col-md-3 col-xs-1 col-lg-3">
+							@if($pekerjaan->isDone)				 
+                <span class="glyphicon glyphicon-check"></span><span> Done</span>
+							@else
+								<span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
+							@endif
+                </div>
+           <br><hr>
+                
+          <div class="deskripsi">
+              <span class="glyphicon glyphicon-usd"></span>
+              <span> {{$pekerjaan->budget}}</span><br>
+                <h4>{{ $pekerjaan->deskripsi_pekerjaan }}</h4>
+           </div>
+                <div class="text-right">
+                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                </div>
+            </div>
+		</div>	
+    </div>			
 		@endforeach
 	@else
 		<h2>Tidak ada pekerjaan</h2>
