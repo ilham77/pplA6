@@ -9,6 +9,7 @@
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -212,12 +213,12 @@
                     <input type="text" class="form-control" name="institusi" placeholder="Institusi">
                 </div>
               </div>
-              <div class="form-group row">
+<!--               <div class="form-group row">
                 <label for="alamatInstitusi" class="col-md-3 control-label">Alamat Institusi</label>
                 <div class="col-md-8">
                     <input type="text" class="form-control" name="alamatInstitusi" placeholder="Alamat Institusi">
                 </div>
-              </div>
+              </div> -->
               <div class="form-group row">
                 <label for="namaUser" class="col-md-3 control-label">Nama Pemilik Akun</label>
                 <div class="col-md-8">

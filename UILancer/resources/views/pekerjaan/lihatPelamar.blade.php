@@ -1,11 +1,3 @@
-<?php
-$isLogged=false;
-if(Auth::check()){
-$isLogged=true;
-}
-$isLogged=false;
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +6,7 @@ $isLogged=false;
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
+<link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -35,7 +27,7 @@ $isLogged=false;
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
@@ -115,7 +107,7 @@ $isLogged=false;
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>User
+              <span class="glyphicon glyphicon-user">User</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
@@ -135,7 +127,7 @@ $isLogged=false;
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -154,109 +146,159 @@ $isLogged=false;
           </li>
         </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
 
   </div><!--/.sidebar-->
 
-<!-- DETAIL PEKERJAAN -->
-
-    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
-        <br/>
-        <div class="container-fluid text-left">
-        <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href=#>{{ $jobGiver->name }}</a></span>
-        <br>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <br>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span>
-            <br>
-                        <span>Jumlah Pelamar:
-              @if($hasil->user->id == Auth::user()->id)
-                {{ $jumlah_pelamar }}
-              @else
-                {{ $jumlah_pelamar }}
-              @endif
-              </span>
-        <hr style="border-width: 2px;">
-      </div>
-
-        <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
-            <b><h3>Deskripsi:</h3></b>
-            <p>
-            {{ $hasil->deskripsi_pekerjaan }}
-            </p>
-            <br/>
-             <span>Skill yang dibutuhkan:</span>
-             @if(count($hasill))
-              @foreach($hasill as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-            <br/>
-
-             <span>Durasi:</span>
-            <span>{{ $hasil->durasi }} Minggu</span><br/>
-
-             <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/>
-
-            <span><b>Deadline:</b></span>
-            <span>{{$hasil->endDate}}</span><br/>
-        </p>
-        <p><br/>
-          <div class="text-right">
-          @if(Auth::user()->role == 'admin')
-            @if($hasil->isVerified == 0)
-              <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
-              <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
-            @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
-            @endif
-          @else
-            @if($hasil->user->id != Auth::user()->id)
-              @if (in_array(Auth::user()->id, $id_pelamar))
-                <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
-              @else
-                <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
-              @endif
-            @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
-            @endif
-          @endif
-
-
-
-          </div>
-        </p>
-
-        @if (count($errors))
-
-        <div class="well well-sm" id="error">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            {{ $error }}
-          @endforeach
-
-          </ul>
-        </div>
-
-        @endif
-
-    </div>
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="table" class="container-fluid">
+  <h1 class="text-left" style="margin-top:35px">Lihat Pelamar</h1>
+  <br>
+<div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
+  
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
 </div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
+
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
+
+
+<!--satu loop -->
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+       <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="col-lg-6">
+  <table style="margin-top:10px">
+    <tr>
+      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+      <td style="padding-left: 8px;">
+        <a href="#"><h4><b>Geda</b></h4></a>
+        aku adalah anak gembala
+      </td>
+      <td style="padding-left: 80px;">
+        <a href="#" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span>
+        </a>
+        <a href="#" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<!-- satu loop-->
+
+</div>
+
+</div>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div><!--/.row-->
+  </div><!--/.row-->
 
   <script>
     !function ($) {

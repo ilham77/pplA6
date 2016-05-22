@@ -78,6 +78,15 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});
+	Route::get('/info', function () {
+	    return view('info');
+	});
+	Route::get('/lihatPelamar', function () {
+	    return view('pekerjaan.lihatPelamar');
+	});
+
+
+
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
 	Route::post('userlogin', 'UserController@masuklogin');
@@ -89,11 +98,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-Route::get('/dashboard','UserController@viewProfile');
-Route::post('post-lowongan','PekerjaanController@postLowongan');
-Route::get('/info', function () {
-    return view('info');});
+	Route::get('/dashboard','UserController@viewProfile');
+	Route::post('post-lowongan','PekerjaanController@postLowongan');
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
+
+    Route::post('addUser', 'AdminController@createUser');
 });
