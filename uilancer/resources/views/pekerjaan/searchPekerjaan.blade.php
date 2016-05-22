@@ -10,6 +10,17 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+#deskripsi {
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 32px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+</style>
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -95,19 +106,21 @@
            <br><hr>
                 
           <div class="deskripsi">
-              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>  
+     <span>Rp {{$pekerjaan->budget}}</span><br>
+
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+
               <span>Skill yang dibutuhkan:</span>
+
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
                 <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
               @endforeach
             @endif
-                <p>{!!html_entity_decode($pekerjaan->deskripsi_pekerjaan)!!}</p>
            </div>
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>

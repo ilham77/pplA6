@@ -170,8 +170,13 @@
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 
                 
+<<<<<<< HEAD
+<div class ="col-md-3 col-xs-1 col-lg-3">			 
+                <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>				
+=======
 <div class ="col-md-3 col-xs-1 col-lg-3">      
                 <span class="glyphicon glyphicon-user"></span><span> {{$pekerjaan->user->username}}</span>        
+>>>>>>> refs/remotes/origin/master
                 </div> 
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
@@ -197,7 +202,11 @@
                 
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+<<<<<<< HEAD
+              <span>{{$pekerjaan->budget}}</span><br>
+=======
               <span>Rp {{$pekerjaan->budget}}</span><br>
+>>>>>>> refs/remotes/origin/master
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
