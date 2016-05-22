@@ -1,7 +1,3 @@
-<?php
-use Illuminate\Support\Facades\Input;
-$user=Input::get('user');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -323,7 +319,7 @@ REPORT MODAL
           <h4 class="modal-title">Ceritakan keluhan anda:</h4>
             <br>
         <div class="modal-body">
-           <form action="../report/{{$user}}/{{Auth::user()->id}}" method="GET" role="form" enctype="multipart/form-data">
+           <form action="../report/{{$usr->id}}/{{Auth::user()->id}}" method="post" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
             <div class="form-group">
             <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>

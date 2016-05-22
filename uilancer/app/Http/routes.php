@@ -117,7 +117,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::post('report', 'ReportController@report');
 	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
-Route::get('/report/{user}/{pelapor}', 'ReportController@report');
+Route::post('/report/{user}/{pelapor}', 'ReportController@report');
 	
     /*Route::get('/profile', function () {
     	return view('profile-public');

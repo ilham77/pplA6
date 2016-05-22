@@ -12,10 +12,10 @@ use App\User;
 class ReportController extends Controller
 {
 
-    public function report(Request $request, $user, $pelapor){
+    public function report(Request $request){
         $report = new Report();
-        $user = findorFail($user);
-        $pelapor = findorFail($pelapor);
+        $user = User::find($request->user);
+        $pelapor = Auth::user();
         $report->keluhan = $request->keluhan;
         $report->reported_id = $user->id;
         $report->reported_name = $user->name;
@@ -23,5 +23,7 @@ class ReportController extends Controller
         $report->pelapor = "";
         else
         $report->pelapor = $pelapor->name;
+        $report->save();
+        return redirect('/profile/'.$user->id);
     }
 }

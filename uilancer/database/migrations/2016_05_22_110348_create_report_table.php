@@ -19,6 +19,7 @@ class CreateReportTable extends Migration
             $table->integer('reported_id')->unsigned();
             $table->string('reported_name');
             $table->string('pelapor');
+            $table->timestamps();
         });
         
          Schema::table('report',function($table){
