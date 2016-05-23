@@ -220,7 +220,10 @@ $isLogged=false;
             @else
               <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
+
+              @if(count($hasil->applyManager))
+                <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
+              @endif
             @endif
           @else
             @if($hasil->user->id != Auth::user()->id)
