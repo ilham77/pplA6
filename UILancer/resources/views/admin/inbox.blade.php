@@ -198,7 +198,7 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                       @foreach($pekerjaan as $sbhPekerjaan)
-                        <a href="pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
+                        <a href="../pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
                           <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
                           <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>

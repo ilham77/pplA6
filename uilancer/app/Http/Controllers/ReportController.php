@@ -47,7 +47,7 @@ class ReportController extends Controller
      public function deleteReport($report)
     {
   $report=Report::find($report);
-     if( $report!=null){
+     if($report!=null){
         if (Auth::user()->role="admin"){
             $report->delete();
             return view('admin.inbox');

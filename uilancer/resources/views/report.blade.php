@@ -183,7 +183,7 @@
         <h1><p id="judul_pekerjaan" >{{$report->judul}}</p></h1>
         <span>Oleh : <a href="{{url('profile/'.$report->id) }}">{{ $report->pelapor }}</a></span>
 <br>
-            <span>Terlapor: <a href="{{url('profile/'.$report->reported_name) }}">{{ $report->reported_name}}</a></span>
+            <span>Terlapor: <a href="{{url('profile/'.$report->reported_id) }}">{{ $report->reported_name}}</a></span>
 <br>
 <span>Dibuat tanggal: {{ $report->created_at }}</span>
                 </div>
@@ -195,7 +195,7 @@
             {{ $report->keluhan }}
             </p><br>
                  <span><a class="btn btn-primary" href="{{url('inbox')}}">Kembali</a></span>
-                  <a class="btn btn-danger" href="report/delete/{{$report->id}}">Delete</a>
+                  <a class="btn btn-danger" href="../report/delete/{{$report->id}}">Delete</a>
         </div>
                
     </div> 
