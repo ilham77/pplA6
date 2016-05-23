@@ -195,7 +195,7 @@
             {{ $report->keluhan }}
             </p><br>
                  <span><a class="btn btn-primary" href="{{url('inbox')}}">Kembali</a></span>
-                  <a class="btn btn-danger" href="../report/delete/{{$report->id}}">Delete</a>
+                  <a class="btn btn-danger" href="delete/{{$report->id}}">Delete</a>
         </div>
                
     </div> 
