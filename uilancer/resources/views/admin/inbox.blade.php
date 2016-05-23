@@ -223,37 +223,26 @@
                 </div>
                 <div class="tab-pane fade in" id="profile">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Mark Otto</span>
-                          <span class="">Judul Report</span>
-                          <span class="text-muted" style="font-size: 11px;">- Asal Institusi</span>
-                          <span class="badge">12:10 AM</span> <span class="pull-right"></span>
+                        @foreach($reports as $report)
+                        <a href="report/{{$report->id}}" class="list-group-item">
+                          <span class="name" style="min-width: 300px; display: inline-block;">{{$report->pelapor}}</span>
+                          <span class="">{{$report->judul}}</span>
+                          <span class="text-muted" style="font-size: 11px;">- {{$report->asal_institusi}}</span>
+                          <span class="badge">{{ \Carbon\Carbon::parse($report->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Luthfi Kurnia Putra</span>
-                          <span class="">Tidak memberikan bayaran</span>
-                          <span class="text-muted" style="font-size: 11px;">- PT MMC Rajawali</span>
-                          <span class="badge">12:05 AM</span> <span class="pull-right"></span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">Hadaiq Rolis Sanabila</span>
-                          <span class="">Tidak mengaccept status Pekerjaan</span>
-                          <span class="text-muted" style="font-size: 11px;">- Fasilkom UI</span>
-                          <span class="badge">12:00 AM</span> <span class="pull-right"></span>
-                        </a>
-                    </div>
-                    <br>
-                    <br>
-                    @if($pekerjaan->total() != 0)
+                        @endforeach
+                        
+                     @if($pekerjaan->total() != 0)
                     <div class="text-center">
                         <span class="text-muted"><b>
 
-                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
+                          {{(($report->currentPage() - 1) * $report->perPage()) + 1 }}</b>–<b>{{ (($report->currentPage() - 1) * $report->perPage()) + $report->count() }}</b> of <b>{{ $report->total() }}</b></span>
                         <div class="btn-group btn-group-sm">
-                          {!! $pekerjaan->render() !!}
+                          {!! $report->render() !!}
                         </div>
                     </div>
                     @else
+                    <br>
                     <br>
                     @endif
                 </div>

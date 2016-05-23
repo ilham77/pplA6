@@ -20,10 +20,10 @@ class ReportController extends Controller
         $report->keluhan = $request->keluhan;
         $report->reported_id = $user->id;
         $report->reported_name = $user->name;
-        if($pelapor->role=="mahasiswa" or $pelapor->role=="admin"){
-        $report->asal_instansi = $user->faculty;
+        if($pelapor->role="mahasiswa" or $pelapor->role="admin"){
+        $report->asal_instansi = $pelapor->faculty;
         }else{
-        $report->asal_instansi = $user->asal_instansi;
+        $report->asal_instansi = $pelapor->asal_instansi;
         }
         $report->pelapor = $pelapor->name;
         $report->save();

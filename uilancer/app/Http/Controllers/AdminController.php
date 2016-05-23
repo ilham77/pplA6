@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Pekerjaan;
+use App\Report;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
-        return view('admin.inbox',compact('pekerjaan'));
+       $reports = Report::all();
+       $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
+        return view('admin.inbox',compact('pekerjaan','reports'));
     }
 
     public function createUser(Request $request){
@@ -39,4 +41,10 @@ class AdminController extends Controller
         
         return view('admin.createUser');
     }
+    
+    public function viewReport()
+    {
+
+    }
+    
 }
