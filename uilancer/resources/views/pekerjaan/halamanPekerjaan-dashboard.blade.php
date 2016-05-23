@@ -191,7 +191,7 @@ $isLogged=false;
         <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
             <b><h3>Deskripsi:</h3></b>
             <p>
-            {{ $hasil->deskripsi_pekerjaan }}
+            {!! $hasil->deskripsi_pekerjaan !!}
             </p>
             <br/>
              <span>Skill yang dibutuhkan:</span>
@@ -221,7 +221,7 @@ $isLogged=false;
               <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
 
-              @if(count($hasil->applyManager))
+              @if(!count($hasil->applyManager))
                 <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
               @endif
             @endif

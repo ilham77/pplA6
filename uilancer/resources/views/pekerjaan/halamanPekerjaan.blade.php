@@ -93,7 +93,7 @@
         <div id="deskripsi" class="container-fluid text-left bg-grey">
             <h1>Deskripsi:</h1>
             <p>
-            {{ $hasil->deskripsi_pekerjaan }}<br/>
+            {!! $hasil->deskripsi_pekerjaan !!}<br/>
 
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))
