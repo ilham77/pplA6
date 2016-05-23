@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
 <link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -14,7 +13,12 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
+<style>
+#report{
+    padding-top:2%;
+    padding-left:18%;
+}
+</style>
 </head>
 
 <body>
@@ -108,13 +112,14 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user"></span>{{\Auth::user()->name}}
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">Admin</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
             </ul>
           </li>
 
@@ -127,8 +132,26 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
@@ -151,112 +174,43 @@
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
-
   </div><!--/.sidebar-->
 
-<!-- DETAIL PEKERJAAN -->
-
-    <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-left bg-white">
-        <br/>
-        <div class="container-fluid text-left">
-        <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
-        <br>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <br>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span>
-            <br>
-                        <span>Jumlah Pelamar:
-              @if($hasil->user->id == Auth::user()->id)
-                {{ $jumlah_pelamar }}
-              @else
-                {{ $jumlah_pelamar }}
-              @endif
-              </span>
-        <hr style="border-width: 2px;">
-      </div>
-
-        <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
-            <b><h3>Deskripsi:</h3></b>
-            <p>
-            {{ $hasil->deskripsi_pekerjaan }}
-            </p>
-            <br/>
-             <span>Skill yang dibutuhkan:</span>
-             @if(count($hasill))
-              @foreach($hasill as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-            <br/>
-
-             <span>Durasi:</span>
-            <span>{{ $hasil->durasi }} Minggu</span><br/>
-
-             <span>Estimasi honor:</span>
-            <span>Rp {{$hasil->budget}}</span><br/>
-
-            <span><b>Deadline:</b></span>
-            <span>{{$hasil->endDate}}</span><br/>
-        </p>
-        <p><br/>
-          <div class="text-right">
-          @if(Auth::user()->role == 'admin')
-            @if($hasil->isVerified == 0)
-              <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
-              <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
-            @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
-            @endif
-          @else
-            @if($hasil->user->id != Auth::user()->id)
-              @if (in_array(Auth::user()->id, $id_pelamar))
-                @if($hasil->isTaken == 1)
-                  <a class="well well-sm" style="background-color:red;">Pekerjaan sedang berlangsung</a>
-                @else
-                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
-                @endif
-              @else
-                <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
-              @endif
-            @else
-              @if($hasil->isTaken == 0)
-                <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
-              @endif
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
-            @endif
-          @endif
-
-
-
-          </div>
-        </p>
-
-        @if (count($errors))
-
-        <div class="well well-sm">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            {{ $error }}
-          @endforeach
-
-          </ul>
+ <br/>
+    <div class="panel panel-default">
+        <div id="report" class="panel-heading">
+           
+        <h2><p id="judul_pekerjaan"><center>REPORT TIDAK DITEMUKAN ATAU TELAH TERHAPUS</center></p></h2>
+        
+                </div>
+            <div class="panel-body">
+             <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px; padding-left:18%;"><br><br><br><br><br>
+                 <span><a class="btn btn-primary" href="{{url('inbox')}}">Kembali</a></span>
+                  
         </div>
-
-        @endif
+               
+    </div> 
+</div>
+       
+         
+    
 
     </div>
 </div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
 
+    </div>
+  </div>
+</div>
+    
   <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){

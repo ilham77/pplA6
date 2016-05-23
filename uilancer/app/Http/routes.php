@@ -20,8 +20,6 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -102,11 +100,20 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
+    Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
+    
 	Route::get('/dashboard','UserController@viewProfile');
 	Route::post('post-lowongan','PekerjaanController@postLowongan');
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
-    Route::post('terimaLamar', 'UserController@terimaLamar');
-    Route::get('/profile/{user}', 'UserController@viewPublicProfile');
+
+    Route::post('addUser', 'AdminController@createUser');
+    
+    Route::post('report', 'ReportController@report');
+	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
+Route::post('/report/{user}/{pelapor}', 'ReportController@report');
+Route::post('terimaLamar', 'UserController@terimaLamar');
+
 });
