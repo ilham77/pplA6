@@ -213,16 +213,14 @@
       </tr>
         </thead>
         @foreach($jobgiver_job as $jg)
-          @foreach($jg->applyManager as $am)
             <tr>
-              <td><center>{{ $jg->judul_pekerjaan }}</center></td>
-              <td><center>{{ $am->user->name }}</center></td>
-              <td><center>{{ $jg->durasi }} pekan</center></td>
-              <td><center>Rp{{ $jg->budget }},-</center></td>
-              <td><center>{{ $jg->endDate }}</center></td>
+              <td><center>{{ $jg->pekerjaan->judul_pekerjaan }}</center></td>
+              <td><center>{{ $jg->user->name }}</center></td>
+              <td><center>{{ $jg->pekerjaan->durasi }} minggu</center></td>
+              <td><center>Rp{{ $jg->pekerjaan->budget }},-</center></td>
+              <td><center>{{ $jg->pekerjaan->endDate }}</center></td>
               <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Confirm</a></center></td>
             </tr>
-          @endforeach
         @endforeach
       @else
 <b>Tidak ada pekerjaan</b>

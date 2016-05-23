@@ -121,7 +121,7 @@
 
         </ul>
       </div>
-              
+
     </div><!-- /.container-fluid -->
   </nav>
 @else
@@ -189,9 +189,9 @@
             <img src="http://placehold.it/200x200" alt="">
               <br><br><a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @else
-            <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">  
-        <br><br> <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
-            @endif          
+            <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">
+            @endif
+
           </div>
             
             

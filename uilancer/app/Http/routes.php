@@ -43,6 +43,8 @@ Route::get('/createUser', function () {
     return View::make('admin.createUser');
 });
 
+Route::post('addUser', 'AdminController@createUser');
+
 Route::get('/editUser', function () {
     return View::make('admin.editUser');
 });
@@ -50,10 +52,6 @@ Route::get('/editUser', function () {
 Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
-
-	Route::get('/welcome', function () {
-		return View::make('home');
-	});
 
 
 /*
@@ -72,10 +70,6 @@ Route::group(['middleware' => ['web']], function () {
     	return view('login');
 	});
 
-	Route::get('/info', function () {
-	    return view('info');
-	});
-
 	Route::get('/', [
 		    'middleware' => 'auth',
 		    'uses' => 'PekerjaanController@index'
@@ -88,16 +82,12 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});
-
-	Route::get('/lihatPelamar', function () {
-	    return view('pekerjaan.lihatPelamar');
+	Route::get('/info', function () {
+	    return view('info');
 	});
-	Route::get('/riwayatApply', function () {
-	    return view('pekerjaan.riwayatApply');
-	});
-	Route::get('/riwayatJobGiver', function () {
-	    return view('pekerjaan.riwayatJobGiver');
-	});
+	Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
+	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
+	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
 
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
@@ -122,10 +112,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('report', 'ReportController@report');
 	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 Route::post('/report/{user}/{pelapor}', 'ReportController@report');
-
-	
-    /*Route::get('/profile', function () {
-    	return view('profile-public');
-	});*/
+Route::post('terimaLamar', 'UserController@terimaLamar');
 });
-
+   

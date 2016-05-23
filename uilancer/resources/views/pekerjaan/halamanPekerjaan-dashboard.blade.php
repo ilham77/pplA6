@@ -160,7 +160,7 @@
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href=#>{{ $jobGiver->name }}</a></span>
+        <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
         <br>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <br>
@@ -183,7 +183,9 @@
 
         <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
             <b><h3>Deskripsi:</h3></b>
-            <p>{!!html_entity_decode($hasil->deskripsi_pekerjaan)!!}</p>
+            <p>
+            {{ $hasil->deskripsi_pekerjaan }}
+            </p>
             <br/>
              <span>Skill yang dibutuhkan:</span>
              @if(count($hasill))
@@ -209,19 +211,25 @@
               <a class="btn btn-success mt-20 font2" href="../verify/{{ $hasil->id }}">Verify</a>
               <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
             @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
+              <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
             @endif
           @else
             @if($hasil->user->id != Auth::user()->id)
               @if (in_array(Auth::user()->id, $id_pelamar))
-                <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                @if($hasil->isTaken == 1)
+                  <a class="well well-sm" style="background-color:red;">Pekerjaan sedang berlangsung</a>
+                @else
+                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                @endif
               @else
                 <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
               @endif
             @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="#">Lihat Pelamar</a>
+              @if($hasil->isTaken == 0)
+                <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
+              @endif
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif

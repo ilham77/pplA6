@@ -120,21 +120,21 @@
 
 				</ul>
 			</div>
-							
+
 		</div><!-- /.container-fluid -->
 	</nav>
-	
-	<!-- Sidebar -->	
+
+	<!-- Sidebar -->
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<ul class="nav menu">
-			
+
 			<li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
 			<li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
 			<li><a href="bukalowongan"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
 			<li class="parent ">
 				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat 
+					<span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
 				</a>
 				<ul class="children collapse" id="sub-item-1">
 					<li>
@@ -155,15 +155,15 @@
 		</ul>
 
 	</div><!--/.sidebar-->
-		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="col-md-4 col-xs-2 col-lg-4">
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="" width="200px">
                 @endif
         </div>
         <div id="profile-header" class="col-md-7 col-xs-3 col-lg-7">
@@ -181,7 +181,7 @@
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
             <p>Ketertarikan     : </p>
-            <p>Pekerjaan        : {{\Auth::user()->role}}</p> 
+            <p>Pekerjaan        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
             CV / Resume :
             <span><a href="#" download>click here to download</a></span></br>
@@ -189,14 +189,14 @@
  
         </div>
 			</div>
-		</div><!--/.row-->		
+		</div><!--/.row-->
 	</div><!--/.row-->
 
 	<script>
 		!function ($) {
-		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
-		        $(this).find('em:first').toggleClass("glyphicon-minus");      
-		    }); 
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+		        $(this).find('em:first').toggleClass("glyphicon-minus");
+		    });
 		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
 		}(window.jQuery);
 
@@ -206,7 +206,7 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
-	</script>	
+	</script>
 </body>
 
 </html>
