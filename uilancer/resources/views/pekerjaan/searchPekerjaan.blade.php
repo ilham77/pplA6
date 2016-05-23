@@ -119,7 +119,7 @@
 
 
 <!-- Footer -->
-<footer class="text-center" style="position: relative; height: 100px; bottom: 0; width: 100%;">
+<footer class="text-center" style="position: absolute; height: 100px; bottom: 0; width: 100%;">
   <p>Copyright &copy; 2016. UILancer</p>
 </footer>
 

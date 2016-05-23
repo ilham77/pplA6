@@ -21,6 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+>>>>>>> refs/remotes/origin/master
       </button>
       <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
@@ -69,7 +70,6 @@
             @endif
       <!-- Modal content-->
 
-
     </div>
 </div>
 
@@ -90,11 +90,9 @@
                 <DD><a href="#">Apply Job</a></DD>
         </DT>
         <hr  style="height:1px;border:none;color:#333;background-color:#333;"/>
-
         <a href="#">Setting</a><br>
         <a href="#">FAQ & Help</a><br>
         </DT>
-  </div>
 
     <!-- PROFILE -->
   <div id="container" class="col-md-9 col-xs-4 col-lg-9 container-fluid bg-grey">
@@ -102,9 +100,39 @@
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">
+                  <img src="{{URL::to('avatar').'/'.\
+                            ::user()->avatar}}" alt="">  
                 @endif
         </div>
+      
+      <!--
+REPORT MODAL
+-->  
+<a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
+  <!-- Modal -->
+
+<div class="modal fade" id="reportModal" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ceritakan keluhan anda:</h4>
+            <br>
+            <form action="report" method="POST" role="form" enctype="multipart/form-data">
+              {{csrf_field()}}
+            <div class="form-group">
+            <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>
+                <br>    
+                    {!! Form::submit('Kirim', array('class'=>'btn btn-primary')) !!}
+        </div>
+        </form>
+        <div class="modal-body">
+        </div>
+        </div>
+      </div>
+      </div>
+<!--END REPORT-->
+     
         <div id="profile-header" class="col-md-7 col-xs-3 col-lg-7">
             <h1>{{\Auth::user()->name}}</h1>
             <hr/>
@@ -120,6 +148,7 @@
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
             <p>Ketertarikan     : Massage, Telephone marketing</p>
+
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
             CV / Resume :
@@ -138,6 +167,7 @@
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
       <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
+
     </div>
   </div>
 </div>
@@ -155,7 +185,9 @@
   <p>UILancer is marketplace for service blablabla</p>
   <a href="#">(+62) 813-681-999</a></br>
   <a href="#">ask@uilancer.com</a><br>
+
   <p>Made By <a href="" title="UILancer">PPL A6</a></p>
+
 </footer>
 
 <script>

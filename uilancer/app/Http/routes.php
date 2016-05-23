@@ -20,8 +20,6 @@ Route::get('/detail', function() {
     return view('detail');
 });
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
@@ -102,6 +100,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/listPekerjaan','PekerjaanController@index');
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
+	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
+    Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
+    
 	Route::get('/dashboard','UserController@viewProfile');
 	Route::post('post-lowongan','PekerjaanController@postLowongan');
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
@@ -112,4 +113,6 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/done/{pekerjaan}','PekerjaanController@done');
     Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
+    Route::post('report', 'ReportController@report');
+Route::post('/report/{user}/{pelapor}', 'ReportController@report');
 });

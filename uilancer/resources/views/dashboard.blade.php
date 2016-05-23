@@ -186,6 +186,7 @@
             CV / Resume :
             <span><a href="#" download>click here to download</a></span></br>
           <a href="{{url('edit')}}" class="btn btn-danger">Edit Profile</a>
+ 
         </div>
 			</div>
 		</div><!--/.row-->
