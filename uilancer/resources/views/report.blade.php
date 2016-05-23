@@ -13,7 +13,12 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
+<style>
+#report{
+    padding-top:2%;
+    padding-left:18%;
+}
+</style>
 </head>
 
 <body>
@@ -169,96 +174,51 @@
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
-
   </div><!--/.sidebar-->
 
-  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-      <div class="col-lg-12">
-        <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Inbox</h1>
-  <div class="row">
-    <div class="col-md-12">
-    <div class="row">
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-12">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-tasks">
-                </span> Permintaan Pembuatan Pekerjaan</a></li>
-                <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                    Report User</a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                    <div class="list-group">
-                      @foreach($pekerjaan as $sbhPekerjaan)
-                        <a href="pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
-                          <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
-                          <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
-                          <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
-                        </a>
-                      @endforeach
-                    </div>
-                    <br>
-                    @if($pekerjaan->total() != 0)
-                    <div class="text-center">
-                        <span class="text-muted"><b>
-
-                          {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
-                        <div class="btn-group btn-group-sm">
-                          {!! $pekerjaan->render() !!}
-                        </div>
-                    </div>
-                    @else
-                    <br>
-                    <br>
-                    @endif
+ <br/>
+    <div class="panel panel-default">
+        <div id="report" class="panel-heading">
+           
+        <h1><p id="judul_pekerjaan" >{{$report->judul}}</p></h1>
+        <span>Oleh : <a href="{{url('profile/'.$report->id) }}">{{ $report->pelapor }}</a></span>
+<br>
+            <span>Terlapor: <a href="{{url('profile/'.$report->reported_name) }}">{{ $report->reported_name}}</a></span>
+<br>
+<span>Dibuat tanggal: {{ $report->created_at }}</span>
                 </div>
-                <div class="tab-pane fade in" id="profile">
-                    <div class="list-group">
-                        @foreach($reports as $report)
-                        <a href="report/{{$report->id}}" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">{{$report->pelapor}}</span>
-                          <span class="">{{$report->judul}}</span>
-                          <span class="text-muted" style="font-size: 11px;">- {{$report->asal_instansi}}</span>
-                          <span class="badge">{{ \Carbon\Carbon::parse($report->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
-                        </a>
-                        @endforeach
-                        
-                     @if($pekerjaan->total() != 0)
-                    <div class="text-center">
-                        <span class="text-muted"><b>
-
-                          {{(($report->currentPage() - 1) * $report->perPage()) + 1 }}</b>–<b>{{ (($report->currentPage() - 1) * $report->perPage()) + $report->count() }}</b> of <b>{{ $report->total() }}</b></span>
-                        <div class="btn-group btn-group-sm">
-                          {!! $report->render() !!}
-                        </div>
-                    </div>
-                    @else
-                    <br>
-                    <br>
-                    @endif
-                </div>
-
+            <div class="panel-body">
+             <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px; padding-left:18%;">
+            <br>
+            <b><p>Deskripsi:</p></b>
+            <p>
+            {{ $report->keluhan }}
+            </p><br>
+                  <a class="btn btn-primary" href="{{url('inbox')}}">Kembali</a>
         </div>
+               
+    </div> 
+</div>
+       
+         
+    
+
     </div>
 </div>
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
+
     </div>
   </div>
 </div>
-
-
-      </div>
-    </div><!--/.row-->
-  </div><!--/.row-->
-
+    
   <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){

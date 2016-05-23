@@ -20,7 +20,7 @@ class ReportController extends Controller
         $report->keluhan = $request->keluhan;
         $report->reported_id = $user->id;
         $report->reported_name = $user->name;
-        if($pelapor->role="mahasiswa" or $pelapor->role="admin"){
+        if($pelapor->role=="mahasiswa" or $pelapor->role=="admin"){
         $report->asal_instansi = $pelapor->faculty;
         }else{
         $report->asal_instansi = $pelapor->asal_instansi;
@@ -30,4 +30,13 @@ class ReportController extends Controller
         return redirect('/profile/'.$user->id);
 }
 
+    public function detailReport($report)
+    {
+    $report = Report::findorFail($report);
+        if (Auth::user()->role="admin"){
+            return view('report',compact('report'));
+        } else {
+            return redirect('/');
+        }
+    }
 }
