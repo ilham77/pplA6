@@ -177,14 +177,20 @@
         </tr>
         </thead>
         @foreach($freelancer_job as $fj)
-          <tr>
+          @if($fj->pekerjaan->isDone == 0)
+            <tr>
             <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
             <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
             <td><center>{{ $fj->pekerjaan->durasi }} pekan</center></td>
             <td><center>Rp{{ $fj->pekerjaan->budget }},-</center></td>
             <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
-            <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+
+            @if($fj->status == 1)
+              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+            @endif
+
           </tr>
+          @endif
         @endforeach
       @else
         <b>Tidak ada pekerjaan</b>
@@ -252,7 +258,7 @@
         <center>
         <div class="modal-body">
           <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
-          <a href="#" class="btn btn-default">Yes</a>
+          <a href="done/{{ $fj->id }}" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>

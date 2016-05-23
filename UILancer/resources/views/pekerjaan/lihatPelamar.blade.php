@@ -195,7 +195,12 @@
     @endforeach
     <input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
     </div>
-    <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+
+    @if(Auth::user()->role != "admin")
+      <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+    @elseif($pekerjaan->user->role == "admin")
+      <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+    @endif
   @endif
 @endif
 </div>

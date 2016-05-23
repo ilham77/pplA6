@@ -184,11 +184,11 @@
               <td><center>Rp.{{ $ku->pekerjaan->budget }},-</center></td>
               <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>
 
-              @if($ku->status == 1)
+              @if($ku->status != 0)
                 @if($ku->pekerjaan->isDone == 0)
                    <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
                 @else
-                  <td><center>Waiting for done confirmation</center></td>
+                  <td><center>Done</center></td>
                 @endif
               @else
                 @if($ku->pekerjaan->isTaken == 1)
