@@ -72,11 +72,15 @@ Route::group(['middleware' => ['web']], function () {
     	return view('login');
 	});
 
-    Route::get('/', ['middleware' => 'auth', 'uses'=>'AdminController@index']);
+	Route::get('/', [
+		    'middleware' => 'auth',
+		    'uses' => 'PekerjaanController@index'
+	]);
 
-	Route::get('/home', function () {
-		return View::make('home');
-	});
+    Route::get('/home', function() {
+        return view('home');
+    });
+
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});

@@ -12,33 +12,33 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class SSOController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
- 
+
      public function login(){
           SSO::Authenticate();
         $user=SSO::getUser();
          if(SSO::check()){
-            
-             if((!DB::table('users')->where('npm','=',$user->npm)->get())){ 
+
+             if((!DB::table('users')->where('npm','=',$user->npm)->get())){
                $newUser = User::    insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
                 \Auth::loginUsingId($newUser->id);
-                return view('home')->with('npm', $user->npm);
+                return redirect('/')->with('npm', $user->npm);
              } else {
                $user = User::where('npm','=',$user->npm)->first();
                \Auth::loginUsingId($user->id);
-               return view('home')->with('npm', $user->npm);
+               return redirect('/')->with('npm', $user->npm);
              }
          } else {
             //SSO::logout();
            //  return view('home')->with('npm', $user->npm);
          }
      }
-    
+
     public function logout(){
         \Auth::logout();
         //SSO::logout();
         return redirect('/');
     }
-    
+
     public function logoutSSO(){
         SSO::logout();
     }
