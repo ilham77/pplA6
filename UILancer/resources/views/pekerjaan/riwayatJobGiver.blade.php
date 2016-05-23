@@ -182,7 +182,7 @@
             <tr>
               <td><center>{{ $ku->judul_pekerjaan }}</center></td>
               <td><center>{{ $am->user->name }}</center></td>
-              <td><center>{{ $ku->durasi }} pekan</center></td>
+              <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
 

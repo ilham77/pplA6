@@ -225,12 +225,18 @@ $isLogged=false;
           @else
             @if($hasil->user->id != Auth::user()->id)
               @if (in_array(Auth::user()->id, $id_pelamar))
-                <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                @if($hasil->isTaken == 1)
+                  <a class="well well-sm" style="background-color:red;">Pekerjaan sedang berlangsung</a>
+                @else
+                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                @endif
               @else
                 <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
               @endif
             @else
-              <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
+              @if($hasil->isTaken == 0)
+                <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
+              @endif
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
               <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif
