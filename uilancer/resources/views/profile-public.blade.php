@@ -121,7 +121,7 @@
 
         </ul>
       </div>
-              
+
     </div><!-- /.container-fluid -->
   </nav>
 @else
@@ -188,8 +188,8 @@
             @if($usr->avatar == "")
             <img src="http://placehold.it/200x200" alt="">
             @else
-            <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">  
-            @endif          
+            <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">
+            @endif
           </div>
           <div class="col-md-8">
             <h1>{{$usr->name}}</h1>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplyManager extends Model
 {
     protected $table = 'apply_manager';
+    protected $fillable = ['status'];
 
     public function pekerjaan()
     {

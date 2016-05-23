@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Pekerjaan;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -34,9 +35,9 @@ class AdminController extends Controller
 
         if ($user->password == $request->password) {
         	$user->save();
-			return view('admin.inbox');
+			return redirect('inbox');
         }
-        
+
         return view('admin.createUser');
     }
 }

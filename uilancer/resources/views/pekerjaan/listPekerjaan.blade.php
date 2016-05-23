@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="{{asset('style-dashboard.css')}}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -166,34 +166,34 @@
         @foreach($pekerjaans as $pekerjaan)
 <div class="col">
     <div class = "panel panel-default">
-			<div class="panel-body">
+      <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
-<div class ="col-md-3 col-xs-1 col-lg-3">      
-                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>        
+<div class ="col-md-3 col-xs-1 col-lg-3">
+                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>
 
-                </div> 
+                </div>
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
-							
+
                 </div>
-                
+
                 <div class ="col-md-3 col-xs-1 col-lg-3">
                   @if($pekerjaan->isTaken)
                   <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
-							@else
-								 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
-							@endif
+              @else
+                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
+              @endif
                 </div>
-                
+
                <div class ="col-md-3 col-xs-1 col-lg-3">
-							@if($pekerjaan->isDone)				 
+              @if($pekerjaan->isDone)
                 <span class="glyphicon glyphicon-check"></span><span> Done</span>
-							@else
-								<span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
-							@endif
+              @else
+                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
+              @endif
                 </div>
            <br><hr>
-                
+
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
               <span>Rp {{$pekerjaan->budget}}</span><br>
@@ -212,13 +212,13 @@
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
             </div>
-		</div>	
-    </div>		
+    </div>
+    </div>
         @endforeach
       @else
         <h2>Tidak ada pekerjaan</h2>
       @endif
-       
+
         <div align="center">
             {!! $pekerjaans->render() !!}
         </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pekerjaan extends Model
 {
     protected $table = 'pekerjaan';
-    protected $fillable = ['isVerified'];
+    protected $fillable = ['isVerified','isTaken'];
 
     public function skillTag()
     {

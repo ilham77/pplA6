@@ -36,7 +36,7 @@ class SSOController extends BaseController
     public function logout(){
         \Auth::logout();
         //SSO::logout();
-        return redirect('/welcome');
+        return redirect('/');
     }
 
     public function logoutSSO(){

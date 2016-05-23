@@ -16,7 +16,7 @@ class PekerjaanController extends Controller
 {
     public function index()
     {
-    	$pekerjaans = Pekerjaan::where('isVerified',1);
+        $pekerjaans = Pekerjaan::where('isVerified',1);
         $pekerjaans = $pekerjaans->simplePaginate(10);
 
         foreach ($pekerjaans as $pekerjaan) {
@@ -25,7 +25,7 @@ class PekerjaanController extends Controller
             $pekerjaan->budget = strrev(implode(".", $tempHonor));
         }
 
-    	return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
+        return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
     }
 
     public function detailPekerjaan($pekerjaan)
@@ -158,12 +158,6 @@ class PekerjaanController extends Controller
         if($request->flag == "nonDash")
         {
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
-            foreach ($hasil as $h) {
-                $tempHonor = strrev("".$h->budget."");
-                $tempHonor = str_split($tempHonor,3);
-                $h->budget = strrev(implode(".", $tempHonor));
-            }
-
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
         else
@@ -227,11 +221,6 @@ class PekerjaanController extends Controller
             }
 
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
-            foreach ($hasil as $h) {
-                $tempHonor = strrev("".$h->budget."");
-                $tempHonor = str_split($tempHonor,3);
-                $h->budget = strrev(implode(".", $tempHonor));
-            }
             return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
     }
@@ -244,15 +233,26 @@ class PekerjaanController extends Controller
             $tempHonor = strrev("".$fj->pekerjaan->budget."");
             $tempHonor = str_split($tempHonor,3);
             $fj->pekerjaan->budget = strrev(implode(".", $tempHonor));
+
+            $fj->pekerjaan->endDate =  \Carbon\Carbon::parse($fj->pekerjaan->endDate)->format('M j, Y');
         }
 
+        $job = $user->pekerjaan;
+        $jobgiver_job = Array();
 
-        $jobgiver_job = $user->pekerjaan->where('isTaken',1);
+        foreach($job as $j)
+        {
+            $j = $j->applyManager->where('status',1);
 
-        foreach ($jobgiver_job as $jg) {
-            $tempHonor = strrev("".$jg->budget."");
-            $tempHonor = str_split($tempHonor,3);
-            $jg->budget = strrev(implode(".", $tempHonor));
+            foreach ($j as $jg) {
+                $tempHonor = strrev("".$jg->pekerjaan->budget."");
+                $tempHonor = str_split($tempHonor,3);
+                $jg->pekerjaan->budget = strrev(implode(".", $tempHonor));
+
+                $jg->pekerjaan->endDate =  \Carbon\Carbon::parse($jg->pekerjaan->endDate)->format('M j, Y');
+
+                array_push($jobgiver_job, $jg);
+            }
         }
 
         return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job'));
@@ -311,5 +311,11 @@ class PekerjaanController extends Controller
         return view('post');
     }
 
+    public function lihatPelamar(Pekerjaan $pekerjaan)
+    {
+        $pelamar = $pekerjaan->applyManager;
+        $i = 1;
+        return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
+    }
 
 }

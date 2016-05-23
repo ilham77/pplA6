@@ -185,8 +185,46 @@ class UserController extends Controller
         }
     }
 
-    public function onGoing($user)
+    public function riwayatAsFreelance()
     {
-        return view('pekerjaan.ongoing');
+        $kerjaanUser = User::find(Auth::user()->id)->applyManager;
+
+        foreach ($kerjaanUser as $ku) {
+            $tempHonor = strrev("".$ku->pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $ku->pekerjaan->budget = strrev(implode(".", $tempHonor));
+
+            $ku->pekerjaan->endDate =  \Carbon\Carbon::parse($ku->pekerjaan->endDate)->format('M j, Y');
+        }
+
+        return view('pekerjaan.riwayatApply',compact('kerjaanUser'));
+    }
+
+    public function riwayatAsJobGiver()
+    {
+        $kerjaDariUser = User::find(Auth::user()->id)->pekerjaan;
+
+        foreach ($kerjaDariUser as $ku) {
+            $tempHonor = strrev("".$ku->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $ku->budget = strrev(implode(".", $tempHonor));
+
+            $ku->endDate =  \Carbon\Carbon::parse($ku->endDate)->format('M j, Y');
+        }
+
+        return view('pekerjaan.riwayatJobGiver',compact('kerjaDariUser'));
+    }
+
+    public function terimaLamar(Request $request)
+    {
+        foreach ($request->user as $ru) {
+            $am = ApplyManager::where('user_id',$ru)
+            ->where('pekerjaan_id',$request->pekerjaan);
+
+            $am->first()->update(array('status' => 1));
+            $am->first()->pekerjaan->update(array('isTaken' => 1));
+        }
+
+        return redirect('riwayatJobGiver');
     }
 }
