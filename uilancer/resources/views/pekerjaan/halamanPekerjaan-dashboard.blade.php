@@ -167,7 +167,7 @@ $isLogged=false;
         <br/>
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href="profile/{{ $jobGiver->id }}">{{ $jobGiver->name }}</a></span>
+        <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
         <br>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <br>

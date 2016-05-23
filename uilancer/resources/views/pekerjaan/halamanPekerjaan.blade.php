@@ -80,7 +80,7 @@
     <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-center bg-white">
         <br/>
         <h1><p id="judul_pekerjaan">{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href="profile/{{ $jobGiver->id }}">{{ $jobGiver->name }}</a></span>
+        <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
             <span>Status:
