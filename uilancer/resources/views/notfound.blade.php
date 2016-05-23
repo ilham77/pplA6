@@ -180,22 +180,13 @@
     <div class="panel panel-default">
         <div id="report" class="panel-heading">
            
-        <h1><p id="judul_pekerjaan" >{{$report->judul}}</p></h1>
-        <span>Oleh : <a href="{{url('profile/'.$report->id) }}">{{ $report->pelapor }}</a></span>
-<br>
-            <span>Terlapor: <a href="{{url('profile/'.$report->reported_name) }}">{{ $report->reported_name}}</a></span>
-<br>
-<span>Dibuat tanggal: {{ $report->created_at }}</span>
+        <h2><p id="judul_pekerjaan"><center>REPORT TIDAK DITEMUKAN ATAU TELAH TERHAPUS</center></p></h2>
+        
                 </div>
             <div class="panel-body">
-             <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px; padding-left:18%;">
-            <br>
-            <b><p>Deskripsi:</p></b>
-            <p>
-            {{ $report->keluhan }}
-            </p><br>
+             <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px; padding-left:18%;"><br><br><br><br><br>
                  <span><a class="btn btn-primary" href="{{url('inbox')}}">Kembali</a></span>
-                  <a class="btn btn-danger" href="report/delete/{{$report->id}}">Delete</a>
+                  
         </div>
                
     </div> 

@@ -101,6 +101,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
+    Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
     
 	Route::get('/dashboard','UserController@viewProfile');
 	Route::post('post-lowongan','PekerjaanController@postLowongan');
@@ -114,4 +115,5 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 Route::post('/report/{user}/{pelapor}', 'ReportController@report');
 Route::post('terimaLamar', 'UserController@terimaLamar');
+
 });

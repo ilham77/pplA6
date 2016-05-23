@@ -33,10 +33,30 @@ class ReportController extends Controller
     public function detailReport($report)
     {
     $report = Report::findorFail($report);
+    if($report->exists()){
         if (Auth::user()->role="admin"){
             return view('report',compact('report'));
         } else {
             return redirect('/');
         }
+    } else {
+        return view('notfound');
+    }
+    }
+    
+     public function deleteReport($report)
+    {
+  $report=Report::find($report);
+     if( $report!=null){
+        if (Auth::user()->role="admin"){
+            $report->delete();
+            return view('admin.inbox');
+        } else {
+            return redirect('/');
+        }
+    } else {
+        return view('notfound');
+    }
+  ;
     }
 }
