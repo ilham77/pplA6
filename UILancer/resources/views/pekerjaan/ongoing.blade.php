@@ -177,7 +177,6 @@
         </tr>
         </thead>
         @foreach($freelancer_job as $fj)
-          @if($fj->pekerjaan->isDone == 0)
             <tr>
             <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
             <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
@@ -185,12 +184,13 @@
             <td><center>Rp{{ $fj->pekerjaan->budget }},-</center></td>
             <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
 
-            @if($fj->status == 1)
-              <td><center><a class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</a></center></td>
+            @if($fj->pekerjaan->isDone == 0)
+              <td><center> <button type="button" class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</button></center></td>
+            @else
+              <td><center>Waiting for confirmation</center></td>
             @endif
 
           </tr>
-          @endif
         @endforeach
       @else
         <b>Tidak ada pekerjaan</b>
@@ -225,7 +225,12 @@
               <td><center>{{ $jg->pekerjaan->durasi }} minggu</center></td>
               <td><center>Rp{{ $jg->pekerjaan->budget }},-</center></td>
               <td><center>{{ $jg->pekerjaan->endDate }}</center></td>
-              <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Confirm</a></center></td>
+
+               @if($jg->pekerjaan->isDone == 0)
+                <td><center>Waiting to be done</center></td>
+              @else
+                <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Confirm</a></center></td>
+              @endif
             </tr>
         @endforeach
       @else
@@ -258,7 +263,7 @@
         <center>
         <div class="modal-body">
           <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
-          <a href="done/{{ $fj->id }}" class="btn btn-default">Yes</a>
+          <a href="done/{{ $fj->pekerjaan->id }}" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>
