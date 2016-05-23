@@ -109,4 +109,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
     Route::post('terimaLamar', 'UserController@terimaLamar');
     Route::get('/profile/{user}', 'UserController@viewPublicProfile');
+
+    Route::get('/done/{pekerjaan}','PekerjaanController@done');
+    Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
 });

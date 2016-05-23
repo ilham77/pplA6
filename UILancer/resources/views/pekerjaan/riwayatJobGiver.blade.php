@@ -193,10 +193,10 @@
                 <td><center>Rp.{{ $ku->budget }},-</center></td>
                 <td><center>{{ $ku->endDate  }}</center></td>
 
-                @if($ku->isTaken == 1)
-                  <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
-                @elseif($ku->isClosed == 1)
+                @if($ku->isClosed == 1)
                   <td><center>Done</center></td>
+                @elseif($ku->isTaken == 1)
+                  <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
                 @else
                   <td><center><a class="btn btn-primary mt-20 font2 text-center" href="lihatPelamar/{{ $ku->id }}">Lihat Pelamar</a></center></td>
                 @endif

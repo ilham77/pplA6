@@ -185,7 +185,7 @@
             <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
 
             @if($fj->pekerjaan->isDone == 0)
-              <td><center> <button type="button" class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone">Done</button></center></td>
+              <td><center> <button type="button" class="btn btn-primary mt-20 font2 text-center" data-toggle="modal" data-target="#modalDone-{{ $fj->pekerjaan->id }}">Done</button></center></td>
             @else
               <td><center>Waiting for confirmation</center></td>
             @endif
@@ -229,7 +229,7 @@
                @if($jg->pekerjaan->isDone == 0)
                 <td><center>Waiting to be done</center></td>
               @else
-                <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni">Confirm</a></center></td>
+                <td><center><a class="btn btn-success mt-20 font2 text-center" data-toggle="modal" data-target="#modalTestimoni-{{ $jg->pekerjaan->id }}">Confirm</a></center></td>
               @endif
             </tr>
         @endforeach
@@ -254,7 +254,8 @@
     </div><!--/.row-->
   </div><!--/.row-->
 
-  <div class="modal fade" id="modalDone" role="dialog">
+@foreach($freelancer_job as $fj)
+  <div class="modal fade" id="modalDone-{{ $fj->pekerjaan->id }}" role="dialog">
     <div class="modal-dialog">
                <div class="modal-content">
         <div class="modal-header">
@@ -263,7 +264,7 @@
         <center>
         <div class="modal-body">
           <div style="margin-top:-15px"><h4>Apakah anda yakin pekerjaan telah anda selesaikan?</h4></div>
-          <a href="done/{{ $fj->pekerjaan->id }}" class="btn btn-default">Yes</a>
+          <a href="../done/{{ $fj->pekerjaan->id }}" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>
@@ -271,9 +272,10 @@
       <!-- Modal content-->
     </div>
 </div>
+@endforeach
 
-
-  <div class="modal fade" id="modalTestimoni" role="dialog">
+@foreach($jobgiver_job as $jg)
+  <div class="modal fade" id="modalTestimoni-{{ $jg->pekerjaan->id }}" role="dialog">
     <div class="modal-dialog">
                <div class="modal-content">
         <div class="modal-header">
@@ -313,7 +315,7 @@
                                     </tbody>
                                 </table>
                                 <br>
-            <a class="btn btn-success mt-20 font2 text-center" href="#">Konfirmasi selesai</a></center>
+            <a class="btn btn-success mt-20 font2 text-center" href="../confirm/{{ $jg->pekerjaan->id }}">Konfirmasi selesai</a></center>
           </div><!--
           <a href="#" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a> -->
@@ -323,6 +325,7 @@
       <!-- Modal content-->
     </div>
 </div>
+@endforeach
 
 
   <script>

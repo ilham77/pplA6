@@ -318,4 +318,24 @@ class PekerjaanController extends Controller
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
     }
 
+    public function done($pekerjaan)
+    {
+        $kerja = Pekerjaan::find($pekerjaan);
+        $kerja->update(array('isDone' => 1));
+        return redirect()->back();
+    }
+
+    public function confirm($pekerjaan)
+    {
+        $kerja = Pekerjaan::find($pekerjaan);
+        $kerja->update(array('isClosed' => 1));
+        $kerja = $kerja->applyManager->where('status',1);
+
+        foreach ($kerja as $k) {
+            $k->update(array('status' => 0));
+        }
+
+        return redirect()->back();
+    }
+
 }
