@@ -16,9 +16,16 @@ class PekerjaanController extends Controller
 {
     public function index()
     {
-    	$pekerjaans = Pekerjaan::where('isVerified',1)->get();
+        $pekerjaans = Pekerjaan::where('isVerified',1);
+        $pekerjaans = $pekerjaans->simplePaginate(10);
 
-    	return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
+        foreach ($pekerjaans as $pekerjaan) {
+            $tempHonor = strrev("".$pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
+
+        return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
     }
 
     public function detailPekerjaan($pekerjaan)
