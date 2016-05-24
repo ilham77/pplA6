@@ -155,7 +155,8 @@ return [
         'avatar' => [
             'required' => 'Harap upload gambar profil anda!',
             'mimes' => 'Format gambar profil hanya bisa jpeg, bmp, dan png!',
-            'max' => 'Gambar tidak boleh lebih dari 2MB!'
+            'max' => 'Gambar tidak boleh lebih dari 2MB!',
+            'image_size' => 'Gambar hanya boleh berukuran 200x200px',
         ],
         'cvresume' => [
             'mimes' => 'Harap upload CV/Resume anda dalam format pdf!',

@@ -100,8 +100,7 @@
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\
-                            ::user()->avatar}}" alt="">  
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
                 @endif
         </div>
       

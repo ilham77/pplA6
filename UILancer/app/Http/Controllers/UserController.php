@@ -83,10 +83,8 @@ class UserController extends Controller
                 'email'		=> 'required|email',
                 'tanggal'    => 'required|date',
                 'deskripsi'    => 'required',
-                'linkedin'       => 'url',
-                'web'       => 'url',
                 'skills'       => 'required',
-                'avatar'	=> 'mimes:jpeg,bmp,png|max:2048',
+                'avatar'	=> 'mimes:jpeg,bmp,png|max:2048|image_size:200,200',
                 'cvresume'	=> 'mimes:pdf|max:4096',
             ]);
 
