@@ -187,11 +187,13 @@
           <div class="col-md-4">
             @if($usr->avatar == "")
             <img src="http://placehold.it/200x200" alt="">
-              <br><br><a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @else
             <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">
             @endif
-
+            <br><br>
+            @if(\Auth::check())
+            <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
+            @endif
           </div>
             
             
@@ -312,7 +314,7 @@ REPORT MODAL
 -->  
 
   <!-- Modal -->
-
+@if(\Auth::check())
 <div class="modal fade" id="reportModal" role="dialog">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -358,6 +360,7 @@ THANKS MODAL
        
       </div>
       </div>
+@endif
 <!--END THANKS-->
 </body>
 </html>
