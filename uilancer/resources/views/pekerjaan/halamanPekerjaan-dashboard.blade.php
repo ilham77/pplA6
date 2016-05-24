@@ -184,7 +184,7 @@
         <div id="deskripsi" class="container-fluid text-left bg-grey" style="margin-top:-20px;">
             <b><h3>Deskripsi:</h3></b>
             <p>
-            {{ $hasil->deskripsi_pekerjaan }}
+            {!! $hasil->deskripsi_pekerjaan !!}
             </p>
             <br/>
              <span>Skill yang dibutuhkan:</span>
@@ -213,18 +213,21 @@
             @else
               <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
               <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
+
+              @if(!count($hasil->applyManager))
+                <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
+              @endif
             @endif
           @else
             @if($hasil->user->id != Auth::user()->id)
-              @if (in_array(Auth::user()->id, $id_pelamar))
-                @if($hasil->isTaken == 1)
-                  <a class="well well-sm" style="background-color:red;">Pekerjaan sedang berlangsung</a>
-                @else
-                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
-                @endif
+              @if($hasil->isTaken == 1)
+                <a class="well well-sm font2" style="background-color:red;">Pekerjaan sedang berlangsung</a>
               @else
-                <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+                @if (in_array(Auth::user()->id, $id_pelamar))
+                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                @else
+                  <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+                @endif
               @endif
             @else
               @if($hasil->isTaken == 0)

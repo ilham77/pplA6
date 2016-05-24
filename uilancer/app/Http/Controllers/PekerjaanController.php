@@ -227,7 +227,7 @@ class PekerjaanController extends Controller
 
     public function ongoing(User $user)
     {
-        $freelancer_job = $user->applyManager->where('status',1);
+        $freelancer_job = $user->applyManager->where('status', 1);
 
         foreach ($freelancer_job as $fj) {
             $tempHonor = strrev("".$fj->pekerjaan->budget."");
@@ -242,7 +242,7 @@ class PekerjaanController extends Controller
 
         foreach($job as $j)
         {
-            $j = $j->applyManager->where('status',1);
+            $j = $j->applyManager->where('status', 1);
 
             foreach ($j as $jg) {
                 $tempHonor = strrev("".$jg->pekerjaan->budget."");
@@ -316,6 +316,26 @@ class PekerjaanController extends Controller
         $pelamar = $pekerjaan->applyManager;
         $i = 1;
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
+    }
+
+    public function done($pekerjaan)
+    {
+        $kerja = Pekerjaan::find($pekerjaan);
+        $kerja->update(array('isDone' => 1));
+        return redirect()->back();
+    }
+
+    public function confirm($pekerjaan)
+    {
+        $kerja = Pekerjaan::find($pekerjaan);
+        $kerja->update(array('isClosed' => 1));
+        $kerja = $kerja->applyManager->where('status',1);
+
+        foreach ($kerja as $k) {
+            $k->update(array('status' => 0));
+        }
+
+        return redirect()->back();
     }
 
 }

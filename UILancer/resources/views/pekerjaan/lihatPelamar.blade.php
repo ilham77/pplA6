@@ -164,35 +164,44 @@
   <br>
 <div style="height:400px;border-width: 2px;border:1px solid #CDD2D4;overflow:scroll;padding:5px;">
 @if($pekerjaan->isTaken == 1)
-<h2 class="text-center" style="margin-top:35px">Pekerjaan {{ $pekerjaan->judul_pekerjaan }} sedang berlangsung.</h2>
+  <h2 class="text-center" style="margin-top:35px">Pekerjaan {{ $pekerjaan->judul_pekerjaan }} sedang berlangsung.</h2>
 @else
-<form action="../terimaLamar" method="POST">
-{{csrf_field()}}
-@foreach($pelamar as $p)
-<div class="col-lg-6 btn-group">
-  <table style="margin-top:10px">
-    <tr>
-      <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
-      <td style="padding-left: 8px;">
-        <a href="#"><h4><b>{{ $p->user->name }}</b></h4></a>
-        {{ $p->user->deskripsi }}
-      </td>
-       <td style="padding-left: 80px;">
-        <input type="checkbox" name = "user[]" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
-      </td>
-    </tr>
-  </table>
-</div>
+  @if(count($pelamar) == 0)
+    <h2 class="text-center" style="margin-top:35px">Pekerjaan {{ $pekerjaan->judul_pekerjaan }} belum memiliki pelamar.</h2>
+  @else
+    <form action="../terimaLamar" method="POST">
+    {{csrf_field()}}
+    @foreach($pelamar as $p)
+      <div class="col-lg-6 btn-group">
+        <table style="margin-top:10px">
+          <tr>
+            <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
+            <td style="padding-left: 8px;">
+              <a href="#"><h4><b>{{ $p->user->name }}</b></h4></a>
+              {{ $p->user->deskripsi }}
+            </td>
+             <td style="padding-left: 80px;">
+              <input type="checkbox" name = "user[]" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
+            </td>
+          </tr>
+        </table>
+      </div>
 
-@if($i % 2 == 0)
-  <br>
-@endif
+      @if($i % 2 == 0)
+        <br>
+      @endif
 
-<?php $i++; ?>
-@endforeach
-<input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
-</div>
-<div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+      <?php $i++; ?>
+    @endforeach
+    <input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
+    </div>
+
+    @if(Auth::user()->role != "admin")
+      <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+    @elseif($pekerjaan->user->role == "admin")
+      <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>
+    @endif
+  @endif
 @endif
 </div>
     </div>

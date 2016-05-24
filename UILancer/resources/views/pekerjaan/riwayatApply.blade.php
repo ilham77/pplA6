@@ -185,17 +185,13 @@
               <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>
 
               @if($ku->status == 1)
-                @if($ku->pekerjaan->isDone == 0)
-                   <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
-                @else
-                  <td><center>Waiting for done confirmation</center></td>
-                @endif
+                <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
+              @elseif($ku->pekerjaan->isClosed == 1)
+                <td><center>Done</center></td>
+              @elseif($ku->pekerjaan->isTaken == 1)
+                <td><center>Declined</center></td>
               @else
-                @if($ku->pekerjaan->isTaken == 1)
-                  <td><center>Declined</center></td>
-                @else
-                  <td><center>Waiting for selection</center></td>
-                @endif
+                <td><center>Waiting for selection</center></td>
               @endif
           </tr>
         @endforeach

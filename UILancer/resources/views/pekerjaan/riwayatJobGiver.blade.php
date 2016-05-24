@@ -169,7 +169,6 @@
       @if(count($kerjaDariUser))
          <thead>
         <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Pekerja</b></center></td>
         <td><center><b>Durasi Kerja</center></b></td>
         <td><center><b>Honor</b></center></td>
         <td><center><b>Deadline</b></center></td>
@@ -178,31 +177,38 @@
         </thead>
 
         @foreach($kerjaDariUser as $ku)
-          @foreach($ku->applyManager as $am)
+          @if($ku->isVerified == 0)
             <tr>
               <td><center>{{ $ku->judul_pekerjaan }}</center></td>
-              <td><center>{{ $am->user->name }}</center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
+              <td><center>Waiting to be verified</center></td>
+            </tr>
+          @else
+            @if(count($ku->applyManager))
+              <tr>
+                <td><center>{{ $ku->judul_pekerjaan }}</center></td>
+                <td><center>{{ $ku->durasi }} minggu</center></td>
+                <td><center>Rp.{{ $ku->budget }},-</center></td>
+                <td><center>{{ $ku->endDate  }}</center></td>
 
-              @if($am->status == 1)
-                @if($ku->isDone == 0)
-                   <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
-                @else
-                  <td><center>Done</center></td>
-                @endif
-              @else
                 @if($ku->isClosed == 1)
-                  <td><center>Closed</center></td>
+                  <td><center>Done</center></td>
                 @elseif($ku->isTaken == 1)
-                  <td><center>Rejected</center></td>
+                  <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
                 @else
                   <td><center><a class="btn btn-primary mt-20 font2 text-center" href="lihatPelamar/{{ $ku->id }}">Lihat Pelamar</a></center></td>
                 @endif
-              @endif
-            </tr>
-          @endforeach
+              </tr>
+            @else
+              <td><center>{{ $ku->judul_pekerjaan }}</center></td>
+              <td><center>{{ $ku->durasi }} minggu</center></td>
+              <td><center>Rp.{{ $ku->budget }},-</center></td>
+              <td><center>{{ $ku->endDate  }}</center></td>
+              <td><center>Waiting for applicant</center></td>
+            @endif
+          @endif
         @endforeach
       @else
         <b>Tidak ada pekerjaan</b>

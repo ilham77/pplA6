@@ -108,12 +108,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
     Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
+    Route::post('terimaLamar', 'UserController@terimaLamar');
+    Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 
-    Route::post('addUser', 'AdminController@createUser');
-    
+    Route::get('/done/{pekerjaan}','PekerjaanController@done');
+    Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
     Route::post('report', 'ReportController@report');
-	Route::get('/profile/{user}', 'UserController@viewPublicProfile');
 Route::post('/report/{user}/{pelapor}', 'ReportController@report');
-Route::post('terimaLamar', 'UserController@terimaLamar');
-
 });
