@@ -33,7 +33,7 @@ Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 });
 
-Route::get('/inbox', 'AdminController@index');
+
 
 Route::get('/manageUser', function () {
     return View::make('admin.manageUser');
@@ -115,4 +115,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
     Route::post('report', 'ReportController@report');
 Route::post('/report/{user}/{pelapor}', 'ReportController@report');
+Route::get('/inbox', 'AdminController@index');
 });
