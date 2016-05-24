@@ -38,7 +38,19 @@ class UserController extends Controller
     public function viewPublicProfile($user){
         $usr = User::findorFail($user);
         $skills = $usr->skill;
-        return view('profile-public', compact('usr', 'skills'));
+
+        $jobs = $usr->applyManager;
+
+        foreach ($jobs as $job) {
+            if ($job->pekerjaan->isDone == 0){
+                $tempHonor = strrev("".$job->pekerjaan->budget."");
+                $tempHonor = str_split($tempHonor,3);
+                $job->pekerjaan->budget = strrev(implode(".", $tempHonor));
+                $job->pekerjaan->endDate =  \Carbon\Carbon::parse($job->pekerjaan->endDate)->format('M j, Y');
+            }
+        }
+
+        return view('profile-public', compact('usr', 'skills', 'jobs'));
     }
 
     public function masuklogin(Request $request){
