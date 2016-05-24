@@ -198,7 +198,7 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                       @foreach($pekerjaan as $sbhPekerjaan)
-                        <a href="../pekerjaan/{{ $sbhPekerjaan->id }}" class="list-group-item">
+                        <a href="{{url('/pekerjaan/'. $sbhPekerjaan->id) }}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
                           <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
                           <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
@@ -223,6 +223,7 @@
                 </div>
                 <div class="tab-pane fade in" id="profile">
                     <div class="list-group">
+                    @if(count($reports))
                         @foreach($reports as $report)
                         <a href="report/{{$report->id}}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{$report->pelapor}}</span>
@@ -244,6 +245,7 @@
                     @else
                     <br>
                     <br>
+                    @endif
                     @endif
                 </div>
 

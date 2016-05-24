@@ -38,7 +38,19 @@ class UserController extends Controller
     public function viewPublicProfile($user){
         $usr = User::findorFail($user);
         $skills = $usr->skill;
-        return view('profile-public', compact('usr', 'skills'));
+
+        $jobs = $usr->applyManager;
+
+        foreach ($jobs as $job) {
+            if ($job->pekerjaan->isDone == 0){
+                $tempHonor = strrev("".$job->pekerjaan->budget."");
+                $tempHonor = str_split($tempHonor,3);
+                $job->pekerjaan->budget = strrev(implode(".", $tempHonor));
+                $job->pekerjaan->endDate =  \Carbon\Carbon::parse($job->pekerjaan->endDate)->format('M j, Y');
+            }
+        }
+
+        return view('profile-public', compact('usr', 'skills', 'jobs'));
     }
 
     public function masuklogin(Request $request){
@@ -83,10 +95,8 @@ class UserController extends Controller
                 'email'		=> 'required|email',
                 'tanggal'    => 'required|date',
                 'deskripsi'    => 'required',
-                'linkedin'       => 'url',
-                'web'       => 'url',
                 'skills'       => 'required',
-                'avatar'	=> 'mimes:jpeg,bmp,png|max:2048',
+                'avatar'	=> 'mimes:jpeg,bmp,png|max:2048|image_size:200,200',
                 'cvresume'	=> 'mimes:pdf|max:4096',
             ]);
 
@@ -116,6 +126,7 @@ class UserController extends Controller
 			$destinationPath = 'cvresume';
 			$extension = $file->getClientOriginalExtension();
 			$fileName = $userid . "-cvresume." . $extension;
+            $user->cvresume = $fileName;
         	$file->move($destinationPath, $fileName);
         }
 

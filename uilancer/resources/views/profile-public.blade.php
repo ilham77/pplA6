@@ -245,10 +245,48 @@
           </div>
         </div>
         <div class="row">
-        
-          <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
-            
+        @if($usr->cvresume == "")
+        <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+        @else
+        <a href="{{URL::to('cvresume').'/'.$usr->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+        @endif
         </div>
+
+        <div class="page-header"></div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Riwayat Pekerjaan</h3>
+            <table style="width:1050px;" class="table table-hover">
+      <div class="table-responsive">
+      @if(count($jobs))
+        <thead>
+        <td><center><b>Judul Pekerjaan</b></center></td>
+        <td><center><b>Pemberi Pekerja</b></center></td>
+        <td><center><b>Durasi Kerja</center></b></td>
+        <td><center><b>Honor</b></center></td>
+        <td><center><b>Deadline</b></center></td>
+        <td></td>
+        </thead>
+
+        @foreach($jobs as $job)
+          <tr>
+              <td><center>{{ $job->pekerjaan->judul_pekerjaan }}</center></td>
+              <td><center>{{ $job->pekerjaan->user->name }}</center></td>
+              <td><center>{{ $job->pekerjaan->durasi }} minggu</center></td>
+              <td><center>Rp.{{ $job->pekerjaan->budget }},-</center></td>
+              <td><center>{{ $job->pekerjaan->endDate  }}</center></td>
+
+          </tr>
+        @endforeach
+      @else
+        <b>User ini belum pernah menyelesaikan pekerjaan freelance</b>
+      @endif
+        </div>
+      </table>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

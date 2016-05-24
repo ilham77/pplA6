@@ -100,8 +100,7 @@
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\
-                            ::user()->avatar}}" alt="">  
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
                 @endif
         </div>
       
@@ -150,9 +149,13 @@ REPORT MODAL
             <p>Ketertarikan     : Massage, Telephone marketing</p>
 
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
-            <p>Fakultas         : {{\Auth::user()->faculty}}</p>
-            CV / Resume :
-            <span><a href="#" download>click here to download</a></span></br>
+            <p>Fakultas         : {{\Auth::user()->faculty}}</p></br>
+            @if(\Auth::user()->cvresume == "")
+            <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+            @else
+            <a href="{{URL::to('cvresume').'/'.\Auth::user()->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+            @endif
+            </br>
           <a href="{{url('edit')}}" class="btn btn-danger">Edit Profile</a>
         </div>
   </div>
