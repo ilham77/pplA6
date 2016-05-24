@@ -243,9 +243,11 @@
           </div>
         </div>
         <div class="row">
-        
-          <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
-            
+        @if($usr->cvresume == "")
+        <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+        @else
+        <a href="{{URL::to('cvresume').'/'.$usr->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
+        @endif
         </div>
       </div>
     </div>

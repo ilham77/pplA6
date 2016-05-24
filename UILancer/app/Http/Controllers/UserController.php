@@ -114,6 +114,7 @@ class UserController extends Controller
 			$destinationPath = 'cvresume';
 			$extension = $file->getClientOriginalExtension();
 			$fileName = $userid . "-cvresume." . $extension;
+            $user->cvresume = $fileName;
         	$file->move($destinationPath, $fileName);
         }
 
