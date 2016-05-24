@@ -56,13 +56,17 @@ class UserController extends Controller
     public function masuklogin(Request $request){
 
         $username = Input::get('username');
-        $password = Input::get('password');
+        $password = hash('md5', 'password');
+        
+
+
+
         $user= DB::table('users')->where([['username','=',$username]])->first();
         if($user===null){
             return redirect('/login')->withErrors(['Invalid email or password']);
         } else {
-            $pwd = $user->password;
-            if (Hash::check($password, $pwd)) {
+            $pwd = hash('md5', $user->password);;
+            if ($password == $pwd) {
                 if($user->role == 'official'){
                     Auth::loginUsingId($user->id);
                     return redirect('/');
