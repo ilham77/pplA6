@@ -56,7 +56,11 @@ class UserController extends Controller
     public function masuklogin(Request $request){
 
         $username = Input::get('username');
-        $password = Input::get('password');
+        $password = hash('md5', 'password');
+        
+
+
+
         $user= DB::table('users')->where([['username','=',$username]])->first();
         if($user===null){
             return redirect('/login')->withErrors(['Invalid email or password']);
