@@ -63,7 +63,7 @@ class UserController extends Controller
         } else {
             $pwd = $user->password;
             if (Hash::check($password, $pwd)) {
-                if($user->role == 'official'){
+                if($user->role == 'official' || $user->role == 'admin'){
                     Auth::loginUsingId($user->id);
                     return redirect('/');
                 } else {
