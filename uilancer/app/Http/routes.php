@@ -24,7 +24,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-
+    Route::get('/home', function() {
+        return view('home');
+    });
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -46,9 +48,7 @@ Route::group(['middleware' => ['web']], function () {
 		    'uses' => 'PekerjaanController@index'
 	]);
 
-    Route::get('/home', function() {
-        return view('home');
-    });
+
 
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');

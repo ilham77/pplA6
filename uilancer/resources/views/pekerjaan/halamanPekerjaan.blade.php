@@ -22,20 +22,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    <a href="#home"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+    <a href="./"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
       <!---->
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#testimoni">Testimoni</a></li>
-        <li><a href="#partner">Partner</a></li>
 
-        <li data-toggle="modal" data-target="#myModal"><a href="#">
+                <li data-toggle="modal" data-target="#myModal"><a href="#">
             @if(\Auth::check())
-            <p>Welcome, {{\Auth::user()->name}}</p>
+            Welcome, {{\Auth::user()->name}}
             @else
-            <p>Login</p>
+            Login
             @endif
             </a></li>
       </ul>
@@ -63,9 +60,9 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+          &nbsp
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
         </div>
       </div>
             @endif
@@ -80,7 +77,7 @@
     <div class="container-fluid col-md-8 col-md-offset-2 col-xs-4 col-xs-offset-2 col-lg-8 col-lg-offset-2 text-center bg-white">
         <br/>
         <h1><p id="judul_pekerjaan">{{ $hasil->judul_pekerjaan }}</p></h1>
-        <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
+        <span>Oleh : <a data-toggle="modal" data-target="#myModal" href="#">{{ $jobGiver->name }}</a></span>
             <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
             <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
             <span>Status:

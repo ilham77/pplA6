@@ -155,9 +155,16 @@ class PekerjaanController extends Controller
             })
         ->where('isVerified',1);
 
+
+
         if($request->flag == "nonDash")
         {
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
+                    foreach ($hasil as $pekerjaan) {
+                        $tempHonor = strrev("".$pekerjaan->budget."");
+                        $tempHonor = str_split($tempHonor,3);
+                        $pekerjaan->budget = strrev(implode(".", $tempHonor));
+                    }
             return view('pekerjaan.searchPekerjaan')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
         }
         else
@@ -178,6 +185,12 @@ class PekerjaanController extends Controller
             else if($request->maksimumHonor)
             {
                 $hasil = $hasil->where('budget','<=',$request->maksimumHonor);
+            }
+
+            foreach ($hasil as $pekerjaan) {
+                        $tempHonor = strrev("".$pekerjaan->budget."");
+                        $tempHonor = str_split($tempHonor,3);
+                        $pekerjaan->budget = strrev(implode(".", $tempHonor));
             }
 
             if($request->durasi)
@@ -218,6 +231,12 @@ class PekerjaanController extends Controller
                 $MyDateCarbon->addDays(1);
 
                 $hasil = $hasil->whereDate('created_at', '<=', $MyDateCarbon);
+            }
+
+            foreach ($hasil as $pekerjaan) {
+                        $tempHonor = strrev("".$pekerjaan->budget."");
+                        $tempHonor = str_split($tempHonor,3);
+                        $pekerjaan->budget = strrev(implode(".", $tempHonor));
             }
 
             $hasil = $hasil->simplePaginate(10)->appends($request->all());

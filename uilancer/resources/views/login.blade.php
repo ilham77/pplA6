@@ -65,9 +65,6 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./">About Us</a></li>
-        <li><a href="./">Testimoni</a></li>
-        <li><a href="./">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
       </ul>
     </div>
@@ -85,8 +82,9 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+          &nbsp
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
         </div>
       </div>
       <br>

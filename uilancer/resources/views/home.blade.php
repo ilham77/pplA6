@@ -27,15 +27,16 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
       <!---->
-        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Why UILancer?</a></li>
         <li><a href="#testimoni">Testimoni</a></li>
         <li><a href="#partner">Partner</a></li>
-
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">
             @if(\Auth::check())
-            <p>Welcome, {{\Auth::user()->name}}</p>
+            Welcome, {{\Auth::user()->name}}
             @else
-            <p>Login</p>
+            Login
             @endif
             </a></li>
       </ul>
@@ -64,9 +65,9 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+          &nbsp
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
         </div>
       </div>
             @endif

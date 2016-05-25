@@ -48,9 +48,6 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./">About Us</a></li>
-        <li><a href="./">Testimoni</a></li>
-        <li><a href="./">Partner</a></li>
         <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
       </ul>
     </div>
@@ -68,9 +65,9 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+          &nbsp
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
         </div>
       </div>
       
@@ -78,6 +75,8 @@
 </div>
 
 <div class="jumbotron text-center">
+  <br>
+  <br>
   <h1>UILancer Official Account</h1> 
 </div>
 
@@ -89,7 +88,7 @@
           <center><h3>Apa itu Official Account?</h3></center>
           <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
         </div>
-        <div class="panel-body">
+        <div class="panel-body text-left" style="height:350px;">
             <ul>
           <li>Akun resmi UILancer</li>
           <li>Email resmi @uilancer.com</li>
@@ -103,7 +102,7 @@
           <li>Logo dapat ditampilkan di halaman depan UILancer</li>
             </ul>
         </div>
-        <div class="panel-footer text-center">
+        <div class="panel-footer text-center" style="height:100px;">
           <p>Untuk mendapatkan Official Account, Anda dapat kontak kami dengan email ke:</p>
           <a href="#">info@uilancer.com</a>
         </div>
@@ -115,14 +114,14 @@
           <h3>Saya hanya ingin mencari freelancer...</h3>
           <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer, tetapi Anda tidak akan mendapati semua keuntungan yang didapat sebagai Official Account.</p>
         </div>
-        <div class="panel-body text-left">
+        <div class="panel-body text-left" style="height:350px;">
             <ul>
           <li>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</li>
           <li>Melihat profil pelamar</li>
           <li>Testimoni dan rating freelancer</li>
             </ul>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer" style="height:100px;">
           <button class="btn btn-lg" onclick="location.href='#form-pekerjaan';">Post Lowongan Pekerjaan Anda!</button>
         </div>
       </div> 
@@ -131,7 +130,7 @@
 </div>
     
 
-    <div id="form-pekerjaan" class="container-fluid bg-grey">   
+    <div id="form-pekerjaan" class="container-fluid bg-grey slideanim">   
               @if (count($errors))
 
         <div class="well well-sm" id="error">
@@ -248,24 +247,12 @@
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#home']").on('click', function(event) {
-
-    // Prevent default anchor click behavior
-    event.preventDefault();
-
-    // Store hash
-    var hash = this.hash;
-
-    // Using jQuery's animate() method to add smooth page scroll
-    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+$('button').click(function(){
     $('html, body').animate({
-      scrollTop: $(hash).offset().top
-    }, 900, function(){
-   
-      // Add hash (#) to URL when done scrolling (default click behavior)
-      window.location.hash = hash;
-    });
-  });
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
   
     
   $(window).scroll(function() {
