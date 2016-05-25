@@ -27,16 +27,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="./about">About Us</a></li>
-        <li><a href="#testimoni">Testimoni</a></li>
-        <li><a href="#partner">Partner</a></li>
-        <li data-toggle="modal" data-target="#myModal"><a href="#">
-            @if(\Auth::check())
-            <p>Welcome, {{\Auth::user()->name}}</p>
-            @else
-            <p>Login</p>
-            @endif
-            </a></li>
+
       </ul>
     </div>
   </div>
