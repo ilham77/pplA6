@@ -56,6 +56,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/info', function () {
 	    return view('info');
 	});
+    Route::get('/post', function () {
+	    return view('post');
+	});
 	Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
 	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
 	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
