@@ -111,7 +111,7 @@ class PekerjaanController extends Controller
             $skill->skill = $as;
             $skill->save();
         }
-        return redirect('dashboard');
+        return redirect('post');
     }
 
     public function verifyJob($idPekerjaan) {
