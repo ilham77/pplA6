@@ -45,15 +45,15 @@ class AdminController extends Controller
 
         $user->name      = $request->namaPemilikAkun;
 
-        $hashPassword = hash('md5',$request->password);
-        $hashConfirmed = hash('md5',$request->confirmPassword);
+        $hashPassword = bcrypt($request->password);
+        $confirm = $request->confirmPassword;
         $user->npm = $npm;
         $user->password = $hashPassword;
 
         $user->email     = $request->email;
         $user->role = $request->role;
 
-        if ($hashPassword == $hashConfirmed) {
+        if ($request->password == $confirm) {
         	$user->save();
 			return redirect('inbox');
         }
