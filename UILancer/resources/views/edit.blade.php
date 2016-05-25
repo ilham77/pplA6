@@ -9,97 +9,176 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link href="style.css" rel="stylesheet" type="text/css">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+<body>
 
-<body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!-- Navigasi Bar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <ul class="user-menu">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="./about">About Us</a></li>
-        <li><a href="#testimoni">Testimoni</a></li>
-        <li><a href="#partner">Partner</a></li>
-        <li data-toggle="modal" data-target="#myModal"><a href="#">
-            @if(\Auth::check())
-            <p>Welcome, {{\Auth::user()->name}}</p>
-            @else
-            <p>Login</p>
-            @endif
-            </a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+          <!-- Notifikasi -->
+          <li role="presentation" class="dropdown pull-right" id="notifikasi">
+                    <a href="#" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                      <span class="glyphicon glyphicon-bell"</span>
+                      <span class="badge bg-green">6</span>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                      <li>
+                        <a>
+                          <span class="image">
+                            <img src="img.jpg" alt="Profile Image" />
+                          </span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image">
+                            <img src="img.jpg" alt="Profile Image" />
+                          </span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image">
+                            <img src="img.jpg" alt="Profile Image" />
+                          </span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image">
+                            <img src="img.jpg" alt="Profile Image" />
+                          </span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="text-center">
+                          <a href="#">
+                            <strong>See All Alerts</strong>
+                            <span class="glyphicon glyphicon-menu-right"</span>
+                          </a>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
 
-  <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-           @if(\Auth::check())
-               <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Logout</h4>
-        </div>
-        <div class="modal-body">
-          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
-        </div>
+                  <!-- Menu User -->
+          <li class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+              <li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+              <li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+            </ul>
+          </li>
+
+        </ul>
       </div>
-            @else
-               <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login</h4>
-        </div>
-        <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
-        </div>
-      </div>
-            @endif
-      <!-- Modal content-->
-   
-      
-    </div>
-</div>
 
-<!-- EDIT PROFILE -->
-  <div id="body" class="container-fluid">
-    <div id="sidebar" class="container-fluid col-md-3 col-xs-1 col-lg-3">
-        <DL>
-        <DT>Menu
-            <DD><a href="#">Daftar Pekerjaan</a><br></DD>
-            <DD><a href="#">Cari Pekerjaan</a><br></DD>
-            <DD><a href="#">Buka Pekerjaan</a><br></DD>
-            <DD><a href="#">On Going Job</a><br></DD>
-        </DT><br>
-        <DT>Riwayat
-                <DD><a href="#">Pembukaan Job</a></DD>
-                <DD><a href="#">Apply Job</a></DD>
-        </DT>
-        <hr  style="height:1px;border:none;color:#333;background-color:#333;"/>
-       
-        <a href="#">Setting</a><br>
-        <a href="#">FAQ & Help</a><br>
-        </DT>
-    </div>
-    <div id="container" class="col-md-9 col-xs-4 col-lg-9 container-fluid bg-grey">
-        <div id="content" class="container col-md-8 col-xs-4 col-lg-8 col text-left">
-            <p>
-            <h1>Edit Profile</h1>
+    </div><!-- /.container-fluid -->
+  </nav>
 
+
+
+  <!-- Sidebar -->
+  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <ul class="nav menu">
+      @if(Auth::user()->role == 'Admin')
+      <li class="parent">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      @endif
+      <li class="active"><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li class="parent ">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+        </a>
+        <ul class="children collapse" id="sub-item-1">
+          <li>
+            <a class="" href="{{url('riwayatJobGiver')}}">
+              <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('riwayatApply')}}">
+              <span class="glyphicon glyphicon-check"></span> Apply Job
+            </a>
+          </li>
+        </ul>
+      </li>
+ <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
+    </ul>
+  </div><!--/.sidebar-->
+
+  <div class="col-sm-7 col-sm-offset-3 col-lg-offset-2 main">
+    <div class="row">
+      <div class="col-lg-12">
+                <div id="form" class="container-fluid">
+  <b><h1 class="text-left" style="margin-top:35px">Edit Profil</h1></b>
+<br>
             <form action="saveprofile" method="POST" role="form" enctype="multipart/form-data">
               {{csrf_field()}}
               <div class="form-group">
@@ -107,14 +186,14 @@
                 @if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">	
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
                 @endif
                 <br/>
                 <br/>
                 <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="avatar">
+                          <input type="file" name="avatar">
                       </span>
                   </span>
                   <input type="text" class="form-control" readonly>
@@ -167,7 +246,7 @@
                 <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
-                          Browse&hellip; <input type="file" name="cvresume">
+                          <input type="file" name="cvresume">
                       </span>
                   </span>
                   <input type="text" class="form-control" readonly>
@@ -191,39 +270,11 @@
 
               {!! Form::submit('Simpan', array('class'=>'btn btn-success')) !!}
               <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">Back</a></button>
-            </form>    
-        </div>
+            </form>   
+            <br>
+      </div>
     </div>
   </div>
-
-<!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid">
-  <h2 class="text-center">CONTACT</h2>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center">
-      <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
-    </div>
-  </div>
-</div>
-
-<!-- Footer -->
-<footer class="text-center">
-  <p>Copyright &copy; 2016. UILancer</p>
-</footer>
-
-<footer class="container-fluid text-center">
-  <a href="#home" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br>
-  <img src="logo2.png" alt="UILancer" width="200" height="50">
-  <p>UILancer is marketplace for service blablabla</p>
-  <a href="#">(+62) 813-681-999</a></br>
-  <a href="#">ask@uilancer.com</a><br>
-  <p>Made By <a href="" title="UILancer">PPL A6</a></p>		
-</footer>
 
 <script>
 $(document).ready(function(){

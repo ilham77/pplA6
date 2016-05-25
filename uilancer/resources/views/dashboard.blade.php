@@ -9,6 +9,7 @@
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -112,7 +113,7 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+							<li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
 							<li><a href="{{url('edit')}}"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
 							<li><a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
 						</ul>
@@ -124,8 +125,7 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 
-	<!-- Sidebar -->
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       @if(Auth::user()->role == 'Admin')
       <li class="parent">
@@ -167,11 +167,11 @@
           </li>
         </ul>
       </li>
-      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
-	</div><!--/.sidebar-->
+</div>
 
 
 

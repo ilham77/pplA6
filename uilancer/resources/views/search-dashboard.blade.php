@@ -6,7 +6,7 @@
 <title>UILancer - Dashboard</title>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="{{ asset('style.css') }}">
-<link href="style-dashboard.css" rel="stylesheet">
+<link href="{{ asset('style-dashboard.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
@@ -178,7 +178,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Cari Lowongan Kerja</h1>
+  <b><h1 class="text-left" style="margin-top:35px">Cari Lowongan Kerja</h1></b>
   <div class="row">
     <div class="col-md-8">
       <form action="searchPekerjaan" method="GET">

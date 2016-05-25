@@ -125,7 +125,7 @@
               <p><input class="btn btn-danger" type="submit" name="commit" value="login"></p>
             </form>
             <div class="login-help">
-              <p><a href="info">Don't have official account?</a></p>
+              <p><a href="{{url('info')}}">Don't have official account?</a></p>
             </div>
           </div>
       </section>

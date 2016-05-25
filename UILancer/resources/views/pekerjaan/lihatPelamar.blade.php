@@ -110,7 +110,8 @@
                   <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-user">User</span>
+              <span class="glyphicon glyphicon-user"></span>
+              <span style="font-family: Lato, sans-serif;">{{\Auth::user()->name}}</span>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
