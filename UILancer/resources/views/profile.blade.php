@@ -21,7 +21,6 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
->>>>>>> refs/remotes/origin/master
       </button>
       <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>

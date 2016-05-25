@@ -24,35 +24,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/infoAccount', function () {
-    return view('infoAccount');
-});
-
-//Routing yang berhubungan dengan pekerjaan
-Route::get('/search-dashboard', function () {
-    return View::make('search-dashboard');
-});
-
-
-
-Route::get('/manageUser', function () {
-    return View::make('admin.manageUser');
-});
-
-Route::get('/createUser', function () {
-    return View::make('admin.createUser');
-});
-
-Route::post('addUser', 'AdminController@createUser');
-
-Route::get('/editUser', function () {
-    return View::make('admin.editUser');
-});
-
-Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
-Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
-Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +85,35 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/done/{pekerjaan}','PekerjaanController@done');
     Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
     Route::post('report', 'ReportController@report');
-Route::post('/report/{user}/{pelapor}', 'ReportController@report');
-Route::get('/inbox', 'AdminController@index');
+	Route::post('/report/{user}/{pelapor}', 'ReportController@report');
+	Route::get('/inbox', 'AdminController@index');
+
+
+	Route::get('/deleteUser/{idUser}', 'AdminController@deleteUser');
+
+	//Routing yang berhubungan dengan pekerjaan
+	Route::get('/search-dashboard', function () {
+	    return View::make('search-dashboard');
+	});
+
+
+
+	Route::get('/manageUser', function () {
+	    return View::make('admin.manageUser');
+	});
+
+	Route::get('/manageUser', 'AdminController@showUser');
+
+	Route::get('/createUser', function () {
+	    return View::make('admin.createUser');
+	});
+
+	Route::post('addUser', 'AdminController@createUser');
+
+	Route::get('/editUser/{idPekerjaan}', 'AdminController@editForm');
+	Route::post('postEdit', 'AdminController@editUser');
+
+	Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+	Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
+	Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 });

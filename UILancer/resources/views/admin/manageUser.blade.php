@@ -36,7 +36,7 @@
                       <span class="glyphicon glyphicon-bell"</span>
                       <span class="badge bg-green">6</span>
                     </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated  fadeInDown" role="menu">
                       <li>
                         <a>
                           <span class="image">
@@ -185,7 +185,7 @@
         </div>
         <div class="col-sm-9 col-md-10">
            
-            <div class="pull-right">
+<!--             <div class="pull-right">
                 <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
                 <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-default">
@@ -195,7 +195,7 @@
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <br>
@@ -213,27 +213,17 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tr>
-                  <td><a href="#">Luthfi Kurnia Putra</a></td>
-                  <td>Mahasiswa</td>
-                  <td>luthfi.kurnia@ui.ac.id</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">Alamanda Shantika</a></td>
-                  <td>Official Account</td>
-                  <td>alamanda@gojek.com</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
-                <tr>
-                  <td><a href="#">Muhammad Gibran</a></td>
-                  <td>Admin</td>
-                  <td>gibran@uilancer.com</td>
-                  <td><a href='{{url('editUser')}}'><i class="glyphicon glyphicon-edit"></i></a></td>
-                  <td><a href='#' data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
-                </tr>
+                @if(count($users))
+                        @foreach($users as $user)
+                  <tr>
+                    <td><a href="#">{{$user->name}}</a></td>
+                    <td>{{$user->role}}</td>
+                    <td>{{$user->email}}</td>
+                    <td><a href='editUser/{{$user->id}}'}><i class="glyphicon glyphicon-edit"></i></a></td>
+                    <td><a data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                  </tr>
+                        @endforeach
+                        @endif
               </div>
             </table>
     </div>
@@ -247,7 +237,8 @@
       </div>
     </div><!--/.row-->
   </div><!--/.row-->
-
+                @if(count($users))
+                        @foreach($users as $user)
   <div class="modal fade" id="modalDelete" role="dialog">
     <div class="modal-dialog">
                <div class="modal-content">
@@ -257,12 +248,14 @@
         <center>
         <div class="modal-body">
           <div style="margin-top:-15px"><h4>Apakah anda yakin menghapus user ini?</h4></div>
-          <a href="#" class="btn btn-default">Yes</a>
+          <a href="deleteUser/{{$user->id}}" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>
       </div>
-      <!-- Modal content-->
+      <!-- Modal content-->                        
+                          @endforeach
+               @endif
    
       
     </div>

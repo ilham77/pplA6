@@ -56,14 +56,14 @@ class UserController extends Controller
     public function masuklogin(Request $request){
 
         $username = Input::get('username');
-        $password = hash('md5', 'password');
+        $password = bcrypt($request->password);
         
 
 
 
         $user= DB::table('users')->where([['username','=',$username]])->first();
         if($user===null){
-            return redirect('/login')->withErrors(['Invalid email or password']);
+            return redirect('/login')->withErrors(['Invalid username or password']);
         } else {
             $pwd = $user->password;
             if (Hash::check($password, $pwd)) {
@@ -71,10 +71,10 @@ class UserController extends Controller
                     Auth::loginUsingId($user->id);
                     return redirect('/');
                 } else {
-                    return redirect('/login')->withErrors(['Invalid email or password']);
+                    return redirect('/login')->withErrors(['Invalid username or password']);
                 }
             } else {
-                return redirect('/login')->withErrors(['Invalid email or password']);
+                return redirect('/login')->withErrors(['Invalid username or password']);
             }
         }
 
