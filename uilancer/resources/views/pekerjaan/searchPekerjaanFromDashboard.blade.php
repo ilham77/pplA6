@@ -232,10 +232,15 @@
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
+               
             </div>
+
     </div>
     </div>
         @endforeach
+        <center>
+         <button class="btn btn-default mt-20 font2 text-center" onclick="goBack()">Cari lagi</button>
+       </center>
       @else
         <h2>Tidak ada pekerjaan</h2>
       @endif
@@ -269,7 +274,13 @@
     $(window).on('resize', function () {
       if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })
+
   </script>
+  <script>
+function goBack() {
+    window.history.back()
+}
+</script>
 </body>
 
 </html>

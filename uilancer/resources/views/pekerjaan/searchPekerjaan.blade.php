@@ -118,6 +118,9 @@
     </div>
     </div>
         @endforeach
+                <center>
+         <button class="btn btn-default mt-20 font2 text-center" onclick="goBack()">Cari lagi</button>
+       </center>
       @else
         <h2>Tidak ada pekerjaan</h2>
       @endif
@@ -131,7 +134,7 @@
 
 
 <!-- Footer -->
-<footer class="text-center" style="position: absolute; height: 100px; bottom: 0; width: 100%;">
+<footer class="text-center">
   <p>Copyright &copy; 2016. UILancer</p>
 </footer>
 
@@ -169,6 +172,10 @@ $(document).ready(function(){
   });
 })
 </script>
-
+  <script>
+function goBack() {
+    window.history.back()
+}
+</script>
 </body>
 </html>

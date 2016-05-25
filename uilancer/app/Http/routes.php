@@ -16,6 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
+
 Route::get('/detail', function() {
     return view('detail');
 });
@@ -24,9 +26,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-    Route::get('/home', function() {
-        return view('home');
-    });
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -39,9 +39,6 @@ Route::get('/dashboard', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-	Route::get('/login', function () {
-    	return view('login');
-	});
 
 	Route::get('/', [
 		    'middleware' => 'auth',
@@ -52,9 +49,6 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
-	});
-	Route::get('/info', function () {
-	    return view('info');
 	});
     Route::get('/post', function () {
 	    return view('post');
@@ -72,7 +66,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
 	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
 	Route::get('/listPekerjaan','PekerjaanController@index');
-	Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
+	
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
     Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
@@ -99,12 +93,6 @@ Route::group(['middleware' => ['web']], function () {
 	    return View::make('search-dashboard');
 	});
 
-
-
-	Route::get('/manageUser', function () {
-	    return View::make('admin.manageUser');
-	});
-
 	Route::get('/manageUser', 'AdminController@showUser');
 
 	Route::get('/createUser', function () {
@@ -120,3 +108,17 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 	Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
 });
+
+if (!Auth::check()) {
+    Route::get('/home', function() {
+        return view('home');
+    });
+    Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
+
+	Route::get('/info', function () {
+	    return view('info');
+	});
+		Route::get('/login', function () {
+    	return view('login');
+	});
+}
