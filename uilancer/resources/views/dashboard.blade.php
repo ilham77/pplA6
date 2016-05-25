@@ -188,7 +188,7 @@
                 <br>
         </div>
         <div id="profile-header" class="col-md-7">
-            <h1 style="margin-top:-5px;">{{\Auth::user()->name}}</h1>
+            <a href="{{url('dashboard')}}"><h1 style="margin-top:-5px;">{{\Auth::user()->name}}</h1></a>
             <hr/>
             <h3>Deskripsi:</h3>
             <p>
@@ -207,6 +207,7 @@
             <p>Ketertarikan     : </p>
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
+
             @if(\Auth::user()->cvresume == "")
             <a href="#" class="btn btn-primary mt-20 font2 text-center ">Lihat CV/Resume</a>
             @else

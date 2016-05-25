@@ -122,8 +122,62 @@
         </ul>
       </div>
 
+
+
     </div><!-- /.container-fluid -->
   </nav>
+
+
+  <!-- Sidebar -->
+  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+    <ul class="nav menu">
+      @if(Auth::user()->role == 'Admin')
+      <li class="parent active">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      @endif
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li class="parent ">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+        </a>
+        <ul class="children collapse" id="sub-item-1">
+          <li>
+            <a class="" href="{{url('riwayatJobGiver')}}">
+              <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('riwayatApply')}}">
+              <span class="glyphicon glyphicon-check"></span> Apply Job
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
+    </ul>
+
+  </div><!--/.sidebar-->
+
 @else
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -149,166 +203,87 @@
 </nav>
 @endif
 
-
-  <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-           @if(\Auth::check())
-               <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Logout</h4>
-        </div>
-        <div class="modal-body">
-          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
-        </div>
-      </div>
-            @else
-               <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login</h4>
-        </div>
-        <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
-        </div>
-      </div>
-            @endif
-    </div>
-</div>
-
-<div id="profile"class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 main">
-        <div class="row">
-        <div class="page-header"></div>
-          <div class="col-md-4">
+  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row" style="margin-top:35px">
+      <div class="col-lg-12" style="margin-top:5px">
+          <div class="col-md-3">
             @if($usr->avatar == "")
             <img src="http://placehold.it/200x200" alt="">
             @else
             <img src="{{URL::to('avatar').'/'.$usr->avatar}}" alt="">
             @endif
             <br><br>
-            @if(\Auth::check())
-            <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
-            @endif
           </div>
+        <div id="profile-header" class="col-md-7">
+            <h1 style="margin-top:-5px;">{{\Auth::user()->name}}</h1>
+            <hr/>
+            <h3>Deskripsi:</h3>
+            <p>
+            {{\Auth::user()->deskripsi}}
+            </p>
+        </div>
+        <br>
+
+        <div id="biodata" class="col-md-9 col-xs-4 col-lg-9">
+          <br>
+            <p>Tempat Kelahiran : {{$usr->tempat_lahir}}</p>
+            <p>Tanggal Lahir    : {{$usr->tanggal_lahir}}</p>
+            <p>Email            : {{$usr->email}}</p>
+            <p>Media Sosial     : {{$usr->linkedin}}</p>
+            <p>Web              : {{$usr->web}}</p>
+            <p>Ketertarikan     : </p>
+            <p>Pekerjaan        : {{$usr->role}}</p>
+            <p>Fakultas         : {{$usr->faculty}}</p>
             
-            
-          <div class="col-md-8">
-            <h1>{{$usr->name}}</h1>
-            <p>{{$usr->deskripsi}}</p>
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <td class="col-md-3">Tempat Kelahiran</td>
-                  <td class="col-md-9">{{$usr->tempat_lahir}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Tanggal Lahir</td>
-                  <td class="col-md-9">{{$usr->tanggal_lahir}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Email</td>
-                  <td class="col-md-9">{{$usr->email}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">LinkedIn</td>
-                  <td class="col-md-9">{{$usr->linkedin}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Website</td>
-                  <td class="col-md-9">{{$usr->web}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Pekerjaan</td>
-                  <td class="col-md-9">{{$usr->role}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Fakultas/Institusi</td>
-                  <td class="col-md-9">{{$usr->faculty}}</td>
-                </tr>
-                <tr>
-                  <td class="col-md-3">Skill</td>
-                  <td class="col-md-9">
-                    @if(count($skills))
-              @foreach($skills as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
+
+                    @if($usr->cvresume == "")
+                    <a href="#" class="btn btn-primary mt-20 font2 text-center">Lihat CV/Resume</a>
+                    @else
+                    <a href="{{URL::to('cvresume').'/'.$usr->cvresume}}" class="btn btn-primary mt-20 font2 text-center">Lihat CV/Resume</a>
+                    @endif
+                      @if(\Auth::check())
+            <a class="btn btn-danger mt-20 font2 text-center " data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @endif
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="row">
-        @if($usr->cvresume == "")
-        <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
-        @else
-        <a href="{{URL::to('cvresume').'/'.$usr->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
-        @endif
-        </div>
+            <br>
+            <hr style="">
+                    <h3>Riwayat Pekerjaan</h3>
+                    <table style="width:1050px;" class="table table-hover">
+              <div class="table-responsive">
+              @if(count($jobs))
+                <thead>
+                <td><center><b>Judul Pekerjaan</b></center></td>
+                <td><center><b>Pemberi Pekerja</b></center></td>
+                <td><center><b>Durasi Kerja</center></b></td>
+                <td><center><b>Honor</b></center></td>
+                <td><center><b>Deadline</b></center></td>
+                <td></td>
+                </thead>
 
-        <div class="page-header"></div>
+                @foreach($jobs as $job)
+                  <tr>
+                      <td><center>{{ $job->pekerjaan->judul_pekerjaan }}</center></td>
+                      <td><center>{{ $job->pekerjaan->user->name }}</center></td>
+                      <td><center>{{ $job->pekerjaan->durasi }} minggu</center></td>
+                      <td><center>Rp.{{ $job->pekerjaan->budget }},-</center></td>
+                      <td><center>{{ $job->pekerjaan->endDate  }}</center></td>
 
-        <div class="row">
-          <div class="col-md-12">
-            <h3>Riwayat Pekerjaan</h3>
-            <table style="width:1050px;" class="table table-hover">
-      <div class="table-responsive">
-      @if(count($jobs))
-        <thead>
-        <td><center><b>Judul Pekerjaan</b></center></td>
-        <td><center><b>Pemberi Pekerja</b></center></td>
-        <td><center><b>Durasi Kerja</center></b></td>
-        <td><center><b>Honor</b></center></td>
-        <td><center><b>Deadline</b></center></td>
-        <td></td>
-        </thead>
-
-        @foreach($jobs as $job)
-          <tr>
-              <td><center>{{ $job->pekerjaan->judul_pekerjaan }}</center></td>
-              <td><center>{{ $job->pekerjaan->user->name }}</center></td>
-              <td><center>{{ $job->pekerjaan->durasi }} minggu</center></td>
-              <td><center>Rp.{{ $job->pekerjaan->budget }},-</center></td>
-              <td><center>{{ $job->pekerjaan->endDate  }}</center></td>
-
-          </tr>
-        @endforeach
-      @else
-        <b>User ini belum pernah menyelesaikan pekerjaan freelance</b>
-      @endif
-        </div>
-      </table>
-          </div>
+                  </tr>
+                @endforeach
+              @else
+                <b>User ini belum pernah menyelesaikan pekerjaan freelance</b>
+              @endif
+                </div>
+              </table>
+                  </div>
         </div>
 
       </div>
-    </div>
-  </div>
 
-<!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid">
-  <h2 class="text-center">CONTACT</h2>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center">
-      <p>Contact us and we'll get back to you within 24 hours.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
-      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
-    </div>
-  </div>
-</div>
+    </div><!--/.row-->
 
-<!-- Footer -->
-<footer class="text-center">
-  <p>Copyright &copy; 2016. UILancer</p>
-</footer>
 
+
+  
 <script>
 var today = new Date().toISOString().split('T')[0];
 document.getElementsByName("deadline")[0].setAttribute('min', today);
@@ -397,6 +372,36 @@ THANKS MODAL
       </div>
       </div>
 @endif
+  <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+           @if(\Auth::check())
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Logout</h4>
+        </div>
+        <div class="modal-body">
+          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+        </div>
+      </div>
+            @else
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
+          <div class="divider"></div>
+          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+        </div>
+      </div>
+            @endif
+    </div>
+</div>
+
+
 <!--END THANKS-->
 </body>
 </html>

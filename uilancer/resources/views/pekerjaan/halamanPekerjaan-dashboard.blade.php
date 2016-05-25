@@ -171,6 +171,7 @@
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
+  </div>
 
 <!-- DETAIL PEKERJAAN -->
 
