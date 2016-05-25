@@ -127,8 +127,27 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
+      @if(Auth::user()->role == 'Admin')
+      <li class="parent">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      @endif
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-      <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li  class="active"><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">

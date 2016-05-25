@@ -127,32 +127,50 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
-      <li  class="active"><a href="../search-dashboard"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      @if(Auth::user()->role == 'Admin')
+      <li class="parent">
+        <a href="#">
+          <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+        </a>
+        <ul class="children collapse" id="sub-item-2">
+          <li>
+            <a class="" href="{{url('inbox')}}">
+              <span class="glyphicon glyphicon-inbox"></span> Inbox
+            </a>
+          </li>
+          <li>
+            <a class="" href="{{url('manageUser')}}">
+              <span class="glyphicon glyphicon-pawn"></span> Manajemen User
+            </a>
+          </li>
+        </ul>
+      </li>
+      @endif
+      <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+      <li class="active"><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatJobGiver')}}">
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
           <li>
-            <a class="" href="#">
+            <a class="" href="{{url('riwayatApply')}}">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
         </ul>
       </li>
-      <li><a href="#"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
-
-  </div><!--/.sidebar-->
 
 <!-- DETAIL PEKERJAAN -->
 
