@@ -19,7 +19,21 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
+  <style type="text/css">
+/*<![CDATA[*/
+#myInstance1 {
+        border: 2px dashed #0000ff;
+}
+.nicEdit-selected {
+        border: 2px solid #0000ff !important;
+}
+ 
+.nicEdit-main {
+        background-color: #fff !important;
+}
+ 
+/*]]>*/
+</style>
 </head>
 
 <body>

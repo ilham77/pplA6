@@ -163,7 +163,7 @@
               </div>
                 
               <div class="form-group">
-                <label id="file-pendukung" class="control-label">Upload CV/Resume (optional)</label>
+                <label id="file-pendukung" class="control-label">Upload CV/Resume (optional) - File harus berupa .pdf</label>
                 <div class="input-group">
                   <span class="input-group-btn">
                       <span class="btn btn-primary btn-file">
