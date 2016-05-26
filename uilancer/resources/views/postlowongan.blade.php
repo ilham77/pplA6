@@ -9,7 +9,7 @@
 <link href="style-dashboard.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
 <script type="text/javascript">
 //<![CDATA[
         bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
@@ -27,11 +27,11 @@
 .nicEdit-selected {
         border: 2px solid #0000ff !important;
 }
- 
+
 .nicEdit-main {
         background-color: #fff !important;
 }
- 
+
 /*]]>*/
 </style>
 </head>
@@ -180,11 +180,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          <li>
-            <a class="" href="{{url('riwayatApply')}}">
-              <span class="glyphicon glyphicon-check"></span> Apply Job
-            </a>
-          </li>
+          @if(Auth::user()->role != 'official')
+            <li>
+              <a class="" href="{{url('riwayatApply')}}">
+                <span class="glyphicon glyphicon-check"></span> Apply Job
+              </a>
+            </li>
+          @endif
         </ul>
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>

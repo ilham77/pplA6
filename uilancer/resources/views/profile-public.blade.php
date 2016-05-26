@@ -164,11 +164,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          <li>
-            <a class="" href="{{url('riwayatApply')}}">
-              <span class="glyphicon glyphicon-check"></span> Apply Job
-            </a>
-          </li>
+          @if(Auth::user()->role != 'official')
+            <li>
+              <a class="" href="{{url('riwayatApply')}}">
+                <span class="glyphicon glyphicon-check"></span> Apply Job
+              </a>
+            </li>
+          @endif
         </ul>
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
@@ -234,7 +236,7 @@
             <p>Ketertarikan     : </p>
             <p>Pekerjaan        : {{$usr->role}}</p>
             <p>Fakultas         : {{$usr->faculty}}</p>
-            
+
 
                     @if($usr->cvresume == "")
                     <a href="#" class="btn btn-primary mt-20 font2 text-center">Lihat CV/Resume</a>
@@ -283,7 +285,7 @@
 
 
 
-  
+
 <script>
 var today = new Date().toISOString().split('T')[0];
 document.getElementsByName("deadline")[0].setAttribute('min', today);
@@ -322,7 +324,7 @@ $(document).ready(function(){
 </script>
   <!--
 REPORT MODAL
--->  
+-->
 
   <!-- Modal -->
 @if(\Auth::check())
@@ -350,10 +352,10 @@ REPORT MODAL
       </div>
       </div>
 <!--END REPORT-->
-     
+
       <!--
 THANKS MODAL
--->  
+-->
 
   <!-- Modal -->
 
@@ -361,14 +363,14 @@ THANKS MODAL
     <div class="modal-dialog">
     <div class="modal-content">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-     
+
         </form>
         <div class="modal-body">
             <center><p>Terima kasih. Laporan anda akan segera di proses.</p>
                 <p>Untuk pertanyaan lebih lanjut silahkan hubungi ask@uilancer.com</p></center>
         </div>
         </div>
-       
+
       </div>
       </div>
 @endif
