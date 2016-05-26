@@ -107,10 +107,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 	Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 	Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
-});
-
-if (!Auth::check()) {
-    Route::get('/home', function() {
+	Route::get('/home', function() {
         return view('home');
     });
     Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
@@ -121,4 +118,8 @@ if (!Auth::check()) {
 		Route::get('/login', function () {
     	return view('login');
 	});
-}
+});
+
+//if (!Auth::check()) {
+    
+//}

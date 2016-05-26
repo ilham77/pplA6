@@ -56,7 +56,7 @@ class UserController extends Controller
     public function masuklogin(Request $request){
 
         $username = Input::get('username');
-        $password = bcrypt($request->password);
+        $password = Input::get('password');
         
 
 
