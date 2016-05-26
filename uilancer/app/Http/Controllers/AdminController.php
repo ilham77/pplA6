@@ -54,7 +54,10 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
 }
 }
 \Lava::LineChart(('Temps'), $chart, [
-    'title' => 'Statistik UILancer'
+    'title' => 'Statistik Website',
+    'width'=>1200,
+    'height'=>400
+
 ]);
  return view('admin.inbox',compact('pekerjaan','reports'));
     }
