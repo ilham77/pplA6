@@ -160,11 +160,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          <li>
-            <a class="" href="{{url('riwayatApply')}}">
-              <span class="glyphicon glyphicon-check"></span> Apply Job
-            </a>
-          </li>
+          @if(Auth::user()->role != 'official')
+            <li>
+              <a class="" href="{{url('riwayatApply')}}">
+                <span class="glyphicon glyphicon-check"></span> Apply Job
+              </a>
+            </li>
+          @endif
         </ul>
       </li>
       <li class="active"><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
@@ -180,7 +182,8 @@
         <div id="table" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
 
-  <u><h3>Freelancer</h3></u>
+  @if($user->role != 'official')
+    <u><h3>Freelancer</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
       @if(count($freelancer_job))
@@ -216,6 +219,7 @@
       @endif
        </div>
     </table>
+  @endif
 </div>
     </div>
   </div>

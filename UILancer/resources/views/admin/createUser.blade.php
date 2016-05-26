@@ -188,7 +188,7 @@
             <form action="addUser" method="POST" role="form">
               {{ csrf_field() }}
               <div class="form-group row">
-                <label for="usernameUser" class="col-md-3 control-label">Email</label>
+                <label for="usernameUser" class="col-md-3 control-label">Username</label>
                 <div class="col-md-8">
                     <input type="text" class="form-control" name="username" placeholder="username">
                 </div>

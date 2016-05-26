@@ -28,7 +28,7 @@ class SSOController extends BaseController
                \Auth::loginUsingId($user->id);
 
                if ($user->role == 'blocked') {
-                 return 'Anda telah dilaporkan melakukan perbuatan tidak menyenangkan, harap hubungi admin@uilancer.com';
+                 return view('block');
                }
                return redirect('/')->with('npm', $user->npm);
              }

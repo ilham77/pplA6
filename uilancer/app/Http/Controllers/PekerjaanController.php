@@ -267,7 +267,7 @@ class PekerjaanController extends Controller
             }
         }
 
-        return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job'));
+        return view('pekerjaan.ongoing',compact('freelancer_job','jobgiver_job','user'));
     }
 
     public function postLowongan(Request $request){
