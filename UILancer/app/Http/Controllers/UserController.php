@@ -69,7 +69,12 @@ class UserController extends Controller
             if (Hash::check($password, $pwd)) {
                 if($user->role == 'official' || $user->role == 'admin'){
                     Auth::loginUsingId($user->id);
-                    return redirect('/');
+                    if($user->role == 'admin'){
+                        return redirect('/inbox');
+                    } else {
+                        return redirect('/');
+                    }
+                    
                 } else {
                     return redirect('/login')->withErrors(['Invalid username or password']);
                 }
