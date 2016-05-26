@@ -180,7 +180,8 @@
         <div id="table" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
 
-  <u><h3>Freelancer</h3></u>
+  @if($user->role == 'mahasiswa')
+    <u><h3>Freelancer</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
       @if(count($freelancer_job))
@@ -216,6 +217,7 @@
       @endif
        </div>
     </table>
+  @endif
 </div>
     </div>
   </div>
