@@ -22,9 +22,14 @@ class SSOController extends BaseController
                $newUser = User::    insert($user->name,$user->npm,$user->username, $user->org_code, $user->faculty, $user->role, $user->educational_program);
                 \Auth::loginUsingId($newUser->id);
                 return redirect('/')->with('npm', $user->npm);
-             } else {
+             }
+             else {
                $user = User::where('npm','=',$user->npm)->first();
                \Auth::loginUsingId($user->id);
+
+               if ($user->role == 'blocked') {
+                 return 'Anda telah dilaporkan melakukan perbuatan tidak menyenangkan, harap hubungi admin@uilancer.com';
+               }
                return redirect('/')->with('npm', $user->npm);
              }
          } else {

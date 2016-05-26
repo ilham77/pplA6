@@ -28,6 +28,7 @@ class AdminController extends Controller
 
     public function createUser(Request $request){
         	$this->validate($request, [
+                'username' => 'required',
                 'namaPemilikAkun'		=> 'required',
                 'password' => 'required',
                 'confirmPassword' => 'required',
@@ -49,7 +50,7 @@ class AdminController extends Controller
         // shuffle the result
         $npm = str_shuffle($pin);
 
-
+        $user->username = $request->username;
         $user->name      = $request->namaPemilikAkun;
 
         $hashPassword = bcrypt($request->password);
@@ -69,12 +70,12 @@ class AdminController extends Controller
     }
 
     public function editForm($id) {
-        
-            $user = User::where('id',$id);
+
+            $user = User::where('id',$id)->first();
             return view('admin.editUser',compact('user'));
-        
+
     }
-    
+
     public function editUser(Request $request){
 
             $this->validate($request, [
@@ -103,9 +104,14 @@ class AdminController extends Controller
 
         return redirect('/editUser')->withErrors(['Ada salah data']);
     }
-    
+
     public function deleteUser($id) {
         User::where('id',$id)->delete();
+        return redirect('manageUser');
+    }
+
+    public function blockUser($id) {
+        User::where('id',$id)->update(array('role' => 'blocked'));
         return redirect('manageUser');
     }
 }

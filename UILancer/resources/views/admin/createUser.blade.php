@@ -128,7 +128,7 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent active">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -188,6 +188,12 @@
             <form action="addUser" method="POST" role="form">
               {{ csrf_field() }}
               <div class="form-group row">
+                <label for="usernameUser" class="col-md-3 control-label">Email</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="username" placeholder="username">
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="emailUser" class="col-md-3 control-label">Email</label>
                 <div class="col-md-8">
                     <input type="email" class="form-control" name="email" placeholder="Email">
@@ -200,7 +206,7 @@
                 </div>
                 <div class="col-md-1" style="margin-left:-10px;">
                     <button id="generatePassword" type="button" class="btn btn-defautl">Generate Passoword</button>
-                    
+
                 </div>
               </div>
               <div class="form-group row">
@@ -231,8 +237,8 @@
                 <label for="role" class="col-md-3 control-label">Role</label>
                 <div class="col-md-8">
                   <select class="form-control" name="role">
-                    <option>Admin</option>
-                    <option>Akun Official</option>
+                    <option>admin</option>
+                    <option>official</option>
                   </select>
                 </div>
               </div>
@@ -257,7 +263,7 @@
 
         });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-        document.getElementById("generatePassword").onclick = function () { 
+        document.getElementById("generatePassword").onclick = function () {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for( var i=0; i < 8; i++ ) {

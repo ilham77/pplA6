@@ -87,14 +87,7 @@ class PekerjaanController extends Controller
 
         /* Disini perlu ada validasi terhadap jenis user
            Kalau UI atau pemiliki akun resmi, maka 'isVerified' = 1 */
-        if(Auth::user()->role == 'mahasiswa')
-        {
-            $pekerjaan->isVerified  = 0;
-        }
-        else
-        {
-            $pekerjaan->isVerified  = 1;
-        }
+        $pekerjaan->isVerified  = 1;
 
         $pekerjaan->isDone      = 0;
         $pekerjaan->isTaken     = 0;

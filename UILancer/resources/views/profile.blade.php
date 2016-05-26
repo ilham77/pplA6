@@ -99,13 +99,13 @@
 			@if(\Auth::user()->avatar == "")
                   <img src="http://placehold.it/200x200" alt="">
                 @else
-                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="">  
+                  <img src="{{URL::to('avatar').'/'.\Auth::user()->avatar}}" alt="" width="200px">
                 @endif
         </div>
-      
+
       <!--
 REPORT MODAL
--->  
+-->
 <a class="btn btn-danger" data-toggle="modal" data-target="#reportModal" href="#">Report</a>
   <!-- Modal -->
 
@@ -120,7 +120,7 @@ REPORT MODAL
               {{csrf_field()}}
             <div class="form-group">
             <textarea name="keluhan" class="form-control" style="resize:none;" cols="5" rows="10" required></textarea>
-                <br>    
+                <br>
                     {!! Form::submit('Kirim', array('class'=>'btn btn-primary')) !!}
         </div>
         </form>
@@ -130,7 +130,7 @@ REPORT MODAL
       </div>
       </div>
 <!--END REPORT-->
-     
+
         <div id="profile-header" class="col-md-7 col-xs-3 col-lg-7">
             <h1>{{\Auth::user()->name}}</h1>
             <hr/>

@@ -127,7 +127,7 @@
 
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -214,7 +214,7 @@
             <a href="{{URL::to('cvresume').'/'.\Auth::user()->cvresume}}" class="btn btn-primary">Lihat CV/Resume</a>
             @endif
           <a href="{{url('edit')}}"  class="btn btn-warning mt-20 font2 text-center">Edit Profile</a>
- 
+
         </div>
 			</div>
 		</div><!--/.row-->

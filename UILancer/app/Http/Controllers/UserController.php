@@ -57,7 +57,7 @@ class UserController extends Controller
 
         $username = Input::get('username');
         $password = Input::get('password');
-        
+
 
 
 
@@ -74,7 +74,7 @@ class UserController extends Controller
                     } else {
                         return redirect('/');
                     }
-                    
+
                 } else {
                     return redirect('/login')->withErrors(['Invalid username or password']);
                 }
@@ -237,12 +237,15 @@ class UserController extends Controller
 
     public function terimaLamar(Request $request)
     {
-        foreach ($request->user as $ru) {
+        if(count($request->user))
+        {
+            foreach ($request->user as $ru) {
             $am = ApplyManager::where('user_id',$ru)
             ->where('pekerjaan_id',$request->pekerjaan);
 
             $am->first()->update(array('status' => 1));
             $am->first()->pekerjaan->update(array('isTaken' => 1));
+            }
         }
 
         return redirect('riwayatJobGiver');

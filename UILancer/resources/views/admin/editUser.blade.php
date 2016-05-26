@@ -184,23 +184,21 @@
     <div class="col-md-12">
     <div class="row">
         <div class="col-sm-9 col-md-12">
-               
-                        @foreach($user as $u)
-            <form action="postEdit" method="POST" role="form">
+            <form action="{{url('postEdit')}}" method="POST" role="form">
               {{ csrf_field() }}
               <div class="form-group row">
                 <label for="emailUser" class="col-md-3 control-label">Email</label>
                 <div class="col-md-8">
-                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{$u->email}}">
+                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{$user->email}}">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="password" class="col-md-3 control-label">Password</label>
                 <div class="col-md-4">
-                    <input type="password" class="form-control" name="password" placeholder="Password" >
+                    <input type="text" class="form-control" name="password" placeholder="Password" >
                 </div>
                 <div class="col-md-1">
-                    <button class="btn btn-defautl" onclick="generatePassword()">Generate Password</button>  
+                    <button id="generatePassword" type="button" class="btn btn-defautl">Generate Password</button>
                 </div>
               </div>
               <div class="form-group row">
@@ -212,17 +210,17 @@
               <div class="form-group row">
                 <label for="institusi" class="col-md-3 control-label">Institusi</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="institusi" placeholder="Institusi" value="{{$u->institusi}}">
+                    <input type="text" class="form-control" name="institusi" placeholder="Institusi" value="{{$user->faculty}}">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="namaPemilik" class="col-md-3 control-label">Nama Pemilik Akun</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="namaPemilikAkun" placeholder="Nama Pemilik Akun" value="{{$u->name}}">
+                    <input type="text" class="form-control" name="namaPemilikAkun" placeholder="Nama Pemilik Akun" value="{{$user->name}}">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="role" class="col-md-3 control-label" value="{{$u->role}}">Role</label>
+                <label for="role" class="col-md-3 control-label" value="{{$user->role}}">Role</label>
                 <div class="col-md-8">
                   <select class="form-control" name="role">
                     <option>Admin</option>
@@ -230,7 +228,6 @@
                   </select>
                 </div>
               </div>
-               @endforeach
               <button type="submit" class="btn btn-success left-block">Submit</button>
             </form>
         </div>
@@ -249,8 +246,17 @@
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
+
         });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        document.getElementById("generatePassword").onclick = function () {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for( var i=0; i < 8; i++ ) {
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            document.getElementById("password").value = text;
+        };
     }(window.jQuery);
 
     $(window).on('resize', function () {

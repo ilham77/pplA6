@@ -127,7 +127,7 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent active">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -234,7 +234,7 @@
                           <span class="badge">{{ \Carbon\Carbon::parse($report->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>
                         @endforeach
-                        
+
                      @if($pekerjaan->total() != 0)
                     <div class="text-center">
                         <span class="text-muted"><b>

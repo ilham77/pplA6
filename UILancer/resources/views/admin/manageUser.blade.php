@@ -186,7 +186,7 @@
 
         </div>
         <div class="col-sm-9 col-md-10">
-           
+
 <!--             <div class="pull-right">
                 <span class="text-muted"><b>1</b>–<b>50</b> of <b>160</b></span>
                 <div class="btn-group btn-group-sm">
@@ -202,7 +202,7 @@
     </div>
     <br>
     <div class="row">
-  
+
         <div class="col-sm-9 col-md-12">
             <table class="table table-hover">
               <div class="table-responsive">
@@ -222,7 +222,9 @@
                     <td>{{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td><a href='editUser/{{$user->id}}'}><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a data-toggle="modal" data-target="#modalDelete"><i class="glyphicon glyphicon-trash"></i></a></td>
+                    <td><a data-toggle="modal" data-target="#modalDelete-{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a>
+                    <td><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a>
+                    </td>
                   </tr>
                         @endforeach
                         @endif
@@ -241,9 +243,9 @@
   </div><!--/.row-->
                 @if(count($users))
                         @foreach($users as $user)
-  <div class="modal fade" id="modalDelete" role="dialog">
+  <div class="modal fade" id="modalDelete-{{$user->id}}" role="dialog">
     <div class="modal-dialog">
-               <div class="modal-content">
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
@@ -255,11 +257,30 @@
         </div>
       </center>
       </div>
-      <!-- Modal content-->                        
+      </div>
+      </div>
+
+      <div class="modal fade" id="modalBlocked-{{$user->id}}" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda yakin melaporkan user ini?</h4></div>
+          <a href="blockUser/{{$user->id}}" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      </div>
+      </div>
+      <!-- Modal content-->
                           @endforeach
                @endif
-   
-      
+
+
     </div>
 </div>
 
