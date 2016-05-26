@@ -131,7 +131,7 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent active">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -215,11 +215,11 @@
             <br><br>
           </div>
         <div id="profile-header" class="col-md-7">
-            <h1 style="margin-top:-5px;">{{\Auth::user()->name}}</h1>
+            <h1 style="margin-top:-5px;">{{$usr->name}}</h1>
             <hr/>
             <h3>Deskripsi:</h3>
             <p>
-            {{\Auth::user()->deskripsi}}
+            {{$usr->deskripsi}}
             </p>
         </div>
         <br>
