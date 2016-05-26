@@ -263,7 +263,10 @@
     </div><!--/.row-->
   </div><!--/.row-->
 
-  <script>
+      <div id="temps_div"></div>
+@linechart('Temps', 'temps_div',true)
+ 
+      <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
