@@ -309,7 +309,8 @@
         <div class="modal-body">
           <div style="margin-top:-15px">
             <br>
-
+            <form action="{{url('rate/'.$jg->pekerjaan->id.'/'.$jg->user->id)}}" method="POST" role="form">
+            {{csrf_field()}}
                               <table>
                                     <tbody>
                                         <tr height="50px">
@@ -337,8 +338,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
                                 <br>
-            <a class="btn btn-success mt-20 font2 text-center" href="../confirm/{{ $jg->pekerjaan->id }}">Konfirmasi selesai</a></center>
+                                {!! Form::submit('Simpan', array('class'=>'btn btn-success mt-20 font2 text-center')) !!}
+                                            </form>
           </div><!--
           <a href="#" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a> -->
