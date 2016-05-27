@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>UILancer</title>
   <meta charset="utf-8">
@@ -8,11 +7,10 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -23,61 +21,73 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
+      <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-
+        <li><a href="#services">Why UILancer?</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
+        <li><a href="#partner">Partner</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li data-toggle="modal" data-target="#myModal">
+          <a href="#">
+          @if(\Auth::check())
+            Welcome, {{\Auth::user()->name}}
+          @else
+            Login
+          @endif
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-  <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-           @if(\Auth::check())
-               <div class="modal-content">
+  <div class="modal-dialog">
+    @if(\Auth::check())
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Logout</h4>
+          <h4 class="modal-title">Menu</h4>
         </div>
         <div class="modal-body">
           <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <div class="divider"></div>
+          <a href="{{url('dashboard')}}" class="btn btn-danger">Profil</a>
         </div>
       </div>
-            @else
-               <div class="modal-content">
+    @else
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+          &nbsp
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
         </div>
       </div>
-            @endif
-      <!-- Modal content-->
-
-
-    </div>
+    @endif
+  </div>
 </div>
 
 <!-- CONTENT -->
-  <div id="body" class="container-fluid">
-      <div id="content" class="container-fluid  text-center">
-          <img src="{{ asset('forbidden.png') }}" alt="" width="200px">
-          <h1 class="text-primary">Anda telah dilaporkan melakukan perbuatan tidak menyenangkan.</h1>
-          <br><br>
-          <div id="infobox" class="panel-body text-center well well-lg">
-              <p>Harap menghubungi <strong>Administrator</strong> agar akun anda dapat digunakan kembali.</p><br/>
+<div id="body" class="container-fluid">
+  <div id="content" class="container-fluid  text-center">
+    <img src="{{ asset('forbidden.png') }}" alt="" width="200px">
+    <h1 class="text-primary">Anda telah dilaporkan melakukan perbuatan tidak menyenangkan.</h1>
+    <br><br>
+    <div id="infobox" class="panel-body text-center well well-lg">
+      <p>Harap menghubungi <strong>Administrator</strong> agar akun anda dapat digunakan kembali.</p><br/>
 
-                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
-          </div>
-      </div>
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
+    </div>
   </div>
+</div>
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
@@ -89,23 +99,28 @@
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
       <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
     </div>
+    <div class="col-sm-7 slideanim">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-danger pull-right" type="submit">Send</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Footer -->
 <footer class="text-center">
   <p>Copyright &copy; 2016. UILancer</p>
-</footer>
-
-<footer class="container-fluid text-center">
-  <a href="#home" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a><br>
-  <img src="logo2.png" alt="UILancer" width="200" height="50">
-  <p>UILancer is marketplace for service blablabla</p>
-  <a href="#">(+62) 813-681-999</a></br>
-  <a href="#">ask@uilancer.com</a><br>
-  <p>Made By <a href="" title="UILancer">PPL A6</a></p>
 </footer>
 
 <script>
@@ -140,29 +155,7 @@ $(document).ready(function(){
         }
     });
   });
-});
-
-$(document).on('change', '.btn-file :file', function() {
-  var input = $(this),
-      numFiles = input.get(0).files ? input.get(0).files.length : 1,
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-  input.trigger('fileselect', [numFiles, label]);
-});
-
-$(document).ready( function() {
-    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-
-        var input = $(this).parents('.input-group').find(':text'),
-            log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-        if( input.length ) {
-            input.val(log);
-        } else {
-            if( log ) alert(log);
-        }
-
-    });
-});
+})
 </script>
 
 </body>

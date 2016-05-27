@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,23 +9,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 /*
 Route::get('/', function () {
     return view('welcome');
 });
 */
-
-
 Route::get('/detail', function() {
     return view('detail');
 });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -37,16 +30,11 @@ Route::get('/dashboard', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
-
 	Route::get('/', [
 		    'middleware' => 'auth',
 		    'uses' => 'PekerjaanController@index'
 	]);
-
-
-
 	Route::get('/search-dashboard', function () {
     return View::make('search-dashboard');
 	});
@@ -56,7 +44,6 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
 	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
 	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
-
 	Route::get('sso-login','SSOController@login');
 	Route::get('logout','SSOController@logout');
 	Route::post('userlogin', 'UserController@masuklogin');
@@ -66,11 +53,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
 	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
 	Route::get('/listPekerjaan','PekerjaanController@index');
-
+	
 	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
 	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
     Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
-
+    
 	Route::get('/dashboard','UserController@viewProfile');
 	Route::post('post-lowongan','PekerjaanController@postLowongan');
 	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
@@ -78,33 +65,24 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
     Route::post('terimaLamar', 'UserController@terimaLamar');
     Route::get('/profile/{user}', 'UserController@viewPublicProfile');
-
     Route::get('/done/{pekerjaan}','PekerjaanController@done');
     Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
     Route::post('report', 'ReportController@report');
 	Route::post('/report/{user}/{pelapor}', 'ReportController@report');
 	Route::get('/inbox', 'AdminController@index');
-
-
 	Route::get('/deleteUser/{idUser}', 'AdminController@deleteUser');
-    Route::get('/blockUser/{idUser}', 'AdminController@blockUser');
-
+	Route::get('/blockUser/{idUser}', 'AdminController@blockUser');
 	//Routing yang berhubungan dengan pekerjaan
 	Route::get('/search-dashboard', function () {
 	    return View::make('search-dashboard');
 	});
-
 	Route::get('/manageUser', 'AdminController@showUser');
-
 	Route::get('/createUser', function () {
 	    return View::make('admin.createUser');
 	});
-
 	Route::post('addUser', 'AdminController@createUser');
-
 	Route::get('/editUser/{idPekerjaan}', 'AdminController@editForm');
 	Route::post('postEdit', 'AdminController@editUser');
-
 	Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
 	Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 	Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
@@ -112,15 +90,16 @@ Route::group(['middleware' => ['web']], function () {
         return view('home');
     });
     Route::get('/searchPekerjaan',['uses' => 'PekerjaanController@searchPekerjaan']);
-
 	Route::get('/info', function () {
 	    return view('info');
 	});
-		Route::get('/login', function () {
+	Route::get('/login', function () {
     	return view('login');
 	});
+	Route::get('/faq', function () {
+    	return view('faq');
+	});
 });
-
 //if (!Auth::check()) {
-
+    
 //}

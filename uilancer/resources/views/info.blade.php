@@ -11,27 +11,36 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
+  <script type="text/javascript">
+  //<![CDATA[
+    bkLib.onDomLoaded(function() { new nicEditor().panelInstance('deskripsiPekerjaan'); });
   //]]>
-  </script>
-    
-    <style type="text/css">
-/*<![CDATA[*/
-#myInstance1 {
-        border: 2px dashed #0000ff;
-}
-.nicEdit-selected {
-        border: 2px solid #0000ff !important;
-}
- 
-.nicEdit-main {
-        background-color: #fff !important;
-}
- 
-/*]]>*/
-</style>
+  </script> 
+  <style type="text/css">
+    /*<![CDATA[*/
+    #myInstance1 {
+      border: 2px dashed #0000ff;
+    }
+
+    .nicEdit-selected {
+      border: 2px solid #0000ff !important;
+    }
+   
+    .nicEdit-main {
+      background-color: #fff !important;
+    }
+   /*]]>*/
+    .jumbotron h1 {
+      color: #fff;
+      background-color: #000;
+      text-align: center;
+      padding-top: 30px;
+      opacity: 0.6;
+      width: 600px;
+      height: 200px;
+      margin-left: 400px;
+    }
+  </style>
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -54,33 +63,29 @@
   </div>
 </nav>
 
-  <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Login</h4>
-        </div>
-        <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
-          &nbsp
-          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
-        </div>
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login</h4>
       </div>
-      
-    </div>
+      <div class="modal-body">
+        <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+         &nbsp
+        <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
+      </div>
+    </div>      
+  </div>
 </div>
 
 <div class="jumbotron text-center">
-  <br>
-  <br>
   <h1>UILancer Official Account</h1> 
 </div>
 
-<div id="services" class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div  class="col-sm-6">
       <div class="panel panel-default text-left">
@@ -89,18 +94,18 @@
           <p>UILancer Official Account merupakan akun resmi untuk Anda yang ingin mencari freelancer mahasiswa yang berkompeten dalam bidang yang Anda inginkan.</p>
         </div>
         <div class="panel-body text-left" style="height:350px;">
-            <ul>
-          <li>Akun resmi UILancer</li>
-          <li>Email resmi @uilancer.com</li>
-          <li>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</li>
-          <li>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</li>
-          <li>Job Manager untuk mengelola pelamar pekerjaan</li>
-          <li>Melihat profil pelamar</li>
-          <li>Halaman Profil dan Dashboard untuk Anda</li>
-          <li>Testimoni dan rating freelancer</li>
-          <li>Testimoni dapat ditampilkan di halaman depan UILancer</li>
-          <li>Logo dapat ditampilkan di halaman depan UILancer</li>
-            </ul>
+          <ul>
+            <li>Akun resmi UILancer</li>
+            <li>Email resmi @uilancer.com</li>
+            <li>Post Lowongan Pekerjaan tidak perlu menunggu untuk verifikasi</li>
+            <li>Lowongan Pekerjaan akan muncul teratas di halaman hasil pencarian</li>
+            <li>Job Manager untuk mengelola pelamar pekerjaan</li>
+            <li>Melihat profil pelamar</li>
+            <li>Halaman Profil dan Dashboard untuk Anda</li>
+            <li>Testimoni dan rating freelancer</li>
+            <li>Testimoni dapat ditampilkan di halaman depan UILancer</li>
+            <li>Logo dapat ditampilkan di halaman depan UILancer</li>
+          </ul>
         </div>
         <div class="panel-footer text-center" style="height:100px;">
           <p>Untuk mendapatkan Official Account, Anda dapat kontak kami dengan email ke:</p>
@@ -115,11 +120,11 @@
           <p>Anda tetap dapat memasang lowongan pekerjaan Anda di UILancer, tetapi Anda tidak akan mendapati semua keuntungan yang didapat sebagai Official Account.</p>
         </div>
         <div class="panel-body text-left" style="height:350px;">
-            <ul>
-          <li>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</li>
-          <li>Melihat profil pelamar</li>
-          <li>Testimoni dan rating freelancer</li>
-            </ul>
+          <ul>
+            <li>Post Lowongan Pekerjaan akan diproses dan diverifikasi oleh tim UILancer</li>
+            <li>Melihat profil pelamar</li>
+            <li>Testimoni dan rating freelancer</li>
+          </ul>
         </div>
         <div class="panel-footer" style="height:100px;">
           <button class="btn btn-lg" onclick="location.href='#form-pekerjaan';">Post Lowongan Pekerjaan Anda!</button>
@@ -129,87 +134,83 @@
   </div> 
 </div>
     
+<div id="form-pekerjaan" class="container-fluid bg-grey slideanim">   
+  @if (count($errors))
+  <div class="well well-sm" id="error">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+  <br><br>
+  <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
+  <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
+    {{csrf_field()}}
+    <br/>
 
-    <div id="form-pekerjaan" class="container-fluid bg-grey slideanim">   
-              @if (count($errors))
-
-        <div class="well well-sm" id="error">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-
-          </ul>
-        </div>
-
-      @endif
-             <br><br>
-        <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
-         <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
-              {{csrf_field()}}
-              <br/>
-              <div class="form-group">
-                <label for="name" class="control-label">Nama Lengkap</label>
-                <input name="name" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
-              </div>
-             
-             <div class="form-group">
-                <label for="asal_instansi" class="control-label">Asal Instansi</label>
-                <input name="asal_instansi" type="text" class="form-control" placeholder="Tuliskan asal instansi anda...">
-              </div>
-             
-              <div class="form-group">
-                <label for="email" class="control-label">Email</label>
-                <input name="email" type="email" class="form-control" placeholder="example@mail.com">
-              </div>
-             
-                <div class="form-group">
-                <label for="no_telp" class="control-label">No. Telepon</label>
-                <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0"  >
-              </div>
-             
-              <div class="form-group">
-                <label for="deadline" class="control-label">Tanggal lowongan ditutup</label>
-                <input name="deadline" type="date" class="form-control"  >
-              </div>
-              
-              <div class="form-group">
-                <label for="estimasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
-                <input name="estimasi" type="number" class="form-control" min="0" max="52"   placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
-              </div>
-             
-             <div class="form-group">
-                <label for="budget" class="control-label">Budget (dalam IDR )</label>
-                <input name="budget" type="number" class="form-control"   placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
-              </div>
-
-             <div class="form-group">
-                <label for="judul" class="control-label">Judul Pekerjaan</label>
-                <input name="judul" type="text" class="form-control" placeholder="Tuliskan judul pekerjaan yang ingin anda post...">
-              </div>
-
-              <div class="form-group">
-                <label for="deskripsiPekerjaan" class="control-label">Deskripsi Pekerjaan</label>
-                <textarea id="deskripsiPekerjaan" name="deskripsiPekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
-              </div>
-              
-              <div class="form-group">
-                <label for="website" class="control-label">Website</label>
-                <input name="website" type="text" class="form-control" placeholder="http://www.example.com">
-              </div>
-              
-              <div class="form-group">
-                <label for="skill" class="control-label">Skill yang dibutuhkan</label>
-                <input name="skill" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
-              </div>
-             
-        
-              {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
-              <button class="btn btn-danger"><a style="color:white; text-style:none;" href="{{URL::previous()}}">KEMBALI</a></button>
-     
-        </form>
+    <div class="form-group">
+      <label for="name" class="control-label">Nama Lengkap</label>
+      <input name="name" type="text" class="form-control" placeholder="Tuliskan nama lengkap anda...">
     </div>
+             
+    <div class="form-group">
+      <label for="asal_instansi" class="control-label">Asal Instansi</label>
+      <input name="asal_instansi" type="text" class="form-control" placeholder="Tuliskan asal instansi anda...">
+    </div>
+             
+    <div class="form-group">
+      <label for="email" class="control-label">Email</label>
+      <input name="email" type="email" class="form-control" placeholder="example@mail.com">
+    </div>
+
+    <div class="form-group">
+      <label for="no_telp" class="control-label">No. Telepon</label>
+      <input name="no_telp" type="number" class="form-control" placeholder="Tuliskan nomer telepon anda..." min="0"  >
+    </div>
+             
+    <div class="form-group">
+      <label for="deadline" class="control-label">Tanggal lowongan ditutup</label>
+      <input name="deadline" type="date" class="form-control"  >
+    </div>
+              
+    <div class="form-group">
+      <label for="estimasi" class="control-label">Perkiraan waktu pengerjaan (dalam minggu)</label>
+      <input name="estimasi" type="number" class="form-control" min="0" max="52"   placeholder="Tuliskan perkiraan lama waktu pengerjaan...">
+    </div>
+             
+    <div class="form-group">
+      <label for="budget" class="control-label">Budget (dalam IDR )</label>
+      <input name="budget" type="number" class="form-control"   placeholder="Tuliskan budget untuk pekerjaan yang anda post...">
+    </div>
+
+    <div class="form-group">
+      <label for="judul" class="control-label">Judul Pekerjaan</label>
+      <input name="judul" type="text" class="form-control" placeholder="Tuliskan judul pekerjaan yang ingin anda post...">
+    </div>
+
+    <div class="form-group">
+      <label for="deskripsiPekerjaan" class="control-label">Deskripsi Pekerjaan</label>
+      <textarea id="deskripsiPekerjaan" name="deskripsiPekerjaan" style="resize:none;" cols="5" rows="10" class="form-control" placeholder="Deskripsikan pekerjaan yang ingin anda post..."></textarea>
+    </div>
+              
+    <div class="form-group">
+      <label for="website" class="control-label">Website</label>
+      <input name="website" type="text" class="form-control" placeholder="http://www.example.com">
+    </div>
+              
+    <div class="form-group">
+      <label for="skill" class="control-label">Skill yang dibutuhkan</label>
+      <input name="skill" type="text" class="form-control" placeholder="Pisahkan dengan ';' (e.g. PHP;HTML5;Java;etc.)">
+    </div>
+    
+    {!! Form::submit('POST LOWONGAN', array('class'=>'btn btn-success')) !!}
+    <div class="divider"></div>
+    <button class="btn btn-danger"><a style="color:white; text-decoration:none;" href="{{URL::previous()}}">KEMBALI</a></button>
+  </form>
+</div>
+
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid">
   <h2 class="text-center">CONTACT</h2>
@@ -232,7 +233,7 @@
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-danger pull-right" type="submit">Send</button>
         </div>
       </div>  
     </div>
