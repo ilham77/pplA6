@@ -330,6 +330,12 @@ class PekerjaanController extends Controller
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
     }
 
+    public function rateTesti(Request $request, Pekerjaan $pekerjaan, User $user){
+        echo $user->name;
+        echo $request->rating;
+        echo $request->testimoni;
+    }
+
     public function done($pekerjaan)
     {
         $kerja = Pekerjaan::find($pekerjaan);
