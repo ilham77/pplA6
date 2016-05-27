@@ -13,7 +13,60 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
+<style>
+.box {
+  width: 200px; height: 300px;
+  position: relative;
+  border: 1px solid #BBB;
+  background: #EEE;
+}
+.ribbon {
+  position: relative;
+  right: -5px; top: 70px;
+  z-index: 1;
+  overflow: hidden;
+  height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#F70505 0%, #8F0808 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F0808;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F0808;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+.col{
+  height: 300px;
+}
+</style>
 </head>
 
 <body>
@@ -152,8 +205,8 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
-        </a>
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat
+        </a></span>
         <ul class="children collapse" id="sub-item-1">
           <li>
             <a class="" href="{{url('riwayatJobGiver')}}">
@@ -178,7 +231,7 @@
 
   <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
-      <div class="col-lg-12" style="margin-left:-15px;">
+        <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
  <div class="col-lg-12" style="margin-left:-15px;">
@@ -186,11 +239,14 @@
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
 <div class="col">
+<div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
+
       <div class="panel-body">
+
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
-                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
 
                 </div>
                 <div class ="col-md-3 col-xs-1 col-lg-3">
@@ -221,7 +277,7 @@
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
-              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+              <span>{{$pekerjaan->durasi}} minggu</span><br>
               <span>Skill yang dibutuhkan:</span>
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
@@ -236,8 +292,74 @@
     </div>
     </div>
         @endforeach
-      @else
-        <h2>Tidak ada pekerjaan</h2>
+      @endif
+
+        <div align="center">
+            {!! $pekerjaans->render() !!}
+        </div>
+  </div>
+</div>
+
+
+      </div>
+      <div class="col-lg-12" style="margin-left:-15px;">
+        <div id="form" class="container-fluid">
+            <h1 class="text-left" style="margin-top:35px"><hr></h1>
+ <div class="col-lg-12" style="margin-left:-15px;">
+<br>
+      @if(count($pekerjaanss))
+        @foreach($pekerjaanss as $pekerjaan)
+<div class="col">
+    <div class = "panel panel-default">
+      <div class="panel-body">
+                    <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
+<div class ="col-md-3 col-xs-1 col-lg-3">
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
+
+                </div>
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
+
+                </div>
+
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  @if($pekerjaan->isTaken)
+                  <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
+              @else
+                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
+              @endif
+                </div>
+
+               <div class ="col-md-3 col-xs-1 col-lg-3">
+              @if($pekerjaan->isDone)
+                <span class="glyphicon glyphicon-check"></span><span> Done</span>
+              @else
+                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
+              @endif
+                </div>
+           <br><hr>
+
+          <div class="deskripsi">
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
+              <span>{{count($pekerjaan->applyManager)}}</span><br>
+              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
+              <span>{{$pekerjaan->durasi}} minggu</span><br>
+              <span>Skill yang dibutuhkan:</span>
+             @if(count($pekerjaan->skillTag))
+              @foreach($pekerjaan->skillTag as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
+           </div>
+                <div class="text-right">
+                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                </div>
+            </div>
+    </div>
+    </div>
+        @endforeach
       @endif
 
         <div align="center">
@@ -258,7 +380,6 @@
         });
         $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
     }(window.jQuery);
-
     $(window).on('resize', function () {
       if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
     })
