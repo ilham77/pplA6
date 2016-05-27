@@ -64,7 +64,7 @@
   Pekerjaan dengan kata kunci "{{ $kunci }}"
 <br><br>
 			@if(count($pekerjaans))
-       
+
 				@foreach($pekerjaans as $pekerjaan)
 <div class="container">
     <div class="col">
@@ -103,7 +103,7 @@
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
-              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+              <span>{{$pekerjaan->durasi}} minggu</span><br>
               <span>Skill yang dibutuhkan:</span>
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)

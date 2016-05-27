@@ -76,6 +76,7 @@
 
                 <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
           </div>
+          <a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a>
       </div>
   </div>
 

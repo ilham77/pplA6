@@ -330,24 +330,32 @@ class PekerjaanController extends Controller
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
     }
 
-    public function done($pekerjaan)
+    public function done(Pekerjaan $pekerjaan)
     {
-        $kerja = Pekerjaan::find($pekerjaan);
-        $kerja->update(array('isDone' => 1));
-        return redirect()->back();
+        $kerja_id = ApplyManager::where('pekerjaan_id',$pekerjaan->id)->where('status',1)->lists('user_id')->toArray();
+
+        if (!in_array(Auth::user()->id, $kerja_id)) {
+            return redirect('home');
+        }
+
+        $pekerjaan->update(array('isDone' => 1));
+        return redirect('ongoing/'.Auth::user()->id);
     }
 
-    public function confirm($pekerjaan)
+    public function confirm(Pekerjaan $pekerjaan)
     {
-        $kerja = Pekerjaan::find($pekerjaan);
-        $kerja->update(array('isClosed' => 1));
-        $kerja = $kerja->applyManager->where('status',1);
+        if (Auth::user()->id != $pekerjaan->user_id) {
+            return redirect('home');
+        }
 
-        foreach ($kerja as $k) {
+        $pekerjaan->update(array('isClosed' => 1));
+        $pekerjaan = $pekerjaan->applyManager->where('status',1);
+
+        foreach ($pekerjaan as $k) {
             $k->update(array('status' => 0));
         }
 
-        return redirect()->back();
+        return redirect('ongoing/'.Auth::user()->id);
     }
 
 }
