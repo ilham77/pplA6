@@ -65,9 +65,10 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">UI</a>
+            <p>Saya adalah</p>
+          <a href="{{url('sso-login')}}" class="btn btn-danger mt-20 font2">Mahasiswa UI</a>
           &nbsp
-          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Non UI</a><br>
+          <a href="{{url('login')}}" class="btn btn-danger mt-20 font2">Akun Official</a><br>
         </div>
       </div>
             @endif
