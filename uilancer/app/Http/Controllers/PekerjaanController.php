@@ -342,7 +342,9 @@ class PekerjaanController extends Controller
         $rating->testimoni = $request->testimoni;
 
         $rating->save();
-        return redirect()->back();
+
+        $this->confirm($pekerjaan);
+        return redirect('ongoing/'. Auth::user()->id);
     }
 
     public function done($pekerjaan)
@@ -354,15 +356,14 @@ class PekerjaanController extends Controller
 
     public function confirm($pekerjaan)
     {
-        $kerja = Pekerjaan::find($pekerjaan);
-        $kerja->update(array('isClosed' => 1));
-        $kerja = $kerja->applyManager->where('status',1);
+        
+        $pekerjaan->update(array('isClosed' => 1));
+        $pekerjaan = $pekerjaan->applyManager->where('status',1);
 
-        foreach ($kerja as $k) {
+        foreach ($pekerjaan as $k) {
             $k->update(array('status' => 0));
         }
 
-        return redirect()->back();
     }
 
 }
