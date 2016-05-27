@@ -11,6 +11,7 @@ use App\User;
 use App\ApplyManager;
 use Auth;
 use App\UserLuar;
+use App\Rating;
 
 class PekerjaanController extends Controller
 {
@@ -331,9 +332,17 @@ class PekerjaanController extends Controller
     }
 
     public function rateTesti(Request $request, Pekerjaan $pekerjaan, User $user){
-        echo $user->name;
-        echo $request->rating;
-        echo $request->testimoni;
+        $rating = new Rating;
+
+        $rating->freelancer = $user->id;
+        $rating->job_giver = Auth::user()->id;
+        $rating->pekerjaan = $pekerjaan->id;
+
+        $rating->rating = $request->rating;
+        $rating->testimoni = $request->testimoni;
+
+        $rating->save();
+        return redirect()->back();
     }
 
     public function done($pekerjaan)
