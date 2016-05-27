@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkillTagUser extends Migration
+class CreateTableStatistic extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateSkillTagUser extends Migration
      */
     public function up()
     {
-        Schema::create('skilluser', function (Blueprint $table) {
+        Schema::create('statistic', function (Blueprint $table)
+        {
             $table->increments('id');
+            $table->string('tanggal');
+            $table->integer('jml_freelancer')->unsigned;
+            $table->integer('jml_job')->unsigned;
+            $table->integer('jml_done')->unsigned;
+            $table->integer('jml_report')->unsigned;
             $table->timestamps();
-            $table->integer('user_id')->unsigned();
-            $table->string('skill');
-        });
-
-        Schema::table('skilluser', function ($table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 
@@ -31,7 +31,6 @@ class CreateSkillTagUser extends Migration
      */
     public function down()
     {
-                Schema::drop('users');
+        Schema::drop('statistic');
     }
 }
-

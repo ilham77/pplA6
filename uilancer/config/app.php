@@ -157,7 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
         'Cviebrock\ImageValidator\ImageValidatorServiceProvider',
-
+'Khill\Lavacharts\Laravel\LavachartsServiceProvider'
     ],
 
     /*

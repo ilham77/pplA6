@@ -20,7 +20,7 @@ class CreateSkillTagTable extends Migration
         });
 
         Schema::table('skillTag_pekerjaan',function($table){
-            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
+            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan')->onDelete('cascade');;
         });
     }
 

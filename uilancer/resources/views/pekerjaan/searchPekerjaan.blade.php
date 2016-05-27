@@ -63,16 +63,16 @@
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
 <br><br>
-			@if(count($pekerjaans))
-       
-				@foreach($pekerjaans as $pekerjaan)
+      @if(count($pekerjaans))
+
+        @foreach($pekerjaans as $pekerjaan)
 <div class="container">
     <div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
-                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
 
                 </div>
                 <div class ="col-md-3 col-xs-1 col-lg-3">
@@ -103,7 +103,7 @@
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
-              <span>{{count($pekerjaan->durasi)}} minggu</span><br>
+              <span>{{$pekerjaan->durasi}} minggu</span><br>
               <span>Skill yang dibutuhkan:</span>
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
@@ -142,28 +142,22 @@
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
   $(".navbar a, footer a[href='#home']").on('click', function(event) {
-
     // Prevent default anchor click behavior
     event.preventDefault();
-
     // Store hash
     var hash = this.hash;
-
     // Using jQuery's animate() method to add smooth page scroll
     // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
-
       var winTop = $(window).scrollTop();
         if (pos < winTop + 600) {
           $(this).addClass("slide");

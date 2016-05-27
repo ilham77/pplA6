@@ -84,8 +84,11 @@
     <div id="infobox" class="panel-body text-center well well-lg">
       <p>Harap menghubungi <strong>Administrator</strong> agar akun anda dapat digunakan kembali.</p><br/>
 
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
-    </div>
+                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
+          </div>
+          <a href="{{url('logout')}}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a>
+      </div>
+>>>>>>> refs/remotes/origin/master
   </div>
 </div>
 

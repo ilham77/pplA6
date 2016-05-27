@@ -31,61 +31,96 @@ Route::get('/dashboard', function () {
 |
 */
 Route::group(['middleware' => ['web']], function () {
-	Route::get('/', [
-		    'middleware' => 'auth',
-		    'uses' => 'PekerjaanController@index'
-	]);
-	Route::get('/search-dashboard', function () {
-    return View::make('search-dashboard');
-	});
+
+
+    Route::group(['middleware' => ['auth']], function () {
+
+        Route::group(['middleware' => ['notBlocked']], function () {
+
+            //cuma admin--------------------------------------------
+            Route::group(['middleware' => ['admin']],function(){
+
+                Route::get('/inbox', 'AdminController@index');
+                Route::get('/deleteUser/{idUser}', 'AdminController@deleteUser');
+                Route::get('/blockUser/{idUser}', 'AdminController@blockUser');
+                Route::get('/manageUser', 'AdminController@showUser');
+                Route::get('/createUser', function () {
+                    return View::make('admin.createUser');
+                });
+
+                Route::post('addUser', 'AdminController@createUser');
+                Route::get('/editUser/{idPekerjaan}', 'AdminController@editForm');
+                Route::post('postEdit', 'AdminController@editUser');
+                Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
+                Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
+
+            });
+
+            //Official ga bisa------------------------------------------
+            Route::group(['middleware' => 'notOfficial'],function(){
+
+                Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
+                Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
+                Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
+                Route::get('/done/{pekerjaan}','PekerjaanController@done');
+
+            });
+
+            //semua bisa-------------------------------------------------
+            Route::get('/','PekerjaanController@index');
+            Route::get('/search-dashboard', function () {
+                return View::make('search-dashboard');
+            });
+            Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
+            Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
+            Route::get('/edit', 'UserController@editForm');
+
+            Route::post('saveprofile', 'UserController@editProfile');
+            Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
+            Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
+            Route::get('/listPekerjaan','PekerjaanController@index');
+
+            Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
+            Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
+
+            Route::get('/dashboard','UserController@viewProfile');
+            Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
+            Route::post('terimaLamar', 'UserController@terimaLamar');
+
+            Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
+            Route::post('report', 'ReportController@report');
+            Route::post('/report/{user}/{pelapor}', 'ReportController@report');
+
+            //Routing yang berhubungan dengan pekerjaan
+            Route::get('/search-dashboard', function () {
+                return View::make('search-dashboard');
+            });
+
+            Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
+
+        });
+
+        Route::get('logout','SSOController@logout');
+        Route::get('userlogout', 'UserController@logout');
+        Route::get('/block', function(){
+            return view('block');
+        });
+    });
+
     Route::get('/post', function () {
 	    return view('post');
 	});
-	Route::get('/lihatPelamar/{pekerjaan}', 'PekerjaanController@lihatPelamar');
-	Route::get('/riwayatApply', 'UserController@riwayatAsFreelance');
-	Route::get('/riwayatJobGiver', 'UserController@riwayatAsJobGiver');
+
 	Route::get('sso-login','SSOController@login');
-	Route::get('logout','SSOController@logout');
 	Route::post('userlogin', 'UserController@masuklogin');
-	Route::get('userlogout', 'UserController@logout');
-    Route::get('/edit', 'UserController@editForm');
-	Route::post('saveprofile', 'UserController@editProfile');
-    Route::get('/bukalowongan', 'PekerjaanController@bukaLowongan');
-	Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
-	Route::get('/listPekerjaan','PekerjaanController@index');
-	
-	Route::get('/pekerjaan/{pekerjaan}',['uses' =>'PekerjaanController@detailPekerjaan']);
-	Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
-    Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
-    
-	Route::get('/dashboard','UserController@viewProfile');
+
+	Route::get('/pekerjaan/{pekerjaan}','PekerjaanController@detailPekerjaan');
+
+
 	Route::post('post-lowongan','PekerjaanController@postLowongan');
-	Route::get('/ongoing/{user}', 'PekerjaanController@ongoing');
-    Route::get('/apply/{pekerjaan}/{freelancer}','UserController@apply');
-    Route::get('/cancelApply/{pekerjaan}/{freelancer}','UserController@cancelApply');
-    Route::post('terimaLamar', 'UserController@terimaLamar');
     Route::get('/profile/{user}', 'UserController@viewPublicProfile');
-    Route::get('/done/{pekerjaan}','PekerjaanController@done');
-    Route::get('/confirm/{pekerjaan}','PekerjaanController@confirm');
-    Route::post('report', 'ReportController@report');
-	Route::post('/report/{user}/{pelapor}', 'ReportController@report');
-	Route::get('/inbox', 'AdminController@index');
-	Route::get('/deleteUser/{idUser}', 'AdminController@deleteUser');
-	Route::get('/blockUser/{idUser}', 'AdminController@blockUser');
-	//Routing yang berhubungan dengan pekerjaan
-	Route::get('/search-dashboard', function () {
-	    return View::make('search-dashboard');
-	});
-	Route::get('/manageUser', 'AdminController@showUser');
-	Route::get('/createUser', function () {
-	    return View::make('admin.createUser');
-	});
-	Route::post('addUser', 'AdminController@createUser');
-	Route::get('/editUser/{idPekerjaan}', 'AdminController@editForm');
-	Route::post('postEdit', 'AdminController@editUser');
-	Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
-	Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
-	Route::get('/delete/{idPekerjaan}', 'PekerjaanController@deleteJob');
+
+
 	Route::get('/home', function() {
         return view('home');
     });

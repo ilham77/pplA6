@@ -23,9 +23,9 @@ class CreateReportTable extends Migration
             $table->string('pelapor');
             $table->timestamps();
         });
-        
+
          Schema::table('report',function($table){
-            $table->foreign('reported_id')->references('id')->on('users');
+            $table->foreign('reported_id')->references('id')->on('users')->onDelete('cascade');;
     });
     }
     /**

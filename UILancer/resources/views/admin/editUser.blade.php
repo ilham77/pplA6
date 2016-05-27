@@ -187,6 +187,12 @@
             <form action="{{url('postEdit')}}" method="POST" role="form">
               {{ csrf_field() }}
               <div class="form-group row">
+                <label for="usernameUser" class="col-md-3 control-label">Username</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="emailUser" class="col-md-3 control-label">Email</label>
                 <div class="col-md-8">
                     <input type="email" class="form-control" name="email" placeholder="Email" value="{{$user->email}}">

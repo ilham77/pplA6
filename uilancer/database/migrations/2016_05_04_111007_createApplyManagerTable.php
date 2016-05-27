@@ -21,8 +21,8 @@ class CreateApplyManagerTable extends Migration
         });
 
         Schema::table('apply_manager',function($table){
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan')->onDelete('cascade');;
         });
     }
 

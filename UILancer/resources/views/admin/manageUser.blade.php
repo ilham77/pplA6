@@ -127,7 +127,7 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent active">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -222,9 +222,16 @@
                     <td>{{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td><a href='editUser/{{$user->id}}'}><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a data-toggle="modal" data-target="#modalDelete-{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a>
-                    <td><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a>
-                    </td>
+                    @if($user->role != "mahasiswa" && $user->role != "admin" && $user->role != "blocked")
+                      <td><center><a data-toggle="modal" data-target="#modalDelete-{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a></center></td>
+                    @else
+                      <td><center>Not available</center></td>
+                    @endif
+                    @if($user->role != "admin")
+                      <td><center><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a></center></td>
+                    @else
+                      <td><center>Not available</center></td>
+                    @endif
                   </tr>
                         @endforeach
                         @endif

@@ -126,7 +126,7 @@
 <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -151,7 +151,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -159,11 +159,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          <li>
-            <a class="" href="{{url('riwayatApply')}}">
-              <span class="glyphicon glyphicon-check"></span> Apply Job
-            </a>
-          </li>
+          @if(Auth::user()->role != 'official')
+            <li>
+              <a class="" href="{{url('riwayatApply')}}">
+                <span class="glyphicon glyphicon-check"></span> Apply Job
+              </a>
+            </li>
+          @endif
         </ul>
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
@@ -180,7 +182,7 @@
   <h1 class="text-left" style="margin-top:35px">Hasil Pencarian</h1>
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
-  
+
 <br><br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
@@ -190,7 +192,7 @@
       <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
-                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
 
                 </div>
                 <div class ="col-md-3 col-xs-1 col-lg-3">
@@ -232,7 +234,7 @@
                 <div class="text-right">
                             <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
-               
+
             </div>
 
     </div>
