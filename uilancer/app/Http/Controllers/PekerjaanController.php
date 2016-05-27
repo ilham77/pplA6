@@ -132,7 +132,7 @@ class PekerjaanController extends Controller
         }
 
         $idPekerjaan->delete();
-        return redirect('inbox');
+        return redirect('admin.inbox');
     }
 
 
