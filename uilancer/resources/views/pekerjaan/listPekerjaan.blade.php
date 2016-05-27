@@ -153,7 +153,7 @@
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat
-        </a></span> 
+        </a></span>
         <ul class="children collapse" id="sub-item-1">
           <li>
             <a class="" href="{{url('riwayatJobGiver')}}">
@@ -190,7 +190,7 @@
       <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
-                <span class="glyphicon glyphicon-user"></span><span> <a href="#">{{$pekerjaan->user->username}}</a></span>
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
 
                 </div>
                 <div class ="col-md-3 col-xs-1 col-lg-3">

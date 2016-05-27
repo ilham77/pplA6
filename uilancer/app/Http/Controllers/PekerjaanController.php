@@ -16,7 +16,7 @@ class PekerjaanController extends Controller
 {
     public function index()
     {
-        $pekerjaans = Pekerjaan::where('isVerified',1);
+        $pekerjaans = Pekerjaan::where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc');
         $pekerjaans = $pekerjaans->simplePaginate(10);
 
         foreach ($pekerjaans as $pekerjaan) {
@@ -146,7 +146,7 @@ class PekerjaanController extends Controller
                             $query->where('skill','LIKE','%'.$request->kunci.'%');
                         });
             })
-        ->where('isVerified',1);
+        ->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc');
 
 
 
