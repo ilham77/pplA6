@@ -238,14 +238,7 @@
                         @endforeach
 
                      @if($pekerjaan->total() != 0)
-                    <div class="text-center">
-                        <span class="text-muted"><b>
-
-                          {{(($report->currentPage() - 1) * $report->perPage()) + 1 }}</b>–<b>{{ (($report->currentPage() - 1) * $report->perPage()) + $report->count() }}</b> of <b>{{ $report->total() }}</b></span>
-                        <div class="btn-group btn-group-sm">
-                          {!! $report->render() !!}
-                        </div>
-                    </div>
+                    
                     @else
                     <br>
                     <br>

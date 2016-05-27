@@ -130,7 +130,7 @@
       @if(Auth::user()->role == 'admin')
       <li class="parent">
         <a href="#">
-          <span data-toggle="collapse" href="{{url('admin.inbox')}"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
+          <span data-toggle="collapse" href="{{url('admin.inbox')}}"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
         </a>
         <ul class="children collapse" id="sub-item-2">
           <li>
