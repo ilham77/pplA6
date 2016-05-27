@@ -132,4 +132,15 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
         User::where('id',$id)->update(array('role' => 'blocked'));
         return redirect('manageUser');
     }
+    
+    public function unblockUser($id) {
+        $user = User::find($id);
+        
+        if($user->org_code == "")
+            $user->update(array('role' => 'official'));
+        else
+            $user->update(array('role' => 'mahasiswa'));
+            
+        return redirect('manageUser');
+    }
 }

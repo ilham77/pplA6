@@ -228,7 +228,11 @@
                       <td><center>Not available</center></td>
                     @endif
                     @if($user->role != "admin")
-                      <td><center><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a></center></td>
+                      @if($user->role == "blocked")
+                        <td><center><a data-toggle="modal" data-target="#modalUnblocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a></center></td>
+                      @else
+                        <td><center><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a></center></td>
+                      @endif
                     @else
                       <td><center>Not available</center></td>
                     @endif
@@ -275,8 +279,26 @@
         </div>
         <center>
         <div class="modal-body">
-          <div style="margin-top:-15px"><h4>Apakah anda yakin melaporkan user ini?</h4></div>
+          <div style="margin-top:-15px"><h4>Apakah anda ingin memblokir user ini?</h4></div>
           <a href="blockUser/{{$user->id}}" class="btn btn-default">Yes</a>
+          <a class="btn btn-default" data-dismiss="modal">No</a>
+        </div>
+      </center>
+      </div>
+      </div>
+      </div>
+      <!-- Modal content-->
+    
+    <div class="modal fade" id="modalUnblocked-{{$user->id}}" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <div style="margin-top:-15px"><h4>Apakah anda ingin mengaktifkan kembali user ini?</h4></div>
+          <a href="unblockUser/{{$user->id}}" class="btn btn-default">Yes</a>
           <a class="btn btn-default" data-dismiss="modal">No</a>
         </div>
       </center>
