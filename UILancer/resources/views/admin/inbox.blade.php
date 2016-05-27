@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -194,6 +194,8 @@
                 </span> Permintaan Pembuatan Pekerjaan</a></li>
                 <li><a href="#profile" data-toggle="tab"><span class="glyphicon glyphicon-exclamation-sign"></span>
                     Report User</a></li>
+                <li><a href="#stats" data-toggle="tab"><span class="glyphicon glyphicon-stats"></span>
+                    Statistik</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -252,7 +254,15 @@
                 </div>
 
         </div>
+             <div class="tab-pane fade in" id="stats">
+                    
+                      <div id="temps_div"></div>
+@linechart('Temps', 'temps_div',true)
+                
+
+        </div>   
     </div>
+            
 </div>
     </div>
   </div>
@@ -263,7 +273,9 @@
     </div><!--/.row-->
   </div><!--/.row-->
 
-  <script>
+  
+ 
+<script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");

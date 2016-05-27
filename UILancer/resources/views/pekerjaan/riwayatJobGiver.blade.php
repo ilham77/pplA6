@@ -128,7 +128,7 @@
 <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -153,7 +153,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent active ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>

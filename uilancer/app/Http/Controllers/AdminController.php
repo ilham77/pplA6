@@ -7,18 +7,61 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pekerjaan;
 use App\Report;
+use App\Statistic;
 use App\User;
 use Hash;
 use Auth;
+use Khill\Lavacharts\Lavacharts;
+use DB;
+use DateTime;
 
 class AdminController extends Controller
 {
     public function index()
     {
+          
        $reports = Report::all();
        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
-        return view('admin.inbox',compact('pekerjaan','reports'));
+        
+$chart = \Lava::DataTable();
+$stats = new Statistic;
+$date = date('d-M-Y');
+$jml_freelancer = User::where('role','=','mahasiswa')->count();
+$jml_job = Pekerjaan::all()->count();
+$jml_done = Pekerjaan::where('isDone','=','1')->count();
+$jml_report = Report::all()->count();
+
+if($stats->find($date)==null){
+$stats->tanggal=$date;
+$stats->jml_freelancer=$jml_freelancer;
+$stats->jml_job = $jml_job;
+$stats->jml_done = $jml_done;
+$stats->jml_report = $jml_report;
+$stats->save();
+}
+
+
+
+$chart->addDateColumn('created_at')
+             ->addNumberColumn('Freelancer')
+             ->addNumberColumn('Job given')
+             ->addNumberColumn('Report')
+             ->addNumberColumn('Job Done');
+if(count($stats)){
+$graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
+foreach($graph as $gr){
+$chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_report,$jml_done]);
+}
+}
+\Lava::LineChart(('Temps'), $chart, [
+    'title' => 'Statistik Website',
+    'width'=>1200,
+    'height'=>400
+
+]);
+ return view('admin.inbox',compact('pekerjaan','reports'));
     }
+
 
     public function showUser()
     {
