@@ -21,11 +21,11 @@
   background: #EEE;
 }
 .ribbon {
-  position: absolute;
-  right: -5px; top: -5px;
+  position: relative;
+  right: -5px; top: 70px;
   z-index: 1;
   overflow: hidden;
-  width: 75px; height: 75px;
+  height: 75px;
   text-align: right;
 }
 .ribbon span {
@@ -62,7 +62,11 @@
   border-right: 3px solid #8F0808;
   border-bottom: 3px solid transparent;
   border-top: 3px solid #8F0808;
-}    
+}
+
+.col{
+  height: 300px;
+}
 </style>
 </head>
 
@@ -235,9 +239,12 @@
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="col"> 
+<div class="col">
+<div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
-      <div class="panel-body">  <div class="ribbon"><span>HOT !</span></div>
+
+      <div class="panel-body">
+
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
                 <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
@@ -286,8 +293,6 @@
     </div>
     </div>
         @endforeach
-      @else
-        <h2>Tidak ada pekerjaan</h2>
       @endif
 
         <div align="center">
@@ -303,8 +308,8 @@
             <h1 class="text-left" style="margin-top:35px"><hr></h1>
  <div class="col-lg-12" style="margin-left:-15px;">
 <br>
-      @if(count($pekerjaans))
-        @foreach($pekerjaans as $pekerjaan)
+      @if(count($pekerjaanss))
+        @foreach($pekerjaanss as $pekerjaan)
 <div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
@@ -356,8 +361,6 @@
     </div>
     </div>
         @endforeach
-      @else
-        <h2>Tidak ada pekerjaan</h2>
       @endif
 
         <div align="center">

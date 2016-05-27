@@ -16,8 +16,9 @@ class PekerjaanController extends Controller
 {
     public function index()
     {
-        $pekerjaans = Pekerjaan::where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc');
-        $pekerjaans = $pekerjaans->simplePaginate(10);
+        $pekerjaans = Pekerjaan::whereHas('user', function ($query) {
+            $query->where('role','official');
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
 
         foreach ($pekerjaans as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
@@ -25,7 +26,17 @@ class PekerjaanController extends Controller
             $pekerjaan->budget = strrev(implode(".", $tempHonor));
         }
 
-        return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
+        $pekerjaanss = Pekerjaan::whereHas('user', function ($query) {
+            $query->where('role','<>','official');
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
+
+        foreach ($pekerjaanss as $pekerjaan) {
+            $tempHonor = strrev("".$pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
+
+        return view('pekerjaan.listPekerjaan',compact('pekerjaans','pekerjaanss'));
     }
 
     public function detailPekerjaan($pekerjaan)
