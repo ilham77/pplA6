@@ -27,4 +27,8 @@ class Pekerjaan extends Model
     {
         return $this->hasMany('App\UserLuar');
     }
+
+    public function usersRatings(){
+        return $this->hasMany(Rating::class);
+    }
 }
