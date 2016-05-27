@@ -38,6 +38,14 @@ $stats->jml_job = $jml_job;
 $stats->jml_done = $jml_done;
 $stats->jml_report = $jml_report;
 $stats->save();
+}else{
+$stats = $stats->find($date);
+$stats->tanggal=$date;
+$stats->jml_freelancer=$jml_freelancer;
+$stats->jml_job = $jml_job;
+$stats->jml_done = $jml_done;
+$stats->jml_report = $jml_report;
+$stats->save();
 }
 
 
@@ -55,7 +63,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
 }
 \Lava::LineChart(('Temps'), $chart, [
     'title' => 'Statistik Website',
-    'width'=>1200,
+    'width'=>1100,
     'height'=>400
 
 ]);
