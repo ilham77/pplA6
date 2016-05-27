@@ -223,6 +223,8 @@
             <p>
             {{$usr->deskripsi}}
             </p>
+            <br/>
+            <span><b>Rating: {{$usr->getRating()}}/5</b></span>
         </div>
         <br>
 
