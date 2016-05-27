@@ -19,17 +19,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-          
+
        $reports = Report::all();
        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
-        
-$chart = \Lava::DataTable();
-$stats = new Statistic;
-$date = date('d-M-Y');
-$jml_freelancer = User::where('role','=','mahasiswa')->count();
-$jml_job = Pekerjaan::all()->count();
-$jml_done = Pekerjaan::where('isDone','=','1')->count();
-$jml_report = Report::all()->count();
 
 if($stats->find($date)==null){
 $stats->tanggal=$date;
@@ -48,6 +40,14 @@ $stats->jml_report = $jml_report;
 $stats->save();
 }
 
+    if($stats->find($date)==null){
+    $stats->tanggal=$date;
+    $stats->jml_freelancer=$jml_freelancer;
+    $stats->jml_job = $jml_job;
+    $stats->jml_done = $jml_done;
+    $stats->jml_report = $jml_report;
+    $stats->save();
+    }
 
 
 $chart->addDateColumn('created_at')
@@ -66,10 +66,25 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
     'width'=>1100,
     'height'=>400
 
-]);
- return view('admin.inbox',compact('pekerjaan','reports'));
+    $chart->addDateColumn('created_at')
+                 ->addNumberColumn('Freelancer')
+                 ->addNumberColumn('Job given')
+                 ->addNumberColumn('Report')
+                 ->addNumberColumn('Job Done');
+    if(count($stats)){
+    $graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
+    foreach($graph as $gr){
+    $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_report,$jml_done]);
     }
+    }
+    \Lava::LineChart(('Temps'), $chart, [
+        'title' => 'Statistik Website',
+        'width'=>1200,
+        'height'=>400
 
+    ]);
+     return view('admin.inbox',compact('pekerjaan','reports'));
+    }
 
     public function showUser()
     {
@@ -157,7 +172,19 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
     }
 
     public function deleteUser($id) {
-        User::where('id',$id)->delete();
+        $user = User::find($id);
+        $pekerjaan = $user->pekerjaan;
+
+        foreach ($pekerjaan as $p) {
+
+            foreach ($p->skillTag as $st) {
+                $st->delete();
+            }
+
+            $p->delete();
+        }
+
+        $user->delete();
         return redirect('manageUser');
     }
 

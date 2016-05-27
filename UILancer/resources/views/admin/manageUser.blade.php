@@ -222,9 +222,16 @@
                     <td>{{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td><a href='editUser/{{$user->id}}'}><i class="glyphicon glyphicon-edit"></i></a></td>
-                    <td><a data-toggle="modal" data-target="#modalDelete-{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a>
-                    <td><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a>
-                    </td>
+                    @if($user->role != "mahasiswa" && $user->role != "admin" && $user->role != "blocked")
+                      <td><center><a data-toggle="modal" data-target="#modalDelete-{{$user->id}}"><i class="glyphicon glyphicon-trash"></i></a></center></td>
+                    @else
+                      <td><center>Not available</center></td>
+                    @endif
+                    @if($user->role != "admin")
+                      <td><center><a data-toggle="modal" data-target="#modalBlocked-{{$user->id}}"><i class="glyphicon glyphicon-lock"></i></a></center></td>
+                    @else
+                      <td><center>Not available</center></td>
+                    @endif
                   </tr>
                         @endforeach
                         @endif
