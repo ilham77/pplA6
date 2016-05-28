@@ -344,6 +344,9 @@ class PekerjaanController extends Controller
     }
 
     public function rateTesti(Request $request, Pekerjaan $pekerjaan, User $user){
+        if (Auth::user()->id != $pekerjaan->user_id) {
+            return redirect('home');
+        }
         $rating = new Rating;
 
         $rating->freelancer = $user->id;
@@ -353,9 +356,14 @@ class PekerjaanController extends Controller
         $rating->rating = $request->rating;
         $rating->testimoni = $request->testimoni;
 
-        $rating->save();
+        $pekerjaan->update(array('isClosed' => 1));
+        $pekerjaan = $pekerjaan->applyManager->where('status',1);
 
-        $this->confirm($pekerjaan);
+        foreach ($pekerjaan as $k) {
+            $k->update(array('status' => 0));
+        }
+
+        $rating->save();
         return redirect('ongoing/'. Auth::user()->id);
     }
 
