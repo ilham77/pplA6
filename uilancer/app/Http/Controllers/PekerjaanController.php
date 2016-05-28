@@ -11,6 +11,7 @@ use App\User;
 use App\ApplyManager;
 use Auth;
 use App\UserLuar;
+use Illuminate\Pagination\Paginator;
 
 class PekerjaanController extends Controller
 {
@@ -18,7 +19,7 @@ class PekerjaanController extends Controller
     {
         $pekerjaans = Pekerjaan::whereHas('user', function ($query) {
             $query->where('role','official');
-        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_a');
 
         foreach ($pekerjaans as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
@@ -28,7 +29,7 @@ class PekerjaanController extends Controller
 
         $pekerjaanss = Pekerjaan::whereHas('user', function ($query) {
             $query->where('role','<>','official');
-        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_b');
 
         foreach ($pekerjaanss as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
