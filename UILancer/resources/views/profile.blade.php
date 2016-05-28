@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
+      <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="{{url('home')}}">
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">

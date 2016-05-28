@@ -28,7 +28,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#home"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
+        <a href="{{url('home')}}"><img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
 
           <!-- Notifikasi -->
