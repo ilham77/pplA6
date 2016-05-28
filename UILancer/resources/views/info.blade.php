@@ -57,7 +57,15 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+        <li data-toggle="modal" data-target="#myModal">
+          <a href="#">
+          @if(\Auth::check())
+            Welcome, {{\Auth::user()->name}}
+          @else
+            Login
+          @endif
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -74,6 +82,7 @@
         </div>
         <div class="modal-body">
           <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <div class="divider"></div>
           <a href="{{url('dashboard')}}" class="btn btn-danger">Profil</a>
         </div>
       </div>
@@ -279,6 +288,14 @@ $('button').click(function(){
           $(this).addClass("slide");
         }
     });
+  });
+
+  $('#serviceList').on('shown.bs.collapse', function() {
+    $(".servicedrop").addClass('glyphicon-chevron-up').removeClass('glyphicon-chevron-down');
+  });
+
+$('#serviceList').on('hidden.bs.collapse', function() {
+    $(".servicedrop").addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
   });
 })
 </script>
