@@ -367,7 +367,7 @@ class PekerjaanController extends Controller
         return redirect('ongoing/'. Auth::user()->id);
     }
 
-    public function done($pekerjaan)
+    public function done(Pekerjaan $pekerjaan)
     {
         $kerja_id = ApplyManager::where('pekerjaan_id',$pekerjaan->id)->where('status',1)->lists('user_id')->toArray();
 
