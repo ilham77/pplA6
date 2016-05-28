@@ -13,6 +13,61 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
+<style>
+.box {
+  width: 200px; height: 300px;
+  position: relative;
+  border: 1px solid #BBB;
+  background: #EEE;
+}
+.ribbon {
+  position: relative;
+  right: -5px; top: 70px;
+  z-index: 1;
+  overflow: hidden;
+  height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#F70505 0%, #8F0808 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F0808;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F0808;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F0808;
+}
+
+.col{
+  height: 300px;
+}
+</style>
 
 </head>
 
@@ -184,10 +239,11 @@
   Pekerjaan dengan kata kunci "{{ $kunci }}"
 
 <br><br>
-      @if(count($pekerjaanOff))
+      @if(count($pekerjaanOff1))
 <div class="col-lg-12" style="margin-left:-15px;">
-        @foreach($pekerjaanOff as $pekerjaan)
+        @foreach($pekerjaanOff1 as $pekerjaan)
 <div class="col">
+<div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
       <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
@@ -242,9 +298,14 @@
         @endforeach
       @endif
 
-        <div align="center">
-            {!! $pekerjaanOff->render() !!}
+       @if($pekerjaanOff->total() != 0)
+        <div class="text-center">
+          <span class="text-muted"><b>{{ (($pekerjaanOff->currentPage() - 1) * $pekerjaanOff->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanOff->currentPage() - 1) * $pekerjaanOff->perPage()) + count($pekerjaanOff1) }}</b> of <b>{{ $pekerjaanOff->total() }}</b></span>
+          <div class="btn-group btn-group-sm">
+            {!! $pekerjaanOff->appends([$pekerjaanNon->getPageName() => $pekerjaanNon->currentPage()])->links() !!}
+          </div>
         </div>
+      @endif
   </div>
 </div>
     </div>
@@ -254,8 +315,8 @@
             <h1 class="text-left" style="margin-top:35px"><hr></h1>
  <div class="col-lg-12" style="margin-left:-15px;">
 <br>
-      @if(count($pekerjaanNon))
-        @foreach($pekerjaanNon as $pekerjaan)
+      @if(count($pekerjaanNon1))
+        @foreach($pekerjaanNon1 as $pekerjaan)
 <div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
@@ -311,9 +372,9 @@
       <br>
       @if($pekerjaanNon->total() != 0)
         <div class="text-center">
-          <span class="text-muted"><b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + $pekerjaanNon->count() }}</b> of <b>{{ $pekerjaanNon->total() }}</b></span>
+          <span class="text-muted"><b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + count($pekerjaanNon1) }}</b> of <b>{{ $pekerjaanNon->total() }}</b></span>
           <div class="btn-group btn-group-sm">
-            {!! $pekerjaanNon->appends([$pekerjaanNon->getPageName() => $pekerjaanNon->currentPage()])->render() !!}
+            {!! $pekerjaanNon->appends([$pekerjaanOff->getPageName() => $pekerjaanOff->currentPage()])->links() !!}
           </div>
         </div>
       @endif

@@ -12,7 +12,7 @@ use App\ApplyManager;
 use Auth;
 use App\UserLuar;
 use App\Rating;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use DB;
 
 class PekerjaanController extends Controller
@@ -247,14 +247,37 @@ class PekerjaanController extends Controller
             }
 
             $result = $hasil->get();
+            $pekerjaanOff = Array();
+            $pekerjaanNon = Array();
 
-            $pekerjaanOff = $hasil->whereHas('user', function ($query) {
-                $query->where('role','official');
-            })->paginate(10,['*'],'page_a')->appends($request->all());
+            foreach ($result as $r) {
+                $re = User::where('id',$r->user_id)->first();
 
-            $pekerjaanNon = array_except($result,$hasil);
+                if($re->role == 'official')
+                {
+                    array_push($pekerjaanOff, $r);
+                }
+                else
+                {
+                    array_push($pekerjaanNon, $r);
+                }
+            }
 
-            return view('pekerjaan.searchPekerjaanFromDashboard',compact('pekerjaanOff','pekerjaanNon'))->with('kunci',$request->kunci);
+            /*if ((($request->get('page_a', 1)-1) * 10)  + 10 > count($pekerjaanOff)) {
+                $pekerjaanOff1 = array_slice($pekerjaanOff, ($request->get('page_a', 1)-1) * 10, 10);
+            }
+            else{
+                $pekerjaanOff1 = array_slice($pekerjaanOff, ($request->get('page_a', 1)-1) * 10, 10);
+            }*/
+
+            $pekerjaanOff1 = array_slice($pekerjaanOff, ($request->get('page_a', 1)-1) * 10, 10);
+            $pekerjaanNon1 = array_slice($pekerjaanNon, ($request->get('page_b', 1)-1) * 10, 10);
+
+            $pekerjaanOff = new LengthAwarePaginator($pekerjaanOff, count($pekerjaanOff), 10, $request->get('page_a', 1), ['pageName' => 'page_a', 'query' => $request->all(), 'path' => url('searchPekerjaan')]);
+            $pekerjaanNon = new LengthAwarePaginator($pekerjaanNon, count($pekerjaanNon), 10, $request->get('page_b', 1), ['pageName' => 'page_b', 'query' => $request->all(), 'path' => url('searchPekerjaan')]);
+
+
+            return view('pekerjaan.searchPekerjaanFromDashboard',compact('pekerjaanOff','pekerjaanNon','pekerjaanOff1','pekerjaanNon1'))->with('kunci',$request->kunci);
         }
     }
 
