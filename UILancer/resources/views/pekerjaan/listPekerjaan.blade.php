@@ -63,10 +63,6 @@
   border-bottom: 3px solid transparent;
   border-top: 3px solid #8F0808;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
 .col{
   height: 300px;
 }
@@ -227,8 +223,7 @@
         </ul>
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
+      <li><a href="{{url('faq')}}"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
 
   </div><!--/.sidebar-->
@@ -244,8 +239,6 @@
         @foreach($pekerjaans as $pekerjaan)
 <div class="col">
 <div class="ribbon"><span>HOT !</span></div>
-<<<<<<< HEAD
-=======
     <div class = "panel panel-default">
 
       <div class="panel-body">
@@ -321,78 +314,6 @@
       @if(count($pekerjaanss))
         @foreach($pekerjaanss as $pekerjaan)
 <div class="col">
->>>>>>> refs/remotes/origin/master
-    <div class = "panel panel-default">
-
-      <div class="panel-body">
-
-                    <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
-<div class ="col-md-3 col-xs-1 col-lg-3">
-                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
-
-                </div>
-                <div class ="col-md-3 col-xs-1 col-lg-3">
-                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
-
-                </div>
-
-                <div class ="col-md-3 col-xs-1 col-lg-3">
-                  @if($pekerjaan->isTaken)
-                  <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
-              @else
-                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
-              @endif
-                </div>
-
-               <div class ="col-md-3 col-xs-1 col-lg-3">
-              @if($pekerjaan->isDone)
-                <span class="glyphicon glyphicon-check"></span><span> Done</span>
-              @else
-                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
-              @endif
-                </div>
-           <br><hr>
-
-          <div class="deskripsi">
-              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-              <span>Rp {{$pekerjaan->budget}}</span><br>
-              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
-              <span>{{count($pekerjaan->applyManager)}}</span><br>
-              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
-              <span>{{$pekerjaan->durasi}} minggu</span><br>
-<<<<<<< HEAD
-              <span>Skill yang dibutuhkan:</span>
-             @if(count($pekerjaan->skillTag))
-              @foreach($pekerjaan->skillTag as $skill)
-                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
-              @endforeach
-            @endif
-           </div>
-                <div class="text-right">
-                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
-                </div>
-            </div>
-    </div>
-    </div>
-        @endforeach
-      @endif
-
-        <div align="center">
-            {!! $pekerjaans->render() !!}
-        </div>
-  </div>
-</div>
-
-
-      </div>
-      <div class="col-lg-12" style="margin-left:-15px;">
-        <div id="form" class="container-fluid">
-            <h1 class="text-left" style="margin-top:35px"><hr></h1>
- <div class="col-lg-12" style="margin-left:-15px;">
-<br>
-      @if(count($pekerjaanss))
-        @foreach($pekerjaanss as $pekerjaan)
-<div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
@@ -429,8 +350,6 @@
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
               <span>{{$pekerjaan->durasi}} minggu</span><br>
-=======
->>>>>>> refs/remotes/origin/master
               <span>Skill yang dibutuhkan:</span>
              @if(count($pekerjaan->skillTag))
               @foreach($pekerjaan->skillTag as $skill)
