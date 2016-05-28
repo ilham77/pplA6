@@ -71,8 +71,11 @@
           <h1 class="text-primary">Terima kasih telah menggunakan UILancer!</h1>
           <br><br>
           <div id="infobox" class="panel-body text-center well well-lg">
+              @if(\Auth::user()->role="mahasiswa")
+                <p>Lowongan anda berhasil diajukan.</p><br/>
+              @else
               <p>Lowongan anda berhasil diajukan, harap menunggu verifikasi <strong>Administrator</strong> agar lowongan dapat di post. Kami akan segera menghubungi anda!</p><br/>
-              
+              @endif
                 <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
           </div>
       </div>

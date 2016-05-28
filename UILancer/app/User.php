@@ -39,6 +39,18 @@ protected $table = 'users';
         return $this->hasMany(ApplyManager::class);
     }
 
+    public function ratings(){
+        return $this->hasMany(Rating::class, 'freelancer');
+    }
+
+    public function rates(){
+        return $this->hasMany(Rating::class, 'job_giver');
+    }
+
+    public function getRating(){
+        return $this->ratings()->avg('rating');
+    }
+
     public static function insert($name, $npm, $username, $org_code, $faculty, $role, $educational_program){
          $user = new User();
          $user->name = $name;

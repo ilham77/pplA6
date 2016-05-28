@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web']], function () {
                 Route::get('/inbox', 'AdminController@index');
                 Route::get('/deleteUser/{idUser}', 'AdminController@deleteUser');
                 Route::get('/blockUser/{idUser}', 'AdminController@blockUser');
+                Route::get('/unblockUser/{idUser}', 'AdminController@unblockUser');
                 Route::get('/manageUser', 'AdminController@showUser');
                 Route::get('/createUser', function () {
                     return View::make('admin.createUser');
@@ -131,9 +132,10 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/login', function () {
     	return view('login');
 	});
-	Route::get('/faq', function () {
-    	return view('faq');
-	});
+
+
+	Route::post('/rate/{pekerjaan}/{user}', 'PekerjaanController@rateTesti');
+
 });
 //if (!Auth::check()) {
     

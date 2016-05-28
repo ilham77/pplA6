@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 body {
   background: #f1f4f7;
   padding-top: 50px;
@@ -67,7 +69,6 @@ input[readonly] {
   margin: 5px;
   font-family: FontAwesome;
   display: inline-block;
-  border: solid;
   content: "\f005";
 }
 
@@ -77,8 +78,7 @@ input[readonly] {
 }
 
 .rating > label { 
-  color: #ddd; 
-border: solid;
+  color: #ddd;
  float: right; 
 }
 

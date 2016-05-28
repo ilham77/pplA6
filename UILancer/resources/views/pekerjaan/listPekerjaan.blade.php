@@ -299,10 +299,15 @@
     </div>
         @endforeach
       @endif
-
-        <div align="center">
-            {!! $pekerjaans->render() !!}
+      <br>
+      @if($pekerjaans->total() != 0)
+        <div class="text-center">
+          <span class="text-muted"><b>{{ (($pekerjaans->currentPage() - 1) * $pekerjaans->perPage()) + 1 }}</b>–<b>{{ (($pekerjaans->currentPage() - 1) * $pekerjaans->perPage()) + $pekerjaans->count() }}</b> of <b>{{ $pekerjaans->total() }}</b></span>
+          <div class="btn-group btn-group-sm">
+            {!! $pekerjaans->appends([$pekerjaanss->getPageName() => $pekerjaanss->currentPage()])->render() !!}
+          </div>
         </div>
+      @endif
   </div>
 </div>
 
@@ -441,10 +446,15 @@
     </div>
         @endforeach
       @endif
-
-        <div align="center">
-            {!! $pekerjaans->render() !!}
+      <br>
+      @if($pekerjaanss->total() != 0)
+        <div class="text-center">
+          <span class="text-muted"><b>{{ (($pekerjaanss->currentPage() - 1) * $pekerjaanss->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanss->currentPage() - 1) * $pekerjaanss->perPage()) + $pekerjaanss->count() }}</b> of <b>{{ $pekerjaanss->total() }}</b></span>
+          <div class="btn-group btn-group-sm">
+            {!! $pekerjaanss->appends([$pekerjaans->getPageName() => $pekerjaans->currentPage()])->render() !!}
+          </div>
         </div>
+      @endif
   </div>
 </div>
 

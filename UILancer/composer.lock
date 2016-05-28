@@ -5,7 +5,8 @@
         "This file is @generated automatically"
     ],
 
-    "hash": "aa90fc6d355d88d269e61970a020bcfd",
+    "hash": "753920f24cde113d7cf8e6ab3a42d385",
+
     "content-hash": "e6707131a4bae90e55734f1ba63410a3",
 
     "packages": [
@@ -65,20 +66,19 @@
         },
         {
             "name": "cviebrock/image-validator",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cviebrock/image-validator.git",
-                "reference": "2a5ba9efdd96e05401da2f9ce1a51b3ceb1b2b7d"
+                "reference": "05bfc4535dd5b0450cf272b068456f774b52aecb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cviebrock/image-validator/zipball/2a5ba9efdd96e05401da2f9ce1a51b3ceb1b2b7d",
-                "reference": "2a5ba9efdd96e05401da2f9ce1a51b3ceb1b2b7d",
+                "url": "https://api.github.com/repos/cviebrock/image-validator/zipball/05bfc4535dd5b0450cf272b068456f774b52aecb",
+                "reference": "05bfc4535dd5b0450cf272b068456f774b52aecb",
                 "shasum": ""
             },
             "require": {
-                "ext-bcmath": "*",
                 "illuminate/support": "5.*",
                 "illuminate/translation": "5.*",
                 "illuminate/validation": "5.*",
@@ -112,7 +112,7 @@
                 "laravel",
                 "validator"
             ],
-            "time": "2016-04-11 19:10:43"
+            "time": "2016-05-27 16:18:35"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

@@ -44,13 +44,14 @@ $stats->save();
 }
 $chart->addDateColumn('created_at')
              ->addNumberColumn('Freelancer')
-             ->addNumberColumn('Job given')
-             ->addNumberColumn('Report')
-             ->addNumberColumn('Job Done');
+             ->addNumberColumn('Job Given')
+             ->addNumberColumn('Job Done')
+             ->addNumberColumn('Report');
+             
 if(count($stats)){
 $graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
 foreach($graph as $gr){
-$chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_report,$jml_done]);
+$chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr->jml_report]);
 }
 }
 \Lava::LineChart(('Temps'), $chart, [
@@ -130,6 +131,17 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$gr->jml_repor
     }
     public function blockUser($id) {
         User::where('id',$id)->update(array('role' => 'blocked'));
+        return redirect('manageUser');
+    }
+    
+    public function unblockUser($id) {
+        $user = User::find($id);
+        
+        if($user->org_code == "")
+            $user->update(array('role' => 'official'));
+        else
+            $user->update(array('role' => 'mahasiswa'));
+            
         return redirect('manageUser');
     }
 }

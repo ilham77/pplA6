@@ -11,6 +11,8 @@ use App\User;
 use App\ApplyManager;
 use Auth;
 use App\UserLuar;
+use App\Rating;
+use Illuminate\Pagination\Paginator;
 
 class PekerjaanController extends Controller
 {
@@ -18,7 +20,7 @@ class PekerjaanController extends Controller
     {
         $pekerjaans = Pekerjaan::whereHas('user', function ($query) {
             $query->where('role','official');
-        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_a');
 
         foreach ($pekerjaans as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
@@ -28,7 +30,7 @@ class PekerjaanController extends Controller
 
         $pekerjaanss = Pekerjaan::whereHas('user', function ($query) {
             $query->where('role','<>','official');
-        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->simplePaginate(10);
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_b');
 
         foreach ($pekerjaanss as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
@@ -339,6 +341,30 @@ class PekerjaanController extends Controller
         $pelamar = $pekerjaan->applyManager;
         $i = 1;
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
+    }
+
+    public function rateTesti(Request $request, Pekerjaan $pekerjaan, User $user){
+        if (Auth::user()->id != $pekerjaan->user_id) {
+            return redirect('home');
+        }
+        $rating = new Rating;
+
+        $rating->freelancer = $user->id;
+        $rating->job_giver = Auth::user()->id;
+        $rating->pekerjaan = $pekerjaan->id;
+
+        $rating->rating = $request->rating;
+        $rating->testimoni = $request->testimoni;
+
+        $pekerjaan->update(array('isClosed' => 1));
+        $pekerjaan = $pekerjaan->applyManager->where('status',1);
+
+        foreach ($pekerjaan as $k) {
+            $k->update(array('status' => 0));
+        }
+
+        $rating->save();
+        return redirect('ongoing/'. Auth::user()->id);
     }
 
     public function done(Pekerjaan $pekerjaan)
