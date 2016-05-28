@@ -127,7 +127,7 @@
   <!-- Sidebar -->
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
-      @if(Auth::user()->role == 'Admin')
+      @if(Auth::user()->role == 'admin')
       <li class="parent active">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
@@ -152,8 +152,8 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
-        </a>
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat
+        </a></span> 
         <ul class="children collapse" id="sub-item-1">
           <li>
             <a class="" href="{{url('riwayatJobGiver')}}">
@@ -186,6 +186,12 @@
         <div class="col-sm-9 col-md-12">
             <form action="{{url('postEdit')}}" method="POST" role="form">
               {{ csrf_field() }}
+              <div class="form-group row">
+                <label for="usernameUser" class="col-md-3 control-label">Username</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
+                </div>
+              </div>
               <div class="form-group row">
                 <label for="emailUser" class="col-md-3 control-label">Email</label>
                 <div class="col-md-8">

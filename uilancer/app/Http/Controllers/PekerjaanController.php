@@ -12,13 +12,15 @@ use App\ApplyManager;
 use Auth;
 use App\UserLuar;
 use App\Rating;
+use Illuminate\Pagination\Paginator;
 
 class PekerjaanController extends Controller
 {
     public function index()
     {
-        $pekerjaans = Pekerjaan::where('isVerified',1);
-        $pekerjaans = $pekerjaans->simplePaginate(10);
+        $pekerjaans = Pekerjaan::whereHas('user', function ($query) {
+            $query->where('role','official');
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_a');
 
         foreach ($pekerjaans as $pekerjaan) {
             $tempHonor = strrev("".$pekerjaan->budget."");
@@ -26,7 +28,17 @@ class PekerjaanController extends Controller
             $pekerjaan->budget = strrev(implode(".", $tempHonor));
         }
 
-        return view('pekerjaan.listPekerjaan',compact('pekerjaans'));
+        $pekerjaanss = Pekerjaan::whereHas('user', function ($query) {
+            $query->where('role','<>','official');
+        })->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc')->paginate(10,['*'],'page_b');
+
+        foreach ($pekerjaanss as $pekerjaan) {
+            $tempHonor = strrev("".$pekerjaan->budget."");
+            $tempHonor = str_split($tempHonor,3);
+            $pekerjaan->budget = strrev(implode(".", $tempHonor));
+        }
+
+        return view('pekerjaan.listPekerjaan',compact('pekerjaans','pekerjaanss'));
     }
 
     public function detailPekerjaan($pekerjaan)
@@ -133,7 +145,7 @@ class PekerjaanController extends Controller
         }
 
         $idPekerjaan->delete();
-        return redirect('inbox');
+        return redirect('admin.inbox');
     }
 
 
@@ -147,7 +159,7 @@ class PekerjaanController extends Controller
                             $query->where('skill','LIKE','%'.$request->kunci.'%');
                         });
             })
-        ->where('isVerified',1);
+        ->where('isVerified',1)->where('isTaken',0)->orderBy('created_at','desc');
 
 
 
@@ -349,14 +361,22 @@ class PekerjaanController extends Controller
 
     public function done($pekerjaan)
     {
-        $kerja = Pekerjaan::find($pekerjaan);
-        $kerja->update(array('isDone' => 1));
-        return redirect()->back();
+        $kerja_id = ApplyManager::where('pekerjaan_id',$pekerjaan->id)->where('status',1)->lists('user_id')->toArray();
+
+        if (!in_array(Auth::user()->id, $kerja_id)) {
+            return redirect('home');
+        }
+
+        $pekerjaan->update(array('isDone' => 1));
+        return redirect('ongoing/'.Auth::user()->id);
     }
 
-    public function confirm($pekerjaan)
+    public function confirm(Pekerjaan $pekerjaan)
     {
-        
+        if (Auth::user()->id != $pekerjaan->user_id) {
+            return redirect('home');
+        }
+
         $pekerjaan->update(array('isClosed' => 1));
         $pekerjaan = $pekerjaan->applyManager->where('status',1);
 
@@ -364,6 +384,7 @@ class PekerjaanController extends Controller
             $k->update(array('status' => 0));
         }
 
+        return redirect('ongoing/'.Auth::user()->id);
     }
 
 }

@@ -23,7 +23,7 @@ class CreateUserLuar extends Migration
          });
 
         Schema::table('user_luar',function($table){
-            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan');
+            $table->foreign('pekerjaan_id')->references('id')->on('pekerjaan')->onDelete('cascade');;
         });
 
     }
