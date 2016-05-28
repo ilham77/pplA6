@@ -133,6 +133,9 @@ Route::group(['middleware' => ['web']], function () {
     	return view('login');
 	});
 
+    Route::get('/faq', function () {
+        return view('faq');
+    });
 
 	Route::post('/rate/{pekerjaan}/{user}', 'PekerjaanController@rateTesti');
 
