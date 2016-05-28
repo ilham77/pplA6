@@ -38,20 +38,32 @@
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
+           @if(\Auth::check())
+               <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Logout</h4>
+        </div>
+        <div class="modal-body">
+          <a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
+          <a href="{{url('dashboard')}}" class="btn btn-danger">Profil</a>
+        </div>
+      </div>
+            @else
+               <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-          <a href="{{url('sso-login')}}" class="btn btn-danger">UI</a>
-          <div class="divider"></div>
-          <a href="{{url('login')}}" class="btn btn-danger">Non UI</a><br>
+            <p>Saya adalah...</p><br><br><br><br>
+          <a href="{{url('sso-login')}}" class="btn btn-warning mt-20 font2">Mahasiswa UI</a>
+            &nbsp<span>atau</span> &nbsp
+          <a href="{{url('login')}}" class="btn btn-primary mt-20 font2">Akun Official</a><br>
         </div>
       </div>
-      
+            @endif
+      <!-- Modal content-->
     </div>
 </div>
 
