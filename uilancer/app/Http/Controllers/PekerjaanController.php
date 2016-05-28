@@ -13,6 +13,7 @@ use Auth;
 use App\UserLuar;
 use App\Rating;
 use Illuminate\Pagination\Paginator;
+use DB;
 
 class PekerjaanController extends Controller
 {
@@ -245,8 +246,15 @@ class PekerjaanController extends Controller
                         $pekerjaan->budget = strrev(implode(".", $tempHonor));
             }
 
-            $hasil = $hasil->simplePaginate(10)->appends($request->all());
-            return view('pekerjaan.searchPekerjaanFromDashboard')->with('pekerjaans',$hasil)->with('kunci',$request->kunci);
+            $result = $hasil->get();
+
+            $pekerjaanOff = $hasil->whereHas('user', function ($query) {
+                $query->where('role','official');
+            })->paginate(10,['*'],'page_a')->appends($request->all());
+
+            $pekerjaanNon = array_except($result,$hasil);
+
+            return view('pekerjaan.searchPekerjaanFromDashboard',compact('pekerjaanOff','pekerjaanNon'))->with('kunci',$request->kunci);
         }
     }
 
