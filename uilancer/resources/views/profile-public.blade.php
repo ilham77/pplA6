@@ -245,7 +245,7 @@
                     @else
                     <a href="{{URL::to('cvresume').'/'.$usr->cvresume}}" class="btn btn-primary mt-20 font2 text-center">Lihat CV/Resume</a>
                     @endif
-                      @if(\Auth::check())
+            @if(Auth::check() && Auth::user()->id != $usr->id)
             <a class="btn btn-danger mt-20 font2 text-center " data-toggle="modal" data-target="#reportModal" href="#">Report</a>
             @endif
             <br>

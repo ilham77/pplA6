@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -166,7 +166,7 @@
             </a>
           </li>
         </ul>
-        
+
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
@@ -238,7 +238,7 @@
                 <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
               @endif
             @endif
-          @else
+          @elseif(Auth::user()->role != 'official')
             @if($hasil->user->id != Auth::user()->id)
               @if($hasil->isTaken == 1)
                 <a class="well well-sm font2" style="background-color:red;">Pekerjaan sedang berlangsung</a>

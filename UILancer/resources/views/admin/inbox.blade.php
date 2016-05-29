@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -217,7 +217,7 @@
 
                           {{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + 1 }}</b>–<b>{{ (($pekerjaan->currentPage() - 1) * $pekerjaan->perPage()) + $pekerjaan->count() }}</b> of <b>{{ $pekerjaan->total() }}</b></span>
                         <div class="btn-group btn-group-sm">
-                          {!! $pekerjaan->render() !!}
+                          {!! $pekerjaan->appends([$reports->getPageName() => $reports->currentPage()])->render() !!}
                         </div>
                     </div>
                     @else
@@ -227,7 +227,6 @@
                 </div>
                 <div class="tab-pane fade in" id="profile">
                     <div class="list-group">
-                    @if(count($reports))
                         @foreach($reports as $report)
                         <a href="report/{{$report->id}}" class="list-group-item">
                           <span class="name" style="min-width: 300px; display: inline-block;">{{$report->pelapor}}</span>
@@ -236,26 +235,28 @@
                           <span class="badge">{{ \Carbon\Carbon::parse($report->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>
                         @endforeach
+                    </div>
+                    <br>
+                    @if($reports->total() != 0)
+                      <div class="text-center">
+                        <span class="text-muted"><b>
 
-                     @if($pekerjaan->total() != 0)
-                    
-                    @else
-                    <br>
-                    <br>
-                    @endif
+                          {{ (($reports->currentPage() - 1) * $reports->perPage()) + 1 }}</b>–<b>{{ (($reports->currentPage() - 1) * $reports->perPage()) + $reports->count() }}</b> of <b>{{ $reports->total() }}</b></span>
+                        <div class="btn-group btn-group-sm">
+                          {!! $reports->appends([$pekerjaan->getPageName() => $pekerjaan->currentPage()])->render() !!}
+                        </div>
+                      </div>
                     @endif
                 </div>
-
-        </div>
              <div class="tab-pane fade in" id="stats">
-                    
+
                       <div id="temps_div"></div>
 @linechart('Temps', 'temps_div',true)
-                
 
-        </div>   
+
+        </div>
     </div>
-            
+
 </div>
     </div>
   </div>
@@ -266,8 +267,8 @@
     </div><!--/.row-->
   </div><!--/.row-->
 
-  
- 
+
+
 <script>
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
