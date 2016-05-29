@@ -65,7 +65,7 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-            <p>Saya adalah...</p><br><br><br><br>
+            <p>masuk sebagai</p><br><br><br><br>
           <a href="{{url('sso-login')}}" class="btn btn-warning mt-20 font2">Mahasiswa UI</a>
             &nbsp<span>atau</span> &nbsp
           <a href="{{url('login')}}" class="btn btn-primary mt-20 font2">Akun Official</a><br>
@@ -103,17 +103,17 @@
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-off logo-small"></span>
       <h4>POWER</h4>
-      <p>Kami memberikan layanan yang terbaik</p>
+      <p>Dapatkan hasil yang berkualitas dengan harga terserah anda.</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-refresh logo-small"></span>
       <h4>UPDATE</h4>
-      <p>Informasi lowongan yang kami berikan selalu diperbarui</p>
+      <p>Selalu dinamis dan beradaptasi terhadap perkembangan teknologi saat ini</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>JOB DONE</h4>
-      <p>Semua pekerjaan yang diberikan dikerjakan dengan tuntas</p>
+      <h4>SECURE</h4>
+      <p>Seluruh akun terikat oleh AD/ART Universitas Indonesia</p>
     </div>
   </div>
   <br><br>
@@ -121,17 +121,17 @@
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-check logo-small"></span>
       <h4>CHECK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <p>Freelancer terpercaya & terverifikasi</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-certificate logo-small"></span>
       <h4>CERTIFIED</h4>
-      <p>Terpercaya dan aman dengan informasi yang kami berikan</p>
+      <p>Menyediakan freelancer unggulan dengan bidang keilmuan yang spesifik</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4 style="color:#303030;">HARD WORK</h4>
-      <p>Dikerjakan oleh tim dengan kerja keras</p>
+      <p>Freelancer yang berkomitmen & kerja keras untuk mencapai hasil yang maksimal</p>
     </div>
   </div>
 </div>
