@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -210,9 +210,7 @@
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
 
-            @if(\Auth::user()->cvresume == "")
-            <a href="#" class="btn btn-primary mt-20 font2 text-center ">Lihat CV/Resume</a>
-            @else
+            @if(\Auth::user()->cvresume != "")
             <a href="{{URL::to('cvresume').'/'.\Auth::user()->cvresume}}" class="btn btn-primary">Lihat CV/Resume</a>
             @endif
           <a href="{{url('edit')}}"  class="btn btn-warning mt-20 font2 text-center">Edit Profile</a>

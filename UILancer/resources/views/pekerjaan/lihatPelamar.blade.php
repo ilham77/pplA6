@@ -155,7 +155,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -198,7 +198,7 @@
           <tr>
             <td><img src="http://placehold.it/70x70" alt="">&nbsp</td>
             <td style="padding-left: 8px;">
-              <a href="#"><h4><b>{{ $p->user->name }}</b></h4></a>
+              <a href="{{url('profile/'.$p->user->id) }}"><h4><b>{{ $p->user->name }}</b></h4></a>
               {{ $p->user->deskripsi }}
             </td>
              <td style="padding-left: 80px;">

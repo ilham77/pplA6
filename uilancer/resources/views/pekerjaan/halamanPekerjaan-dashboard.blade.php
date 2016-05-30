@@ -238,23 +238,21 @@
                 <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
               @endif
             @endif
-          @elseif(Auth::user()->role != 'official')
-            @if($hasil->user->id != Auth::user()->id)
-              @if($hasil->isTaken == 1)
-                <a class="well well-sm font2" style="background-color:red;">Pekerjaan sedang berlangsung</a>
-              @else
-                @if (in_array(Auth::user()->id, $id_pelamar))
-                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
-                @else
-                  <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
-                @endif
-              @endif
+          @else
+            @if($hasil->isTaken == 1)
+              <a class="well well-sm font2" style="background-color:red;" href="../ongoing/{{ Auth::user()->id }}">Pekerjaan sedang berlangsung</a>
             @else
-              @if($hasil->isTaken == 0)
+              @if($hasil->user->id != Auth::user()->id)
+                  @if (in_array(Auth::user()->id, $id_pelamar))
+                    <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                  @else
+                    <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+                  @endif
+              @else
                 <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
+                <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
+                <a class="btn btn-danger mt-20 font2 text-center" href="../deleteJob/{{ $hasil->id }}">Batalkan pekerjaan</a>
               @endif
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif
           @endif
 
