@@ -184,9 +184,9 @@
   Pekerjaan dengan kata kunci "{{ $kunci }}"
 
 <br><br>
-      @if(count($pekerjaans))
-        @foreach($pekerjaans as $pekerjaan)
+      @if(count($pekerjaanOff))
 <div class="col-lg-12" style="margin-left:-15px;">
+        @foreach($pekerjaanOff as $pekerjaan)
 <div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
@@ -240,22 +240,96 @@
     </div>
     </div>
         @endforeach
-        <center>
-         <button class="btn btn-default mt-20 font2 text-center" onclick="goBack()">Cari lagi</button>
-       </center>
-      @else
-        <h2>Tidak ada pekerjaan</h2>
       @endif
 
         <div align="center">
-            {!! $pekerjaans->render() !!}
+            {!! $pekerjaanOff->render() !!}
         </div>
   </div>
 </div>
     </div>
+
+<div class="col-lg-12" style="margin-left:-15px;">
+        <div id="form" class="container-fluid">
+            <h1 class="text-left" style="margin-top:35px"><hr></h1>
+ <div class="col-lg-12" style="margin-left:-15px;">
+<br>
+      @if(count($pekerjaanNon))
+        @foreach($pekerjaanNon as $pekerjaan)
+<div class="col">
+    <div class = "panel panel-default">
+      <div class="panel-body">
+                    <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
+<div class ="col-md-3 col-xs-1 col-lg-3">
+                <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
+
+                </div>
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  <span class="glyphicon glyphicon-time"></span>{{ $pekerjaan->endDate }}
+
+                </div>
+
+                <div class ="col-md-3 col-xs-1 col-lg-3">
+                  @if($pekerjaan->isTaken)
+                  <span class="glyphicon glyphicon-folder-closed"></span><span>Closed</span>
+              @else
+                 <span class="glyphicon glyphicon-folder-open"></span><span> Open</span>
+              @endif
+                </div>
+
+               <div class ="col-md-3 col-xs-1 col-lg-3">
+              @if($pekerjaan->isDone)
+                <span class="glyphicon glyphicon-check"></span><span> Done</span>
+              @else
+                <span class="glyphicon glyphicon-unchecked"></span><span> Not Done</span>
+              @endif
+                </div>
+           <br><hr>
+
+          <div class="deskripsi">
+              <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
+              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
+              <span>{{count($pekerjaan->applyManager)}}</span><br>
+              <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
+              <span>{{$pekerjaan->durasi}} minggu</span><br>
+              <span>Skill yang dibutuhkan:</span>
+             @if(count($pekerjaan->skillTag))
+              @foreach($pekerjaan->skillTag as $skill)
+                <span class="mb-5 mr-5 label label-default label-flat">{{ $skill->skill }}</span>
+              @endforeach
+            @endif
+           </div>
+                <div class="text-right">
+                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                </div>
+            </div>
+    </div>
+    </div>
+        @endforeach
+      @endif
+      <br>
+      @if($pekerjaanNon->total() != 0)
+        <div class="text-center">
+          <span class="text-muted"><b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanNon->currentPage() - 1) * $pekerjaanNon->perPage()) + $pekerjaanNon->count() }}</b> of <b>{{ $pekerjaanNon->total() }}</b></span>
+          <div class="btn-group btn-group-sm">
+            {!! $pekerjaanNon->appends([$pekerjaanNon->getPageName() => $pekerjaanNon->currentPage()])->render() !!}
+          </div>
+        </div>
+      @endif
+  </div>
+  <center>
+        <button class="btn btn-default mt-20 font2 text-center" onclick="goBack()">Cari lagi</button>
+      </center>
+</div>
+      </div>
+
+
+
+
     </div>
   </div>
-</div>
+
 
 
       </div>

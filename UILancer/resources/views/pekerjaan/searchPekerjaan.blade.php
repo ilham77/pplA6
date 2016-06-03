@@ -75,10 +75,12 @@
   <br>
   Pekerjaan dengan kata kunci "{{ $kunci }}"
 <br><br>
-      @if(count($pekerjaans))
 
-        @foreach($pekerjaans as $pekerjaan)
 <div class="container">
+			@if(count($pekerjaans))
+
+				@foreach($pekerjaans as $pekerjaan)
+
     <div class="col">
     <div class = "panel panel-default">
       <div class="panel-body">
