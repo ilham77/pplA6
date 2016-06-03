@@ -240,7 +240,7 @@
 
             @endif
           @else
-            @if($statusUser->status == 2)
+            @if(($statusUser) && $statusUser->status == 2)
               <a class="well well-sm font2">Anda sudah ditolak</a>
             @elseif($hasil->isTaken == 1)
               <a class="well well-sm font2" style="background-color:red;" href="../ongoing/{{ Auth::user()->id }}">Pekerjaan sedang berlangsung</a>
