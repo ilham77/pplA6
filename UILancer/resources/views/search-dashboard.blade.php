@@ -13,7 +13,6 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
 </head>
 
 <body>
@@ -29,82 +28,80 @@
         </button>
         <a href="{{url('home')}}"><img src="{{ asset('logo2.png') }}" alt="Logo" width="150px" height="50px" class="navbar-brand"></a>
         <ul class="user-menu">
-
           <!-- Notifikasi -->
           <li role="presentation" class="dropdown pull-right" id="notifikasi">
-                    <a href="#" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                      <span class="glyphicon glyphicon-bell"</span>
-                      <span class="badge bg-green">6</span>
-                    </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
-                      <li>
-                        <a>
-                          <span class="image">
-                            <img src="img.jpg" alt="Profile Image" />
-                          </span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <span class="image">
-                            <img src="img.jpg" alt="Profile Image" />
-                          </span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <span class="image">
-                            <img src="img.jpg" alt="Profile Image" />
-                          </span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <span class="image">
-                            <img src="img.jpg" alt="Profile Image" />
-                          </span>
-                          <span>
-                            <span>John Smith</span>
-                            <span class="time">3 mins ago</span>
-                          </span>
-                          <span class="message">
-                            Film festivals used to be do-or-die moments for movie makers. They were where...
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <div class="text-center">
-                          <a href="#">
-                            <strong>See All Alerts</strong>
-                            <span class="glyphicon glyphicon-menu-right"</span>
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <!-- Menu User -->
+            <a href="#" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+              <span class="glyphicon glyphicon-bell"</span>
+              <span class="badge bg-green">6</span>
+            </a>
+            <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+          <li>
+            <a>
+              <span class="image">
+                <img src="img.jpg" alt="Profile Image" />
+              </span>
+              <span>
+                <span>John Smith</span>
+                <span class="time">3 mins ago</span>
+              </span>
+              <span class="message">
+                Film festivals used to be do-or-die moments for movie makers. They were where...
+              </span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="image">
+                <img src="img.jpg" alt="Profile Image" />
+              </span>
+              <span>
+                <span>John Smith</span>
+                <span class="time">3 mins ago</span>
+              </span>
+              <span class="message">
+                Film festivals used to be do-or-die moments for movie makers. They were where...
+              </span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="image">
+                <img src="img.jpg" alt="Profile Image" />
+              </span>
+              <span>
+                <span>John Smith</span>
+                <span class="time">3 mins ago</span>
+              </span>
+              <span class="message">
+                Film festivals used to be do-or-die moments for movie makers. They were where...
+              </span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span class="image">
+                <img src="img.jpg" alt="Profile Image" />
+              </span>
+              <span>
+                <span>John Smith</span>
+                <span class="time">3 mins ago</span>
+              </span>
+              <span class="message">
+                Film festivals used to be do-or-die moments for movie makers. They were where...
+              </span>
+            </a>
+          </li>
+          <li>
+            <div class="text-center">
+              <a href="#">
+                <strong>See All Alerts</strong>
+                <span class="glyphicon glyphicon-menu-right"</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!-- Menu User -->
           <li class="dropdown pull-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <span class="glyphicon glyphicon-user"></span>
@@ -237,7 +234,7 @@
                 </div>
               <br>
             <input type="hidden" name="flag" value="Dash">
-            <button type="submit" class="btn btn-defautl  left-block btn-lg">Cari Lowongan!</button>
+            <button type="submit" class="btn btn-danger  left-block btn-lg">Cari Lowongan!</button>
           </form>
     </div>
   </div>
