@@ -57,8 +57,8 @@ Route::group(['middleware' => ['web']], function () {
                 });
 
                 Route::post('addUser', 'AdminController@createUser');
-                Route::get('/editUser/{idPekerjaan}', 'AdminController@editForm');
-                Route::post('postEdit', 'AdminController@editUser');
+                Route::get('/editUser/{id}', 'AdminController@editForm');
+                Route::post('/postEdit/{id}', 'AdminController@editUser');
                 Route::get('/verify/{idPekerjaan}', 'PekerjaanController@verifyJob');
                 Route::get('/unverify/{idPekerjaan}', 'PekerjaanController@unverifyJob');
 

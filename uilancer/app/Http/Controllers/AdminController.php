@@ -105,7 +105,8 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
             $user = User::where('id',$id)->first();
             return view('admin.editUser',compact('user'));
     }
-    public function editUser(Request $request){
+    public function editUser(Request $request, $id){
+        $user = User::where('id',$id)->first();
             $this->validate($request, [
                 'namaPemilikAkun'       => 'required',
                 'password' => 'required',
@@ -115,10 +116,10 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
                 // 'no_telp'   => 'required|numeric|min:6',
                 'role'       => 'required',
             ]);
+        $user->username = $request->username;
         $user->name      = $request->namaPemilikAkun;
         $hashPassword = bcrypt($request->password);
         $confirm = $request->confirmPassword;
-        $user->npm = $npm;
         $user->password = $hashPassword;
         $user->email     = $request->email;
         $user->faculty = $request->faculty;
