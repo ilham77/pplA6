@@ -178,6 +178,12 @@ class PekerjaanController extends Controller
         }
         else
         {
+            if ($request->pencari) {
+                $hasil->whereHas('user',function($query) use ($request){
+                            $query->where('name','LIKE','%'.$request->pencari.'%');
+                });
+            }
+
 
             if($request->minimumHonor && $request->maksimumHonor)
             {

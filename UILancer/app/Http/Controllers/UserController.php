@@ -261,7 +261,7 @@ class UserController extends Controller
 
         if($isAdaTerima)
         {
-            Pekerjaan::find($request->pekerjaan)->update(array('isTaken' => 1));
+            $pekerjaan = Pekerjaan::find($request->pekerjaan)->update(array('isTaken' => 1));;
         }
 
         return redirect('riwayatJobGiver');
