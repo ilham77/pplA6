@@ -16,7 +16,6 @@
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
 <![endif]-->
-
 </head>
 
 <body>
@@ -202,7 +201,10 @@
               {{ $p->user->deskripsi }}
             </td>
              <td style="padding-left: 80px;">
-              <input type="checkbox" name = "user[]" value="{{ $p->user_id }}" checked data-toggle="toggle" data-on="Terima" data-off="Tolak" data-onstyle="success" data-offstyle="danger">
+                <select name="status[]">
+                  <option value="{{$p->user_id}}=>tolak">Tolak</option>
+                  <option value="{{$p->user_id}}=>terima">Terima</option>
+              </select>
             </td>
           </tr>
         </table>
@@ -214,7 +216,6 @@
 
       <?php $i++; ?>
     @endforeach
-    <input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
     </div>
 
     @if(Auth::user()->role != "admin")

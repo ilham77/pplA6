@@ -236,15 +236,32 @@ class UserController extends Controller
 
     public function terimaLamar(Request $request)
     {
-        if(count($request->user))
-        {
-            foreach ($request->user as $ru) {
-            $am = ApplyManager::where('user_id',$ru)
-            ->where('pekerjaan_id',$request->pekerjaan);
+        $isAdaTerima = 0;
 
-            $am->first()->update(array('status' => 1));
-            $am->first()->pekerjaan->update(array('isTaken' => 1));
+        if(count($request->status))
+        {
+            foreach($request->status as $st)
+            {
+                $usertat = explode("=>", $st);
+                $am = ApplyManager::where('user_id',$usertat[0]);
+
+
+                if($usertat[1] == "tolak")
+                {
+                    $am->first()->update(array('status' => 2));
+                }
+                else
+                {
+                    $am->first()->update(array('status' => 1));
+                    $isAdaTerima = 1;
+                }
+
             }
+        }
+
+        if($isAdaTerima)
+        {
+            Pekerjaan::find($request->pekerjaan)->update(array('isTaken' => 1));
         }
 
         return redirect('riwayatJobGiver');

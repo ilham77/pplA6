@@ -237,9 +237,12 @@
               @if(!count($hasil->applyManager))
                 <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
               @endif
+
             @endif
           @else
-            @if($hasil->isTaken == 1)
+            @if($statusUser->status == 2)
+              <a class="well well-sm font2">Anda sudah ditolak</a>
+            @elseif($hasil->isTaken == 1)
               <a class="well well-sm font2" style="background-color:red;" href="../ongoing/{{ Auth::user()->id }}">Pekerjaan sedang berlangsung</a>
             @else
               @if($hasil->user->id != Auth::user()->id)

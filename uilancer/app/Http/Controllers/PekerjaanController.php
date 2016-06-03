@@ -63,8 +63,10 @@ class PekerjaanController extends Controller
             array_push($id_pelamar, $am->user_id);
         }
 
+        $statusUser = ApplyManager::where('user_id',Auth::user()->id)->where('pekerjaan_id',$pekerjaan)->first();
+
         if (Auth::user()){
-            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar','statusUser'));
         } else {
             return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
         }
@@ -369,7 +371,7 @@ class PekerjaanController extends Controller
 
     public function lihatPelamar(Pekerjaan $pekerjaan)
     {
-        $pelamar = $pekerjaan->applyManager;
+        $pelamar = $pekerjaan->applyManager->where('status',0);
         $i = 1;
         return view('pekerjaan.lihatPelamar',compact('pekerjaan','pelamar','i'));
     }
