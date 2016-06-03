@@ -15,10 +15,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-          
-       $reports = Report::all();
-       $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10);
-        
+
+       $reports = Report::paginate(10,['*'],'page_a');
+       $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10,['*'],'page_b');
+
 $chart = \Lava::DataTable();
 $stats = new Statistic;
 $date = date('d-M-Y');
@@ -47,7 +47,7 @@ $chart->addDateColumn('created_at')
              ->addNumberColumn('Job Given')
              ->addNumberColumn('Job Done')
              ->addNumberColumn('Report');
-             
+
 if(count($stats)){
 $graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
 foreach($graph as $gr){
@@ -73,6 +73,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
                 'password' => 'required',
                 'confirmPassword' => 'required',
                 'email'		=> 'required|email',
+                'faculty' => 'required',
                 // 'no_telp'   => 'required|numeric|min:6',
                 'role'       => 'required',
             ]);
@@ -92,6 +93,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
         $user->npm = $npm;
         $user->password = $hashPassword;
         $user->email     = $request->email;
+        $user->faculty = $request->faculty;
         $user->role = $request->role;
         if ($request->password == $confirm) {
         	$user->save();
@@ -109,6 +111,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
                 'password' => 'required',
                 'confirmPassword' => 'required',
                 'email'     => 'required|email',
+                'faculty' => 'required',
                 // 'no_telp'   => 'required|numeric|min:6',
                 'role'       => 'required',
             ]);
@@ -118,6 +121,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
         $user->npm = $npm;
         $user->password = $hashPassword;
         $user->email     = $request->email;
+        $user->faculty = $request->faculty;
         $user->role = $request->role;
         if ($request->password == $confirm) {
             $user->save();
@@ -133,15 +137,15 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
         User::where('id',$id)->update(array('role' => 'blocked'));
         return redirect('manageUser');
     }
-    
+
     public function unblockUser($id) {
         $user = User::find($id);
-        
+
         if($user->org_code == "")
             $user->update(array('role' => 'official'));
         else
             $user->update(array('role' => 'mahasiswa'));
-            
+
         return redirect('manageUser');
     }
 }

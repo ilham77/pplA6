@@ -59,7 +59,7 @@
           <h4 class="modal-title">Login</h4>
         </div>
         <div class="modal-body">
-            <p>Saya adalah...</p><br><br><br><br>
+          <p>masuk sebagai</p><br><br><br><br>
           <a href="{{url('sso-login')}}" class="btn btn-warning mt-20 font2">Mahasiswa UI</a>
             &nbsp<span>atau</span> &nbsp
           <a href="{{url('login')}}" class="btn btn-primary mt-20 font2">Akun Official</a><br>

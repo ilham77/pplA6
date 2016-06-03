@@ -153,7 +153,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent active ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -222,11 +222,13 @@
                 @endif
               </tr>
             @else
+            <tr>
               <td><center>{{ $ku->judul_pekerjaan }}</center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
               <td><center>Waiting for applicant</center></td>
+            </tr>
             @endif
           @endif
         @endforeach

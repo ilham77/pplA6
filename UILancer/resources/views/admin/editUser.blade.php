@@ -153,7 +153,7 @@
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat
-        </a></span> 
+        </a></span>
         <ul class="children collapse" id="sub-item-1">
           <li>
             <a class="" href="{{url('riwayatJobGiver')}}">
@@ -216,7 +216,7 @@
               <div class="form-group row">
                 <label for="institusi" class="col-md-3 control-label">Institusi</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="institusi" placeholder="Institusi" value="{{$user->faculty}}">
+                    <input type="text" class="form-control" name="faculty" placeholder="Institusi" value="{{$user->faculty}}">
                 </div>
               </div>
               <div class="form-group row">

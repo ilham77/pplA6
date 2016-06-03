@@ -153,7 +153,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -218,7 +218,7 @@
               <div class="form-group row">
                 <label for="institusi" class="col-md-3 control-label">Institusi</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="institusi" placeholder="Institusi">
+                    <input type="text" class="form-control" name="faculty" placeholder="Institusi">
                 </div>
               </div>
 <!--               <div class="form-group row">

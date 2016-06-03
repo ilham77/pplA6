@@ -152,7 +152,7 @@
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
-          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span> 
+          <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span>Riwayat</span>
         </a>
         <ul class="children collapse" id="sub-item-1">
           <li>
@@ -166,7 +166,7 @@
             </a>
           </li>
         </ul>
-        
+
       </li>
       <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
@@ -239,22 +239,20 @@
               @endif
             @endif
           @else
-            @if($hasil->user->id != Auth::user()->id)
-              @if($hasil->isTaken == 1)
-                <a class="well well-sm font2" style="background-color:red;">Pekerjaan sedang berlangsung</a>
-              @else
-                @if (in_array(Auth::user()->id, $id_pelamar))
-                  <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
-                @else
-                  <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
-                @endif
-              @endif
+            @if($hasil->isTaken == 1)
+              <a class="well well-sm font2" style="background-color:red;" href="../ongoing/{{ Auth::user()->id }}">Pekerjaan sedang berlangsung</a>
             @else
-              @if($hasil->isTaken == 0)
+              @if($hasil->user->id != Auth::user()->id)
+                  @if (in_array(Auth::user()->id, $id_pelamar))
+                    <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                  @else
+                    <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
+                  @endif
+              @else
                 <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
+                <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
+                <a class="btn btn-danger mt-20 font2 text-center" href="../deleteJob/{{ $hasil->id }}">Batalkan pekerjaan</a>
               @endif
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
-              <a class="btn btn-danger mt-20 font2 text-center" href="#">Batalkan pekerjaan</a>
             @endif
           @endif
 

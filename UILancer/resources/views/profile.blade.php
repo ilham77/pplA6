@@ -150,9 +150,7 @@ REPORT MODAL
 
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p></br>
-            @if(\Auth::user()->cvresume == "")
-            <a href="#" class="btn btn-primary pull-right">Lihat CV/Resume</a>
-            @else
+            @if(\Auth::user()->cvresume != "")
             <a href="{{URL::to('cvresume').'/'.\Auth::user()->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
             @endif
             </br>

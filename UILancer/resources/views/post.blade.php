@@ -21,7 +21,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <img src="logo2.png" alt="Logo" width="150px" height="50px" class="navbar-brand" href="#home">
     </div>
@@ -60,8 +60,8 @@
       </div>
             @endif
       <!-- Modal content-->
-   
-      
+
+
     </div>
 </div>
 
@@ -71,12 +71,12 @@
           <h1 class="text-primary">Terima kasih telah menggunakan UILancer!</h1>
           <br><br>
           <div id="infobox" class="panel-body text-center well well-lg">
-              @if(\Auth::user()->role="mahasiswa")
+              @if(\Auth::check())
                 <p>Lowongan anda berhasil diajukan.</p><br/>
               @else
               <p>Lowongan anda berhasil diajukan, harap menunggu verifikasi <strong>Administrator</strong> agar lowongan dapat di post. Kami akan segera menghubungi anda!</p><br/>
               @endif
-                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+                <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
           </div>
       </div>
       <center>
@@ -92,7 +92,7 @@
       <p>Contact us and we'll get back to you within 24 hours.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span> Fasilkom, Universitas Indonesia</p>
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
-      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>    
+      <p><span class="glyphicon glyphicon-envelope"></span> ask@uilancer.com</p>
     </div>
   </div>
 </div>
@@ -110,7 +110,7 @@
   <p>UILancer is marketplace for service blablabla</p>
   <a href="#">(+62) 813-681-999</a></br>
   <a href="#">ask@uilancer.com</a><br>
-  <p>Made By <a href="" title="UILancer">PPL A6</a></p>		
+  <p>Made By <a href="" title="UILancer">PPL A6</a></p>
 </footer>
 
 <script>
@@ -129,12 +129,12 @@ $(document).ready(function(){
     $('html, body').animate({
       scrollTop: $(hash).offset().top
     }, 900, function(){
-   
+
       // Add hash (#) to URL when done scrolling (default click behavior)
       window.location.hash = hash;
     });
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -156,16 +156,16 @@ $(document).on('change', '.btn-file :file', function() {
 
 $(document).ready( function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
-        
+
         var input = $(this).parents('.input-group').find(':text'),
             log = numFiles > 1 ? numFiles + ' files selected' : label;
-        
+
         if( input.length ) {
             input.val(log);
         } else {
             if( log ) alert(log);
         }
-        
+
     });
 });
 </script>

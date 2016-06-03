@@ -38,7 +38,6 @@ class UserController extends Controller
     public function viewPublicProfile($user){
         $usr = User::findorFail($user);
         $skills = $usr->skill;
-
         $jobs = $usr->applyManager;
 
         foreach ($jobs as $job) {
