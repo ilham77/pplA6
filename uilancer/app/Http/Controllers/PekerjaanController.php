@@ -166,7 +166,7 @@ class PekerjaanController extends Controller
 
 
 
-        if($request->flag == "nonDash")
+        if(!Auth::check())
         {
             $hasil = $hasil->simplePaginate(10)->appends($request->all());
                     foreach ($hasil as $pekerjaan) {
