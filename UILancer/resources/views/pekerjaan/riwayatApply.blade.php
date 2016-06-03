@@ -208,11 +208,11 @@
               @if($ku->status == 1)
                 <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
               @elseif($ku->pekerjaan->isClosed == 1)
-                <td><center>Done</center></td>
+                <td><center>Telah selesai</center></td>
               @elseif($ku->pekerjaan->isTaken == 1 || $ku->status == 2)
-                <td><center>Declined</center></td>
+                <td><center>Ditolak</center></td>
               @else
-                <td><center>Waiting for selection</center></td>
+                <td><center>Menunggu hasil seleksi</center></td>
               @endif
           </tr>
         @endforeach

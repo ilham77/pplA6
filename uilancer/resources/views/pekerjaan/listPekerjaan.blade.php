@@ -274,7 +274,7 @@
 
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-              <span>Rp {{$pekerjaan->budget}}</span><br>
+              <span>Rp. {{$pekerjaan->budget}},-</span><br>
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>

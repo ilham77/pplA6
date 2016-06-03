@@ -203,7 +203,7 @@
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
-              <td><center>Waiting to be verified</center></td>
+              <td><center>Menunggu Verifikasi</center></td>
             </tr>
           @else
             @if(count($ku->applyManager))
@@ -214,7 +214,7 @@
                 <td><center>{{ $ku->endDate  }}</center></td>
 
                 @if($ku->isClosed == 1)
-                  <td><center>Done</center></td>
+                  <td><center>Telah Selesai</center></td>
                 @elseif($ku->isTaken == 1)
                   <td><center><a href="ongoing/{{ Auth::user()->id }}">On-Going</a></center></td>
                 @else
@@ -227,7 +227,7 @@
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
-              <td><center>Waiting for applicant</center></td>
+              <td><center>Menunggu Pelamar</center></td>
             </tr>
             @endif
           @endif
