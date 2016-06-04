@@ -125,7 +125,7 @@ class PekerjaanController extends Controller
     }
 
     public function editPekerjaan(Request $request, $id) {
-         $pekerjaan = Pekerjaan::where('id',$id)->first();
+         $hasil = Pekerjaan::where('id',$id)->first();
             $this->validate($request, [
                 'judul'       => 'required',
                 'deskripsiPekerjaan' => 'required',
@@ -134,14 +134,23 @@ class PekerjaanController extends Controller
                 'estimasi' => 'required|numeric',
                 'deadline' => 'required',
             ]);
-            $pekerjaan->judul_pekerjaan       = $request->judul;
-            $pekerjaan->deskripsi_pekerjaan   = $request->deskripsiPekerjaan;
-            $pekerjaan->budget = $request->budget;
-            $pekerjaan->durasi = $request->estimasi;
-            $pekerjaan->endDate = $request->deadline;
-            return view('pekerjaan.halamanPekerjaan-dashboard', compact(varname)
-        }
-        return redirect('/editPekerjaan')->withErrors(['Ada salah data']);
+            $hasil->judul_pekerjaan       = $request->judul;
+            $hasil->deskripsi_pekerjaan   = $request->deskripsiPekerjaan;
+            $hasil->budget = $request->budget;
+            $hasil->durasi = $request->estimasi;
+            $hasil->endDate = $request->deadline;
+            $hasil->save();
+
+            $arrSkill = explode(";", $request->skill);
+            foreach($arrSkill as $as)
+            {
+                $skill = SkillTagPekerjaan::where('pekerjaan_id',$id)->first();
+                $skill->pekerjaan_id = $hasil->id;
+                $skill->skill = $as;
+                $skill->save();
+            }
+
+            return redirect('postEdit');
     }
 
     public function editForm($id) {

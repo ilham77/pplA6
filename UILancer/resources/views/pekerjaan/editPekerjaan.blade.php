@@ -205,7 +205,7 @@
   <br>
   <div class="row">
     <div class="col-md-8">
-            <form action="addlowongan" method="POST" role="form">
+            <form action="{{url('postEditPekerjaan/'.$pekerjaan->id)}}" method="POST" role="form">
         {{ csrf_field() }}
                     <div class="form-group">
                       <label for="judul">Judul Pekerjaan</label>
