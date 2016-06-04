@@ -97,7 +97,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
         $user->role = $request->role;
         if ($request->password == $confirm) {
         	$user->save();
-			return redirect('inbox');
+			return redirect('manageUser');
         }
         return view('admin.createUser');
     }

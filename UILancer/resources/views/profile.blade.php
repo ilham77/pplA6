@@ -148,7 +148,7 @@ REPORT MODAL
             <p>Ketertarikan     : Massage, Telephone marketing</p>
 
             <p>Pekerjaan        : {{\Auth::user()->role}}</p>
-            <p>Fakultas         : {{\Auth::user()->faculty}}</p></br>
+            <p>Institusi        : {{\Auth::user()->faculty}}</p></br>
             @if(\Auth::user()->cvresume != "")
             <a href="{{URL::to('cvresume').'/'.\Auth::user()->cvresume}}" class="btn btn-primary pull-right">Lihat CV/Resume</a>
             @endif

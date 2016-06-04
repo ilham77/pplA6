@@ -236,7 +236,6 @@
             <p>Media Sosial     : {{$usr->linkedin}}</p>
             <p>Web              : {{$usr->web}}</p>
             <p>Ketertarikan     : </p>
-            <p>Pekerjaan        : {{$usr->role}}</p>
             <p>Fakultas         : {{$usr->faculty}}</p>
 
 
@@ -248,6 +247,7 @@
             @endif
             <br>
             <hr style="">
+            @if($usr->role=="mahasiswa")
                     <h3>Riwayat Pekerjaan</h3>
                     <table style="width:1050px;" class="table table-hover">
               <div class="table-responsive">
@@ -274,6 +274,7 @@
               @else
                 <b>User ini belum pernah menyelesaikan pekerjaan freelance</b>
               @endif
+            @endif
                 </div>
               </table>
                   </div>
