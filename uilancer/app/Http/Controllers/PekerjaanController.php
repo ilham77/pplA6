@@ -63,12 +63,13 @@ class PekerjaanController extends Controller
             array_push($id_pelamar, $am->user_id);
         }
 
-        $statusUser = ApplyManager::where('user_id',Auth::user()->id)->where('pekerjaan_id',$pekerjaan)->first();
+        $userluar = UserLuar::all();
 
         if (Auth::user()){
-            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar','statusUser'));
+            $statusUser = ApplyManager::where('user_id',Auth::user()->id)->where('pekerjaan_id',$pekerjaan)->first();
+            return view('pekerjaan.halamanPekerjaan-dashboard',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar','statusUser','userluar'));
         } else {
-            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar'));
+            return view('pekerjaan.halamanPekerjaan',compact('hasil','hasill','jobGiver','jumlah_pelamar','id_pelamar','userluar'));
         }
     }
 
