@@ -184,7 +184,9 @@
     <div class="col-md-12">
     <div class="row">
         <div class="col-sm-9 col-md-12">
-            <form action="{{url('postEdit')}}" method="POST" role="form">
+
+                @if(count($user))
+            <form action="{{url('postEdit/'.$user->id)}}" method="POST" role="form">
               {{ csrf_field() }}
               <div class="form-group row">
                 <label for="usernameUser" class="col-md-3 control-label">Username</label>
@@ -201,7 +203,7 @@
               <div class="form-group row">
                 <label for="password" class="col-md-3 control-label">Password</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="password" placeholder="Password" >
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Password" >
                 </div>
                 <div class="col-md-1">
                     <button id="generatePassword" type="button" class="btn btn-defautl">Generate Password</button>
@@ -229,20 +231,33 @@
                 <label for="role" class="col-md-3 control-label" value="{{$user->role}}">Role</label>
                 <div class="col-md-8">
                   <select class="form-control" name="role">
-                    <option>Admin</option>
-                    <option>Akun Official</option>
+                    <option>admin</option>
+                    <option>official</option>
                   </select>
                 </div>
               </div>
               <button type="submit" class="btn btn-success left-block">Submit</button>
             </form>
+            @endif
         </div>
     </div>
   <br>
     </div>
   </div>
 </div>
+                  @if (count($errors))
 
+                    <div class="well well-sm" id="error">
+                      <ul>
+
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+
+                      </ul>
+                    </div>
+
+                  @endif
 
       </div>
     </div><!--/.row-->
