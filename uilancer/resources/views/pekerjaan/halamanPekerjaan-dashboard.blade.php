@@ -258,7 +258,7 @@
               @else
                 <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
                 <a class="btn btn-warning mt-20 font2 text-center" href="../editPekerjaan/{{ $hasil->id }}">Edit</a>
-                <a class="btn btn-danger mt-20 font2 text-center" href="../deleteJob/{{ $hasil->id }}">Batalkan pekerjaan</a>
+                <a class="btn btn-danger mt-20 font2 text-center" href="../delete/{{ $hasil->id }}">Batalkan pekerjaan</a>
               @endif
             @endif
           @endif

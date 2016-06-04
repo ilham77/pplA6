@@ -141,15 +141,18 @@ class PekerjaanController extends Controller
             $hasil->endDate = $request->deadline;
             $hasil->save();
 
+            SkillTagPekerjaan::where('pekerjaan_id',$id)->delete();
+
             $arrSkill = explode(";", $request->skill);
             foreach($arrSkill as $as)
             {
-
-                $skill = SkillTagPekerjaan::where('pekerjaan_id',$id)->first();
-                $skill->delete();
-                $skill->pekerjaan_id = $hasil->id;
-                $skill->skill = $as;
-                $skill->save();
+                if($as != "")
+                {
+                    $skill = new SkillTagPekerjaan;
+                    $skill->pekerjaan_id = $hasil->id;
+                    $skill->skill = $as;
+                    $skill->save();
+                }
             }
 
             return redirect('postEdit');
@@ -160,7 +163,7 @@ class PekerjaanController extends Controller
         $skillTag = $pekerjaan->skilltag;
         $hasil = "";
         foreach ($skillTag as $st) {
-            if (!is_null($st)) {
+            if ($st->skill != "") {
                 $hasil = $hasil.$st->skill.";";
             }
         }

@@ -217,9 +217,9 @@
                     </div>
                     <div class="form-group">
                       <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                     
+
                       <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{ $hasil}}"></input>
- 
+
 
                     </div>
                     <div class="form-inline">
@@ -242,7 +242,7 @@
                     <br>
 
                     <button type="submit" class="btn btn-success left-block btn">Save</button>
-                    <button type="submit" class="btn btn-danger left-block btn">Cancel</button>
+                    <button class="btn btn-danger left-block btn">Cancel</button>
                   </form>
 
                   @if (count($errors))
