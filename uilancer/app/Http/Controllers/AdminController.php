@@ -106,6 +106,7 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
             $user = User::where('id',$id)->first();
             return view('admin.editUser',compact('user'));
     }
+    
     public function editUser(Request $request, $id){
         $user = User::where('id',$id)->first();
             $this->validate($request, [

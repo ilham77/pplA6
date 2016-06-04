@@ -124,6 +124,38 @@ class PekerjaanController extends Controller
         return redirect('post');
     }
 
+    public function editPekerjaan(Request $request, $id) {
+         $pekerjaan = Pekerjaan::where('id',$id)->first();
+            $this->validate($request, [
+                'judul'       => 'required',
+                'deskripsiPekerjaan' => 'required',
+                'skill' => 'required',
+                'budget' => 'required|numeric',
+                'estimasi' => 'required|numeric',
+                'deadline' => 'required',
+            ]);
+            $pekerjaan->judul_pekerjaan       = $request->judul;
+            $pekerjaan->deskripsi_pekerjaan   = $request->deskripsiPekerjaan;
+            $pekerjaan->budget = $request->budget;
+            $pekerjaan->durasi = $request->estimasi;
+            $pekerjaan->endDate = $request->deadline;
+            return view('pekerjaan.halamanPekerjaan-dashboard', compact(varname)
+        }
+        return redirect('/editPekerjaan')->withErrors(['Ada salah data']);
+    }
+
+    public function editForm($id) {
+        $pekerjaan = Pekerjaan::where('id',$id)->first();
+        $skillTag = $pekerjaan->skilltag;
+        $hasil = "";
+        foreach ($skillTag as $st) {
+            if (!is_null($st)) {
+                $hasil = $hasil.$st->skill.";";
+            }
+        }
+        return view('pekerjaan.editPekerjaan',compact('pekerjaan', 'hasil'));
+    }
+
     public function verifyJob($idPekerjaan) {
         $pekerjaan = Pekerjaan::find($idPekerjaan);
         $pekerjaan->update(array('isVerified' => 1));

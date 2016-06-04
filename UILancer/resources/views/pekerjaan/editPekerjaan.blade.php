@@ -167,9 +167,9 @@
       </li>
       @endif
       <li><a href="{{url('dashboard')}}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
-      <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
+      <li class="active"><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
-      <li class="active"><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
+      <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
       <li class="parent ">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
@@ -196,12 +196,12 @@
 
   </div><!--/.sidebar-->
 
-
+@if(count($pekerjaan))
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
       <div class="col-lg-12">
         <div id="form" class="container-fluid">
-  <h1 class="text-left" style="margin-top:35px">Buka Pekerjaan</h1>
+  <h1 class="text-left" style="margin-top:35px">Edit Pekerjaan</h1>
   <br>
   <div class="row">
     <div class="col-md-8">
@@ -209,36 +209,40 @@
         {{ csrf_field() }}
                     <div class="form-group">
                       <label for="judul">Judul Pekerjaan</label>
-                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{old('judul')}}"></input>
+                      <input type="text" class="form-control" name="judul" placeholder="Judul pekerjaan..." value="{{ $pekerjaan->judul_pekerjaan}}"></input>
                     </div>
                     <div class="form-group">
                       <label for="deskripsi">Deskripsi Pekerjaan</label>
-                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{old('deskripsi')}}</textarea>
+                      <textarea id="deskripsiPekerjaan" class="form-control" name="deskripsiPekerjaan" placeholder="Deskripsi pekerjaan...">{{ $pekerjaan->deskripsi_pekerjaan }}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="skilltag">Skill yang diperlukan (dipisah dengan ";")</label>
-                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{old('skill')}}"></input>
+                     
+                      <input type="text" class="form-control" name="skill" placeholder="skill1;skill2;etc..." value="{{ $hasil}}"></input>
+ 
+
                     </div>
                     <div class="form-inline">
                       <div class="form-group">
                         <label for="budget">Budget</label>
-                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{old('budget')}}"></input>
+                        <input type="text" class="form-control" name="budget" placeholder="dalam Rupiah (Rp)" value="{{ $pekerjaan->budget}}"></input>
                       </div>
                       <div class="form-group">
                         <label for="estimasi">Estimasi waktu pengerjaan (dalam minggu)</label>
-                        <input type="number" class="form-control" name="estimasi" min="1" value="{{old('estimasi')}}"></input>
+                        <input type="number" class="form-control" name="estimasi" min="1" value="{{ $pekerjaan->durasi }}"></input>
                       </div>
                     </div>
                     <br>
                     <div class="form-inline">
                       <div class="form-group">
                         <label for="waktututup">Deadline pencarian:</label>
-                        <input type="date" class="form-control" name="deadline" value="{{old('deadline')}}"></input>
+                        <input type="date" class="form-control" name="deadline" value="{{ $pekerjaan->endDate}}"></input>
                       </div>
                     </div>
                     <br>
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
+                    <button type="submit" class="btn btn-success left-block btn">Save</button>
+                    <button type="submit" class="btn btn-danger left-block btn">Cancel</button>
                   </form>
 
                   @if (count($errors))
@@ -257,6 +261,7 @@
     </div>
     </div>
   </div>
+  @endif
 </div>
 </div>
 </div>

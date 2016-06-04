@@ -236,7 +236,7 @@
               <a class="btn btn-danger mt-20 font2" href="../delete/{{ $hasil->id }}">Delete</a>
             @else
               <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
-              <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
+              <a class="btn btn-warning mt-20 font2 text-center" href="../editPekerjaan/{{ $hasil->id }}">Edit</a>
 
               @if(!count($hasil->applyManager))
                 <a class="btn btn-danger mt-20 font2" href="../unverify/{{ $hasil->id }}">Unverify</a>
@@ -257,7 +257,7 @@
                   @endif
               @else
                 <a class="btn btn-primary mt-20 font2 text-center" href="../lihatPelamar/{{ $hasil->id }}">Lihat Pelamar</a>
-                <a class="btn btn-warning mt-20 font2 text-center" href="#">Edit</a>
+                <a class="btn btn-warning mt-20 font2 text-center" href="../editPekerjaan/{{ $hasil->id }}">Edit</a>
                 <a class="btn btn-danger mt-20 font2 text-center" href="../deleteJob/{{ $hasil->id }}">Batalkan pekerjaan</a>
               @endif
             @endif

@@ -88,6 +88,9 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('addlowongan', 'PekerjaanController@insertPekerjaan');
             Route::get('/listPekerjaan','PekerjaanController@index');
 
+            Route::get('/editPekerjaan/{id}', 'PekerjaanController@editForm');
+            Route::post('postEditPekerjaan/{id}', 'PekerjaanController@editUser');
+
             Route::get('/report/{report}',['uses' =>'ReportController@detailReport']);
             Route::get('/report/delete/{report}',['uses' =>'ReportController@deleteReport']);
 
