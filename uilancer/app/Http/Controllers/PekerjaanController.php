@@ -144,7 +144,9 @@ class PekerjaanController extends Controller
             $arrSkill = explode(";", $request->skill);
             foreach($arrSkill as $as)
             {
+
                 $skill = SkillTagPekerjaan::where('pekerjaan_id',$id)->first();
+                $skill->delete();
                 $skill->pekerjaan_id = $hasil->id;
                 $skill->skill = $as;
                 $skill->save();
