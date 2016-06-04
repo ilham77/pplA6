@@ -6,6 +6,7 @@ use App\Pekerjaan;
 use App\Report;
 use App\Statistic;
 use App\User;
+use App\UserLuar;
 use Hash;
 use Auth;
 use Khill\Lavacharts\Lavacharts;
@@ -15,9 +16,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-
        $reports = Report::paginate(10,['*'],'page_a');
        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10,['*'],'page_b');
+       $userLuar = UserLuar::all();
 
 $chart = \Lava::DataTable();
 $stats = new Statistic;
@@ -59,8 +60,8 @@ $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr-
     'width'=>1100,
     'height'=>400
 ]);
- return view('admin.inbox',compact('pekerjaan','reports'));
-    }
+ return view('admin.inbox',compact('pekerjaan','reports','userLuar'));
+}
     public function showUser()
     {
        $users = User::all();

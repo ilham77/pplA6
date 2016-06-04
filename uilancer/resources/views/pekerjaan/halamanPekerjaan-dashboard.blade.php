@@ -181,23 +181,27 @@
         <div class="container-fluid text-left">
         <h1><p id="judul_pekerjaan" >{{ $hasil->judul_pekerjaan }}</p></h1>
         <span>Oleh : <a href="{{url('profile/'.$jobGiver->id) }}">{{ $jobGiver->name }}</a></span>
+        @if($jobGiver->name == "Admin")
+          <br>
+          <span>Atas permintaan : {{ $userluar->where('pekerjaan_id',$hasil->id)->first()["name"] }} ({{ $userluar->where('pekerjaan_id',$hasil->id)->first()["asal_instansi"] }})</span>
+        @endif
         <br>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <br>
-            <span>Status:
-            @if($hasil->isTaken)
-              Sudah Diambil
-            @else
-              Lowong
-            @endif</span>
-            <br>
-                        <span>Jumlah Pelamar:
-              @if($hasil->user->id == Auth::user()->id)
-                {{ $jumlah_pelamar }}
-              @else
-                {{ $jumlah_pelamar }}
-              @endif
-              </span>
+        <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
+        <br>
+        <span>Status:
+          @if($hasil->isTaken)
+            Sudah Diambil
+          @else
+            Lowong
+          @endif</span>
+        <br>
+        <span>Jumlah Pelamar:
+          @if($hasil->user->id == Auth::user()->id)
+            {{ $jumlah_pelamar }}
+          @else
+            {{ $jumlah_pelamar }}
+          @endif
+        </span>
         <hr style="border-width: 2px;">
       </div>
 

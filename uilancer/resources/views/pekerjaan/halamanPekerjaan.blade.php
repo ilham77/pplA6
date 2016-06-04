@@ -79,9 +79,12 @@
         <br/>
         <h1><p id="judul_pekerjaan">{{ $hasil->judul_pekerjaan }}</p></h1>
         <span>Oleh : <a data-toggle="modal" data-target="#myModal" href="#">{{ $jobGiver->name }}</a></span>
-            <span>Dibuat tanggal: {{ $hasil->created_at }}</span>
-            <span>Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
-            <span>Status:
+        @if($jobGiver->name == "Admin")
+          <span>| Atas permintaan : {{ $userluar->where('pekerjaan_id',$hasil->id)->first()["name"] }} ({{ $userluar->where('pekerjaan_id',$hasil->id)->first()["asal_instansi"] }})</span>
+        @endif
+            <span>| Dibuat tanggal: {{ $hasil->created_at }}</span>
+            <span>| Jumlah Pelamar: {{ $jumlah_pelamar }}</span>
+            <span>| Status:
             @if($hasil->isTaken)
               Sudah Diambil
             @else

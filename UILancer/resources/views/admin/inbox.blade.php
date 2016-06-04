@@ -203,9 +203,21 @@
                     <div class="list-group">
                       @foreach($pekerjaan as $sbhPekerjaan)
                         <a href="{{url('/pekerjaan/'. $sbhPekerjaan->id) }}" class="list-group-item">
-                          <span class="name" style="min-width: 300px; display: inline-block;">{{ $sbhPekerjaan->user->name }}</span>
+                          <span class="name" style="min-width: 300px; display: inline-block;">
+                          @if($sbhPekerjaan->user->name == "Admin")
+                            {{ $userLuar->where('pekerjaan_id',$sbhPekerjaan->id)->first()["name"] }}
+                          @else
+                            {{ $sbhPekerjaan->user->name }}
+                          @endif
+                          </span>
                           <span class="">{{ $sbhPekerjaan->judul_pekerjaan }}</span>
-                          <span class="text-muted" style="font-size: 11px;">- {{ $sbhPekerjaan->user->faculty }}</span>
+                          <span class="text-muted" style="font-size: 11px;">-
+                           @if($sbhPekerjaan->user->name == "Admin")
+                            {{ $userLuar->where('pekerjaan_id',$sbhPekerjaan->id)->first()["asal_instansi"] }}
+                          @else
+                            {{ $sbhPekerjaan->user->faculty }}
+                          @endif
+                          </span>
                           <span class="badge">{{ \Carbon\Carbon::parse($sbhPekerjaan->created_at)->format('M j, Y g:i A') }}</span> <span class="pull-right"></span>
                         </a>
                       @endforeach
