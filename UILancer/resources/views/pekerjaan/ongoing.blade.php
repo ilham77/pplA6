@@ -222,9 +222,9 @@
         </thead>
         @foreach($freelancer_job as $fj)
             <tr>
-            <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
-            <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
-            <td><center>{{ $fj->pekerjaan->durasi }} pekan</center></td>
+            <td><center><a href="{{url('pekerjaan/'.$fj->pekerjaan->id) }}">{{ $fj->pekerjaan->judul_pekerjaan }}</a></center></td>
+            <td><center><a href="{{url('profile/'.$fj->pekerjaan->user->id)}}">{{ $fj->pekerjaan->user->name }}</a></center></td>
+            <td><center>{{ $fj->pekerjaan->durasi }} minggu</center></td>
             <td><center>Rp {{ $fj->pekerjaan->budget }},-</center></td>
             <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
 
@@ -265,8 +265,8 @@
         </thead>
         @foreach($jobgiver_job as $jg)
             <tr>
-              <td><center>{{ $jg->pekerjaan->judul_pekerjaan }}</center></td>
-              <td><center>{{ $jg->user->name }}</center></td>
+              <td><center><a href="{{url('pekerjaan/'.$jg->pekerjaan->id) }}">{{ $jg->pekerjaan->judul_pekerjaan }}</a></center></td>
+              <td><center><a href="{{url('profile/'.$jg->user->id)}}">{{ $jg->user->name }}</a></center></td>
               <td><center>{{ $jg->pekerjaan->durasi }} minggu</center></td>
               <td><center>Rp{{ $jg->pekerjaan->budget }},-</center></td>
               <td><center>{{ $jg->pekerjaan->endDate }}</center></td>
