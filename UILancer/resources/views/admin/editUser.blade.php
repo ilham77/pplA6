@@ -193,7 +193,7 @@
               <div class="form-group row">
                 <label for="usernameUser" class="col-md-3 control-label">Username</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
+                    <input disabled type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
                 </div>
               </div>
               <div class="form-group row">
@@ -248,6 +248,7 @@
     </div>
   </div>
 </div>
+<br>
                   @if (count($errors))
 
                     <div class="well well-sm" id="error">

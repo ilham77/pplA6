@@ -20,56 +20,58 @@ class AdminController extends Controller
        $pekerjaan = Pekerjaan::where('isVerified',0)->paginate(10,['*'],'page_b');
        $userLuar = UserLuar::all();
 
-$chart = \Lava::DataTable();
-$stats = new Statistic;
-$date = date('d-M-Y');
-$jml_freelancer = User::where('role','=','mahasiswa')->count();
-$jml_job = Pekerjaan::all()->count();
-$jml_done = Pekerjaan::where('isDone','=','1')->count();
-$jml_report = Report::all()->count();
-if($stats->find($date)==null){
-$stats->tanggal=$date;
-$stats->jml_freelancer=$jml_freelancer;
-$stats->jml_job = $jml_job;
-$stats->jml_done = $jml_done;
-$stats->jml_report = $jml_report;
-$stats->save();
-}else{
-$stats = $stats->find($date);
-$stats->tanggal=$date;
-$stats->jml_freelancer=$jml_freelancer;
-$stats->jml_job = $jml_job;
-$stats->jml_done = $jml_done;
-$stats->jml_report = $jml_report;
-$stats->save();
-}
-$chart->addDateColumn('created_at')
-             ->addNumberColumn('Freelancer')
-             ->addNumberColumn('Job Given')
-             ->addNumberColumn('Job Done')
-             ->addNumberColumn('Report');
+        $chart = \Lava::DataTable();
+        $stats = new Statistic;
+        $date = date('d-M-Y');
+        $jml_freelancer = User::where('role','=','mahasiswa')->count();
+        $jml_job = Pekerjaan::all()->count();
+        $jml_done = Pekerjaan::where('isDone','=','1')->count();
+        $jml_report = Report::all()->count();
+        if($stats->find($date)==null){
+        $stats->tanggal=$date;
+        $stats->jml_freelancer=$jml_freelancer;
+        $stats->jml_job = $jml_job;
+        $stats->jml_done = $jml_done;
+        $stats->jml_report = $jml_report;
+        $stats->save();
+        }else{
+        $stats = $stats->find($date);
+        $stats->tanggal=$date;
+        $stats->jml_freelancer=$jml_freelancer;
+        $stats->jml_job = $jml_job;
+        $stats->jml_done = $jml_done;
+        $stats->jml_report = $jml_report;
+        $stats->save();
+        }
+        $chart->addDateColumn('created_at')
+                     ->addNumberColumn('Freelancer')
+                     ->addNumberColumn('Job Given')
+                     ->addNumberColumn('Job Done')
+                     ->addNumberColumn('Report');
 
-if(count($stats)){
-$graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
-foreach($graph as $gr){
-$chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr->jml_report]);
-}
-}
-\Lava::LineChart(('Temps'), $chart, [
-    'title' => 'Statistik Website',
-    'width'=>1100,
-    'height'=>400
-]);
- return view('admin.inbox',compact('pekerjaan','reports','userLuar'));
-}
+        if(count($stats)){
+        $graph = $stats->orderBy('created_at','desc')->distinct()->first()->get();
+        foreach($graph as $gr){
+        $chart ->addRow([$gr->created_at,$gr->jml_freelancer,$gr->jml_job,$jml_done,$gr->jml_report]);
+        }
+        }
+        \Lava::LineChart(('Temps'), $chart, [
+            'title' => 'Statistik Website',
+            'width'=>1100,
+            'height'=>400
+        ]);
+         return view('admin.inbox',compact('pekerjaan','reports','userLuar'));
+    }
+
     public function showUser()
     {
        $users = User::all();
         return view('admin.manageUser',compact('users'));
     }
+
     public function createUser(Request $request){
         	$this->validate($request, [
-                'username' => 'required',
+                'username' => 'required|unique:users',
                 'namaPemilikAkun'		=> 'required',
                 'password' => 'required',
                 'confirmPassword' => 'required',
