@@ -243,16 +243,17 @@ class UserController extends Controller
             foreach($request->status as $st)
             {
                 $usertat = explode("=>", $st);
-                $am = ApplyManager::where('user_id',$usertat[0]);
+                $am = ApplyManager::where('user_id',$usertat[0])->where('pekerjaan_id',$request->pekerjaan)->first();
 
 
                 if($usertat[1] == "tolak")
                 {
-                    $am->first()->update(array('status' => 2));
+                    $am->update(array('status' => 2));
+
                 }
                 else
                 {
-                    $am->first()->update(array('status' => 1));
+                    $am->update(array('status' => 1));
                     $isAdaTerima = 1;
                 }
 
