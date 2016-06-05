@@ -17,6 +17,12 @@
 <script src="js/respond.min.js"></script>
 <![endif]-->
 </head>
+<style>
+  select {
+    font-size: 12pt;
+  }
+
+</style>
 
 <body>
   <!-- Navigasi Bar -->
@@ -201,9 +207,9 @@
               {{ $p->user->deskripsi }}
             </td>
              <td style="padding-left: 80px;">
-                <select name="status[]">
-                  <option value="{{$p->user_id}}=>tolak">Tolak</option>
-                  <option value="{{$p->user_id}}=>terima">Terima</option>
+                <select id="mySelect" name="status[]" class="bg-danger">
+                  <option class="bg-danger" value="{{$p->user_id}}=>tolak">Tolak</option>
+                  <option class="bg-success" value="{{$p->user_id}}=>terima">Terima</option>
               </select>
             </td>
           </tr>
@@ -237,6 +243,12 @@
   </div><!--/.row-->
 
   <script>
+    var select = document.getElementById('mySelect');
+
+    select.onchange = function () {
+        select.className = this.options[this.selectedIndex].className;
+    }
+
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
