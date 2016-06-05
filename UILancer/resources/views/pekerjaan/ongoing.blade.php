@@ -182,7 +182,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -204,7 +204,7 @@
         <div id="table" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">On-Going Job</h1>
 
-  @if($user->role != 'official')
+  @if($user->role == 'mahasiswa')
     <u><h3>Freelancer</h3></u>
     <table style="width:100%" class="table table-hover">
       <div class="table-responsive">
@@ -225,7 +225,7 @@
             <td><center>{{ $fj->pekerjaan->judul_pekerjaan }}</center></td>
             <td><center>{{ $fj->pekerjaan->user->name }}</center></td>
             <td><center>{{ $fj->pekerjaan->durasi }} pekan</center></td>
-            <td><center>Rp{{ $fj->pekerjaan->budget }},-</center></td>
+            <td><center>Rp {{ $fj->pekerjaan->budget }},-</center></td>
             <td><center>{{ $fj->pekerjaan->endDate }}</center></td>
 
             @if($fj->pekerjaan->isDone == 0)

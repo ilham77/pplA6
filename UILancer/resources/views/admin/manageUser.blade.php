@@ -160,14 +160,16 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
+            @if(Auth::user()->role == 'mahasiswa')
           <li>
             <a class="" href="{{url('riwayatApply')}}">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
+          @endif
         </ul>
       </li>
-      <li><a href="{{URL::to('ongoing').'/'.Auth::user()->id}}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
+      <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> FAQ &amp; Help</a></li>
     </ul>
