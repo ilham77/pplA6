@@ -239,7 +239,7 @@
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="col">
+<div class="col" style="margin-top:-55px;">
 <div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
 
