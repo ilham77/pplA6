@@ -19,19 +19,33 @@
     
     <style type="text/css">
 /*<![CDATA[*/
-#myInstance1 {
-        border: 2px dashed #0000ff;
-}
-.nicEdit-selected {
-        border: 2px solid #0000ff !important;
-}
- 
-.nicEdit-main {
-        background-color: #fff !important;
-}
- 
+      #myInstance1 {
+              border: 2px dashed #0000ff;
+      }
+      .nicEdit-selected {
+              border: 2px solid #0000ff !important;
+      }
+       
+      .nicEdit-main {
+              background-color: #fff !important;
+      }
+
+
+       
+
+       .vertical-alignment-helper {
+          display:table;
+          height: 100%;
+          width: 100%;
+      }
+      .vertical-align-center {
+          /* To center vertically */
+          display: table-cell;
+          vertical-align: middle;
+      }
 /*]]>*/
 </style>
+
 </head>
 
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -132,19 +146,6 @@
     
 
     <div id="form-pekerjaan" class="container-fluid bg-grey slideanim">   
-              @if (count($errors))
-
-        <div class="well well-sm" id="error">
-          <ul>
-
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-
-          </ul>
-        </div>
-
-      @endif
              <br><br>
         <center><h1>POST LOWONGAN PEKERJAAN</h1></center>
          <form action="post-lowongan" method="POST" role="form" enctype="multipart/form-data">
@@ -240,6 +241,53 @@
   </div>
 </div>
 
+      
+
+<!--         <div class="well well-sm" id="error">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div> -->
+@if (count($errors))
+  <!-- Modal -->
+  <center>
+<div class="modal fade" id="errorModal" role="dialog">
+          <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center ">
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content bg-danger" style="width:700px;">
+        <div class="modal-header bg-danger">
+          <button type="button" class="close" data-dismiss="modal"><b>&times;</b></button>
+          <b>Error Pengisian Data</b>
+        </div>
+        <div class="modal-body bg-danger">
+          <div class="text-left">
+          <ul>
+
+          @foreach ($errors->all() as $error)
+            <li style="height:20px; width:650px">{{ $error }}</li>
+          @endforeach
+
+          </ul>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+</div>
+</center>
+      @endif
+
+
+
+
 <!-- Footer -->
 <footer class="text-center">
   <p>Copyright &copy; 2016. UILancer</p>
@@ -254,7 +302,9 @@ $('button').click(function(){
     }, 500);
     return false;
 });
-  
+    $(window).load(function(){
+        $('#errorModal').modal('show');
+    });
     
   $(window).scroll(function() {
     $(".slideanim").each(function(){

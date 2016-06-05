@@ -180,7 +180,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -238,7 +238,7 @@
                     </div>
                     <br>
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
+                    <button type="submit" class="btn btn-success left-block btn-lg">Submit</button>
                   </form>
 
                   @if (count($errors))

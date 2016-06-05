@@ -214,7 +214,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -235,16 +235,18 @@
         <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
- <div class="col-lg-12" style="margin-left:-15px; height:0px;">
+
+ <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
+>>>>>>> origin/master
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
 <div class="col">
 <div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
-
       <div class="panel-body">
-
+<br>
+<br>
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
                 <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
@@ -274,7 +276,7 @@
 
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-              <span>Rp. {{$pekerjaan->budget}},-</span><br>
+              <span>Rp {{$pekerjaan->budget}},-</span><br>
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
@@ -287,31 +289,41 @@
             @endif
            </div>
                 <div class="text-right">
-                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                  <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
             </div>
     </div>
     </div>
+    <br>
         @endforeach
       @endif
       <br>
+      <br>
+      <br>
       @if($pekerjaans->total() != 0)
+      <br>
         <div class="text-center">
           <span class="text-muted"><b>{{ (($pekerjaans->currentPage() - 1) * $pekerjaans->perPage()) + 1 }}</b>–<b>{{ (($pekerjaans->currentPage() - 1) * $pekerjaans->perPage()) + $pekerjaans->count() }}</b> of <b>{{ $pekerjaans->total() }}</b></span>
           <div class="btn-group btn-group-sm">
             {!! $pekerjaans->appends([$pekerjaanss->getPageName() => $pekerjaanss->currentPage()])->render() !!}
+            <br>
           </div>
         </div>
+        <br>
+        <hr>
       @endif
   </div>
 </div>
 
-
       </div>
       <div class="col-lg-12" style="margin-left:-15px;">
-        <div id="form" class="container-fluid"  style="margin-top:-20px;">
-            <h1 class="text-left" style="margin-top:35px"><hr></h1>
- <div class="col-lg-12" style="margin-left:-15px;">
+
+        <div id="form" class="container-fluid">
+            <h1 class="text-left" style="margin-top:35px"></h1>
+              <br>
+              <br>
+ <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
+>>>>>>> origin/master
 <br>
       @if(count($pekerjaanss))
         @foreach($pekerjaanss as $pekerjaan)
@@ -367,7 +379,6 @@
     </div>
         @endforeach
       @endif
-      <br>
       @if($pekerjaanss->total() != 0)
         <div class="text-center">
           <span class="text-muted"><b>{{ (($pekerjaanss->currentPage() - 1) * $pekerjaanss->perPage()) + 1 }}</b>–<b>{{ (($pekerjaanss->currentPage() - 1) * $pekerjaanss->perPage()) + $pekerjaanss->count() }}</b> of <b>{{ $pekerjaanss->total() }}</b></span>

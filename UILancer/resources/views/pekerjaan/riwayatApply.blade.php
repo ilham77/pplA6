@@ -160,7 +160,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -199,8 +199,8 @@
 
         @foreach($kerjaanUser as $ku)
           <tr>
-              <td><center>{{ $ku->pekerjaan->judul_pekerjaan }}</center></td>
-              <td><center>{{ $ku->pekerjaan->user->name }}</center></td>
+              <td><center><a href="pekerjaan/{{ $ku->pekerjaan->id }}">{{ $ku->pekerjaan->judul_pekerjaan }}</a></center></td>
+              <td><center><a href="{{url('profile/'.$ku->pekerjaan->user->id)}}">{{ $ku->pekerjaan->user->name }}</a></center></td>
               <td><center>{{ $ku->pekerjaan->durasi }} minggu</center></td>
               <td><center>Rp.{{ $ku->pekerjaan->budget }},-</center></td>
               <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>

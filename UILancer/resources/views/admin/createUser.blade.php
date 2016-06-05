@@ -161,11 +161,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
+            @if(Auth::user()->role == 'mahasiswa')
           <li>
             <a class="" href="{{url('riwayatApply')}}">
               <span class="glyphicon glyphicon-check"></span> Apply Job
             </a>
           </li>
+          @endif
         </ul>
       </li>
       <li><a href="ongoing/{{ Auth::user()->id }}"><span class="glyphicon glyphicon-tasks"></span> On-Going Job</a></li>
@@ -250,6 +252,21 @@
     </div>
   </div>
 </div>
+
+          
+                  @if (count($errors))
+
+                    <div class="well well-sm" id="error">
+                      <ul>
+
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+
+                      </ul>
+                    </div>
+
+                  @endif
 
 
       </div>

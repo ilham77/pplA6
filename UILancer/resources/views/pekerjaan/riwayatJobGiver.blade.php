@@ -161,7 +161,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -199,7 +199,7 @@
         @foreach($kerjaDariUser as $ku)
           @if($ku->isVerified == 0)
             <tr>
-              <td><center>{{ $ku->judul_pekerjaan }}</center></td>
+              <td><center><a href="pekerjaan/{{ $ku->id }}">{{ $ku->judul_pekerjaan }}</a></center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp {{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
@@ -208,7 +208,7 @@
           @else
             @if(count($ku->applyManager))
               <tr>
-                <td><center>{{ $ku->judul_pekerjaan }}</center></td>
+                <td><center><a href="pekerjaan/{{ $ku->id }}">{{ $ku->judul_pekerjaan }}</a></center></td>
                 <td><center>{{ $ku->durasi }} minggu</center></td>
                 <td><center>Rp {{ $ku->budget }},-</center></td>
                 <td><center>{{ $ku->endDate  }}</center></td>
@@ -223,7 +223,7 @@
               </tr>
             @else
             <tr>
-              <td><center>{{ $ku->judul_pekerjaan }}</center></td>
+              <td><center><a href="pekerjaan/{{ $ku->id }}">{{ $ku->judul_pekerjaan }}</a></center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
               <td><center>Rp {{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>

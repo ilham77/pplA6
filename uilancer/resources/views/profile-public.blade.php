@@ -132,7 +132,7 @@
   <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <ul class="nav menu">
       @if(Auth::user()->role == 'admin')
-      <li class="parent active">
+      <li class="parent">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-2"><span class="glyphicon glyphicon-th-large"></span> Admin Menu </span>
         </a>
@@ -154,7 +154,7 @@
       <li><a href="{{url('/')}}"><span class="glyphicon glyphicon-list-alt"></span> Daftar Pekerjaan</a></li>
       <li><a href="{{url('search-dashboard')}}"><span class="glyphicon glyphicon-search"></span> Cari Pekerjaan</a></li>
       <li><a href="{{url('bukalowongan')}}"><span class="glyphicon glyphicon-pencil"></span> Buka Pekerjaan</a></li>
-      <li class="parent ">
+      <li class="parent">
         <a href="#">
           <span data-toggle="collapse" href="#sub-item-1"><span class="glyphicon glyphicon-chevron-down"></span></span> Riwayat
         </a>
@@ -164,7 +164,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -236,6 +236,7 @@
             <p>Media Sosial     : {{$usr->linkedin}}</p>
             <p>Web              : {{$usr->web}}</p>
             <p>Ketertarikan     : </p>
+            <p>Pekerjaan/Role : {{$usr->role}}</p>
             <p>Fakultas         : {{$usr->faculty}}</p>
 
 

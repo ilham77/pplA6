@@ -160,7 +160,7 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          @if(Auth::user()->role != 'official')
+          @if(Auth::user()->role == 'mahasiswa')
             <li>
               <a class="" href="{{url('riwayatApply')}}">
                 <span class="glyphicon glyphicon-check"></span> Apply Job
@@ -207,7 +207,7 @@
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
             <p>Ketertarikan     : </p>
-            <p>Pekerjaan        : {{\Auth::user()->role}}</p>
+            <p>Pekerjaan/Role        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
 
             @if(\Auth::user()->cvresume != "")

@@ -160,11 +160,13 @@
               <span class="glyphicon glyphicon-folder-open"></span> Pembukaan Pekerjaan
             </a>
           </li>
-          <li>
-            <a class="" href="{{url('riwayatApply')}}">
-              <span class="glyphicon glyphicon-check"></span> Apply Job
-            </a>
-          </li>
+          @if(Auth::user()->role == 'mahasiswa')
+            <li>
+              <a class="" href="{{url('riwayatApply')}}">
+                <span class="glyphicon glyphicon-check"></span> Apply Job
+              </a>
+            </li>
+          @endif
         </ul>
 
       </li>
@@ -252,6 +254,8 @@
               @if($hasil->user->id != Auth::user()->id)
                   @if (in_array(Auth::user()->id, $id_pelamar))
                     <a class="btn btn-danger mt-20 font2 text-center" href="../cancelApply/{{ $hasil->id }}/{{ Auth::user()->id }}">Batalkan Apply</a>
+                  @elseif(Auth::user()->role == 'official')
+
                   @else
                     <a class="btn btn-success mt-20 font2 text-center" href="../apply/{{ $hasil->id }}/{{ Auth::user()->id }}">Apply</a>
                   @endif
