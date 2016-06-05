@@ -235,11 +235,11 @@
         <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
- <div class="col-lg-12" style="margin-left:-15px;">
+ <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="col" style="margin-top:-80px;">
+<div class="col">
 <div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
 
@@ -287,7 +287,7 @@
             @endif
            </div>
                 <div class="text-right">
-                            <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
+                  <a href="pekerjaan/{{ $pekerjaan->id }}" class="btn btn-primary">Lihat Detail </a>
                 </div>
             </div>
     </div>
@@ -306,6 +306,7 @@
           <br>
         </div>
         <br>
+        <hr>
       @endif
   </div>
 </div>
