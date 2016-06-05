@@ -207,7 +207,7 @@
             <p>Media Sosial     : {{\Auth::user()->linkedin}}</p>
             <p>Web              : {{\Auth::user()->web}}</p>
             <p>Ketertarikan     : </p>
-            <p>Pekerjaan        : {{\Auth::user()->role}}</p>
+            <p>Pekerjaan/Role        : {{\Auth::user()->role}}</p>
             <p>Fakultas         : {{\Auth::user()->faculty}}</p>
 
             @if(\Auth::user()->cvresume != "")

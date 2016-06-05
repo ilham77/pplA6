@@ -236,6 +236,7 @@
             <p>Media Sosial     : {{$usr->linkedin}}</p>
             <p>Web              : {{$usr->web}}</p>
             <p>Ketertarikan     : </p>
+            <p>Pekerjaan/Role : {{$usr->role}}</p>
             <p>Fakultas         : {{$usr->faculty}}</p>
 
 
