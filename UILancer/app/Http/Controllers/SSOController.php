@@ -39,8 +39,12 @@ class SSOController extends BaseController
      }
 
     public function logout(){
-        SSO::logout();
+        if(\Auth::user()->role='mahasiswa'){
         //SSO::logout();
+        \Auth::logout();
+        }else{
+        \Auth::logout();
+        }
         return redirect('/');
     }
 
