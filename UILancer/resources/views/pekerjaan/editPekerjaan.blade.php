@@ -242,7 +242,7 @@
                     <br>
 
                     <button type="submit" class="btn btn-success left-block btn">Save</button>
-                    <button class="btn btn-danger left-block btn">Cancel</button>
+                    <button class="btn btn-danger left-block btn" onclick="goBack()">Cancel</button>
                   </form>
 
                   @if (count($errors))
@@ -267,6 +267,9 @@
 </div>
 
   <script>
+    function goBack() {
+        window.history.back()
+    }
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
@@ -280,7 +283,9 @@
     $(window).on('resize', function () {
       if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
     })
+</script>
   </script>
+
 </body>
 
 </html>

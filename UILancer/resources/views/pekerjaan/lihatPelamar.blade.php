@@ -217,6 +217,7 @@
       <?php $i++; ?>
     @endforeach
     </div>
+    <br>
       <input type="hidden" name="pekerjaan" value="{{ $pekerjaan->id }}">
     @if(Auth::user()->role != "admin")
       <div class="text-right"><button type="submit" class="btn btn-defautl  left-block btn-lg">Confirm</button></div></form>

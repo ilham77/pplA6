@@ -236,7 +236,8 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-success left-block">Submit</button>
+              <button type="submit" class="btn btn-success left-block btn">Submit</button>
+              <button class="btn btn-danger left-block btn" onclick="goBack()">Cancel</button>
             </form>
             @endif
         </div>
@@ -264,6 +265,9 @@
   </div><!--/.row-->
 
   <script>
+    function goBack() {
+        window.history.back()
+    }
     !function ($) {
         $(document).on("click","ul.nav li.parent > a > span.icon", function(){
             $(this).find('em:first').toggleClass("glyphicon-minus");
