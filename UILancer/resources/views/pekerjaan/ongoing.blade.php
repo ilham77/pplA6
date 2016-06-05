@@ -16,6 +16,28 @@
 
 </head>
 
+<style>
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+</style>
+
+
 <body>
   <!-- Navigasi Bar -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -278,7 +300,9 @@
   </div><!--/.row-->
 
 @foreach($freelancer_job as $fj)
-  <div class="modal fade" id="modalDone-{{ $fj->pekerjaan->id }}" role="dialog">
+  <div class="modal fade" id="modalDone-{{ $fj->pekerjaan->id }}" role="dialog">  
+        <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
     <div class="modal-dialog">
                <div class="modal-content">
         <div class="modal-header">
@@ -292,6 +316,8 @@
         </div>
       </center>
       </div>
+    </div>
+  </div>
       <!-- Modal content-->
     </div>
 </div>
@@ -299,6 +325,8 @@
 
 @foreach($jobgiver_job as $jg)
   <div class="modal fade" id="modalTestimoni-{{ $jg->pekerjaan->id }}" role="dialog">
+        <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
     <div class="modal-dialog">
                <div class="modal-content">
         <div class="modal-header">
@@ -348,6 +376,8 @@
         </div>
       </center>
       </div>
+    </div>
+  </div>
       <!-- Modal content-->
     </div>
 </div>
