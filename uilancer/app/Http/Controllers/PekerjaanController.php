@@ -116,10 +116,12 @@ class PekerjaanController extends Controller
         $arrSkill = explode(";", $request->skill);
         foreach($arrSkill as $as)
         {
-            $skill = new SkillTagPekerjaan;
-            $skill->pekerjaan_id = $pekerjaan->id;
-            $skill->skill = $as;
-            $skill->save();
+            if($as != "") {
+                $skill = new SkillTagPekerjaan;
+                $skill->pekerjaan_id = $pekerjaan->id;
+                $skill->skill = $as;
+                $skill->save();
+            }
         }
         return redirect('post');
     }
