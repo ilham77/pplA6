@@ -202,7 +202,7 @@
               <td><center><a href="pekerjaan/{{ $ku->pekerjaan->id }}">{{ $ku->pekerjaan->judul_pekerjaan }}</a></center></td>
               <td><center><a href="{{url('profile/'.$ku->pekerjaan->user->id)}}">{{ $ku->pekerjaan->user->name }}</a></center></td>
               <td><center>{{ $ku->pekerjaan->durasi }} minggu</center></td>
-              <td><center>Rp.{{ $ku->pekerjaan->budget }},-</center></td>
+              <td><center>Rp {{ $ku->pekerjaan->budget }},-</center></td>
               <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>
 
               @if($ku->status == 1)

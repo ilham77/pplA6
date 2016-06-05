@@ -237,7 +237,7 @@
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
 
  <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
->>>>>>> origin/master
+
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
@@ -323,7 +323,7 @@
               <br>
               <br>
  <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
->>>>>>> origin/master
+
 <br>
       @if(count($pekerjaanss))
         @foreach($pekerjaanss as $pekerjaan)
