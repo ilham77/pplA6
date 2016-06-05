@@ -101,8 +101,8 @@
   <br>
   <div class="row slideanim">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off logo-small"></span>
-      <h4>POWER</h4>
+      <span class="glyphicon glyphicon-thumbs-up logo-small"></span>
+      <h4>QUALITY</h4>
       <p>Dapatkan hasil yang berkualitas dengan harga terserah anda.</p>
     </div>
     <div class="col-sm-4">
@@ -112,7 +112,7 @@
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-lock logo-small"></span>
-      <h4>SECURE</h4>
+      <h4>SECURITY</h4>
       <p>Seluruh akun terikat oleh AD/ART Universitas Indonesia</p>
     </div>
   </div>
@@ -120,7 +120,7 @@
   <div class="row slideanim">
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-check logo-small"></span>
-      <h4>CHECK</h4>
+      <h4>VERIFIED</h4>
       <p>Freelancer terpercaya & terverifikasi</p>
     </div>
     <div class="col-sm-4">
