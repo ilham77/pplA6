@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Auth;
 
 class SSOController extends BaseController
 {
@@ -39,8 +40,8 @@ class SSOController extends BaseController
      }
 
     public function logout(){
-        SSO::logout();
-        //SSO::logout();
+        Auth::logout();
+        //SSO::logout(); // entah kenapa kalo ini jadinya gk kelogout dari dashboard
         return redirect('/');
     }
 

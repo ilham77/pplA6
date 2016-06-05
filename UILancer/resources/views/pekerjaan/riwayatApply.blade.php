@@ -202,7 +202,7 @@
               <td><center>{{ $ku->pekerjaan->judul_pekerjaan }}</center></td>
               <td><center>{{ $ku->pekerjaan->user->name }}</center></td>
               <td><center>{{ $ku->pekerjaan->durasi }} minggu</center></td>
-              <td><center>Rp.{{ $ku->pekerjaan->budget }},-</center></td>
+              <td><center>Rp {{ $ku->pekerjaan->budget }},-</center></td>
               <td><center>{{ $ku->pekerjaan->endDate  }}</center></td>
 
               @if($ku->status == 1)
