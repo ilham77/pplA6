@@ -238,7 +238,7 @@
                     </div>
                     <br>
 
-                    <button type="submit" class="btn btn-success left-block btn-lg">Buka Lowongan!</button>
+                    <button type="submit" class="btn btn-success left-block btn-lg">Submit</button>
                   </form>
 
                   @if (count($errors))
