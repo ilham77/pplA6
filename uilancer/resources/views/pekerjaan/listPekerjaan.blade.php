@@ -242,9 +242,9 @@
 <div class="col">
 <div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
-
       <div class="panel-body">
-
+<br>
+<br>
                     <h4><a href="pekerjaan/{{ $pekerjaan->id }}">{{ $pekerjaan->judul_pekerjaan }}</a></h4>
 <div class ="col-md-3 col-xs-1 col-lg-3">
                 <span class="glyphicon glyphicon-user"></span><span> <a href="{{url('profile/'.$pekerjaan->user->id)}}">{{$pekerjaan->user->name}}</a></span>
@@ -274,7 +274,7 @@
 
           <div class="deskripsi">
               <span data-toggle="tooltip" title="Budget" class="glyphicon glyphicon-usd"></span>
-              <span>Rp. {{$pekerjaan->budget}},-</span><br>
+              <span>Rp {{$pekerjaan->budget}},-</span><br>
               <span data-toggle="tooltip" title="Jumlah Pelamar Saat Ini" class="glyphicon glyphicon-briefcase"></span>
               <span>{{count($pekerjaan->applyManager)}}</span><br>
               <span data-toggle="tooltip" title="Estimasi Waktu Pengerjaan" class="glyphicon glyphicon-ok-circle"></span>
@@ -292,8 +292,11 @@
             </div>
     </div>
     </div>
+    <br>
         @endforeach
       @endif
+      <br>
+      <br>
       <br>
       @if($pekerjaans->total() != 0)
       <br>
