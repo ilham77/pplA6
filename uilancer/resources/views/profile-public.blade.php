@@ -249,15 +249,13 @@
             <hr style="">
             @if($usr->role=="mahasiswa")
                     <h3>Riwayat Pekerjaan</h3>
-                    <table style="width:1050px;" class="table table-hover">
+                    <table style="width:600px;" class="table table-hover">
               <div class="table-responsive">
               @if(count($jobs))
                 <thead>
                 <td><center><b>Judul Pekerjaan</b></center></td>
                 <td><center><b>Pemberi Pekerja</b></center></td>
                 <td><center><b>Durasi Kerja</center></b></td>
-                <td><center><b>Honor</b></center></td>
-                <td><center><b>Deadline</b></center></td>
                 <td></td>
                 </thead>
 
@@ -266,8 +264,6 @@
                       <td><center>{{ $job->pekerjaan->judul_pekerjaan }}</center></td>
                       <td><center>{{ $job->pekerjaan->user->name }}</center></td>
                       <td><center>{{ $job->pekerjaan->durasi }} minggu</center></td>
-                      <td><center>Rp.{{ $job->pekerjaan->budget }},-</center></td>
-                      <td><center>{{ $job->pekerjaan->endDate  }}</center></td>
 
                   </tr>
                 @endforeach

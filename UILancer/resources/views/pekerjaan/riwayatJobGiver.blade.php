@@ -201,7 +201,7 @@
             <tr>
               <td><center>{{ $ku->judul_pekerjaan }}</center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
-              <td><center>Rp.{{ $ku->budget }},-</center></td>
+              <td><center>Rp {{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
               <td><center>Menunggu Verifikasi</center></td>
             </tr>
@@ -210,7 +210,7 @@
               <tr>
                 <td><center>{{ $ku->judul_pekerjaan }}</center></td>
                 <td><center>{{ $ku->durasi }} minggu</center></td>
-                <td><center>Rp.{{ $ku->budget }},-</center></td>
+                <td><center>Rp {{ $ku->budget }},-</center></td>
                 <td><center>{{ $ku->endDate  }}</center></td>
 
                 @if($ku->isClosed == 1)
@@ -225,7 +225,7 @@
             <tr>
               <td><center>{{ $ku->judul_pekerjaan }}</center></td>
               <td><center>{{ $ku->durasi }} minggu</center></td>
-              <td><center>Rp.{{ $ku->budget }},-</center></td>
+              <td><center>Rp {{ $ku->budget }},-</center></td>
               <td><center>{{ $ku->endDate  }}</center></td>
               <td><center>Menunggu Pelamar</center></td>
             </tr>
