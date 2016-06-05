@@ -211,6 +211,7 @@
                 <thead>
                   <tr>
                     <th>Nama</th>
+                    <th>Username</th>
                     <th>Role</th>
                     <th>Email</th>
                     <th></th>
@@ -221,6 +222,7 @@
                         @foreach($users as $user)
                   <tr>
                     <td><a href="profile/{{$user->id}}">{{$user->name}}</a></td>
+                    <td>{{$user->username}}</td>
                     <td>{{$user->role}}</td>
                     <td>{{$user->email}}</td>
                     <td><a href='editUser/{{$user->id}}'}><i class="glyphicon glyphicon-edit"></i></a></td>

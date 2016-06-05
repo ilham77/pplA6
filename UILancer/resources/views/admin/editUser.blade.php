@@ -193,7 +193,7 @@
               <div class="form-group row">
                 <label for="usernameUser" class="col-md-3 control-label">Username</label>
                 <div class="col-md-8">
-                    <input disabled type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
+                    <input readonly type="text" class="form-control" name="username" placeholder="username" value="{{$user->username}}">
                 </div>
               </div>
               <div class="form-group row">
