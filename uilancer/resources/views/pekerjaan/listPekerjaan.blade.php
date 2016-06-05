@@ -235,11 +235,11 @@
         <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
   <h1 class="text-left" style="margin-top:35px">Daftar Pekerjaan</h1>
- <div class="col-lg-12" style="margin-left:-15px">
+ <div class="col-lg-12" style="margin-left:-15px;">
 <br>
       @if(count($pekerjaans))
         @foreach($pekerjaans as $pekerjaan)
-<div class="col" style="margin-top:-55px;">
+<div class="col" style="margin-top:-80px;">
 <div class="ribbon"><span>HOT !</span></div>
     <div class = "panel panel-default">
 
@@ -310,7 +310,9 @@
       </div>
       <div class="col-lg-12" style="margin-left:-15px;">
         <div id="form" class="container-fluid">
-            <h1 class="text-left" style="margin-top:35px"><hr></h1>
+            <h1 class="text-left" style="margin-top:35px"></h1>
+              <br>
+              <hr>
  <div class="col-lg-12" style="margin-left:-15px;">
 <br>
       @if(count($pekerjaanss))

@@ -183,6 +183,7 @@ class PekerjaanController extends Controller
         $pekerjaan->update(array('isVerified' => 0));
         return redirect('inbox');
     }
+
     public function deleteJob(Pekerjaan $idPekerjaan) {
         foreach ($idPekerjaan->skillTag as $st) {
             $st->delete();
@@ -197,7 +198,7 @@ class PekerjaanController extends Controller
         }
 
         $idPekerjaan->delete();
-        return redirect('inbox');
+        return redirect('/');
     }
 
 
