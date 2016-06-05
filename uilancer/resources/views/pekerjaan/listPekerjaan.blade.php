@@ -303,7 +303,6 @@
             {!! $pekerjaans->appends([$pekerjaanss->getPageName() => $pekerjaanss->currentPage()])->render() !!}
             <br>
           </div>
-          <br>
         </div>
         <br>
         <hr>
@@ -317,7 +316,7 @@
             <h1 class="text-left" style="margin-top:35px"></h1>
               <br>
               <br>
- <div class="col-lg-12" style="margin-left:-15px; margin-top:-100px;">
+ <div class="col-lg-12" style="margin-left:-15px; margin-top:-70px;">
 <br>
       @if(count($pekerjaanss))
         @foreach($pekerjaanss as $pekerjaan)
