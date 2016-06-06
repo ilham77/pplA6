@@ -261,7 +261,7 @@
     <div class="modal-dialog ">
     
       <!-- Modal content-->
-      <div class="modal-content bg-danger" style="width:700px;">
+      <div class="modal-content bg-danger" style="width:700px;  margin-left:-50px;">
         <div class="modal-header bg-danger">
           <button type="button" class="close" data-dismiss="modal"><b>&times;</b></button>
           <b>Error Pengisian Data</b>
